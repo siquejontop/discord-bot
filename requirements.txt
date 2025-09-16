@@ -1,7 +1,9 @@
-discord.py[voice]==2.4.0
+fdiscord.py[voice]==2.4.0
 colorlog
 pyfiglet
 python-dotenv
 deep-translator
 flask
 audioop-lts
+gunicorn
+eventlet
