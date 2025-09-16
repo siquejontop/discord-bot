@@ -5,6 +5,8 @@ import logging
 import colorlog
 import pyfiglet
 import os
+from flask import Flask
+from threading import Thread
 
 # ==========================
 # 🔑 TOKEN
@@ -12,28 +14,25 @@ import os
 TOKEN = os.getenv("DISCORD_TOKEN")
 
 # ==========================
-# 🌐 KEEP ALIVE (solo si REPLIT=1 en env)
+# 🌐 KEEP ALIVE
 # ==========================
-if os.getenv("REPLIT", "0") == "1":
-    from flask import Flask
-    from threading import Thread
+app = Flask('')
 
-    app = Flask('')
+@app.route('/')
+def home():
+    return "✅ Bot online y funcionando!"
 
-    @app.route('/')
-    def home():
-        return "✅ Bot online y funcionando!"
+@app.route('/healthz')
+def health():
+    return "OK", 200
 
-    def run():
-        port = int(os.environ.get("PORT", 8080))
-        app.run(host="0.0.0.0", port=port)
+def run_flask():
+    port = int(os.environ.get("PORT", 8080))
+    app.run(host="0.0.0.0", port=port)
 
-    def keep_alive():
-        t = Thread(target=run)
-        t.start()
-else:
-    def keep_alive():
-        pass  # en Render no hace nada
+def keep_alive():
+    t = Thread(target=run_flask)
+    t.start()
 
 # ==========================
 # 🎨 CONFIG LOGGING
@@ -129,4 +128,9 @@ async def on_ready():
     banner = pyfiglet.figlet_format("MY BOT")
     print(f"\n{banner}")
     logger.info(f"✅ Bot conectado como {bot.user} (ID: {bot.user.id})")
-    logger.inf
+
+# Iniciar Flask en un hilo separado
+keep_alive()
+
+# Iniciar el bot
+bot.run(TOKEN)
