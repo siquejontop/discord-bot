@@ -1,6 +1,6 @@
-discord.py
-asyncio
+discord.py==2.4.0
 colorlog
 pyfiglet
 python-dotenv
 deep-translator
+flask
