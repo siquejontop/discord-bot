@@ -5,8 +5,30 @@ import logging
 import colorlog
 import pyfiglet
 import os
-TOKEN = os.getenv("DISCORD_TOKEN")
 
+# ==========================
+# 🌐 KEEP ALIVE SERVER
+# ==========================
+from flask import Flask
+from threading import Thread
+
+app = Flask('')
+
+@app.route('/')
+def home():
+    return "✅ Bot online y funcionando!"
+
+def run():
+    app.run(host="0.0.0.0", port=8080)
+
+def keep_alive():
+    t = Thread(target=run)
+    t.start()
+
+# ==========================
+# 🔑 TOKEN
+# ==========================
+TOKEN = os.getenv("DISCORD_TOKEN")
 
 # ==========================
 # 🎨 CONFIG LOGGING
@@ -54,7 +76,6 @@ class MyBot(commands.Bot):
         self.ready_once = False  # 👈 flag para evitar duplicados
 
     async def setup_hook(self):
-        # Registro de views persistentes (SOLO UNA VEZ)
         from cogs.hits import HitsButtonsES, HitsButtonsEN
         if not hasattr(self, "views_loaded"):
             self.add_view(HitsButtonsES(self))
@@ -62,7 +83,6 @@ class MyBot(commands.Bot):
             self.views_loaded = True
             logger.info("🎛️ Views registradas correctamente")
 
-        # Carga de cogs con logs bonitos
         cogs = [
             "cogs.events",
             "cogs.moderation",
@@ -80,7 +100,7 @@ class MyBot(commands.Bot):
         ]
 
         for cog in cogs:
-            if cog not in self.extensions:  # 👈 evita recargar duplicado
+            if cog not in self.extensions:  
                 try:
                     await self.load_extension(cog)
                     logger.info(f"✅ Cog cargado: {cog}")
@@ -99,12 +119,11 @@ async def on_connect():
 
 @bot.event
 async def on_ready():
-    # 👇 se ejecuta SOLO la primera vez
     if bot.ready_once:
         return
     bot.ready_once = True
 
-    banner = pyfiglet.figlet_format("MY BOT")  # 🔥 cambia "MY BOT"
+    banner = pyfiglet.figlet_format("MY BOT")
     print(f"\n{banner}")
     logger.info(f"✅ Bot conectado como {bot.user} (ID: {bot.user.id})")
     logger.info(f"🌍 Conectado a {len(bot.guilds)} servidores")
@@ -124,7 +143,7 @@ async def on_guild_remove(guild):
 async def main():
     async with bot:
         await bot.start(TOKEN)
-        
 
 if __name__ == "__main__":
+    keep_alive()  # 👈 Arranca el servidor Flask para el ping
     asyncio.run(main())
