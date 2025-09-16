@@ -75,10 +75,8 @@ class Roles(commands.Cog):
     # Función auxiliar: buscar usuario
     # ========================
     def find_member(self, ctx, member_arg: str):
-        # Por ID
-        if member_arg.isdigit():
+        if member_arg.isdigit():  # ID
             return ctx.guild.get_member(int(member_arg))
-        # Por nombre de usuario / nickname
         return discord.utils.find(
             lambda m: m.name.lower() == member_arg.lower() or (m.nick and m.nick.lower() == member_arg.lower()),
             ctx.guild.members
@@ -183,5 +181,6 @@ class Roles(commands.Cog):
             await ctx.send("❌ No tengo permisos suficientes para modificar ese rol.")
 
 
+# 👇 Obligatorio para que Render cargue el cog
 async def setup(bot):
     await bot.add_cog(Roles(bot))
