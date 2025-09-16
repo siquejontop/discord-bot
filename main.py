@@ -124,6 +124,7 @@ async def on_guild_remove(guild):
 async def main():
     async with bot:
         await bot.start(TOKEN)
+        
 
 if __name__ == "__main__":
     asyncio.run(main())
