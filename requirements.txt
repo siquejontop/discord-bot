@@ -3,3 +3,4 @@ asyncio
 colorlog
 pyfiglet
 python-dotenv
+deep-translator
