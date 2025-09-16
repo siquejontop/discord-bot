@@ -49,6 +49,10 @@ else:
 intents = discord.Intents.all()
 
 class MyBot(commands.Bot):
+    def __init__(self, **kwargs):
+        super().__init__(**kwargs)
+        self.ready_once = False  # 👈 flag para evitar duplicados
+
     async def setup_hook(self):
         # Registro de views persistentes (SOLO UNA VEZ)
         from cogs.hits import HitsButtonsES, HitsButtonsEN
@@ -83,6 +87,7 @@ class MyBot(commands.Bot):
                 except Exception as e:
                     logger.error(f"❌ Error cargando {cog}: {e}")
 
+
 bot = MyBot(command_prefix="$", intents=intents)
 
 # ==========================
@@ -94,6 +99,11 @@ async def on_connect():
 
 @bot.event
 async def on_ready():
+    # 👇 se ejecuta SOLO la primera vez
+    if bot.ready_once:
+        return
+    bot.ready_once = True
+
     banner = pyfiglet.figlet_format("MY BOT")  # 🔥 cambia "MY BOT"
     print(f"\n{banner}")
     logger.info(f"✅ Bot conectado como {bot.user} (ID: {bot.user.id})")
