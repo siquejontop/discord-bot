@@ -4,7 +4,9 @@ import asyncio
 import logging
 import colorlog
 import pyfiglet
-from config import TOKEN
+import os
+TOKEN = os.getenv("DISCORD_TOKEN")
+
 
 # ==========================
 # 🎨 CONFIG LOGGING
