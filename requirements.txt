@@ -1,4 +1,4 @@
-fdiscord.py[voice]==2.4.0
+discord.py[voice]==2.4.0
 colorlog
 pyfiglet
 python-dotenv
