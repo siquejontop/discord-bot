@@ -2,3 +2,4 @@ discord.py
 asyncio
 colorlog
 pyfiglet
+python-dotenv
