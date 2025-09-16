@@ -4,3 +4,4 @@ pyfiglet
 python-dotenv
 deep-translator
 flask
+audioop-lts
