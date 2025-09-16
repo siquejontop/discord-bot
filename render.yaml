@@ -7,4 +7,4 @@ services:
     plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: python main.py
-    autoDeploy: false  # Mantienes auto-deploy desactivado
+    autoDeploy: false
