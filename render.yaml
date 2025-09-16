@@ -2,9 +2,9 @@ services:
   - type: web
     name: discord-bot
     env: python
-    pythonVersion: 3.11  # Forzamos Python 3.11
+    pythonVersion: 3.11  # Usamos Python 3.11
     region: oregon
     plan: free
     buildCommand: pip install -r requirements.txt
     startCommand: python main.py
-    autoDeploy: false  # Mantienes el auto-deploy desactivado
+    autoDeploy: false  # Mantienes auto-deploy desactivado
