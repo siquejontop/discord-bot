@@ -79,3 +79,109 @@ class Roles(commands.Cog):
         if member_arg.isdigit():
             return ctx.guild.get_member(int(member_arg))
         # Por nombre de usuario / nickname
+        return discord.utils.find(
+            lambda m: m.name.lower() == member_arg.lower() or (m.nick and m.nick.lower() == member_arg.lower()),
+            ctx.guild.members
+        )
+
+    # ========================
+    # ➕ Añadir rol
+    # ========================
+    @commands.command(name="addrole", aliases=["addr", "ar"])
+    @commands.has_permissions(manage_roles=True)
+    async def addrole(self, ctx, member_arg: str, *, role_arg: str):
+        member = ctx.guild.get_member(int(member_arg[2:-1])) if member_arg.startswith("<@") else self.find_member(ctx, member_arg)
+        if not member:
+            return await ctx.send(embed=discord.Embed(
+                description=f"❌ No encontré el usuario **{member_arg}**.",
+                color=discord.Color.red()
+            ))
+
+        role = self.find_role(ctx, role_arg)
+        if not role:
+            return await ctx.send(embed=discord.Embed(
+                description=f"❌ No encontré el rol **{role_arg}**.",
+                color=discord.Color.red()
+            ))
+
+        try:
+            await member.add_roles(role)
+            embed = discord.Embed(
+                description=f"➕ {ctx.author.mention} : Added {role.mention} to {member.mention}",
+                color=discord.Color.green()
+            )
+            await ctx.send(embed=embed)
+        except discord.Forbidden:
+            await ctx.send("❌ No tengo permisos suficientes para asignar ese rol.")
+
+    # ========================
+    # ➖ Quitar rol
+    # ========================
+    @commands.command(name="removerole", aliases=["delrole", "rr", "dr"])
+    @commands.has_permissions(manage_roles=True)
+    async def removerole(self, ctx, member_arg: str, *, role_arg: str):
+        member = ctx.guild.get_member(int(member_arg[2:-1])) if member_arg.startswith("<@") else self.find_member(ctx, member_arg)
+        if not member:
+            return await ctx.send(embed=discord.Embed(
+                description=f"❌ No encontré el usuario **{member_arg}**.",
+                color=discord.Color.red()
+            ))
+
+        role = self.find_role(ctx, role_arg)
+        if not role:
+            return await ctx.send(embed=discord.Embed(
+                description=f"❌ No encontré el rol **{role_arg}**.",
+                color=discord.Color.red()
+            ))
+
+        try:
+            await member.remove_roles(role)
+            embed = discord.Embed(
+                description=f"➖ {ctx.author.mention} : Removed {role.mention} from {member.mention}",
+                color=discord.Color.red()
+            )
+            await ctx.send(embed=embed)
+        except discord.Forbidden:
+            await ctx.send("❌ No tengo permisos suficientes para quitar ese rol.")
+
+    # ========================
+    # 🔄 Toggle rol (dar o quitar con "r")
+    # ========================
+    @commands.command(name="r", aliases=["role"])
+    @commands.has_permissions(manage_roles=True)
+    async def toggle_role(self, ctx, member_arg: str, *, role_arg: str):
+        member = ctx.guild.get_member(int(member_arg[2:-1])) if member_arg.startswith("<@") else self.find_member(ctx, member_arg)
+        if not member:
+            return await ctx.send(embed=discord.Embed(
+                description=f"❌ No encontré el usuario **{member_arg}**.",
+                color=discord.Color.red()
+            ))
+
+        role = self.find_role(ctx, role_arg)
+        if not role:
+            return await ctx.send(embed=discord.Embed(
+                description=f"❌ No encontré el rol **{role_arg}**.",
+                color=discord.Color.red()
+            ))
+
+        try:
+            if role in member.roles:
+                await member.remove_roles(role)
+                embed = discord.Embed(
+                    description=f"➖ {ctx.author.mention} : Removed {role.mention} from {member.mention}",
+                    color=discord.Color.red()
+                )
+            else:
+                await member.add_roles(role)
+                embed = discord.Embed(
+                    description=f"➕ {ctx.author.mention} : Added {role.mention} to {member.mention}",
+                    color=discord.Color.green()
+                )
+            await ctx.send(embed=embed)
+
+        except discord.Forbidden:
+            await ctx.send("❌ No tengo permisos suficientes para modificar ese rol.")
+
+
+async def setup(bot):
+    await bot.add_cog(Roles(bot))
