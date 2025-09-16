@@ -2,7 +2,7 @@ services:
   - type: web
     name: discord-bot
     env: python
-    pythonVersion: 3.11  # Forzamos Python 3.11
+    pythonVersion: "3.11.9"  # Especifica la versión exacta
     region: oregon
     plan: free
     buildCommand: pip install -r requirements.txt
