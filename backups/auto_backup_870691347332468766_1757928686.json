@@ -1,0 +1,4006 @@
+{
+    "guild_name": "El Hogar de Noxx \ud83e\udd76",
+    "roles": [
+        {
+            "id": 870691347332468766,
+            "name": "@everyone",
+            "permissions": 2222085119528513,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 0
+        },
+        {
+            "id": 1416907267118333994,
+            "name": "siquej",
+            "permissions": 8,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 1
+        },
+        {
+            "id": 1407572690340020227,
+            "name": "Okaa",
+            "permissions": 1759218604441599,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 1
+        },
+        {
+            "id": 1358471992084529463,
+            "name": "Apollo Bot",
+            "permissions": 8,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 1
+        },
+        {
+            "id": 1339348096437452835,
+            "name": "NotSoBot",
+            "permissions": 1513941757175,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 1
+        },
+        {
+            "id": 1002293432972230709,
+            "name": "sesh",
+            "permissions": 397553429576,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 2
+        },
+        {
+            "id": 996540646259171400,
+            "name": "Nekotina",
+            "permissions": 9332963404926,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 3
+        },
+        {
+            "id": 995864410830684174,
+            "name": "Ticket King",
+            "permissions": 138244779096,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 4
+        },
+        {
+            "id": 967883623019720825,
+            "name": "Muted (vortex)",
+            "permissions": 0,
+            "color": 1,
+            "hoist": false,
+            "mentionable": false,
+            "position": 5
+        },
+        {
+            "id": 960607916803625043,
+            "name": "AmariBot",
+            "permissions": 0,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 6
+        },
+        {
+            "id": 942609682202230907,
+            "name": "Starboard",
+            "permissions": 268823640,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 7
+        },
+        {
+            "id": 905149778390814802,
+            "name": "Not Quite Nitro",
+            "permissions": 536895496,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 8
+        },
+        {
+            "id": 874633315330703371,
+            "name": "Xenon",
+            "permissions": 8,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 9
+        },
+        {
+            "id": 917764016745615430,
+            "name": "Pok\u00e9two",
+            "permissions": 387136,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 10
+        },
+        {
+            "id": 924173993014079489,
+            "name": "YouTube",
+            "permissions": 2684611585,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 11
+        },
+        {
+            "id": 928013312208306227,
+            "name": "\u2734 \u22b6\u25ac\u25ac\u22b6\u25ac\u25ac\u22b7\u25ac\u25ac\u22b7 \u2734",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 12
+        },
+        {
+            "id": 964961695044894821,
+            "name": "\u3010\ud83d\udcb8\ud83d\udcb2\u3011Mrbeast (2do)",
+            "permissions": 1071698529857,
+            "color": 1483014,
+            "hoist": false,
+            "mentionable": false,
+            "position": 13
+        },
+        {
+            "id": 931274108270940221,
+            "name": "\u3010\ud83d\udcb8\ud83d\udcb2\u3011MrBeast (1ro)",
+            "permissions": 1071698529857,
+            "color": 1483014,
+            "hoist": false,
+            "mentionable": false,
+            "position": 14
+        },
+        {
+            "id": 922682231330320384,
+            "name": "\u3010\ud83c\udf84\ud83c\udf89\u3011Navidad 2021",
+            "permissions": 1071698529857,
+            "color": 2063616,
+            "hoist": true,
+            "mentionable": false,
+            "position": 15
+        },
+        {
+            "id": 914320530709024789,
+            "name": "\u3010\ud83c\udfab\ud83c\udf89\u3011Saludo de Nox",
+            "permissions": 1071698529857,
+            "color": 15095177,
+            "hoist": true,
+            "mentionable": false,
+            "position": 16
+        },
+        {
+            "id": 953854183444996116,
+            "name": "\u3010\ud83e\udd11\ud83d\udcb8\u3011Dinero de vuelta",
+            "permissions": 1071698529857,
+            "color": 2653709,
+            "hoist": false,
+            "mentionable": false,
+            "position": 17
+        },
+        {
+            "id": 953735926201331753,
+            "name": "\u3010\u2693\ud83c\uddf7\ud83c\uddfa\u3011Bogdantroika",
+            "permissions": 1071698529857,
+            "color": 874962,
+            "hoist": true,
+            "mentionable": false,
+            "position": 18
+        },
+        {
+            "id": 914318748335362048,
+            "name": "\u3010\ud83c\udf08\ud83c\udf20\u3011A\u00f1adir emote",
+            "permissions": 1071698529857,
+            "color": 50684,
+            "hoist": false,
+            "mentionable": false,
+            "position": 19
+        },
+        {
+            "id": 953870151797841940,
+            "name": "\u3010\ud83e\udd75\ud83e\udd19\u3011Rol exclusivo",
+            "permissions": 1071698529857,
+            "color": 14212427,
+            "hoist": false,
+            "mentionable": false,
+            "position": 20
+        },
+        {
+            "id": 953869216644235304,
+            "name": "\u3010\ud83d\ude21\ud83d\udca2\u3011Odia a Pollo",
+            "permissions": 1071698529857,
+            "color": 16711680,
+            "hoist": false,
+            "mentionable": false,
+            "position": 21
+        },
+        {
+            "id": 953867241101852722,
+            "name": "\u3010\ud83d\ude20\ud83d\udca2\u3011Odia a Dylan",
+            "permissions": 1071698529857,
+            "color": 11147288,
+            "hoist": false,
+            "mentionable": false,
+            "position": 22
+        },
+        {
+            "id": 914319292449849384,
+            "name": "\u3010\ud83d\udc89\ud83d\udc8a\u3011Traficante de memes",
+            "permissions": 1071698529857,
+            "color": 526602,
+            "hoist": false,
+            "mentionable": false,
+            "position": 23
+        },
+        {
+            "id": 914320344515477604,
+            "name": "\u3010\ud83d\udd11\ud83d\udd13\u3011Acceso",
+            "permissions": 1071698529857,
+            "color": 526602,
+            "hoist": false,
+            "mentionable": false,
+            "position": 24
+        },
+        {
+            "id": 964953951978029086,
+            "name": "\u3010\ud83e\udd81\ud83e\udd69\u3011Atracci\u00f3n de leones",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 25
+        },
+        {
+            "id": 964953779504042074,
+            "name": "\u3010\ud83e\udd69\ud83e\udd53\u3011Suministros para leones",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 26
+        },
+        {
+            "id": 964953691314602004,
+            "name": "\u3010\ud83e\udd81\ud83c\udf56\u3011Jaula para leones",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 27
+        },
+        {
+            "id": 964973179036631081,
+            "name": "\u3010\ud83d\udc06\ud83c\udf56\u3011Atracci\u00f3n de jaguares",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 28
+        },
+        {
+            "id": 964973175979016302,
+            "name": "\u3010\ud83e\udd69\ud83c\udf57\u3011Suministros para jaguares",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 29
+        },
+        {
+            "id": 964973000627736597,
+            "name": "\u3010\ud83d\udc06\ud83e\udd69\u3011Jaula para jaguares",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 30
+        },
+        {
+            "id": 964971476098891856,
+            "name": "\u3010\ud83d\udc0a\ud83c\udf56\u3011Atracci\u00f3n de cocodrilos",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 31
+        },
+        {
+            "id": 964971472043012146,
+            "name": "\u3010\ud83e\udd69\ud83c\udf56\u3011Suministros para cocodrilos",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 32
+        },
+        {
+            "id": 964971387649396786,
+            "name": "\u3010\ud83d\udc0a\ud83e\udd69\u3011Jaula para cocodrilos",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 33
+        },
+        {
+            "id": 964953313034514493,
+            "name": "\u3010\ud83e\udd92\ud83c\udf32\u3011Atracci\u00f3n de jirafas",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 34
+        },
+        {
+            "id": 964953517385199696,
+            "name": "\u3010\ud83c\udf32\ud83c\udf43\u3011Suministros para jirafas",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 35
+        },
+        {
+            "id": 964953411487412347,
+            "name": "\u3010\ud83e\udd92\ud83c\udf3f\u3011Jaula para jirafas",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 36
+        },
+        {
+            "id": 964959056529862746,
+            "name": "\u3010\ud83d\udc18\ud83c\udf3f\u3011Atracci\u00f3n de elefantes",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 37
+        },
+        {
+            "id": 964958949075980389,
+            "name": "\u3010\ud83c\udf3f\ud83c\udf43\u3011Suministros para elefantes",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 38
+        },
+        {
+            "id": 964958857598206022,
+            "name": "\u3010\ud83d\udc18\ud83c\udf3f\u3011Jaula para elefantes",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 39
+        },
+        {
+            "id": 964954178831138896,
+            "name": "\u3010\ud83e\udd98\ud83c\udf43\u3011Atracci\u00f3n de canguros",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 40
+        },
+        {
+            "id": 964954502740447232,
+            "name": "\u3010\ud83c\udf43\ud83c\udf3f\u3011Suministros para canguros",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 41
+        },
+        {
+            "id": 964954428752932934,
+            "name": "\u3010\ud83e\udd98\ud83c\udf3f\u3011Jaula para canguros",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 42
+        },
+        {
+            "id": 964953028396458045,
+            "name": "\u3010\ud83e\udd9b\ud83c\udf43\u3011Atracci\u00f3n de hipop\u00f3tamos",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 43
+        },
+        {
+            "id": 964952715945971732,
+            "name": "\u3010\ud83c\udf49\ud83c\udf3f\u3011Suministros para hipop\u00f3tamos",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 44
+        },
+        {
+            "id": 964951519529164892,
+            "name": "\u3010\ud83e\udd9b\ud83c\udf49\u3011Jaula para hipop\u00f3tamos",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 45
+        },
+        {
+            "id": 964951014681772032,
+            "name": "\u3010\ud83e\udd8f\ud83c\udf3f\u3011Atracci\u00f3n de rinocerontes",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 46
+        },
+        {
+            "id": 964950694488580246,
+            "name": "\u3010\ud83c\udf33\ud83c\udf3f\u3011Suministros para rinocerontes",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 47
+        },
+        {
+            "id": 964950635365679214,
+            "name": "\u3010\ud83e\udd8f\ud83c\udf33\u3011Jaula para rinocerontes",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 48
+        },
+        {
+            "id": 964972552902565889,
+            "name": "\u3010\ud83d\udc3b\ud83c\udf43\u3011Atracci\u00f3n de osos",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 49
+        },
+        {
+            "id": 964972095807311982,
+            "name": "\u3010\ud83c\udf3f\ud83d\udc1c\u3011Suministros para osos",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 50
+        },
+        {
+            "id": 964972091252310078,
+            "name": "\u3010\ud83d\udc3b\ud83d\udc1c\u3011Jaula para osos",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 51
+        },
+        {
+            "id": 964950531988652142,
+            "name": "\u3010\ud83e\udd93\ud83c\udf34\u3011Atracci\u00f3n de cebras",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 52
+        },
+        {
+            "id": 964950314925043742,
+            "name": "\u3010\ud83c\udf3f\ud83c\udf34\u3011Suministros para cebras",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 53
+        },
+        {
+            "id": 964950219332661288,
+            "name": "\u3010\ud83e\udd93\ud83c\udf3f\u3011Jaula para cebras",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 54
+        },
+        {
+            "id": 964973383605452860,
+            "name": "\u3010\ud83d\udc0d\ud83d\udc1b\u3011Atracci\u00f3n de serpientes",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 55
+        },
+        {
+            "id": 964973688682340372,
+            "name": "\u3010\ud83d\udc1b\ud83d\udc1c\u3011Suministros para serpientes",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 56
+        },
+        {
+            "id": 964973617773441064,
+            "name": "\u3010\ud83d\udc0d\ud83d\udc1c\u3011Jaula para serpientes",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 57
+        },
+        {
+            "id": 964948697471406152,
+            "name": "\u3010\ud83d\udc28\ud83c\udf3f\u3011Atracci\u00f3n de koalas",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 58
+        },
+        {
+            "id": 964948250987757628,
+            "name": "\u3010\ud83c\udf3f\ud83c\udf43\u3011Suministros para koalas",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 59
+        },
+        {
+            "id": 964724563344756778,
+            "name": "\u3010\ud83d\udc28\ud83c\udf34\u3011Jaula para koalas",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 60
+        },
+        {
+            "id": 964722005846949959,
+            "name": "\u3010\ud83d\udc12\ud83d\udc35\u3011Atracci\u00f3n de changos",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 61
+        },
+        {
+            "id": 964721830214656061,
+            "name": "\u3010\ud83c\udf2e\ud83c\udf2f\u3011Suministros para changos",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 62
+        },
+        {
+            "id": 964720956016832542,
+            "name": "\u3010\ud83d\udc12\ud83c\udf4c\u3011Jaula para changos",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 63
+        },
+        {
+            "id": 964952437058334750,
+            "name": "\u3010\ud83d\udea8\ud83d\udd26\u3011Guardias de seguridad",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 64
+        },
+        {
+            "id": 964952017296564325,
+            "name": "\u3010\ud83e\udde2\ud83d\udc12\u3011Cuidadores de animales",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 65
+        },
+        {
+            "id": 964951864552591401,
+            "name": "\u3010\ud83e\uddfd\ud83e\uddf9\u3011Conserjes",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 66
+        },
+        {
+            "id": 953090426812895262,
+            "name": "\u3010\ud83e\udd81\ud83d\udc18\u3011Jugador de Econom\u00eda",
+            "permissions": 549755813888,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 67
+        },
+        {
+            "id": 928013192100196372,
+            "name": "\u2734 \u22b6\u25ac\u25ac\u22b6\u25acEconomia\u25ac\u22b7\u25ac\u25ac\u22b7 \u2734",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 68
+        },
+        {
+            "id": 914702685033353267,
+            "name": "\u3010\ud83c\udf89\u3011Sorteos",
+            "permissions": 1071698529857,
+            "color": 7498716,
+            "hoist": false,
+            "mentionable": false,
+            "position": 69
+        },
+        {
+            "id": 914702208635924481,
+            "name": "\u3010\ud83d\uddf3\ufe0f\u3011Encuestas",
+            "permissions": 1071698529857,
+            "color": 5495777,
+            "hoist": false,
+            "mentionable": false,
+            "position": 70
+        },
+        {
+            "id": 914927581839626270,
+            "name": "\u3010\ud83d\udd14\u3011Ping",
+            "permissions": 1071698529857,
+            "color": 15844367,
+            "hoist": false,
+            "mentionable": false,
+            "position": 71
+        },
+        {
+            "id": 914701584045338674,
+            "name": "\u3010\ud83d\udcab\u3011Revivir Chat",
+            "permissions": 1071698529857,
+            "color": 7245760,
+            "hoist": false,
+            "mentionable": false,
+            "position": 72
+        },
+        {
+            "id": 928013617490710638,
+            "name": "\u2734 \u22b6\u25ac\u25ac\u22b6\u25acRoles Extra\u25ac\u22b7\u25ac\u25ac\u22b7 \u2734",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 73
+        },
+        {
+            "id": 870696101064355911,
+            "name": "\u3010\ud83d\ude0e\u3011Seguidor",
+            "permissions": 67108865,
+            "color": 13143293,
+            "hoist": true,
+            "mentionable": false,
+            "position": 74
+        },
+        {
+            "id": 928013694129033237,
+            "name": "\u2734 \u22b6\u25ac\u25ac\u22b6\u25acRoles Principales\u25ac\u22b7\u25ac\u25ac\u22b7 \u2734",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 75
+        },
+        {
+            "id": 898084022377390100,
+            "name": "\u3010\ud83d\udd79\ufe0f\u3011XBOX",
+            "permissions": 68608,
+            "color": 1013776,
+            "hoist": false,
+            "mentionable": false,
+            "position": 76
+        },
+        {
+            "id": 898084022285139970,
+            "name": "\u3010\ud83c\udfae\u3011Playstation",
+            "permissions": 68608,
+            "color": 7842047,
+            "hoist": false,
+            "mentionable": false,
+            "position": 77
+        },
+        {
+            "id": 898084021781798924,
+            "name": "\u3010\ud83d\udcbb\u3011PC",
+            "permissions": 68608,
+            "color": 15428406,
+            "hoist": false,
+            "mentionable": false,
+            "position": 78
+        },
+        {
+            "id": 928013144192852009,
+            "name": "\u2734 \u22b6\u25ac\u25ac\u22b6\u25acPlataformas\u25ac\u22b7\u25ac\u25ac\u22b7 \u2734",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 79
+        },
+        {
+            "id": 870695958856474686,
+            "name": "\u3010\ud83e\udd16\u3011Bots",
+            "permissions": 28037546508279,
+            "color": 8547555,
+            "hoist": true,
+            "mentionable": false,
+            "position": 80
+        },
+        {
+            "id": 928013311444918282,
+            "name": "\u2734 \u22b6\u25ac\u25ac\u22b6\u25acBots\u25ac\u22b7\u25ac\u25ac\u22b7 \u2734",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 81
+        },
+        {
+            "id": 929750344265793576,
+            "name": "\u3010\ud83c\udff9\u3011Explorador del chat [ Level 5 ]",
+            "permissions": 1071698529857,
+            "color": 3447003,
+            "hoist": true,
+            "mentionable": false,
+            "position": 82
+        },
+        {
+            "id": 929749597730009250,
+            "name": "\u3010\ud83d\udee1\ufe0f\u3011Escudero del piloto [ Level 10 ]",
+            "permissions": 1071698529857,
+            "color": 70,
+            "hoist": true,
+            "mentionable": false,
+            "position": 83
+        },
+        {
+            "id": 929749593883820032,
+            "name": "\u3010\ud83d\udd8a\ufe0f\u3011Ministro del chat [ Level 25 ]",
+            "permissions": 1071698529857,
+            "color": 3066993,
+            "hoist": true,
+            "mentionable": false,
+            "position": 84
+        },
+        {
+            "id": 929749589530136597,
+            "name": "\u3010\ud83c\udfce\ufe0f\u3011Piloto de F1 [ Level 40 ]",
+            "permissions": 1071698529857,
+            "color": 986895,
+            "hoist": true,
+            "mentionable": false,
+            "position": 85
+        },
+        {
+            "id": 929749585348403251,
+            "name": "\u3010\ud83d\udd1d\u3011Emprendedor del chat [ Level 50 ]",
+            "permissions": 1071698529857,
+            "color": 15158332,
+            "hoist": true,
+            "mentionable": false,
+            "position": 86
+        },
+        {
+            "id": 929749582156554260,
+            "name": "\u3010\ud83c\udccf\u3011As del chat [ Level 60]",
+            "permissions": 1071698529857,
+            "color": 2031871,
+            "hoist": true,
+            "mentionable": false,
+            "position": 87
+        },
+        {
+            "id": 929749577878360104,
+            "name": "\u3010\ud83d\udcb0\u3011Mr. Beast del chat [ Level 80 ]",
+            "permissions": 1071698529857,
+            "color": 12909167,
+            "hoist": true,
+            "mentionable": false,
+            "position": 88
+        },
+        {
+            "id": 929749566968963112,
+            "name": "\u3010\ud83c\udfc6\u3011Dios del chat [ Level 100 ]",
+            "permissions": 1071698529857,
+            "color": 15844367,
+            "hoist": true,
+            "mentionable": false,
+            "position": 89
+        },
+        {
+            "id": 928010530294235156,
+            "name": "\u2734 \u22b6\u25ac\u25ac\u22b6\u25acNiveles\u25ac\u22b7\u25ac\u25ac\u22b7 \u2734",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 90
+        },
+        {
+            "id": 926097015736250369,
+            "name": "\u3010\u26a1\u3011YouTube Member",
+            "permissions": 1071698529857,
+            "color": 15844367,
+            "hoist": true,
+            "mentionable": false,
+            "position": 91
+        },
+        {
+            "id": 926097015736250370,
+            "name": "\u3010\ud83d\udc4c\u3011YouTube Member: Nox BASE",
+            "permissions": 1071698529857,
+            "color": 10038562,
+            "hoist": true,
+            "mentionable": false,
+            "position": 92
+        },
+        {
+            "id": 926097015736250371,
+            "name": "\u3010\ud83d\udd25\u3011 YouTube Member: Nox SUPER SAIYAN",
+            "permissions": 1071698529857,
+            "color": 1752220,
+            "hoist": true,
+            "mentionable": false,
+            "position": 93
+        },
+        {
+            "id": 975607315988369468,
+            "name": "\u3010\ud83d\uded0\u3011SkyyGod",
+            "permissions": 1071698529857,
+            "color": 1056615,
+            "hoist": true,
+            "mentionable": false,
+            "position": 94
+        },
+        {
+            "id": 961812355992387665,
+            "name": "\u3010\ud83e\udd95\u3011Christopher",
+            "permissions": 1071698529857,
+            "color": 16777215,
+            "hoist": true,
+            "mentionable": false,
+            "position": 95
+        },
+        {
+            "id": 929556730671665223,
+            "name": "\u3010\ud83d\udc51\u3011VIP",
+            "permissions": 1071698529857,
+            "color": 16771328,
+            "hoist": true,
+            "mentionable": false,
+            "position": 96
+        },
+        {
+            "id": 874137624552562720,
+            "name": "\u3010\ud83d\udc8e\u3011Server Booster",
+            "permissions": 9044231573057,
+            "color": 16023551,
+            "hoist": true,
+            "mentionable": false,
+            "position": 97
+        },
+        {
+            "id": 953539747282837524,
+            "name": "\u3010\ud83d\uded2\u3011Comprador",
+            "permissions": 1071698529857,
+            "color": 2123412,
+            "hoist": true,
+            "mentionable": true,
+            "position": 98
+        },
+        {
+            "id": 935177899999391835,
+            "name": "\u3010\ud83e\udd1d\u3011Amigos",
+            "permissions": 1071698529857,
+            "color": 11983376,
+            "hoist": true,
+            "mentionable": true,
+            "position": 99
+        },
+        {
+            "id": 928002316160880721,
+            "name": "\u2734 \u22b6\u25ac\u25ac\u22b6\u25acSpecial\u25ac\u22b7\u25ac\u25ac\u22b7 \u2734",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 100
+        },
+        {
+            "id": 904809690968506428,
+            "name": "\u22c6\u02da\u0e51",
+            "permissions": 0,
+            "color": 12392223,
+            "hoist": false,
+            "mentionable": false,
+            "position": 101
+        },
+        {
+            "id": 904809692809789471,
+            "name": "\u22c6\u02da\u0e51a",
+            "permissions": 0,
+            "color": 15844367,
+            "hoist": false,
+            "mentionable": false,
+            "position": 102
+        },
+        {
+            "id": 904809693510262874,
+            "name": "\u22c6\u02da\u0e51",
+            "permissions": 0,
+            "color": 3447003,
+            "hoist": false,
+            "mentionable": false,
+            "position": 103
+        },
+        {
+            "id": 904809692608483378,
+            "name": "\u22c6\u02da\u0e51",
+            "permissions": 0,
+            "color": 15158035,
+            "hoist": false,
+            "mentionable": false,
+            "position": 104
+        },
+        {
+            "id": 904809692121940039,
+            "name": "\u22c6\u02da\u0e51",
+            "permissions": 0,
+            "color": 16130808,
+            "hoist": false,
+            "mentionable": false,
+            "position": 105
+        },
+        {
+            "id": 1329147391193911320,
+            "name": "\u22c6\u02da\u0e51",
+            "permissions": 0,
+            "color": 8930230,
+            "hoist": false,
+            "mentionable": false,
+            "position": 106
+        },
+        {
+            "id": 904809691698315264,
+            "name": "\u22c6\u02da\u0e51",
+            "permissions": 0,
+            "color": 3066993,
+            "hoist": false,
+            "mentionable": false,
+            "position": 107
+        },
+        {
+            "id": 935187130697797702,
+            "name": "\u22c6\u02da\u0e51",
+            "permissions": 549755813888,
+            "color": 6515199,
+            "hoist": false,
+            "mentionable": false,
+            "position": 108
+        },
+        {
+            "id": 935189007007101048,
+            "name": "\u22c6\u02da\u0e51",
+            "permissions": 549755813888,
+            "color": 11584242,
+            "hoist": false,
+            "mentionable": false,
+            "position": 109
+        },
+        {
+            "id": 935188325680164884,
+            "name": "\u22c6\u02da\u0e51",
+            "permissions": 549755813888,
+            "color": 15315186,
+            "hoist": false,
+            "mentionable": false,
+            "position": 110
+        },
+        {
+            "id": 1355631736662393133,
+            "name": "\u22c6\u02da\u0e51",
+            "permissions": 0,
+            "color": 2022,
+            "hoist": false,
+            "mentionable": false,
+            "position": 111
+        },
+        {
+            "id": 935185151263129632,
+            "name": "\u22c6\u02da\u0e51",
+            "permissions": 549755813888,
+            "color": 16739693,
+            "hoist": false,
+            "mentionable": false,
+            "position": 112
+        },
+        {
+            "id": 935190117377769503,
+            "name": "\u22c6\u02da\u0e51",
+            "permissions": 549755813888,
+            "color": 7994877,
+            "hoist": false,
+            "mentionable": false,
+            "position": 113
+        },
+        {
+            "id": 935187644219031723,
+            "name": "\u22c6\u02da\u0e51",
+            "permissions": 549755813888,
+            "color": 9240466,
+            "hoist": false,
+            "mentionable": false,
+            "position": 114
+        },
+        {
+            "id": 935191512503959612,
+            "name": "\u22c6\u02da\u0e51",
+            "permissions": 549755813888,
+            "color": 16769454,
+            "hoist": false,
+            "mentionable": false,
+            "position": 115
+        },
+        {
+            "id": 928011756561915954,
+            "name": "\u2734 \u22b6\u25ac\u25ac\u22b6\u25acColores\u25ac\u22b7\u25ac\u25ac\u22b7 \u2734",
+            "permissions": 1071698529857,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 116
+        },
+        {
+            "id": 874412847411638313,
+            "name": "\u3010\ud83d\udd07\u3011Silenciado",
+            "permissions": 0,
+            "color": 3447003,
+            "hoist": true,
+            "mentionable": false,
+            "position": 117
+        },
+        {
+            "id": 904819533779439616,
+            "name": "\u3010\ud83c\udf9f\ufe0f\u3011Ticket",
+            "permissions": 1071698529857,
+            "color": 15844367,
+            "hoist": false,
+            "mentionable": false,
+            "position": 118
+        },
+        {
+            "id": 928002343167987743,
+            "name": "\u3010\ud83d\ude40\u3011Helper",
+            "permissions": 2171210157633,
+            "color": 16446976,
+            "hoist": true,
+            "mentionable": true,
+            "position": 119
+        },
+        {
+            "id": 928002331767894137,
+            "name": "\u3010\ud83c\udfac\u3011Mod Prueba",
+            "permissions": 2188419387201,
+            "color": 4111002,
+            "hoist": true,
+            "mentionable": true,
+            "position": 120
+        },
+        {
+            "id": 928002334003454013,
+            "name": "\u3010\ud83d\udee1\ufe0f\u3011Mod",
+            "permissions": 10985720905671,
+            "color": 2588365,
+            "hoist": true,
+            "mentionable": false,
+            "position": 121
+        },
+        {
+            "id": 928002334871683113,
+            "name": "\u3010\u2694\ufe0f\u3011Jefe Mod",
+            "permissions": 28586496884687,
+            "color": 2249983,
+            "hoist": true,
+            "mentionable": true,
+            "position": 122
+        },
+        {
+            "id": 945481668838440960,
+            "name": "Vortex",
+            "permissions": 28587302322167,
+            "color": 263432,
+            "hoist": true,
+            "mentionable": true,
+            "position": 123
+        },
+        {
+            "id": 957848436290519071,
+            "name": "Arcane",
+            "permissions": 8798239981055,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 124
+        },
+        {
+            "id": 924185059035066419,
+            "name": "Koya",
+            "permissions": 28033251012351,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 125
+        },
+        {
+            "id": 947202818752794697,
+            "name": "UnbelievaBoat",
+            "permissions": 829811966,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 126
+        },
+        {
+            "id": 928002336620703774,
+            "name": "\u3010\ud83c\udfc5\u3011Admin",
+            "permissions": 10968780099295,
+            "color": 2794177,
+            "hoist": true,
+            "mentionable": true,
+            "position": 128
+        },
+        {
+            "id": 928002338029985792,
+            "name": "\u3010\ud83c\udfc6\u3011Jefe Admin",
+            "permissions": 1071698529881,
+            "color": 5567743,
+            "hoist": true,
+            "mentionable": true,
+            "position": 129
+        },
+        {
+            "id": 961003891116363856,
+            "name": "\ud83d\udd39SSJ Blue Evolution",
+            "permissions": 1071698529865,
+            "color": 11730943,
+            "hoist": true,
+            "mentionable": false,
+            "position": 130
+        },
+        {
+            "id": 872427382785589299,
+            "name": "\u2500\u2500\u2500\u2500\u2500\u2500\u300eSTAFF\u300f\u2500\u2500\u2500\u2500\u2500\u2500",
+            "permissions": 247064940097,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 131
+        },
+        {
+            "id": 870700365857837106,
+            "name": "\u3010\ud83e\udd34\u3011Nox (Mega Instinto)",
+            "permissions": 247064940097,
+            "color": 31999,
+            "hoist": true,
+            "mentionable": false,
+            "position": 132
+        }
+    ],
+    "categories": [
+        {
+            "id": 871852111275638784,
+            "name": "STAFF + REGISTRO",
+            "position": 0
+        },
+        {
+            "id": 870691347332468767,
+            "name": "IMPORTANTE",
+            "position": 1
+        },
+        {
+            "id": 914698557020311552,
+            "name": "\u256d  \ud83d\udce2 \u00b7 NOTIFICACIONES \u00b7 \ud83d\udce2  \u256e",
+            "position": 2
+        },
+        {
+            "id": 995712561582444604,
+            "name": "\u256d  \ud83d\udd0a \u00b7 Voz \u00b7 \ud83d\udd0a  \u256e",
+            "position": 3
+        },
+        {
+            "id": 1244473211190775888,
+            "name": "\u0299\u1d00\u0274\u1d07\u1d0fs/\u1d21\u1d00\u0280\u0274s",
+            "position": 4
+        },
+        {
+            "id": 871533849010638879,
+            "name": "\u256d  \ud83c\udf10 \u00b7 SOCIAL \u00b7 \ud83c\udf10  \u256e",
+            "position": 5
+        },
+        {
+            "id": 897054528396992522,
+            "name": "\u256d  \ud83d\udcc1 \u00b7 SOPORTE \u00b7 \ud83d\udcc1  \u256e",
+            "position": 6
+        },
+        {
+            "id": 897053470476087337,
+            "name": "\u256d  \ud83c\udfb5 \u00b7 MUSIC\u00b7 \ud83c\udfb5  \u256e",
+            "position": 7
+        },
+        {
+            "id": 946485053997875210,
+            "name": "\u256d  \ud83d\udcbb \u00b7 PC \u00b7 \ud83d\udcbb  \u256e",
+            "position": 8
+        },
+        {
+            "id": 946484622479478804,
+            "name": "\u256d  \ud83c\udfae \u00b7 PLAYSTATION \u00b7 \ud83c\udfae  \u256e",
+            "position": 9
+        },
+        {
+            "id": 946459150903304252,
+            "name": "\u256d  \ud83d\udd79 \u00b7 XBOX \u00b7 \ud83d\udd79  \u256e",
+            "position": 10
+        },
+        {
+            "id": 914577048989745172,
+            "name": "\u2022 \u2500\u2503 \ud83c\udfb3 \u02f9Entretenimiento\u02fc \ud83c\udfae\u2503 \u2500 \u2022",
+            "position": 11
+        }
+    ],
+    "channels": [
+        {
+            "id": 1413281257319694416,
+            "name": "ticket-370",
+            "type": "text",
+            "position": 46,
+            "category": null,
+            "overwrites": {
+                "870691347332468766": {
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true,
+                    "send_messages_in_threads": true,
+                    "read_messages": false
+                },
+                "928002331767894137": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "710034409214181396": {
+                    "read_messages": true
+                },
+                "1085639469253791835": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "874412847411638313": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1244473374298607688,
+            "name": "\u0299\u1d00\u0274\u1d07\u1d0fs-\u1d21\u1d00\u0280\u0274s",
+            "type": "text",
+            "position": 16,
+            "category": 1244473211190775888,
+            "overwrites": {
+                "870691347332468766": {
+                    "read_messages": true,
+                    "send_messages": false
+                },
+                "874412847411638313": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 934850434194096128,
+            "name": "\u2601\ufe33chat-staff",
+            "type": "text",
+            "position": 3,
+            "category": 871852111275638784,
+            "overwrites": {
+                "870691347332468766": {
+                    "read_messages": false,
+                    "send_messages": false,
+                    "connect": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "928002331767894137": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "connect": false,
+                    "speak": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "928002343167987743": {
+                    "read_messages": true
+                },
+                "716390085896962058": {
+                    "send_messages": false
+                },
+                "928002334003454013": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true
+                },
+                "872427382785589299": {},
+                "928002334871683113": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true
+                },
+                "874412847411638313": {
+                    "read_message_history": true,
+                    "manage_channels": false,
+                    "add_reactions": false,
+                    "priority_speaker": false,
+                    "stream": false,
+                    "read_messages": false,
+                    "send_messages": false,
+                    "send_tts_messages": false,
+                    "manage_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "mention_everyone": false,
+                    "external_emojis": false,
+                    "connect": false,
+                    "speak": false,
+                    "mute_members": false,
+                    "deafen_members": false,
+                    "move_members": false,
+                    "use_voice_activation": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "use_application_commands": false,
+                    "request_to_speak": false,
+                    "manage_events": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "external_stickers": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 872049879256559626,
+            "name": "\ud83d\udc8e\ufe33boost",
+            "type": "text",
+            "position": 9,
+            "category": 870691347332468767,
+            "overwrites": {
+                "870691347332468766": {
+                    "send_messages": false,
+                    "send_messages_in_threads": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "874412847411638313": {
+                    "read_messages": true,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 932144765531742340,
+            "name": "\ud83d\udcf7\ufe33imagenes",
+            "type": "text",
+            "position": 23,
+            "category": 871533849010638879,
+            "overwrites": {
+                "870691347332468766": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "external_emojis": true,
+                    "use_application_commands": true,
+                    "external_stickers": true,
+                    "send_messages_in_threads": true,
+                    "manage_channels": false,
+                    "send_tts_messages": false,
+                    "manage_messages": false,
+                    "embed_links": false,
+                    "mention_everyone": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "874412847411638313": {
+                    "read_messages": true,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 996525467073007727,
+            "name": "\u270f\ufe33sugerencias",
+            "type": "text",
+            "position": 29,
+            "category": 897054528396992522,
+            "overwrites": {
+                "716390085896962058": {
+                    "send_messages": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "connect": false,
+                    "speak": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "874412847411638313": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1204485376924852234,
+            "name": "\ud83d\udccbpostulaciones-mod\ud83d\udccb",
+            "type": "text",
+            "position": 27,
+            "category": 897054528396992522,
+            "overwrites": {
+                "870691347332468766": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "716390085896962058": {
+                    "send_messages": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "connect": false,
+                    "speak": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                }
+            }
+        },
+        {
+            "id": 996519933427077230,
+            "name": "\ud83d\udccb\ufe33cambios",
+            "type": "news",
+            "position": 14,
+            "category": 914698557020311552,
+            "overwrites": {
+                "870691347332468766": {
+                    "send_messages": false
+                },
+                "716390085896962058": {
+                    "send_messages": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "connect": false,
+                    "speak": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "874412847411638313": {
+                    "add_reactions": false,
+                    "read_messages": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 996120773259440209,
+            "name": "\ud83c\udfb5\ufe33music",
+            "type": "text",
+            "position": 30,
+            "category": 897053470476087337,
+            "overwrites": {
+                "716390085896962058": {
+                    "send_messages": false
+                },
+                "874412847411638313": {
+                    "read_message_history": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "add_reactions": false,
+                    "priority_speaker": false,
+                    "stream": false,
+                    "read_messages": false,
+                    "send_messages": false,
+                    "send_tts_messages": false,
+                    "manage_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "mention_everyone": false,
+                    "external_emojis": false,
+                    "speak": false,
+                    "mute_members": false,
+                    "deafen_members": false,
+                    "move_members": false,
+                    "use_voice_activation": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "use_application_commands": false,
+                    "request_to_speak": false,
+                    "manage_events": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "external_stickers": false,
+                    "send_messages_in_threads": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "connect": false,
+                    "speak": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                }
+            }
+        },
+        {
+            "id": 909241771454779452,
+            "name": "\ud83c\udfaf\ufe33comandos",
+            "type": "text",
+            "position": 19,
+            "category": 871533849010638879,
+            "overwrites": {
+                "870691347332468766": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": false,
+                    "send_tts_messages": true,
+                    "embed_links": true,
+                    "read_message_history": true,
+                    "external_emojis": true,
+                    "external_stickers": true,
+                    "send_messages_in_threads": true,
+                    "manage_channels": false,
+                    "manage_messages": false,
+                    "attach_files": false,
+                    "mention_everyone": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "924185059035066419": {
+                    "create_instant_invite": true,
+                    "manage_channels": true,
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "send_tts_messages": true,
+                    "manage_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "mention_everyone": true,
+                    "external_emojis": true,
+                    "manage_roles": true,
+                    "manage_webhooks": true,
+                    "use_application_commands": true,
+                    "manage_threads": true,
+                    "create_public_threads": true,
+                    "create_private_threads": true,
+                    "external_stickers": true,
+                    "send_messages_in_threads": true
+                },
+                "874412847411638313": {
+                    "read_messages": true,
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "send_tts_messages": false,
+                    "manage_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "read_message_history": false,
+                    "mention_everyone": false,
+                    "external_emojis": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "use_application_commands": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "external_stickers": false,
+                    "send_messages_in_threads": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                }
+            }
+        },
+        {
+            "id": 1207563051033960479,
+            "name": "rese\u00f1as-staff",
+            "type": "text",
+            "position": 28,
+            "category": 897054528396992522,
+            "overwrites": {
+                "870691347332468766": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "send_tts_messages": false,
+                    "manage_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "mention_everyone": false,
+                    "external_emojis": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "use_application_commands": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "external_stickers": false,
+                    "send_messages_in_threads": false,
+                    "use_embedded_activities": false,
+                    "send_voice_messages": false,
+                    "send_polls": false,
+                    "use_external_apps": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "connect": false,
+                    "speak": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "716390085896962058": {
+                    "send_messages": false
+                }
+            }
+        },
+        {
+            "id": 872384116304281640,
+            "name": "\ud83c\udf9f\ufe33tickets",
+            "type": "text",
+            "position": 25,
+            "category": 897054528396992522,
+            "overwrites": {
+                "870691347332468766": {
+                    "send_messages": false,
+                    "send_messages_in_threads": false
+                },
+                "874412847411638313": {
+                    "read_messages": true,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                }
+            }
+        },
+        {
+            "id": 996525576867299328,
+            "name": "\ud83d\udc8e\ufe33recompensa-boost",
+            "type": "text",
+            "position": 26,
+            "category": 897054528396992522,
+            "overwrites": {
+                "870691347332468766": {
+                    "send_messages": false
+                },
+                "870696101064355911": {
+                    "send_messages": false
+                },
+                "874412847411638313": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "716390085896962058": {
+                    "send_messages": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "connect": false,
+                    "speak": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                }
+            }
+        },
+        {
+            "id": 995872120213094481,
+            "name": "\ud83d\uddc3\ufe33pruebas-staff",
+            "type": "text",
+            "position": 4,
+            "category": 871852111275638784,
+            "overwrites": {
+                "870691347332468766": {
+                    "read_messages": false
+                },
+                "928002331767894137": {
+                    "read_messages": true
+                },
+                "928002336620703774": {
+                    "read_messages": true
+                },
+                "870700365857837106": {
+                    "read_messages": true
+                },
+                "928002343167987743": {
+                    "read_messages": true
+                },
+                "961003891116363856": {
+                    "read_messages": true
+                },
+                "874412847411638313": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "928002334003454013": {
+                    "read_messages": true
+                },
+                "928002334871683113": {
+                    "read_messages": true
+                },
+                "928002338029985792": {
+                    "read_messages": true
+                }
+            }
+        },
+        {
+            "id": 946484622479478804,
+            "name": "\u256d  \ud83c\udfae \u00b7 PLAYSTATION \u00b7 \ud83c\udfae  \u256e",
+            "type": "category",
+            "position": 9,
+            "category": null,
+            "overwrites": {
+                "870691347332468766": {
+                    "read_messages": false
+                },
+                "904819533779439616": {},
+                "928002343167987743": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "read_message_history": true
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "connect": false,
+                    "speak": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "928002334003454013": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "928002331767894137": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "874412847411638313": {
+                    "read_messages": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 995712561582444604,
+            "name": "\u256d  \ud83d\udd0a \u00b7 Voz \u00b7 \ud83d\udd0a  \u256e",
+            "type": "category",
+            "position": 3,
+            "category": null,
+            "overwrites": {
+                "874412847411638313": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 872004724759613440,
+            "name": "\ud83d\udcc8\ufe33level-up",
+            "type": "text",
+            "position": 24,
+            "category": 871533849010638879,
+            "overwrites": {
+                "870691347332468766": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "send_messages": false
+                },
+                "874412847411638313": {
+                    "read_messages": true,
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "send_tts_messages": false,
+                    "manage_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "read_message_history": false,
+                    "mention_everyone": false,
+                    "external_emojis": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "use_application_commands": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "external_stickers": false,
+                    "send_messages_in_threads": false
+                },
+                "339254240012664832": {
+                    "read_messages": false,
+                    "send_messages": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                }
+            }
+        },
+        {
+            "id": 941431142798729236,
+            "name": "\ud83d\udca4\ufe33reglas-staff",
+            "type": "text",
+            "position": 2,
+            "category": 871852111275638784,
+            "overwrites": {
+                "870691347332468766": {
+                    "read_messages": false,
+                    "send_messages": false,
+                    "connect": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "928002331767894137": {
+                    "read_messages": true,
+                    "connect": true,
+                    "send_messages": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "911757368583417876": {
+                    "read_messages": true,
+                    "send_messages": false
+                },
+                "928002343167987743": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "manage_channels": false,
+                    "send_messages": false
+                },
+                "716390085896962058": {
+                    "send_messages": false
+                },
+                "928002334003454013": {
+                    "read_messages": true,
+                    "connect": true,
+                    "send_messages": false
+                },
+                "872427382785589299": {},
+                "928002334871683113": {
+                    "read_messages": true,
+                    "connect": true,
+                    "send_messages": false
+                },
+                "874412847411638313": {
+                    "read_message_history": true,
+                    "manage_channels": false,
+                    "add_reactions": false,
+                    "priority_speaker": false,
+                    "stream": false,
+                    "read_messages": false,
+                    "send_messages": false,
+                    "send_tts_messages": false,
+                    "manage_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "mention_everyone": false,
+                    "external_emojis": false,
+                    "connect": false,
+                    "speak": false,
+                    "mute_members": false,
+                    "deafen_members": false,
+                    "move_members": false,
+                    "use_voice_activation": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "use_application_commands": false,
+                    "request_to_speak": false,
+                    "manage_events": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "external_stickers": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 870691347332468767,
+            "name": "IMPORTANTE",
+            "type": "category",
+            "position": 1,
+            "category": null,
+            "overwrites": {
+                "870691347332468766": {
+                    "create_instant_invite": false,
+                    "send_messages": false
+                },
+                "870696101064355911": {
+                    "read_messages": true,
+                    "create_instant_invite": false,
+                    "send_messages": false
+                },
+                "874412847411638313": {
+                    "read_messages": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "connect": false,
+                    "speak": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "716390085896962058": {
+                    "send_messages": false
+                },
+                "870700365857837106": {
+                    "send_messages": true
+                }
+            }
+        },
+        {
+            "id": 995731083956076634,
+            "name": "\ud83d\udcc1 Canales: 60",
+            "type": "voice",
+            "position": 1,
+            "category": null,
+            "overwrites": {
+                "870691347332468766": {
+                    "read_messages": true,
+                    "connect": false,
+                    "speak": false
+                },
+                "874412847411638313": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 871535188654571600,
+            "name": "\ud83c\udfa5\ufe33videos",
+            "type": "news",
+            "position": 12,
+            "category": 914698557020311552,
+            "overwrites": {
+                "870691347332468766": {
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false
+                },
+                "924173993014079489": {
+                    "send_messages": true,
+                    "mention_everyone": true,
+                    "send_messages_in_threads": true
+                },
+                "456633518882160642": {
+                    "read_messages": true
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "874412847411638313": {
+                    "read_messages": true,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 917214330246815824,
+            "name": "\uff62\ud83d\udcad\uff63\u30fbchat\u30fbpc",
+            "type": "text",
+            "position": 31,
+            "category": 946485053997875210,
+            "overwrites": {
+                "870691347332468766": {
+                    "read_messages": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "874412847411638313": {
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "928002343167987743": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "read_message_history": true
+                },
+                "898084021781798924": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "external_emojis": true,
+                    "external_stickers": true,
+                    "manage_channels": false,
+                    "send_tts_messages": false,
+                    "manage_messages": false,
+                    "embed_links": false,
+                    "mention_everyone": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "use_application_commands": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                }
+            }
+        },
+        {
+            "id": 957519574625042443,
+            "name": "\ud83d\udcc6\ufe33bonificaciones-semanales",
+            "type": "text",
+            "position": 15,
+            "category": 914698557020311552,
+            "overwrites": {
+                "870691347332468766": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "874412847411638313": {
+                    "read_messages": true,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "716390085896962058": {
+                    "send_messages": false
+                },
+                "928002343167987743": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                }
+            }
+        },
+        {
+            "id": 871830535897481286,
+            "name": "\ud83e\udd1a\ufe33bienvenidas",
+            "type": "text",
+            "position": 8,
+            "category": 870691347332468767,
+            "overwrites": {
+                "870691347332468766": {
+                    "create_instant_invite": false,
+                    "send_messages": false
+                },
+                "716390085896962058": {
+                    "send_messages": false
+                },
+                "870696101064355911": {
+                    "create_instant_invite": false,
+                    "send_messages": false
+                },
+                "874412847411638313": {
+                    "read_messages": true,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "276060004262477825": {
+                    "create_instant_invite": true,
+                    "manage_channels": true,
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "send_tts_messages": true,
+                    "manage_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "mention_everyone": true,
+                    "external_emojis": true,
+                    "manage_roles": true,
+                    "manage_webhooks": true,
+                    "use_application_commands": true,
+                    "manage_threads": true,
+                    "create_public_threads": true,
+                    "create_private_threads": true,
+                    "external_stickers": true,
+                    "send_messages_in_threads": true
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "870700365857837106": {
+                    "send_messages": true
+                }
+            }
+        },
+        {
+            "id": 872332234122743838,
+            "name": "\ud83d\udce2\ufe33anuncios-staff",
+            "type": "news",
+            "position": 1,
+            "category": 871852111275638784,
+            "overwrites": {
+                "870691347332468766": {
+                    "read_messages": false,
+                    "send_messages": false,
+                    "connect": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "928002331767894137": {
+                    "read_messages": true,
+                    "connect": true,
+                    "send_messages": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "928002343167987743": {
+                    "read_messages": true,
+                    "send_messages": false
+                },
+                "716390085896962058": {
+                    "send_messages": false
+                },
+                "874412847411638313": {
+                    "manage_channels": false,
+                    "add_reactions": false,
+                    "priority_speaker": false,
+                    "stream": false,
+                    "read_messages": false,
+                    "send_messages": false,
+                    "send_tts_messages": false,
+                    "manage_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "read_message_history": false,
+                    "mention_everyone": false,
+                    "external_emojis": false,
+                    "connect": false,
+                    "speak": false,
+                    "mute_members": false,
+                    "deafen_members": false,
+                    "move_members": false,
+                    "use_voice_activation": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "use_application_commands": false,
+                    "request_to_speak": false,
+                    "manage_events": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "external_stickers": false,
+                    "send_messages_in_threads": false
+                },
+                "928002334003454013": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true
+                },
+                "928002334871683113": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "872427382785589299": {}
+            }
+        },
+        {
+            "id": 871534607378575361,
+            "name": "\ud83d\ude02\ufe33memes",
+            "type": "text",
+            "position": 18,
+            "category": 871533849010638879,
+            "overwrites": {
+                "870691347332468766": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "external_emojis": true,
+                    "external_stickers": true,
+                    "manage_channels": false,
+                    "manage_messages": false,
+                    "embed_links": false,
+                    "mention_everyone": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "874412847411638313": {
+                    "read_messages": true,
+                    "send_messages": false,
+                    "send_tts_messages": false,
+                    "manage_messages": false,
+                    "read_message_history": false,
+                    "mention_everyone": false,
+                    "use_application_commands": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 914698832598675516,
+            "name": "\ud83d\udcca\ufe33encuestas",
+            "type": "text",
+            "position": 20,
+            "category": 871533849010638879,
+            "overwrites": {
+                "870691347332468766": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "manage_channels": false,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "send_tts_messages": false,
+                    "manage_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "mention_everyone": false,
+                    "external_emojis": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "use_application_commands": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "external_stickers": false,
+                    "send_messages_in_threads": false
+                },
+                "874412847411638313": {
+                    "read_messages": true,
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "send_tts_messages": false,
+                    "manage_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "read_message_history": false,
+                    "mention_everyone": false,
+                    "external_emojis": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "use_application_commands": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "external_stickers": false,
+                    "send_messages_in_threads": false
+                },
+                "914702208635924481": {
+                    "read_messages": true,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                }
+            }
+        },
+        {
+            "id": 871534056259584021,
+            "name": "\ud83d\udcac\ufe33chat",
+            "type": "text",
+            "position": 17,
+            "category": 871533849010638879,
+            "overwrites": {
+                "870691347332468766": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "read_message_history": true,
+                    "external_emojis": true,
+                    "external_stickers": true,
+                    "send_messages_in_threads": true,
+                    "manage_channels": false,
+                    "manage_messages": false,
+                    "attach_files": false,
+                    "mention_everyone": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "use_application_commands": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "874137624552562720": {
+                    "attach_files": true
+                },
+                "874412847411638313": {
+                    "read_messages": true,
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "send_tts_messages": false,
+                    "manage_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "read_message_history": false,
+                    "mention_everyone": false,
+                    "external_emojis": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "use_application_commands": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "external_stickers": false,
+                    "send_messages_in_threads": false
+                },
+                "292953664492929025": {},
+                "928002343167987743": {
+                    "embed_links": true,
+                    "attach_files": true
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                }
+            }
+        },
+        {
+            "id": 1402161290754916402,
+            "name": "\ud83d\udd0a Crea una Sala",
+            "type": "voice",
+            "position": 8,
+            "category": 995712561582444604,
+            "overwrites": {
+                "874412847411638313": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 995730470677520404,
+            "name": "\ud83d\udde3 Miembros: 12295",
+            "type": "voice",
+            "position": 0,
+            "category": null,
+            "overwrites": {
+                "870691347332468766": {
+                    "read_messages": true,
+                    "connect": false,
+                    "speak": false
+                },
+                "874412847411638313": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1413823705204658247,
+            "name": "ticket-371",
+            "type": "text",
+            "position": 47,
+            "category": null,
+            "overwrites": {
+                "870691347332468766": {
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true,
+                    "send_messages_in_threads": true,
+                    "read_messages": false
+                },
+                "928002331767894137": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "710034409214181396": {
+                    "read_messages": true
+                },
+                "819993308839149568": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "874412847411638313": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 871858080789438464,
+            "name": "\uff62\ud83d\udcad\uff63\u30fbchat\u30fbplaystation",
+            "type": "text",
+            "position": 34,
+            "category": 946484622479478804,
+            "overwrites": {
+                "870691347332468766": {
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "add_reactions": false,
+                    "read_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "898084022285139970": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "928002343167987743": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "874412847411638313": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 942610619327189032,
+            "name": "\u2b50\ufe33starboard",
+            "type": "text",
+            "position": 22,
+            "category": 871533849010638879,
+            "overwrites": {
+                "870691347332468766": {
+                    "create_instant_invite": false,
+                    "send_messages": false
+                },
+                "716390085896962058": {
+                    "send_messages": false
+                },
+                "874412847411638313": {
+                    "read_messages": true,
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "send_tts_messages": false,
+                    "manage_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "read_message_history": false,
+                    "mention_everyone": false,
+                    "external_emojis": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "use_application_commands": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "external_stickers": false,
+                    "send_messages_in_threads": false
+                },
+                "870700365857837106": {
+                    "send_messages": true
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                }
+            }
+        },
+        {
+            "id": 897054528396992522,
+            "name": "\u256d  \ud83d\udcc1 \u00b7 SOPORTE \u00b7 \ud83d\udcc1  \u256e",
+            "type": "category",
+            "position": 6,
+            "category": null,
+            "overwrites": {
+                "716390085896962058": {
+                    "send_messages": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "connect": false,
+                    "speak": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                }
+            }
+        },
+        {
+            "id": 946459150903304252,
+            "name": "\u256d  \ud83d\udd79 \u00b7 XBOX \u00b7 \ud83d\udd79  \u256e",
+            "type": "category",
+            "position": 10,
+            "category": null,
+            "overwrites": {
+                "928002331767894137": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "904819533779439616": {
+                    "read_messages": true
+                },
+                "928002343167987743": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "874412847411638313": {
+                    "add_reactions": false,
+                    "read_messages": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "928002334003454013": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "928002334871683113": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "connect": false,
+                    "speak": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                }
+            }
+        },
+        {
+            "id": 882686467137212496,
+            "name": "\ud83c\udf89\ufe33sorteos",
+            "type": "text",
+            "position": 21,
+            "category": 871533849010638879,
+            "overwrites": {
+                "870691347332468766": {
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "874412847411638313": {
+                    "read_messages": true,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "914702685033353267": {
+                    "send_messages": false
+                },
+                "870695958856474686": {
+                    "create_instant_invite": true,
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true
+                }
+            }
+        },
+        {
+            "id": 946485053997875210,
+            "name": "\u256d  \ud83d\udcbb \u00b7 PC \u00b7 \ud83d\udcbb  \u256e",
+            "type": "category",
+            "position": 8,
+            "category": null,
+            "overwrites": {
+                "870691347332468766": {
+                    "read_messages": false
+                },
+                "928002331767894137": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "898084021781798924": {},
+                "904819533779439616": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "928002343167987743": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "874412847411638313": {
+                    "add_reactions": false,
+                    "read_messages": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "928002334003454013": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "928002334871683113": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "connect": false,
+                    "speak": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                }
+            }
+        },
+        {
+            "id": 871533849010638879,
+            "name": "\u256d  \ud83c\udf10 \u00b7 SOCIAL \u00b7 \ud83c\udf10  \u256e",
+            "type": "category",
+            "position": 5,
+            "category": null,
+            "overwrites": {
+                "870691347332468766": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "716390085896962058": {
+                    "send_messages": false
+                },
+                "874412847411638313": {
+                    "read_messages": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "connect": false,
+                    "speak": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                }
+            }
+        },
+        {
+            "id": 871850105408479265,
+            "name": "\ud83d\udcd6\ufe33reglas",
+            "type": "text",
+            "position": 7,
+            "category": 870691347332468767,
+            "overwrites": {
+                "870691347332468766": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "external_emojis": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "send_tts_messages": false,
+                    "manage_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "mention_everyone": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "use_application_commands": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "external_stickers": false
+                },
+                "874412847411638313": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "send_tts_messages": false,
+                    "manage_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "mention_everyone": false,
+                    "external_emojis": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "use_application_commands": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "external_stickers": false,
+                    "send_messages_in_threads": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                }
+            }
+        },
+        {
+            "id": 871534812052197416,
+            "name": "\ud83d\udce3\ufe33anuncios",
+            "type": "news",
+            "position": 11,
+            "category": 914698557020311552,
+            "overwrites": {
+                "870691347332468766": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "send_tts_messages": false,
+                    "manage_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "mention_everyone": false,
+                    "external_emojis": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "use_application_commands": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "external_stickers": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "914927581839626270": {
+                    "read_messages": true,
+                    "send_messages": false
+                },
+                "870700365857837106": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "manage_messages": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "mention_everyone": true
+                },
+                "874412847411638313": {
+                    "read_messages": true,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1414399847141740605,
+            "name": "ticket-372",
+            "type": "text",
+            "position": 48,
+            "category": null,
+            "overwrites": {
+                "870691347332468766": {
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true,
+                    "send_messages_in_threads": true,
+                    "read_messages": false
+                },
+                "928002331767894137": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "710034409214181396": {
+                    "read_messages": true
+                },
+                "1186255201024348212": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "874412847411638313": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 914577161636180118,
+            "name": "\uff62\ud83d\udcb3\uff63\u30fbeconom\u00eda",
+            "type": "text",
+            "position": 40,
+            "category": 914577048989745172,
+            "overwrites": {
+                "870691347332468766": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "read_message_history": true,
+                    "external_emojis": true,
+                    "external_stickers": true,
+                    "manage_channels": false,
+                    "send_tts_messages": false,
+                    "manage_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "mention_everyone": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "use_application_commands": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "292953664492929025": {},
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "874412847411638313": {
+                    "read_messages": true,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1396707597540790412,
+            "name": "ticket-360",
+            "type": "text",
+            "position": 44,
+            "category": null,
+            "overwrites": {
+                "870691347332468766": {
+                    "send_messages": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true,
+                    "send_messages_in_threads": true,
+                    "read_messages": false
+                },
+                "928002331767894137": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "760192642494627842": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "710034409214181396": {
+                    "read_messages": true
+                },
+                "874412847411638313": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 996518345975287838,
+            "name": "\ud83d\udcf9\ufe33tik-tok",
+            "type": "news",
+            "position": 13,
+            "category": 914698557020311552,
+            "overwrites": {
+                "870691347332468766": {
+                    "send_messages": false
+                },
+                "716390085896962058": {
+                    "send_messages": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "connect": false,
+                    "speak": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "874412847411638313": {
+                    "read_messages": false
+                }
+            }
+        },
+        {
+            "id": 1202612896161595513,
+            "name": "Reuniones",
+            "type": "voice",
+            "position": 2,
+            "category": 871852111275638784,
+            "overwrites": {
+                "870691347332468766": {
+                    "read_messages": false,
+                    "connect": false
+                },
+                "928002331767894137": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "928002336620703774": {},
+                "945481668838440960": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "928002343167987743": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "961003891116363856": {},
+                "870700365857837106": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "928002334003454013": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "874412847411638313": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "928002338029985792": {}
+            }
+        },
+        {
+            "id": 1378063859016798270,
+            "name": "\ud83d\udd27\ufe33comandos",
+            "type": "text",
+            "position": 6,
+            "category": 871852111275638784,
+            "overwrites": {
+                "870691347332468766": {
+                    "read_messages": false,
+                    "send_messages": false,
+                    "connect": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "928002331767894137": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true
+                },
+                "874412847411638313": {
+                    "read_message_history": true,
+                    "manage_channels": false,
+                    "add_reactions": false,
+                    "priority_speaker": false,
+                    "stream": false,
+                    "read_messages": false,
+                    "send_messages": false,
+                    "send_tts_messages": false,
+                    "manage_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "mention_everyone": false,
+                    "external_emojis": false,
+                    "connect": false,
+                    "speak": false,
+                    "mute_members": false,
+                    "deafen_members": false,
+                    "move_members": false,
+                    "use_voice_activation": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "use_application_commands": false,
+                    "request_to_speak": false,
+                    "manage_events": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "external_stickers": false,
+                    "send_messages_in_threads": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "connect": false,
+                    "speak": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "928002334003454013": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true
+                },
+                "928002334871683113": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true
+                },
+                "872427382785589299": {}
+            }
+        },
+        {
+            "id": 960608789168549988,
+            "name": "\ud83c\udfc5\ufe33nox",
+            "type": "text",
+            "position": 0,
+            "category": null,
+            "overwrites": {
+                "870691347332468766": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "external_emojis": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "external_stickers": false,
+                    "send_messages_in_threads": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "connect": false,
+                    "speak": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "870690052315971654": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "874412847411638313": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 914592888451653723,
+            "name": "\uff62\ud83c\udff9\uff63\u30fbla\u30fbzona\u30fboscura",
+            "type": "text",
+            "position": 41,
+            "category": 914577048989745172,
+            "overwrites": {
+                "870691347332468766": {
+                    "read_messages": false
+                },
+                "870700365857837106": {
+                    "read_messages": true
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "914320344515477604": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "send_tts_messages": false,
+                    "manage_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "mention_everyone": false,
+                    "external_emojis": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "use_application_commands": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "external_stickers": false,
+                    "send_messages_in_threads": false
+                },
+                "874412847411638313": {
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "872427382785589299": {
+                    "read_messages": true
+                }
+            }
+        },
+        {
+            "id": 896755954706706502,
+            "name": "\uff62\ud83c\udfce\uff63\u30fbtradeos\u30fbpc",
+            "type": "text",
+            "position": 32,
+            "category": 946485053997875210,
+            "overwrites": {
+                "870691347332468766": {
+                    "read_messages": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "898084021781798924": {
+                    "read_messages": true,
+                    "read_message_history": true
+                },
+                "928002343167987743": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "read_message_history": true
+                },
+                "874412847411638313": {
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 954434074934640680,
+            "name": "\uff62\ud83e\udd3a\uff63\u30fbactividades\u30fbplaystation",
+            "type": "text",
+            "position": 36,
+            "category": 946484622479478804,
+            "overwrites": {
+                "870691347332468766": {
+                    "read_messages": false
+                },
+                "898084022285139970": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "send_messages": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "928002343167987743": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "send_messages": false
+                },
+                "874412847411638313": {
+                    "read_messages": false
+                }
+            }
+        },
+        {
+            "id": 1358473452897567002,
+            "name": "\uff62\u26a1\uff63\u30fbpoketwo",
+            "type": "text",
+            "position": 43,
+            "category": 914577048989745172,
+            "overwrites": {
+                "716390085896962058": {
+                    "read_messages": true
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "874412847411638313": {
+                    "read_messages": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1244473211190775888,
+            "name": "\u0299\u1d00\u0274\u1d07\u1d0fs/\u1d21\u1d00\u0280\u0274s",
+            "type": "category",
+            "position": 4,
+            "category": null,
+            "overwrites": {
+                "870691347332468766": {
+                    "read_messages": false,
+                    "connect": false
+                },
+                "874412847411638313": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 871536217643159553,
+            "name": "\uff62\ud83c\udfce\uff63\u30fbtradeos\u30fbxbox",
+            "type": "text",
+            "position": 38,
+            "category": 946459150903304252,
+            "overwrites": {
+                "870691347332468766": {
+                    "read_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "874412847411638313": {
+                    "read_messages": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "928002343167987743": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "898084022377390100": {
+                    "read_messages": true,
+                    "attach_files": true,
+                    "read_message_history": true
+                }
+            }
+        },
+        {
+            "id": 914577048989745172,
+            "name": "\u2022 \u2500\u2503 \ud83c\udfb3 \u02f9Entretenimiento\u02fc \ud83c\udfae\u2503 \u2500 \u2022",
+            "type": "category",
+            "position": 11,
+            "category": null,
+            "overwrites": {
+                "716390085896962058": {
+                    "send_messages": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "connect": false,
+                    "speak": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "874412847411638313": {
+                    "read_messages": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1410162797605814293,
+            "name": "ticket-366",
+            "type": "text",
+            "position": 45,
+            "category": null,
+            "overwrites": {
+                "870691347332468766": {
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true,
+                    "send_messages_in_threads": true,
+                    "read_messages": false
+                },
+                "928002331767894137": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "710034409214181396": {
+                    "read_messages": true
+                },
+                "804901129196273664": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "874412847411638313": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 871852111275638784,
+            "name": "STAFF + REGISTRO",
+            "type": "category",
+            "position": 0,
+            "category": null,
+            "overwrites": {
+                "870691347332468766": {
+                    "read_messages": false,
+                    "send_messages": false,
+                    "connect": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "928002331767894137": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "connect": false,
+                    "speak": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "716390085896962058": {
+                    "send_messages": false
+                },
+                "874412847411638313": {
+                    "read_message_history": true,
+                    "manage_channels": false,
+                    "add_reactions": false,
+                    "priority_speaker": false,
+                    "stream": false,
+                    "read_messages": false,
+                    "send_messages": false,
+                    "send_tts_messages": false,
+                    "manage_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "mention_everyone": false,
+                    "external_emojis": false,
+                    "connect": false,
+                    "speak": false,
+                    "mute_members": false,
+                    "deafen_members": false,
+                    "move_members": false,
+                    "use_voice_activation": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "use_application_commands": false,
+                    "request_to_speak": false,
+                    "manage_events": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "external_stickers": false,
+                    "send_messages_in_threads": false
+                },
+                "872427382785589299": {},
+                "928002334871683113": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true
+                },
+                "928002334003454013": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true
+                }
+            }
+        },
+        {
+            "id": 897053470476087337,
+            "name": "\u256d  \ud83c\udfb5 \u00b7 MUSIC\u00b7 \ud83c\udfb5  \u256e",
+            "type": "category",
+            "position": 7,
+            "category": null,
+            "overwrites": {
+                "716390085896962058": {
+                    "send_messages": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "connect": false,
+                    "speak": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "874412847411638313": {
+                    "read_message_history": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "add_reactions": false,
+                    "priority_speaker": false,
+                    "stream": false,
+                    "read_messages": false,
+                    "send_messages": false,
+                    "send_tts_messages": false,
+                    "manage_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "mention_everyone": false,
+                    "external_emojis": false,
+                    "speak": false,
+                    "mute_members": false,
+                    "deafen_members": false,
+                    "move_members": false,
+                    "use_voice_activation": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "use_application_commands": false,
+                    "request_to_speak": false,
+                    "manage_events": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "external_stickers": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 954447754460020746,
+            "name": "\uff62\ud83e\udd3a\uff63\u30fbactividades\u30fbxbox",
+            "type": "text",
+            "position": 39,
+            "category": 946459150903304252,
+            "overwrites": {
+                "870691347332468766": {
+                    "read_messages": false
+                },
+                "874412847411638313": {
+                    "read_messages": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "928002343167987743": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "send_messages": false
+                },
+                "898084022377390100": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "send_messages": false
+                }
+            }
+        },
+        {
+            "id": 914698557020311552,
+            "name": "\u256d  \ud83d\udce2 \u00b7 NOTIFICACIONES \u00b7 \ud83d\udce2  \u256e",
+            "type": "category",
+            "position": 2,
+            "category": null,
+            "overwrites": {
+                "716390085896962058": {
+                    "send_messages": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "connect": false,
+                    "speak": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "874412847411638313": {
+                    "read_messages": false
+                }
+            }
+        },
+        {
+            "id": 871850541125341214,
+            "name": "\ud83d\udcc1\ufe33roles",
+            "type": "text",
+            "position": 5,
+            "category": 871852111275638784,
+            "overwrites": {
+                "870691347332468766": {
+                    "create_instant_invite": false,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false
+                },
+                "870696101064355911": {
+                    "read_message_history": true,
+                    "create_instant_invite": false,
+                    "send_messages": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "870700365857837106": {
+                    "send_messages": true
+                },
+                "874412847411638313": {
+                    "read_messages": true,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 954448722773831760,
+            "name": "\uff62\ud83e\udd3a\uff63\u30fbactividades\u30fbpc",
+            "type": "text",
+            "position": 33,
+            "category": 946485053997875210,
+            "overwrites": {
+                "870691347332468766": {
+                    "read_messages": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "874412847411638313": {
+                    "read_messages": false
+                },
+                "928002343167987743": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "send_messages": false
+                },
+                "898084021781798924": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "send_messages": false
+                }
+            }
+        },
+        {
+            "id": 914596333745213450,
+            "name": "\uff62\ud83c\udf9f\uff63\u30fbsaludos",
+            "type": "text",
+            "position": 42,
+            "category": 914577048989745172,
+            "overwrites": {
+                "870691347332468766": {
+                    "read_messages": false
+                },
+                "874412847411638313": {
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "914320530709024789": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "send_tts_messages": false,
+                    "manage_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "mention_everyone": false,
+                    "external_emojis": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "use_application_commands": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "external_stickers": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 871537220979425341,
+            "name": "\uff62\ud83d\udcad\uff63\u30fbchat\u30fbxbox",
+            "type": "text",
+            "position": 37,
+            "category": 946459150903304252,
+            "overwrites": {
+                "870691347332468766": {
+                    "manage_channels": false,
+                    "add_reactions": false,
+                    "read_messages": false,
+                    "send_tts_messages": false,
+                    "manage_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "read_message_history": false,
+                    "mention_everyone": false,
+                    "external_emojis": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "external_stickers": false,
+                    "send_messages_in_threads": false
+                },
+                "874412847411638313": {
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "928002343167987743": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "read_message_history": true
+                },
+                "898084022377390100": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "external_emojis": true
+                }
+            }
+        },
+        {
+            "id": 1402161215580672030,
+            "name": "\ud83c\udfb5\ufe33M\u00fasica",
+            "type": "voice",
+            "position": 7,
+            "category": 897053470476087337,
+            "overwrites": {
+                "870691347332468766": {
+                    "read_messages": true,
+                    "connect": true,
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "priority_speaker": false,
+                    "stream": false,
+                    "speak": false,
+                    "mute_members": false,
+                    "deafen_members": false,
+                    "move_members": false,
+                    "use_voice_activation": false,
+                    "manage_roles": false,
+                    "manage_events": false
+                },
+                "874412847411638313": {
+                    "read_messages": true,
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "add_reactions": false,
+                    "priority_speaker": false,
+                    "stream": false,
+                    "send_messages": false,
+                    "connect": false,
+                    "speak": false,
+                    "mute_members": false,
+                    "deafen_members": false,
+                    "move_members": false,
+                    "use_voice_activation": false,
+                    "manage_roles": false,
+                    "manage_events": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "967883623019720825": {
+                    "connect": false,
+                    "speak": false
+                }
+            }
+        },
+        {
+            "id": 929082542240436264,
+            "name": "\ud83c\udf10\ufe33redes",
+            "type": "text",
+            "position": 10,
+            "category": 870691347332468767,
+            "overwrites": {
+                "870691347332468766": {
+                    "add_reactions": true,
+                    "read_message_history": true,
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "send_tts_messages": false,
+                    "manage_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "mention_everyone": false,
+                    "external_emojis": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "use_application_commands": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "external_stickers": false,
+                    "send_messages_in_threads": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "870700365857837106": {
+                    "send_messages": true
+                },
+                "874412847411638313": {
+                    "read_messages": true,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "716390085896962058": {
+                    "send_messages": false
+                }
+            }
+        },
+        {
+            "id": 871858038271791224,
+            "name": "\uff62\ud83c\udfce\uff63\u30fbtradeos\u30fbplaystation",
+            "type": "text",
+            "position": 35,
+            "category": 946484622479478804,
+            "overwrites": {
+                "870691347332468766": {
+                    "read_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "967883623019720825": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "874412847411638313": {
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "928002343167987743": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "898084022285139970": {
+                    "read_messages": true
+                }
+            }
+        }
+    ]
+}

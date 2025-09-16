@@ -1,0 +1,3214 @@
+{
+    "guild_name": "Universal Trader's",
+    "roles": [
+        {
+            "id": 1412073585954127927,
+            "name": "@everyone",
+            "permissions": 1061000907703873,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 0
+        },
+        {
+            "id": 1416476535220605012,
+            "name": "siquej",
+            "permissions": 8,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 1
+        },
+        {
+            "id": 1416402895032553518,
+            "name": "Tickets v2",
+            "permissions": 395942685784,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 1
+        },
+        {
+            "id": 1416389390825160766,
+            "name": "Universal Trader's",
+            "permissions": 8,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 1
+        },
+        {
+            "id": 1416108348666941462,
+            "name": "Tickets Admin",
+            "permissions": 1061000907703873,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 1
+        },
+        {
+            "id": 1416108347576422421,
+            "name": "Tickets Support",
+            "permissions": 1061000907703873,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 2
+        },
+        {
+            "id": 1415988677880053834,
+            "name": "Dyno",
+            "permissions": 1513962695871,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 4
+        },
+        {
+            "id": 1415988306809983083,
+            "name": "carl-bot",
+            "permissions": 573242775563510,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 5
+        },
+        {
+            "id": 1412073585954127928,
+            "name": "Ordered from site",
+            "permissions": 137439216704,
+            "color": 14935011,
+            "hoist": false,
+            "mentionable": false,
+            "position": 6
+        },
+        {
+            "id": 1412073585954127929,
+            "name": "MEMBER [USE MM]",
+            "permissions": 1720707884371521,
+            "color": 3577974,
+            "hoist": false,
+            "mentionable": false,
+            "position": 7
+        },
+        {
+            "id": 1412073585954127930,
+            "name": "Deal With Caution [DWC]",
+            "permissions": 0,
+            "color": 11156283,
+            "hoist": false,
+            "mentionable": false,
+            "position": 8
+        },
+        {
+            "id": 1412073585954127931,
+            "name": "Rich Trader",
+            "permissions": 0,
+            "color": 2860755,
+            "hoist": false,
+            "mentionable": false,
+            "position": 9
+        },
+        {
+            "id": 1412073586382077992,
+            "name": "Notable",
+            "permissions": 0,
+            "color": 10575636,
+            "hoist": true,
+            "mentionable": false,
+            "position": 10
+        },
+        {
+            "id": 1412073586382077993,
+            "name": "Friends",
+            "permissions": 0,
+            "color": 15382002,
+            "hoist": false,
+            "mentionable": false,
+            "position": 11
+        },
+        {
+            "id": 1412073586382077994,
+            "name": "Auth MM",
+            "permissions": 0,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 12
+        },
+        {
+            "id": 1412073586382077995,
+            "name": "Novice Middleman",
+            "permissions": 1099578737670,
+            "color": 13833493,
+            "hoist": true,
+            "mentionable": false,
+            "position": 13
+        },
+        {
+            "id": 1412073586382077996,
+            "name": "The King",
+            "permissions": 0,
+            "color": 15844367,
+            "hoist": false,
+            "mentionable": false,
+            "position": 14
+        },
+        {
+            "id": 1412073586382077997,
+            "name": "Senior Middleman",
+            "permissions": 0,
+            "color": 6965998,
+            "hoist": true,
+            "mentionable": false,
+            "position": 15
+        },
+        {
+            "id": 1412073586382077998,
+            "name": "Head Middleman",
+            "permissions": 0,
+            "color": 16185078,
+            "hoist": true,
+            "mentionable": false,
+            "position": 16
+        },
+        {
+            "id": 1412073586382077999,
+            "name": "Staff",
+            "permissions": 1099511627782,
+            "color": 10382335,
+            "hoist": true,
+            "mentionable": false,
+            "position": 17
+        },
+        {
+            "id": 1412073586382078000,
+            "name": "Head Staff",
+            "permissions": 0,
+            "color": 14333169,
+            "hoist": true,
+            "mentionable": false,
+            "position": 18
+        },
+        {
+            "id": 1412073586382078001,
+            "name": "Staff Manager",
+            "permissions": 0,
+            "color": 3577974,
+            "hoist": true,
+            "mentionable": false,
+            "position": 19
+        },
+        {
+            "id": 1412073586394664981,
+            "name": "Community Manager",
+            "permissions": 0,
+            "color": 16495126,
+            "hoist": true,
+            "mentionable": false,
+            "position": 20
+        },
+        {
+            "id": 1412073586394664982,
+            "name": "Site Developer",
+            "permissions": 1099712954374,
+            "color": 10382335,
+            "hoist": true,
+            "mentionable": false,
+            "position": 21
+        },
+        {
+            "id": 1412073586394664983,
+            "name": "Chief Executive",
+            "permissions": 0,
+            "color": 13927485,
+            "hoist": true,
+            "mentionable": false,
+            "position": 22
+        },
+        {
+            "id": 1412073586394664984,
+            "name": "Administrator",
+            "permissions": 1099712954374,
+            "color": 13255491,
+            "hoist": true,
+            "mentionable": false,
+            "position": 23
+        },
+        {
+            "id": 1412073586394664985,
+            "name": "Community Lead",
+            "permissions": 1477938601990,
+            "color": 3577974,
+            "hoist": true,
+            "mentionable": false,
+            "position": 24
+        },
+        {
+            "id": 1412073586394664986,
+            "name": "Supreme Lead",
+            "permissions": 1477938553990,
+            "color": 65793,
+            "hoist": true,
+            "mentionable": false,
+            "position": 25
+        },
+        {
+            "id": 1412073586394664987,
+            "name": "Management",
+            "permissions": 1099981499543,
+            "color": 3579357,
+            "hoist": true,
+            "mentionable": false,
+            "position": 26
+        },
+        {
+            "id": 1412073586394664988,
+            "name": "Overseer",
+            "permissions": 564582242692167,
+            "color": 5664851,
+            "hoist": true,
+            "mentionable": false,
+            "position": 27
+        },
+        {
+            "id": 1412073586394664989,
+            "name": "Co-Owner",
+            "permissions": 2108860349153095,
+            "color": 1821325,
+            "hoist": true,
+            "mentionable": false,
+            "position": 28
+        },
+        {
+            "id": 1412073586394664990,
+            "name": "Owner",
+            "permissions": 2108863302074367,
+            "color": 15500294,
+            "hoist": true,
+            "mentionable": false,
+            "position": 29
+        },
+        {
+            "id": 1412073586407112794,
+            "name": "Poland",
+            "permissions": 1721826619162615,
+            "color": 16777215,
+            "hoist": false,
+            "mentionable": false,
+            "position": 30
+        },
+        {
+            "id": 1412073586407112796,
+            "name": "\ud83e\udeaa\u204e",
+            "permissions": 2108862765203455,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 31
+        },
+        {
+            "id": 1412073586407112797,
+            "name": "\ud83e\udeaa\u2051",
+            "permissions": 2108862765203455,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 32
+        },
+        {
+            "id": 1412073586407112798,
+            "name": "\ud83e\udeaa\u2042",
+            "permissions": 2108863302074367,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 33
+        },
+        {
+            "id": 1412073586407112799,
+            "name": ".",
+            "permissions": 2108863302074367,
+            "color": 65793,
+            "hoist": false,
+            "mentionable": false,
+            "position": 34
+        },
+        {
+            "id": 1415979899126284348,
+            "name": "!<-NZN->!",
+            "permissions": 1721807559716807,
+            "color": 905197,
+            "hoist": false,
+            "mentionable": false,
+            "position": 35
+        },
+        {
+            "id": 1412073586407112801,
+            "name": "Bots",
+            "permissions": 0,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 36
+        },
+        {
+            "id": 1412073586407112803,
+            "name": "\u2661",
+            "permissions": 0,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 37
+        },
+        {
+            "id": 1412073586419826748,
+            "name": "\u25c7",
+            "permissions": 0,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 38
+        },
+        {
+            "id": 1412073586419826749,
+            "name": "\u2664",
+            "permissions": 8,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 39
+        },
+        {
+            "id": 1412073586419826750,
+            "name": "\u2667",
+            "permissions": 0,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 40
+        },
+        {
+            "id": 1415976711748718638,
+            "name": "Sapphire",
+            "permissions": 1101596716286,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 41
+        },
+        {
+            "id": 1415988434954223626,
+            "name": "Security",
+            "permissions": 8,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 42
+        },
+        {
+            "id": 1412073586419826751,
+            "name": "adm perms",
+            "permissions": 2108863302074367,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 43
+        },
+        {
+            "id": 1412073586419826753,
+            "name": "\u2606",
+            "permissions": 2108863302074367,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 44
+        }
+    ],
+    "categories": [
+        {
+            "id": 1412073586419826756,
+            "name": "\u30fbMARKET  \u3001",
+            "position": 0
+        },
+        {
+            "id": 1416402332165345361,
+            "name": "Sell Tickets",
+            "position": 1
+        },
+        {
+            "id": 1412073586805706833,
+            "name": "\u30fbIMPORTANT \u3001",
+            "position": 2
+        },
+        {
+            "id": 1412073586805706838,
+            "name": "\u30fbMAIN \u3001",
+            "position": 3
+        },
+        {
+            "id": 1412073586805706842,
+            "name": "\u30fbMIDDLEMAN \u3001",
+            "position": 4
+        },
+        {
+            "id": 1416108353901559909,
+            "name": "Tickets",
+            "position": 5
+        },
+        {
+            "id": 1412073587141116057,
+            "name": "\u30fbEXTRA \u3001",
+            "position": 6
+        },
+        {
+            "id": 1416402263962026035,
+            "name": "Support Tickets",
+            "position": 7
+        },
+        {
+            "id": 1412073587418071130,
+            "name": "\u2022 Staff \u3001",
+            "position": 8
+        },
+        {
+            "id": 1412073588105810059,
+            "name": "\u2022 Ads \u3001",
+            "position": 9
+        },
+        {
+            "id": 1412073588496007168,
+            "name": "\u2022 Middleman Only \u3001",
+            "position": 10
+        },
+        {
+            "id": 1412073588496007172,
+            "name": "\u2022 Owner Only \u3001",
+            "position": 11
+        }
+    ],
+    "channels": [
+        {
+            "id": 1412073588496007170,
+            "name": "\u3003\u30fbupdates",
+            "type": "text",
+            "position": 33,
+            "category": 1412073588496007168,
+            "overwrites": {
+                "1412073585954127927": {
+                    "read_messages": false
+                },
+                "1412073586382077995": {
+                    "read_messages": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1412073588973895872,
+            "name": "\u3003\u30fbaction-logs",
+            "type": "text",
+            "position": 40,
+            "category": 1412073588496007172,
+            "overwrites": {
+                "1412073585954127927": {
+                    "read_messages": false
+                }
+            }
+        },
+        {
+            "id": 1412073586805706833,
+            "name": "\u30fbIMPORTANT \u3001",
+            "type": "category",
+            "position": 2,
+            "category": null,
+            "overwrites": {}
+        },
+        {
+            "id": 1412073588105810051,
+            "name": "\u3003\u30fbstaff-trading",
+            "type": "text",
+            "position": 25,
+            "category": 1412073587418071130,
+            "overwrites": {
+                "1412073585954127927": {
+                    "read_messages": false
+                },
+                "1412073586394664981": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077997": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826750": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664986": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077999": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077994": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077996": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078001": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826748": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664989": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664988": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077998": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112801": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073585954127928": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112794": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664982": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664987": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664984": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664985": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664983": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077995": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078000": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112803": {
+                    "read_messages": true,
+                    "connect": true
+                }
+            }
+        },
+        {
+            "id": 1412073588105810057,
+            "name": "\u3003\u30fbwager",
+            "type": "text",
+            "position": 31,
+            "category": 1412073587418071130,
+            "overwrites": {
+                "1412073585954127927": {
+                    "read_messages": false
+                },
+                "1412073586394664981": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112803": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826750": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664986": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826748": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664989": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077994": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077999": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078001": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077996": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664988": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077998": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112801": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073585954127928": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112794": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664982": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664987": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664984": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077997": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664983": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077995": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078000": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664985": {
+                    "read_messages": true,
+                    "connect": true
+                }
+            }
+        },
+        {
+            "id": 1412073588105810055,
+            "name": "\u3003\u30fbservers",
+            "type": "text",
+            "position": 29,
+            "category": 1412073587418071130,
+            "overwrites": {
+                "1412073585954127927": {
+                    "read_messages": false
+                },
+                "1412073586394664981": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "create_public_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586394664983": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "manage_messages": false,
+                    "mention_everyone": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586419826750": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664986": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077998": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "mention_everyone": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586394664989": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078001": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "create_public_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586382077994": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077999": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "attach_files": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "create_public_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586419826748": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664988": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077996": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586407112801": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073585954127928": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112794": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664982": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586394664987": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664984": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "mention_everyone": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586382077997": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586407112803": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077995": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078000": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586394664985": {
+                    "read_messages": true,
+                    "connect": true
+                }
+            }
+        },
+        {
+            "id": 1412073587673927754,
+            "name": "\u3003\u30fbupdates",
+            "type": "text",
+            "position": 18,
+            "category": 1412073587418071130,
+            "overwrites": {
+                "1412073585954127927": {
+                    "read_messages": false,
+                    "send_messages": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586394664981": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586407112803": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826750": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664986": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "mention_everyone": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586382077998": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586394664989": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077996": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826748": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077999": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586382077994": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664988": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078001": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586407112801": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073585954127928": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112794": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664982": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586394664987": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664984": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "mention_everyone": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586394664985": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "create_public_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586394664983": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586382077995": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078000": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586382077997": {
+                    "read_messages": true,
+                    "connect": true
+                }
+            }
+        },
+        {
+            "id": 1412073587418071122,
+            "name": "\u301e\ud83d\udcca\u30fbvalues",
+            "type": "text",
+            "position": 14,
+            "category": 1412073587141116057,
+            "overwrites": {
+                "1412073585954127927": {
+                    "send_messages": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1412073586805706836,
+            "name": "\u301e\u231a\u30fbapplication",
+            "type": "text",
+            "position": 4,
+            "category": 1412073586805706833,
+            "overwrites": {
+                "1412073585954127927": {
+                    "send_messages": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1412073587673927753,
+            "name": "\u3003\u30fbrules",
+            "type": "text",
+            "position": 17,
+            "category": 1412073587418071130,
+            "overwrites": {
+                "1412073585954127927": {
+                    "read_messages": false,
+                    "send_messages": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586394664981": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true,
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "mention_everyone": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586394664985": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826750": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664986": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078001": {
+                    "read_messages": true,
+                    "connect": true,
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586394664989": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077998": {
+                    "read_messages": true,
+                    "connect": true,
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586382077999": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586419826748": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077994": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664988": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077996": {
+                    "read_messages": true,
+                    "connect": true,
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586407112801": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073585954127928": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "create_public_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586407112794": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664982": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true,
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586394664987": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664984": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077997": {
+                    "read_messages": true,
+                    "connect": true,
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586407112803": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077995": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "create_public_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586382078000": {
+                    "read_messages": true,
+                    "connect": true,
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "create_public_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586394664983": {
+                    "read_messages": true,
+                    "connect": true
+                }
+            }
+        },
+        {
+            "id": 1412073587418071121,
+            "name": "\u301e\ud83d\uded2\u30fbstaff-market",
+            "type": "text",
+            "position": 13,
+            "category": 1412073587141116057,
+            "overwrites": {
+                "1412073585954127927": {
+                    "send_messages": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1416402263962026035,
+            "name": "Support Tickets",
+            "type": "category",
+            "position": 7,
+            "category": null,
+            "overwrites": {
+                "1412073585954127927": {
+                    "read_messages": false,
+                    "connect": false
+                }
+            }
+        },
+        {
+            "id": 1412073588105810059,
+            "name": "\u2022 Ads \u3001",
+            "type": "category",
+            "position": 9,
+            "category": null,
+            "overwrites": {}
+        },
+        {
+            "id": 1412073586805706840,
+            "name": "\u301e\ud83c\udfc6\u30fblimiteds",
+            "type": "text",
+            "position": 7,
+            "category": 1412073586805706838,
+            "overwrites": {
+                "1412073585954127927": {
+                    "send_messages": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1412073587673927758,
+            "name": "\u3003\u30fbrates",
+            "type": "text",
+            "position": 22,
+            "category": 1412073587418071130,
+            "overwrites": {
+                "1412073585954127927": {
+                    "read_messages": false,
+                    "send_messages": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586394664981": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112803": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826750": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664986": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077996": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077994": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078001": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826748": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077998": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664989": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664988": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077999": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112801": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073585954127928": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112794": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664982": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664987": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664984": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664985": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664983": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077995": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078000": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077997": {
+                    "read_messages": true,
+                    "connect": true
+                }
+            }
+        },
+        {
+            "id": 1412073587673927752,
+            "name": "\u3003\u30fbgiveaways",
+            "type": "text",
+            "position": 16,
+            "category": 1412073587418071130,
+            "overwrites": {
+                "1412073585954127927": {
+                    "read_messages": false
+                },
+                "1412073586394664981": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586394664983": {
+                    "read_messages": true,
+                    "connect": true,
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586419826750": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664986": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826748": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077994": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078001": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586382077999": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586382077996": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077998": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586394664988": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664989": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112801": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073585954127928": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112794": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664982": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586394664987": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664984": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "manage_roles": false
+                },
+                "1412073586382077997": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586407112803": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077995": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078000": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586394664985": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "manage_roles": false
+                }
+            }
+        },
+        {
+            "id": 1416108353901559909,
+            "name": "Tickets",
+            "type": "category",
+            "position": 5,
+            "category": null,
+            "overwrites": {}
+        },
+        {
+            "id": 1412073588973895871,
+            "name": "\u3003\u30fbtest",
+            "type": "text",
+            "position": 39,
+            "category": 1412073588496007172,
+            "overwrites": {
+                "1412073585954127927": {
+                    "read_messages": false
+                }
+            }
+        },
+        {
+            "id": 1412073586805706837,
+            "name": "\u301e\ud83d\ude80\u30fbboosters",
+            "type": "text",
+            "position": 5,
+            "category": 1412073586805706833,
+            "overwrites": {
+                "1412073585954127927": {
+                    "send_messages": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1412073587673927760,
+            "name": "\u3003\u30fbclaim-roles",
+            "type": "text",
+            "position": 24,
+            "category": 1412073587418071130,
+            "overwrites": {
+                "1412073585954127927": {
+                    "read_messages": false
+                },
+                "1412073586394664981": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077997": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826750": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664986": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078001": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077994": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826748": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077996": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664989": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077999": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664988": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077998": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112801": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073585954127928": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112794": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664982": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664987": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664984": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664985": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112803": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077995": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078000": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664983": {
+                    "read_messages": true,
+                    "connect": true
+                }
+            }
+        },
+        {
+            "id": 1412073588496007171,
+            "name": "\u3003\u30fbcmds",
+            "type": "text",
+            "position": 34,
+            "category": 1412073588496007168,
+            "overwrites": {
+                "1412073585954127927": {
+                    "manage_channels": false,
+                    "read_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586382077995": {
+                    "read_messages": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073585954127928": {
+                    "read_messages": false
+                }
+            }
+        },
+        {
+            "id": 1412073586419826757,
+            "name": "\u3003\ud83d\udcb8\u30fbsell-your-stuff",
+            "type": "text",
+            "position": 0,
+            "category": 1412073586419826756,
+            "overwrites": {
+                "1412073585954127927": {
+                    "send_messages": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1412073587418071130,
+            "name": "\u2022 Staff \u3001",
+            "type": "category",
+            "position": 8,
+            "category": null,
+            "overwrites": {
+                "1412073585954127927": {
+                    "read_messages": false
+                },
+                "1412073586394664981": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664985": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826750": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664986": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077996": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664989": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078001": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077999": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826748": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077998": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664988": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077994": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112801": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073585954127928": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112794": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664982": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664987": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664984": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077997": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112803": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077995": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078000": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664983": {
+                    "read_messages": true,
+                    "connect": true
+                }
+            }
+        },
+        {
+            "id": 1412073588105810058,
+            "name": "\u3003\u30fbstaff-vc",
+            "type": "voice",
+            "position": 0,
+            "category": 1412073587418071130,
+            "overwrites": {
+                "1412073585954127927": {
+                    "read_messages": false
+                },
+                "1412073586394664981": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664985": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826750": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664986": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077998": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077994": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664989": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077996": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078001": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077999": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664988": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826748": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112801": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073585954127928": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112794": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664982": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664987": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664984": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077997": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664983": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077995": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078000": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112803": {
+                    "read_messages": true,
+                    "connect": true
+                }
+            }
+        },
+        {
+            "id": 1412073588105810052,
+            "name": "\u3003\u30fbpurchase",
+            "type": "text",
+            "position": 26,
+            "category": 1412073587418071130,
+            "overwrites": {
+                "1412073585954127927": {
+                    "read_messages": false,
+                    "send_messages": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586394664981": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586394664983": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586419826750": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664986": {
+                    "manage_channels": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true,
+                    "manage_roles": true,
+                    "manage_webhooks": true,
+                    "mention_everyone": false
+                },
+                "1412073586382077999": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586382077994": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826748": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664989": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078001": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586382077996": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664988": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077998": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586407112801": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073585954127928": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112794": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664982": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586394664987": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664984": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586382077997": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112803": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077995": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078000": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586394664985": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "mention_everyone": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                }
+            }
+        },
+        {
+            "id": 1412073586805706838,
+            "name": "\u30fbMAIN \u3001",
+            "type": "category",
+            "position": 3,
+            "category": null,
+            "overwrites": {}
+        },
+        {
+            "id": 1412073587141116050,
+            "name": "\u301e\ud83e\udd1d\u30fbmm-request",
+            "type": "text",
+            "position": 10,
+            "category": 1412073586805706842,
+            "overwrites": {
+                "1412073585954127927": {
+                    "send_messages": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1412073587673927757,
+            "name": "\u3003\u30fbdaily",
+            "type": "text",
+            "position": 21,
+            "category": 1412073587418071130,
+            "overwrites": {
+                "1412073585954127927": {
+                    "manage_channels": false,
+                    "read_messages": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073585954127928": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "read_message_history": true,
+                    "send_messages_in_threads": true,
+                    "manage_channels": false,
+                    "manage_messages": false,
+                    "mention_everyone": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "create_public_threads": false
+                },
+                "1412073586382077997": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "manage_channels": false,
+                    "mention_everyone": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586382077995": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "manage_channels": false,
+                    "mention_everyone": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586382077998": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "manage_channels": false,
+                    "mention_everyone": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                }
+            }
+        },
+        {
+            "id": 1412073586805706839,
+            "name": "\u301e\ud83d\udcac\u30fbgeneral",
+            "type": "text",
+            "position": 6,
+            "category": 1412073586805706838,
+            "overwrites": {
+                "1412073585954127927": {
+                    "send_messages": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1412073587141116049,
+            "name": "\u301e\ud83d\udcdd\u30fbmm-tos",
+            "type": "text",
+            "position": 9,
+            "category": 1412073586805706842,
+            "overwrites": {
+                "1412073585954127927": {
+                    "send_messages": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1412073587141116058,
+            "name": "\u301e\ud83c\udfab\u30fbsupport",
+            "type": "text",
+            "position": 12,
+            "category": 1412073587141116057,
+            "overwrites": {
+                "1412073585954127927": {
+                    "send_messages": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1412073588496007168,
+            "name": "\u2022 Middleman Only \u3001",
+            "type": "category",
+            "position": 10,
+            "category": null,
+            "overwrites": {}
+        },
+        {
+            "id": 1412073586805706841,
+            "name": "\u301e\ud83c\udfd6\ufe0f\u30fbtrading",
+            "type": "text",
+            "position": 8,
+            "category": 1412073586805706838,
+            "overwrites": {
+                "1412073585954127927": {
+                    "send_messages": false,
+                    "send_messages_in_threads": false
+                },
+                "235148962103951360": {
+                    "send_messages": true
+                }
+            }
+        },
+        {
+            "id": 1412073587673927759,
+            "name": "\u3003\u30fbguide",
+            "type": "text",
+            "position": 23,
+            "category": 1412073587418071130,
+            "overwrites": {
+                "1412073585954127927": {
+                    "read_messages": false
+                },
+                "1412073586394664981": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586407112803": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826750": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664986": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826748": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664989": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077998": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586382077994": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077996": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077999": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586394664988": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078001": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586407112801": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073585954127928": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112794": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664982": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586394664987": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664984": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "external_stickers": false
+                },
+                "1412073586394664985": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "mention_everyone": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586394664983": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586382077995": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078000": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586382077997": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1412073587141116057,
+            "name": "\u30fbEXTRA \u3001",
+            "type": "category",
+            "position": 6,
+            "category": null,
+            "overwrites": {}
+        },
+        {
+            "id": 1412073586805706834,
+            "name": "\u301e\ud83d\udcd6\u30fbrules",
+            "type": "text",
+            "position": 2,
+            "category": 1412073586805706833,
+            "overwrites": {
+                "1412073585954127927": {
+                    "send_messages": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1412073587673927755,
+            "name": "\u3003\u30fbevent",
+            "type": "text",
+            "position": 19,
+            "category": 1412073587418071130,
+            "overwrites": {
+                "1412073585954127927": {
+                    "read_messages": false
+                },
+                "1412073586394664981": {
+                    "read_messages": true,
+                    "connect": true,
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586407112803": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826750": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664986": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "mention_everyone": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586419826748": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664989": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077998": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586382077994": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586382078001": {
+                    "read_messages": true,
+                    "connect": true,
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586382077999": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586394664988": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077996": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586407112801": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073585954127928": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586407112794": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664982": {
+                    "read_messages": true,
+                    "connect": true,
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586394664987": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664984": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "create_public_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586394664985": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586394664983": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "create_public_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586382077995": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586382078000": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586382077997": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                }
+            }
+        },
+        {
+            "id": 1412073588496007172,
+            "name": "\u2022 Owner Only \u3001",
+            "type": "category",
+            "position": 11,
+            "category": null,
+            "overwrites": {
+                "1412073585954127927": {
+                    "read_messages": false
+                }
+            }
+        },
+        {
+            "id": 1416402464776912946,
+            "name": "transcripts",
+            "type": "text",
+            "position": 37,
+            "category": 1412073588496007172,
+            "overwrites": {
+                "1412073585954127927": {
+                    "read_messages": false
+                }
+            }
+        },
+        {
+            "id": 1412073588105810053,
+            "name": "\u3003\u30fbinsurance",
+            "type": "text",
+            "position": 27,
+            "category": 1412073587418071130,
+            "overwrites": {
+                "1412073585954127927": {
+                    "manage_channels": false,
+                    "read_messages": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586394664981": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112803": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826750": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664986": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586419826748": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077994": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586394664989": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077999": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077996": {
+                    "read_messages": true,
+                    "connect": true,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586382078001": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586394664988": {
+                    "manage_channels": true,
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_roles": true,
+                    "manage_webhooks": true,
+                    "send_messages": false,
+                    "mention_everyone": false,
+                    "use_application_commands": false,
+                    "send_messages_in_threads": false,
+                    "use_external_apps": false
+                },
+                "1412073586382077998": {
+                    "read_messages": true,
+                    "connect": true,
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "create_public_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586407112801": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073585954127928": {
+                    "read_messages": true,
+                    "connect": true,
+                    "send_messages": false,
+                    "mention_everyone": false,
+                    "create_public_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586407112794": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664982": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664987": {
+                    "manage_channels": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true,
+                    "manage_roles": true,
+                    "manage_webhooks": true,
+                    "send_messages_in_threads": true
+                },
+                "1412073586394664984": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "embed_links": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586382077997": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "embed_links": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586394664983": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "attach_files": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "mention_everyone": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586382077995": {
+                    "read_messages": true,
+                    "connect": true,
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "create_public_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "1412073586382078000": {
+                    "read_messages": true,
+                    "connect": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586394664985": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "connect": true,
+                    "create_public_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1412073587673927756,
+            "name": "\u3003\u30fbstaff-chat",
+            "type": "text",
+            "position": 20,
+            "category": 1412073587418071130,
+            "overwrites": {
+                "1412073585954127927": {
+                    "read_messages": false
+                },
+                "1412073585954127928": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "attach_files": true,
+                    "manage_channels": false,
+                    "mention_everyone": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "use_application_commands": false,
+                    "create_public_threads": false,
+                    "use_external_apps": false
+                }
+            }
+        },
+        {
+            "id": 1412073587141116051,
+            "name": "\u301e\u2705\u30fbvouches",
+            "type": "text",
+            "position": 11,
+            "category": 1412073586805706842,
+            "overwrites": {}
+        },
+        {
+            "id": 1412073588496007169,
+            "name": "\u3003\u30fbmm-guide",
+            "type": "text",
+            "position": 32,
+            "category": 1412073588496007168,
+            "overwrites": {
+                "1412073585954127927": {
+                    "read_messages": false
+                },
+                "1412073586382077995": {
+                    "read_messages": true,
+                    "manage_channels": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073585954127928": {
+                    "read_messages": false
+                }
+            }
+        },
+        {
+            "id": 1412073588496007173,
+            "name": "\u3003\u30fbstaff-chat",
+            "type": "text",
+            "position": 35,
+            "category": 1412073588496007172,
+            "overwrites": {
+                "1412073585954127927": {
+                    "manage_channels": false,
+                    "read_messages": false,
+                    "send_messages": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false
+                },
+                "1412073586394664990": {
+                    "manage_channels": true,
+                    "read_messages": true,
+                    "send_messages": true
+                }
+            }
+        },
+        {
+            "id": 1412073586805706835,
+            "name": "\u301e\ud83c\udf89\u30fbgiveaways",
+            "type": "text",
+            "position": 3,
+            "category": 1412073586805706833,
+            "overwrites": {
+                "1412073585954127927": {
+                    "send_messages": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1412073586419826756,
+            "name": "\u30fbMARKET  \u3001",
+            "type": "category",
+            "position": 0,
+            "category": null,
+            "overwrites": {}
+        },
+        {
+            "id": 1412073587673927751,
+            "name": "\u3003\u30fbverify",
+            "type": "text",
+            "position": 15,
+            "category": 1412073587418071130,
+            "overwrites": {
+                "1412073585954127927": {
+                    "read_messages": false
+                },
+                "1412073586394664981": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077997": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826750": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664986": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826748": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077994": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077998": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664989": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078001": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077999": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664988": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077996": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112801": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073585954127928": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112794": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664982": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664987": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664984": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664985": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112803": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077995": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078000": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664983": {
+                    "read_messages": true,
+                    "connect": true
+                }
+            }
+        },
+        {
+            "id": 1412073588105810056,
+            "name": "\u3003\u30fbhelp",
+            "type": "text",
+            "position": 30,
+            "category": 1412073587418071130,
+            "overwrites": {
+                "1412073585954127927": {
+                    "read_messages": false
+                },
+                "1412073586394664981": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112803": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826750": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664986": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077999": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664989": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077994": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078001": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077996": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077998": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664988": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826748": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112801": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073585954127928": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112794": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664982": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664987": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664984": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664985": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664983": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077995": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078000": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077997": {
+                    "read_messages": true,
+                    "connect": true
+                }
+            }
+        },
+        {
+            "id": 1412073586805706842,
+            "name": "\u30fbMIDDLEMAN \u3001",
+            "type": "category",
+            "position": 4,
+            "category": null,
+            "overwrites": {}
+        },
+        {
+            "id": 1412073588105810054,
+            "name": "\u3003\u30fbmedia",
+            "type": "text",
+            "position": 28,
+            "category": 1412073587418071130,
+            "overwrites": {
+                "1412073585954127927": {
+                    "read_messages": false
+                },
+                "1412073586394664981": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112803": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826750": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664986": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077998": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077994": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077999": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078001": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664989": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077996": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664988": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586419826748": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112801": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073585954127928": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586407112794": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664982": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664987": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664984": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077997": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664983": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382077995": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586382078000": {
+                    "read_messages": true,
+                    "connect": true
+                },
+                "1412073586394664985": {
+                    "read_messages": true,
+                    "connect": true
+                }
+            }
+        },
+        {
+            "id": 1416402332165345361,
+            "name": "Sell Tickets",
+            "type": "category",
+            "position": 1,
+            "category": null,
+            "overwrites": {
+                "1412073585954127927": {
+                    "read_messages": false,
+                    "connect": false
+                }
+            }
+        },
+        {
+            "id": 1412073588496007174,
+            "name": "\u3003\u30fbdebt-tax",
+            "type": "text",
+            "position": 36,
+            "category": 1412073588496007172,
+            "overwrites": {
+                "1412073585954127927": {
+                    "manage_channels": false,
+                    "read_messages": false,
+                    "manage_webhooks": false
+                }
+            }
+        }
+    ]
+}

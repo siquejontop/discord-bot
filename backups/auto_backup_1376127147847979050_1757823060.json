@@ -1,0 +1,3544 @@
+{
+    "guild_name": "Trade hub | Middleman & Trading",
+    "roles": [
+        {
+            "id": 1376127147847979050,
+            "name": "@everyone",
+            "permissions": 533233178889793,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 0
+        },
+        {
+            "id": 1416445094424219671,
+            "name": "YAGPDB.xyz",
+            "permissions": 1516122532343,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 1
+        },
+        {
+            "id": 1416157875847299115,
+            "name": "Ticket King",
+            "permissions": 138244779088,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 2
+        },
+        {
+            "id": 1416138535664353362,
+            "name": "Vouch.",
+            "permissions": 17537,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 3
+        },
+        {
+            "id": 1416132018747740282,
+            "name": "Emoji.gg Bot",
+            "permissions": 8936753581056,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 4
+        },
+        {
+            "id": 1416086284291801219,
+            "name": "kaya (saschas joke was cheeks)",
+            "permissions": 0,
+            "color": 10181046,
+            "hoist": false,
+            "mentionable": true,
+            "position": 5
+        },
+        {
+            "id": 1414693212643393689,
+            "name": "! Shadow\u2122",
+            "permissions": 8,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 6
+        },
+        {
+            "id": 1404842581371654274,
+            "name": "Core",
+            "permissions": 8,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 7
+        },
+        {
+            "id": 1415885574572871787,
+            "name": "StickyBot",
+            "permissions": 140123794496,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 8
+        },
+        {
+            "id": 1415860219350745158,
+            "name": "kaya",
+            "permissions": 0,
+            "color": 10382335,
+            "hoist": false,
+            "mentionable": false,
+            "position": 9
+        },
+        {
+            "id": 1376142333736779856,
+            "name": "Server Booster",
+            "permissions": 1060998760221249,
+            "color": 12724687,
+            "hoist": false,
+            "mentionable": false,
+            "position": 10
+        },
+        {
+            "id": 1415860216616063156,
+            "name": "Tickets Admin",
+            "permissions": 532855221767681,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 11
+        },
+        {
+            "id": 1415860212438667325,
+            "name": "Ordered From Site",
+            "permissions": 1024,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 12
+        },
+        {
+            "id": 1415860211318521966,
+            "name": "MEMBER [USE MM]",
+            "permissions": 1720707884371521,
+            "color": 4701074,
+            "hoist": false,
+            "mentionable": false,
+            "position": 13
+        },
+        {
+            "id": 1415860210052104352,
+            "name": "Deal With Caution [DWC]",
+            "permissions": 0,
+            "color": 11156283,
+            "hoist": false,
+            "mentionable": false,
+            "position": 14
+        },
+        {
+            "id": 1415860208391164026,
+            "name": "Rich Trader",
+            "permissions": 0,
+            "color": 2860755,
+            "hoist": false,
+            "mentionable": false,
+            "position": 15
+        },
+        {
+            "id": 1415860207669477448,
+            "name": "Friends",
+            "permissions": 0,
+            "color": 15382002,
+            "hoist": false,
+            "mentionable": false,
+            "position": 16
+        },
+        {
+            "id": 1415860206549602335,
+            "name": "Notable",
+            "permissions": 0,
+            "color": 10575636,
+            "hoist": false,
+            "mentionable": false,
+            "position": 17
+        },
+        {
+            "id": 1415860205656215602,
+            "name": "Auth MM",
+            "permissions": 8192,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 18
+        },
+        {
+            "id": 1415860204624416971,
+            "name": "Novice Middleman",
+            "permissions": 1099578737670,
+            "color": 16715278,
+            "hoist": true,
+            "mentionable": false,
+            "position": 19
+        },
+        {
+            "id": 1415860203655794738,
+            "name": "Senior Middleman",
+            "permissions": 0,
+            "color": 11380474,
+            "hoist": true,
+            "mentionable": false,
+            "position": 20
+        },
+        {
+            "id": 1415860202653352006,
+            "name": "Head Middleman",
+            "permissions": 0,
+            "color": 16777215,
+            "hoist": true,
+            "mentionable": false,
+            "position": 21
+        },
+        {
+            "id": 1415860201554448506,
+            "name": "Staff",
+            "permissions": 1099511627782,
+            "color": 6389449,
+            "hoist": true,
+            "mentionable": false,
+            "position": 22
+        },
+        {
+            "id": 1416250261437022241,
+            "name": "Verify bot",
+            "permissions": 4289194859954171,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 23
+        },
+        {
+            "id": 1415860200686223530,
+            "name": "Head Staff",
+            "permissions": 0,
+            "color": 15254783,
+            "hoist": true,
+            "mentionable": false,
+            "position": 24
+        },
+        {
+            "id": 1415860199843168256,
+            "name": "Staff Manager",
+            "permissions": 0,
+            "color": 10275962,
+            "hoist": true,
+            "mentionable": false,
+            "position": 25
+        },
+        {
+            "id": 1415860198622625843,
+            "name": "Community Manager",
+            "permissions": 0,
+            "color": 16767232,
+            "hoist": true,
+            "mentionable": false,
+            "position": 26
+        },
+        {
+            "id": 1415860195162067018,
+            "name": "Site Developer",
+            "permissions": 1100786696198,
+            "color": 4594677,
+            "hoist": true,
+            "mentionable": false,
+            "position": 27
+        },
+        {
+            "id": 1415860194315079750,
+            "name": "BL1ND3D",
+            "permissions": 0,
+            "color": 5025232,
+            "hoist": false,
+            "mentionable": true,
+            "position": 28
+        },
+        {
+            "id": 1415860193123635356,
+            "name": "Chief Executive",
+            "permissions": 0,
+            "color": 15760149,
+            "hoist": true,
+            "mentionable": false,
+            "position": 30
+        },
+        {
+            "id": 1416095752626770081,
+            "name": "$Toka",
+            "permissions": 0,
+            "color": 8886702,
+            "hoist": false,
+            "mentionable": false,
+            "position": 31
+        },
+        {
+            "id": 1415860192599605330,
+            "name": "Administrator",
+            "permissions": 1099712954374,
+            "color": 11280930,
+            "hoist": true,
+            "mentionable": false,
+            "position": 32
+        },
+        {
+            "id": 1415860191534125268,
+            "name": "Community Lead",
+            "permissions": 1477938601990,
+            "color": 5487478,
+            "hoist": true,
+            "mentionable": false,
+            "position": 33
+        },
+        {
+            "id": 1416488801290948689,
+            "name": "Eric",
+            "permissions": 0,
+            "color": 5898240,
+            "hoist": false,
+            "mentionable": false,
+            "position": 34
+        },
+        {
+            "id": 1415860190019850370,
+            "name": "Supreme Lead",
+            "permissions": 1477938553990,
+            "color": 328965,
+            "hoist": true,
+            "mentionable": false,
+            "position": 35
+        },
+        {
+            "id": 1415860185922015292,
+            "name": "Management",
+            "permissions": 1099713064071,
+            "color": 3115707,
+            "hoist": true,
+            "mentionable": false,
+            "position": 36
+        },
+        {
+            "id": 1415860182625292318,
+            "name": "Overseer",
+            "permissions": 564582242692295,
+            "color": 604683,
+            "hoist": true,
+            "mentionable": false,
+            "position": 37
+        },
+        {
+            "id": 1415860180478070895,
+            "name": "Co-Owner",
+            "permissions": 2108860349153223,
+            "color": 3642925,
+            "hoist": true,
+            "mentionable": false,
+            "position": 38
+        },
+        {
+            "id": 1416359803911143434,
+            "name": "D4RK",
+            "permissions": 268435456,
+            "color": 3709159,
+            "hoist": false,
+            "mentionable": false,
+            "position": 39
+        },
+        {
+            "id": 1415860178120609925,
+            "name": "Owner",
+            "permissions": 2108863302074367,
+            "color": 13530149,
+            "hoist": true,
+            "mentionable": false,
+            "position": 40
+        },
+        {
+            "id": 1415860177030090783,
+            "name": "Poland",
+            "permissions": 0,
+            "color": 16777215,
+            "hoist": false,
+            "mentionable": false,
+            "position": 41
+        },
+        {
+            "id": 1415860176069722122,
+            "name": "\ud83e\udeaa\u204e",
+            "permissions": 2108863302074367,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 42
+        },
+        {
+            "id": 1415860173943078932,
+            "name": "\ud83e\udeaa\u2051",
+            "permissions": 2108863302074367,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 43
+        },
+        {
+            "id": 1415860170914922546,
+            "name": "\ud83e\udeaa\u2042",
+            "permissions": 2108863302074367,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 44
+        },
+        {
+            "id": 1415860217962303488,
+            "name": ".",
+            "permissions": 4360663115759615,
+            "color": 329738,
+            "hoist": false,
+            "mentionable": false,
+            "position": 45
+        },
+        {
+            "id": 1415860172403904623,
+            "name": "Agent",
+            "permissions": 8,
+            "color": 664084,
+            "hoist": false,
+            "mentionable": false,
+            "position": 46
+        },
+        {
+            "id": 1415860168138293288,
+            "name": "\u2661",
+            "permissions": 2108863302074367,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 47
+        },
+        {
+            "id": 1415860167140180050,
+            "name": "\u25c7",
+            "permissions": 2108863302074367,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 48
+        },
+        {
+            "id": 1416494808385720380,
+            "name": "iraqi",
+            "permissions": 0,
+            "color": 15277667,
+            "hoist": false,
+            "mentionable": false,
+            "position": 49
+        },
+        {
+            "id": 1415860174979076188,
+            "name": "Jola",
+            "permissions": 0,
+            "color": 8368028,
+            "hoist": false,
+            "mentionable": false,
+            "position": 50
+        },
+        {
+            "id": 1415860166015848548,
+            "name": "\u2664",
+            "permissions": 2108863302074367,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 51
+        },
+        {
+            "id": 1416492183996858378,
+            "name": "sigma",
+            "permissions": 0,
+            "color": 9830251,
+            "hoist": true,
+            "mentionable": false,
+            "position": 52
+        },
+        {
+            "id": 1415860164870934559,
+            "name": "\u2667",
+            "permissions": 2108863302074367,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 53
+        },
+        {
+            "id": 1415860163075641395,
+            "name": "adm perms",
+            "permissions": 2108863302074367,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 54
+        },
+        {
+            "id": 1415860158416027658,
+            "name": "zip (quit)",
+            "permissions": 0,
+            "color": 7232861,
+            "hoist": false,
+            "mentionable": false,
+            "position": 55
+        },
+        {
+            "id": 1415860155865759875,
+            "name": "Bots",
+            "permissions": 2108863302074367,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 56
+        },
+        {
+            "id": 1415833853989359777,
+            "name": "Dyno",
+            "permissions": 1513962695871,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 57
+        },
+        {
+            "id": 1415833252983345195,
+            "name": "Tickets v2",
+            "permissions": 395942816984,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 58
+        },
+        {
+            "id": 1415824156439609428,
+            "name": "Sapphire",
+            "permissions": 1101596716286,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 59
+        },
+        {
+            "id": 1415820704418631723,
+            "name": "Xenon",
+            "permissions": 8,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 60
+        },
+        {
+            "id": 1408549195001888975,
+            "name": "carl-bot",
+            "permissions": 573242775563510,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 61
+        },
+        {
+            "id": 1415841875805343846,
+            "name": "siquej",
+            "permissions": 8,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 62
+        },
+        {
+            "id": 1415842057905508382,
+            "name": "1111111.l",
+            "permissions": 4360663115759611,
+            "color": 2697513,
+            "hoist": false,
+            "mentionable": true,
+            "position": 63
+        },
+        {
+            "id": 1411012844325175408,
+            "name": "simo",
+            "permissions": 4360663115759615,
+            "color": 10070709,
+            "hoist": false,
+            "mentionable": false,
+            "position": 64
+        },
+        {
+            "id": 1415860160446070784,
+            "name": "ray",
+            "permissions": 0,
+            "color": 659557,
+            "hoist": false,
+            "mentionable": false,
+            "position": 65
+        },
+        {
+            "id": 1415860159313350746,
+            "name": "Gato",
+            "permissions": 0,
+            "color": 11127295,
+            "hoist": false,
+            "mentionable": false,
+            "position": 66
+        },
+        {
+            "id": 1402645415546978414,
+            "name": "\u2606",
+            "permissions": 2108863302074367,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 67
+        },
+        {
+            "id": 1415927593672249429,
+            "name": "Security",
+            "permissions": 8,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 68
+        },
+        {
+            "id": 1415924330449338419,
+            "name": "\u265b",
+            "permissions": 0,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 69
+        },
+        {
+            "id": 1416140598997549077,
+            "name": "!       Criminal\u2122",
+            "permissions": 1,
+            "color": 0,
+            "hoist": false,
+            "mentionable": false,
+            "position": 70
+        }
+    ],
+    "categories": [
+        {
+            "id": 1415860252414578718,
+            "name": "\u30fbMARKET  \u3001",
+            "position": 0
+        },
+        {
+            "id": 1415860257305006152,
+            "name": "\u30fbIMPORTANT \u3001",
+            "position": 1
+        },
+        {
+            "id": 1415860258856767491,
+            "name": "\u30fbCOMMUNITY \u3001",
+            "position": 2
+        },
+        {
+            "id": 1415860260614307872,
+            "name": "\u30fbMIDDLEMAN \u3001",
+            "position": 3
+        },
+        {
+            "id": 1415865492119224410,
+            "name": "Tickets",
+            "position": 4
+        },
+        {
+            "id": 1415860262136844288,
+            "name": "\u30fbEXTRA \u3001",
+            "position": 5
+        },
+        {
+            "id": 1415860263495667806,
+            "name": "\u2022 Staff Only \u3001",
+            "position": 6
+        },
+        {
+            "id": 1415860264779120801,
+            "name": "\u2022 Middleman Only \u3001",
+            "position": 7
+        },
+        {
+            "id": 1415860265907523676,
+            "name": "\u2022 Ads \u3001",
+            "position": 8
+        },
+        {
+            "id": 1415860267010490391,
+            "name": "\u2022 Owner Only \u3001",
+            "position": 9
+        }
+    ],
+    "channels": [
+        {
+            "id": 1415860287785144403,
+            "name": "\u301e\ud83e\udd1d\u30fbmm-request",
+            "type": "text",
+            "position": 16,
+            "category": 1415860260614307872,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1415860280201711836,
+            "name": "\u301e\ud83d\ude80\u30fbboosters",
+            "type": "text",
+            "position": 11,
+            "category": 1415860257305006152,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1416518479728869376,
+            "name": "gato",
+            "type": "text",
+            "position": 68,
+            "category": 1415860267010490391,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860178120609925": {
+                    "read_messages": true
+                }
+            }
+        },
+        {
+            "id": 1415860298681942049,
+            "name": "\u3003\u30fbverify",
+            "type": "text",
+            "position": 33,
+            "category": 1415860263495667806,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860212438667325": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "1415860180478070895": {
+                    "send_messages": true
+                }
+            }
+        },
+        {
+            "id": 1415860284320518176,
+            "name": "\u301e\ud83d\udd04\u30fbtrading",
+            "type": "text",
+            "position": 13,
+            "category": 1415860258856767491,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false
+                }
+            }
+        },
+        {
+            "id": 1415860333591007242,
+            "name": "\u3003\u30fbowner-chat",
+            "type": "text",
+            "position": 56,
+            "category": 1415860267010490391,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860178120609925": {
+                    "read_messages": true
+                }
+            }
+        },
+        {
+            "id": 1416554401962917948,
+            "name": "ticket-domipollito54",
+            "type": "text",
+            "position": 104,
+            "category": 1415865492119224410,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860204624416971": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860201554448506": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860199843168256": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860200686223530": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860203655794738": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860202653352006": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1393971309876088907": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1399607634377572372": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860176069722122": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860198622625843": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860190019850370": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860192599605330": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415833252983345195": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860174979076188": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1402645415546978414": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860180478070895": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860195162067018": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1390748037437198457": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860185922015292": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                }
+            }
+        },
+        {
+            "id": 1415860277391655012,
+            "name": "\u301e\ud83c\udf89\u30fbgiveaways",
+            "type": "text",
+            "position": 9,
+            "category": 1415860257305006152,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1415860274824613951,
+            "name": "\u3003\u30fbstaff-vc",
+            "type": "voice",
+            "position": 2,
+            "category": 1415860263495667806,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860180478070895": {
+                    "send_messages": true
+                },
+                "1415860212438667325": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1416402373634555964,
+            "name": "ticket-anas040258",
+            "type": "text",
+            "position": 7,
+            "category": 1415860252414578718,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860178120609925": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860176069722122": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1400475892417036440": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415842057905508382": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860174979076188": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860172403904623": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1158970670928113745": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1393971309876088907": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860173943078932": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1390748037437198457": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415833252983345195": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                }
+            }
+        },
+        {
+            "id": 1415860320572018799,
+            "name": "\u3003\u30fbhelp",
+            "type": "text",
+            "position": 47,
+            "category": 1415860263495667806,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860180478070895": {
+                    "send_messages": true
+                },
+                "1415860212438667325": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1416298247164792832,
+            "name": "ticket-maximo088737",
+            "type": "text",
+            "position": 3,
+            "category": 1415860252414578718,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860178120609925": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860176069722122": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415833252983345195": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "manage_webhooks": true,
+                    "use_application_commands": true
+                },
+                "1415860174979076188": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415842057905508382": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860172403904623": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1412499659670294639": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860173943078932": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                }
+            }
+        },
+        {
+            "id": 1416525853579280496,
+            "name": "ticket-cr7shadow",
+            "type": "text",
+            "position": 78,
+            "category": 1415865492119224410,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860204624416971": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860201554448506": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860199843168256": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860200686223530": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860203655794738": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860202653352006": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1393971309876088907": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1390737034330509394": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860176069722122": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860198622625843": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1181034497580486758": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860192599605330": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415833252983345195": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860174979076188": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860190019850370": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1402645415546978414": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860180478070895": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860195162067018": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860185922015292": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1390748037437198457": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                }
+            }
+        },
+        {
+            "id": 1416518102304424130,
+            "name": "ticket-24",
+            "type": "text",
+            "position": 64,
+            "category": 1415860262136844288,
+            "overwrites": {
+                "1376127147847979050": {
+                    "send_messages": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "read_messages": false
+                },
+                "710034409214181396": {
+                    "read_messages": true
+                },
+                "1414481004621598750": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "1415860204624416971": {
+                    "read_messages": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "send_messages": false
+                },
+                "968513904412098570": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "read_message_history": true
+                },
+                "1236120377126682778": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "attach_files": true,
+                    "read_message_history": true
+                },
+                "1298854747654066228": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "read_message_history": true
+                },
+                "570522665706717184": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "read_message_history": true
+                }
+            }
+        },
+        {
+            "id": 1415860289059946533,
+            "name": "\u301e\u2705\u30fbvouches",
+            "type": "text",
+            "position": 17,
+            "category": 1415860260614307872,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false
+                }
+            }
+        },
+        {
+            "id": 1415860252414578718,
+            "name": "\u30fbMARKET  \u3001",
+            "type": "category",
+            "position": 0,
+            "category": null,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "1325579039888511056": {
+                    "manage_channels": true,
+                    "read_messages": true,
+                    "manage_roles": true,
+                    "manage_webhooks": true,
+                    "manage_threads": true
+                }
+            }
+        },
+        {
+            "id": 1415860326955614289,
+            "name": "\u3003\u30fbcmds",
+            "type": "text",
+            "position": 53,
+            "category": 1415860264779120801,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860204624416971": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1415860258856767491,
+            "name": "\u30fbCOMMUNITY \u3001",
+            "type": "category",
+            "position": 2,
+            "category": null,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1416155304466452543,
+            "name": "\u3003\u30fbreglas-de-mm",
+            "type": "text",
+            "position": 50,
+            "category": 1415860264779120801,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860204624416971": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1416305366471413790,
+            "name": "ticket-juanpablito6126",
+            "type": "text",
+            "position": 4,
+            "category": 1415860252414578718,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860178120609925": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860176069722122": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "989362388987957299": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415842057905508382": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860174979076188": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860172403904623": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415833252983345195": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1393971309876088907": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860173943078932": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1390748037437198457": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "523662219020337153": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                }
+            }
+        },
+        {
+            "id": 1415860303794802798,
+            "name": "\u3003\u30fbrules",
+            "type": "text",
+            "position": 35,
+            "category": 1415860263495667806,
+            "overwrites": {
+                "1376127147847979050": {
+                    "add_reactions": false,
+                    "read_messages": false
+                },
+                "1415860180478070895": {
+                    "send_messages": true,
+                    "add_reactions": false
+                },
+                "1415860212438667325": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1415860305568727240,
+            "name": "\u3003\u30fbguide",
+            "type": "text",
+            "position": 39,
+            "category": 1415860263495667806,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860212438667325": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "1415860180478070895": {
+                    "send_messages": true
+                }
+            }
+        },
+        {
+            "id": 1415860265907523676,
+            "name": "\u2022 Ads \u3001",
+            "type": "category",
+            "position": 8,
+            "category": null,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860212438667325": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1415872940938891430,
+            "name": "\u301e\ud83e\udd1d\u30fbsolicitar-mm",
+            "type": "text",
+            "position": 15,
+            "category": 1415860260614307872,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "678344927997853742": {
+                    "read_messages": true,
+                    "send_messages": true
+                }
+            }
+        },
+        {
+            "id": 1415860295754321920,
+            "name": "\u301e\ud83d\uded2\u30fbstaff-market",
+            "type": "text",
+            "position": 28,
+            "category": 1415860262136844288,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "1415860180478070895": {
+                    "read_messages": true,
+                    "send_messages": true
+                }
+            }
+        },
+        {
+            "id": 1415860271389474837,
+            "name": "\u3003\ud83d\udcb8\u30fbsell-your-stuff",
+            "type": "text",
+            "position": 1,
+            "category": 1415860252414578718,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "1325579039888511056": {
+                    "manage_channels": true,
+                    "read_messages": true,
+                    "manage_roles": true,
+                    "manage_webhooks": true,
+                    "manage_threads": true
+                }
+            }
+        },
+        {
+            "id": 1415860315224281179,
+            "name": "\u3003\u30fbstaff-trading",
+            "type": "text",
+            "position": 44,
+            "category": 1415860263495667806,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860212438667325": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "read_message_history": true,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1415860294235721830,
+            "name": "\u301e\ud83d\udea8\u30fbblacklist",
+            "type": "text",
+            "position": 27,
+            "category": 1415860262136844288,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1415860255887200417,
+            "name": "\u301e\ud83c\udf89\u30fb 8.000 members",
+            "type": "voice",
+            "position": 1,
+            "category": null,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": true,
+                    "connect": false
+                }
+            }
+        },
+        {
+            "id": 1415865492119224410,
+            "name": "Tickets",
+            "type": "category",
+            "position": 4,
+            "category": null,
+            "overwrites": {}
+        },
+        {
+            "id": 1376127149412716586,
+            "name": "\u3003\u30fbstaff-chat",
+            "type": "text",
+            "position": 37,
+            "category": 1415860263495667806,
+            "overwrites": {
+                "1376127147847979050": {
+                    "send_messages": true,
+                    "add_reactions": false,
+                    "read_messages": false,
+                    "send_messages_in_threads": false
+                },
+                "1415860212438667325": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "create_public_threads": false,
+                    "create_private_threads": false
+                },
+                "235148962103951360": {
+                    "send_messages": true
+                },
+                "1415885574572871787": {
+                    "create_instant_invite": false,
+                    "manage_channels": false,
+                    "add_reactions": false,
+                    "read_messages": false,
+                    "send_messages": false,
+                    "send_tts_messages": false,
+                    "manage_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "read_message_history": false,
+                    "mention_everyone": false,
+                    "external_emojis": false,
+                    "manage_roles": false,
+                    "manage_webhooks": false,
+                    "use_application_commands": false,
+                    "manage_threads": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "external_stickers": false,
+                    "send_messages_in_threads": false,
+                    "use_embedded_activities": false,
+                    "send_voice_messages": false,
+                    "send_polls": false,
+                    "use_external_apps": false
+                }
+            }
+        },
+        {
+            "id": 1415860302280659004,
+            "name": "\u3003\u30fbupdates",
+            "type": "text",
+            "position": 38,
+            "category": 1415860263495667806,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860180478070895": {
+                    "send_messages": true
+                },
+                "1415860212438667325": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1415860328423751761,
+            "name": "\u3003\u30fbbuy-ads",
+            "type": "text",
+            "position": 54,
+            "category": 1415860265907523676,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860212438667325": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1416357942831349851,
+            "name": "ticket-luki2332",
+            "type": "text",
+            "position": 6,
+            "category": 1415860252414578718,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860178120609925": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860176069722122": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415842057905508382": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860174979076188": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1395712000675418153": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415833252983345195": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "manage_webhooks": true,
+                    "use_application_commands": true
+                },
+                "1415860172403904623": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860173943078932": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                }
+            }
+        },
+        {
+            "id": 1416556508602302515,
+            "name": "ticket-joskl_",
+            "type": "text",
+            "position": 108,
+            "category": 1415865492119224410,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860204624416971": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860201554448506": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860199843168256": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1335724089964494879": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860200686223530": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860203655794738": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860202653352006": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1393971309876088907": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860176069722122": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860198622625843": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860190019850370": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860192599605330": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415833252983345195": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860174979076188": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1402645415546978414": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860180478070895": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860195162067018": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860185922015292": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1248309703247663290": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1390748037437198457": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1352032381334196337": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                }
+            }
+        },
+        {
+            "id": 1415860257305006152,
+            "name": "\u30fbIMPORTANT \u3001",
+            "type": "category",
+            "position": 1,
+            "category": null,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1415896991891984434,
+            "name": "\u3003\u30fbreglas",
+            "type": "text",
+            "position": 34,
+            "category": 1415860263495667806,
+            "overwrites": {
+                "1376127147847979050": {
+                    "add_reactions": false,
+                    "read_messages": false
+                },
+                "1415860212438667325": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "1415860180478070895": {
+                    "send_messages": true,
+                    "add_reactions": false
+                }
+            }
+        },
+        {
+            "id": 1415860264779120801,
+            "name": "\u2022 Middleman Only \u3001",
+            "type": "category",
+            "position": 7,
+            "category": null,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860204624416971": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1415860286241509397,
+            "name": "\u301e\ud83d\udcdd\u30fbmm-tos",
+            "type": "text",
+            "position": 14,
+            "category": 1415860260614307872,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1415860267010490391,
+            "name": "\u2022 Owner Only \u3001",
+            "type": "category",
+            "position": 9,
+            "category": null,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860178120609925": {
+                    "read_messages": true
+                }
+            }
+        },
+        {
+            "id": 1416511172743794750,
+            "name": "ticket-theagtus",
+            "type": "text",
+            "position": 59,
+            "category": 1415860252414578718,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1147716132632006686": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415833252983345195": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "manage_webhooks": true,
+                    "use_application_commands": true
+                },
+                "1415842057905508382": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860172403904623": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860173943078932": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860174979076188": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860176069722122": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860178120609925": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                }
+            }
+        },
+        {
+            "id": 1415860278800683028,
+            "name": "\u301e\u231a\u30fbapplication",
+            "type": "text",
+            "position": 10,
+            "category": 1415860257305006152,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1415860325223235606,
+            "name": "\u3003\u30fbmm-guide",
+            "type": "text",
+            "position": 51,
+            "category": 1415860264779120801,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860204624416971": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1415860331640524912,
+            "name": "\u3003\u30fbupdates",
+            "type": "text",
+            "position": 55,
+            "category": 1415860267010490391,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860178120609925": {
+                    "read_messages": true
+                }
+            }
+        },
+        {
+            "id": 1415882623313510571,
+            "name": "\u3003\u30fbaction-logs",
+            "type": "text",
+            "position": 57,
+            "category": 1415860267010490391,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                }
+            }
+        },
+        {
+            "id": 1416512577214746705,
+            "name": "ticket-mauuxsl",
+            "type": "text",
+            "position": 60,
+            "category": 1415865492119224410,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860204624416971": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860201554448506": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1412959194805571584": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860200686223530": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860199843168256": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860203655794738": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860202653352006": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1393971309876088907": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1391093634392264816": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860176069722122": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860198622625843": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860190019850370": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860192599605330": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415833252983345195": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860174979076188": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1402645415546978414": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860180478070895": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860195162067018": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860185922015292": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1390748037437198457": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1280617774019903489": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                }
+            }
+        },
+        {
+            "id": 1415860311092756574,
+            "name": "\u3003\u30fbpurchase",
+            "type": "text",
+            "position": 42,
+            "category": 1415860263495667806,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860180478070895": {
+                    "send_messages": true
+                },
+                "1415860212438667325": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1416556137796341770,
+            "name": "ticket-31",
+            "type": "text",
+            "position": 107,
+            "category": 1415860262136844288,
+            "overwrites": {
+                "1376127147847979050": {
+                    "send_messages": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "read_messages": false
+                },
+                "710034409214181396": {
+                    "read_messages": true
+                },
+                "1415860204624416971": {
+                    "read_messages": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "send_messages": false
+                },
+                "1352032381334196337": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "1335724089964494879": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "attach_files": true,
+                    "read_message_history": true
+                },
+                "1248309703247663290": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "read_message_history": true
+                },
+                "1298854747654066228": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "read_message_history": true
+                }
+            }
+        },
+        {
+            "id": 1415860318969659413,
+            "name": "\u3003\u30fbservers",
+            "type": "text",
+            "position": 46,
+            "category": 1415860263495667806,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860180478070895": {
+                    "send_messages": true
+                },
+                "1415860212438667325": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1415948235670945857,
+            "name": "ticket-avanii0845",
+            "type": "text",
+            "position": 2,
+            "category": 1415860252414578718,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860204624416971": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1411254500446048308": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "790725795705651262": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415833252983345195": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1393971309876088907": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1390748037437198457": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                }
+            }
+        },
+        {
+            "id": 1416553404419018752,
+            "name": "ticket-29",
+            "type": "text",
+            "position": 103,
+            "category": 1415860262136844288,
+            "overwrites": {
+                "1376127147847979050": {
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true,
+                    "send_messages_in_threads": true,
+                    "read_messages": false
+                },
+                "1382064949366358128": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "read_message_history": true
+                },
+                "1078364634903486494": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "1415860204624416971": {
+                    "read_messages": true,
+                    "send_messages": false
+                },
+                "710034409214181396": {
+                    "read_messages": true
+                },
+                "902233736635093112": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "attach_files": true,
+                    "read_message_history": true
+                }
+            }
+        },
+        {
+            "id": 1415860314096009238,
+            "name": "\u3003\u30fbinsurance",
+            "type": "text",
+            "position": 43,
+            "category": 1415860263495667806,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false,
+                    "send_messages": false,
+                    "send_messages_in_threads": false
+                },
+                "1415860191534125268": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "1415860212438667325": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "1415860180478070895": {
+                    "send_messages": true
+                }
+            }
+        },
+        {
+            "id": 1415865487321206835,
+            "name": "\u3003\u30fbtranscripts",
+            "type": "text",
+            "position": 52,
+            "category": 1415860264779120801,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false,
+                    "send_messages": false,
+                    "embed_links": false,
+                    "attach_files": false,
+                    "read_message_history": false
+                },
+                "1415860204624416971": {
+                    "read_messages": true,
+                    "read_message_history": true
+                }
+            }
+        },
+        {
+            "id": 1412074246003228753,
+            "name": "\u301e\ud83d\udcd6\u30fbrules",
+            "type": "text",
+            "position": 0,
+            "category": null,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1415860276258934866,
+            "name": "\u301e\ud83d\udce2\u30fbupdates",
+            "type": "text",
+            "position": 8,
+            "category": 1415860257305006152,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1415906738422550619,
+            "name": "cueva-de-siquej",
+            "type": "text",
+            "position": 58,
+            "category": 1415860267010490391,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false,
+                    "send_messages": false
+                },
+                "745029916386525275": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "external_emojis": true,
+                    "use_application_commands": true,
+                    "external_stickers": true
+                },
+                "1252547741641343072": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "1307377502267641866": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "955094394661388328": {
+                    "create_instant_invite": true,
+                    "read_messages": true,
+                    "send_messages": true
+                }
+            }
+        },
+        {
+            "id": 1415860309427753081,
+            "name": "\u3003\u30fbrates",
+            "type": "text",
+            "position": 41,
+            "category": 1415860263495667806,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860212438667325": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "1415860180478070895": {
+                    "send_messages": true
+                }
+            }
+        },
+        {
+            "id": 1415860253874061322,
+            "name": "\u301e\ud83c\udf81\u30fb .gg/tradehub",
+            "type": "voice",
+            "position": 0,
+            "category": null,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": true,
+                    "connect": false
+                }
+            }
+        },
+        {
+            "id": 1415860317015113748,
+            "name": "\u3003\u30fbmedia",
+            "type": "text",
+            "position": 45,
+            "category": 1415860263495667806,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860212438667325": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "read_message_history": true,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1415860262136844288,
+            "name": "\u30fbEXTRA \u3001",
+            "type": "category",
+            "position": 5,
+            "category": null,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1415860263495667806,
+            "name": "\u2022 Staff Only \u3001",
+            "type": "category",
+            "position": 6,
+            "category": null,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860212438667325": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "1415860180478070895": {
+                    "send_messages": true
+                }
+            }
+        },
+        {
+            "id": 1416488696907169936,
+            "name": "ticket-22",
+            "type": "text",
+            "position": 32,
+            "category": 1415860262136844288,
+            "overwrites": {
+                "1376127147847979050": {
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true,
+                    "send_messages_in_threads": true,
+                    "read_messages": false
+                },
+                "1055585205995442316": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "1415860204624416971": {
+                    "read_messages": true,
+                    "send_messages": false
+                },
+                "1353110625504465058": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "attach_files": true,
+                    "read_message_history": true
+                },
+                "710034409214181396": {
+                    "read_messages": true
+                },
+                "1226335514148208680": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "read_message_history": true
+                }
+            }
+        },
+        {
+            "id": 1416327786171203594,
+            "name": "ticket-4hlsa",
+            "type": "text",
+            "position": 5,
+            "category": 1415860252414578718,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860178120609925": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860176069722122": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860172403904623": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860174979076188": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415833252983345195": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415842057905508382": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "727530395578400818": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860173943078932": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1390748037437198457": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1393971309876088907": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                }
+            }
+        },
+        {
+            "id": 1416556069559210146,
+            "name": "ticket-zsator_",
+            "type": "text",
+            "position": 106,
+            "category": 1415860252414578718,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1177305109856792599": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1390748037437198457": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1393971309876088907": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1158970670928113745": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415833252983345195": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415842057905508382": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860172403904623": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860173943078932": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860174979076188": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860176069722122": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860178120609925": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                }
+            }
+        },
+        {
+            "id": 1415860323801501786,
+            "name": "\u3003\u30fbmm-rules",
+            "type": "text",
+            "position": 49,
+            "category": 1415860264779120801,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860204624416971": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1416526415381270619,
+            "name": "ticket-25",
+            "type": "text",
+            "position": 79,
+            "category": 1415860262136844288,
+            "overwrites": {
+                "1376127147847979050": {
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true,
+                    "send_messages_in_threads": true,
+                    "read_messages": false
+                },
+                "1415860204624416971": {
+                    "read_messages": true,
+                    "send_messages": false
+                },
+                "710034409214181396": {
+                    "read_messages": true
+                },
+                "1409401346708209664": {
+                    "read_messages": true,
+                    "send_messages": true
+                }
+            }
+        },
+        {
+            "id": 1416434997623132363,
+            "name": "ticket-17",
+            "type": "text",
+            "position": 29,
+            "category": 1415860262136844288,
+            "overwrites": {
+                "1376127147847979050": {
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true,
+                    "send_messages_in_threads": true,
+                    "read_messages": false
+                },
+                "1415860204624416971": {
+                    "read_messages": true,
+                    "send_messages": false
+                },
+                "968513904412098570": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "710034409214181396": {
+                    "read_messages": true
+                },
+                "1399607634377572372": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "read_message_history": true
+                }
+            }
+        },
+        {
+            "id": 1415860292541349889,
+            "name": "\u301e\ud83c\udfab\u30fbsupport",
+            "type": "text",
+            "position": 26,
+            "category": 1415860262136844288,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1415860308274053130,
+            "name": "\u3003\u30fbdaily",
+            "type": "text",
+            "position": 40,
+            "category": 1415860263495667806,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860204624416971": {
+                    "send_messages": true
+                },
+                "1415860212438667325": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "628400349979344919": {
+                    "read_messages": true,
+                    "send_messages": true
+                }
+            }
+        },
+        {
+            "id": 1415860322022981759,
+            "name": "\u3003\u30fbwager",
+            "type": "text",
+            "position": 48,
+            "category": 1415860263495667806,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false,
+                    "send_messages": false,
+                    "send_messages_in_threads": false
+                },
+                "1415860212438667325": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "read_message_history": true,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "628400349979344919": {
+                    "read_messages": true,
+                    "send_messages": false
+                }
+            }
+        },
+        {
+            "id": 1415860260614307872,
+            "name": "\u30fbMIDDLEMAN \u3001",
+            "type": "category",
+            "position": 3,
+            "category": null,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        },
+        {
+            "id": 1415860300548276234,
+            "name": "\u3003\u30fbgiveaways",
+            "type": "text",
+            "position": 36,
+            "category": 1415860263495667806,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "1415860180478070895": {
+                    "send_messages": true
+                },
+                "1415860212438667325": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                },
+                "1415860185922015292": {
+                    "send_messages": true
+                },
+                "1415860182625292318": {
+                    "send_messages": true
+                }
+            }
+        },
+        {
+            "id": 1416559770038440006,
+            "name": "ticket-mcvb",
+            "type": "text",
+            "position": 112,
+            "category": 1415865492119224410,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": false
+                },
+                "520733137886511104": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860204624416971": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860201554448506": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860199843168256": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860200686223530": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860203655794738": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860202653352006": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1393971309876088907": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860176069722122": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860198622625843": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860190019850370": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860192599605330": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415833252983345195": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1415860174979076188": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1404500221546729491": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1402645415546978414": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860180478070895": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860195162067018": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1415860185922015292": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false
+                },
+                "1390748037437198457": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                },
+                "1407504795731759114": {
+                    "add_reactions": true,
+                    "read_messages": true,
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true
+                }
+            }
+        },
+        {
+            "id": 1416558740903034891,
+            "name": "ticket-32",
+            "type": "text",
+            "position": 111,
+            "category": 1415860262136844288,
+            "overwrites": {
+                "1376127147847979050": {
+                    "send_messages": true,
+                    "embed_links": true,
+                    "attach_files": true,
+                    "read_message_history": true,
+                    "use_application_commands": true,
+                    "send_messages_in_threads": true,
+                    "read_messages": false
+                },
+                "710034409214181396": {
+                    "read_messages": true
+                },
+                "1407504795731759114": {
+                    "read_messages": true,
+                    "send_messages": true
+                },
+                "1415860204624416971": {
+                    "read_messages": true,
+                    "send_messages": false
+                },
+                "1404500221546729491": {
+                    "read_messages": true,
+                    "send_messages": true,
+                    "read_message_history": true
+                }
+            }
+        },
+        {
+            "id": 1415860281481101364,
+            "name": "\u301e\ud83d\udcac\u30fbgeneral",
+            "type": "text",
+            "position": 12,
+            "category": 1415860258856767491,
+            "overwrites": {
+                "1376127147847979050": {
+                    "read_messages": true,
+                    "read_message_history": true,
+                    "add_reactions": false,
+                    "send_messages": false,
+                    "create_public_threads": false,
+                    "create_private_threads": false,
+                    "send_messages_in_threads": false
+                }
+            }
+        }
+    ]
+}
