@@ -7,28 +7,33 @@ import pyfiglet
 import os
 
 # ==========================
-# 🌐 KEEP ALIVE SERVER
-# ==========================
-from flask import Flask
-from threading import Thread
-
-app = Flask('')
-
-@app.route('/')
-def home():
-    return "✅ Bot online y funcionando!"
-
-def run():
-    app.run(host="0.0.0.0", port=8080)
-
-def keep_alive():
-    t = Thread(target=run)
-    t.start()
-
-# ==========================
 # 🔑 TOKEN
 # ==========================
 TOKEN = os.getenv("DISCORD_TOKEN")
+
+# ==========================
+# 🌐 KEEP ALIVE (solo si REPLIT=1 en env)
+# ==========================
+if os.getenv("REPLIT", "0") == "1":
+    from flask import Flask
+    from threading import Thread
+
+    app = Flask('')
+
+    @app.route('/')
+    def home():
+        return "✅ Bot online y funcionando!"
+
+    def run():
+        port = int(os.environ.get("PORT", 8080))
+        app.run(host="0.0.0.0", port=port)
+
+    def keep_alive():
+        t = Thread(target=run)
+        t.start()
+else:
+    def keep_alive():
+        pass  # en Render no hace nada
 
 # ==========================
 # 🎨 CONFIG LOGGING
@@ -56,7 +61,6 @@ file_handler.setFormatter(file_formatter)
 console_handler = logging.StreamHandler()
 console_handler.setFormatter(formatter)
 
-# Evitar handlers duplicados
 if not logger.hasHandlers():
     logger.addHandler(file_handler)
     logger.addHandler(console_handler)
@@ -73,7 +77,7 @@ intents = discord.Intents.all()
 class MyBot(commands.Bot):
     def __init__(self, **kwargs):
         super().__init__(**kwargs)
-        self.ready_once = False  # 👈 flag para evitar duplicados
+        self.ready_once = False
 
     async def setup_hook(self):
         from cogs.hits import HitsButtonsES, HitsButtonsEN
@@ -100,13 +104,12 @@ class MyBot(commands.Bot):
         ]
 
         for cog in cogs:
-            if cog not in self.extensions:  
+            if cog not in self.extensions:
                 try:
                     await self.load_extension(cog)
                     logger.info(f"✅ Cog cargado: {cog}")
                 except Exception as e:
                     logger.error(f"❌ Error cargando {cog}: {e}")
-
 
 bot = MyBot(command_prefix="$", intents=intents)
 
@@ -126,24 +129,4 @@ async def on_ready():
     banner = pyfiglet.figlet_format("MY BOT")
     print(f"\n{banner}")
     logger.info(f"✅ Bot conectado como {bot.user} (ID: {bot.user.id})")
-    logger.info(f"🌍 Conectado a {len(bot.guilds)} servidores")
-    logger.info("⚡ Listo para recibir comandos!")
-
-@bot.event
-async def on_guild_join(guild):
-    logger.info(f"🟢 El bot se unió al servidor: {guild.name} (ID: {guild.id})")
-
-@bot.event
-async def on_guild_remove(guild):
-    logger.warning(f"🔴 El bot fue expulsado de: {guild.name} (ID: {guild.id})")
-
-# ==========================
-# 🚀 MAIN
-# ==========================
-async def main():
-    async with bot:
-        await bot.start(TOKEN)
-
-if __name__ == "__main__":
-    keep_alive()  # 👈 Arranca el servidor Flask para el ping
-    asyncio.run(main())
+    logger.inf
