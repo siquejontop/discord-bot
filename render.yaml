@@ -2,9 +2,9 @@ services:
   - type: web
     name: discord-bot
     env: python
-    pythonVersion: "3.11.9"  # Especifica la versión exacta
-    region: oregon
     plan: free
-    buildCommand: pip install -r requirements.txt
-    startCommand: python main.py
-    autoDeploy: false
+    buildCommand: "pip install -r requirements.txt"
+    startCommand: "gunicorn --worker-class eventlet -w 1 main:app"
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
