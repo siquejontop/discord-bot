@@ -1,118 +1,103 @@
 import discord
 from discord.ext import commands
-from datetime import datetime
+import datetime
 
 class AFK(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        # user_id: {"reason": str, "since": datetime, "mentions": [(author, link, content)]}
-        self.afk_users = {}
+        self.afk_users = {}  # {user_id: {"reason": str, "time": datetime, "mentions": [], "old_nick": str}}
 
-    # ==========================
-    # 📌 Comando AFK
-    # ==========================
+    # ================================
+    # 🔹 Comando AFK
+    # ================================
     @commands.command()
     async def afk(self, ctx, *, reason: str = "AFK"):
-        """Ponerte en AFK con una razón opcional"""
-        user_id = ctx.author.id
+        user = ctx.author
 
-        # Guardar datos
-        self.afk_users[user_id] = {
-            "reason": reason,
-            "since": datetime.utcnow(),
-            "mentions": []
-        }
+        # Guardar su apodo original (si tiene)
+        old_nick = user.nick if user.nick else user.name
 
-        # Cambiar nick (añadir [AFK])
+        # Cambiar el nick a [AFK] Nombre (si se puede)
         try:
-            if not ctx.author.display_name.startswith("[AFK]"):
-                await ctx.author.edit(nick=f"[AFK] {ctx.author.display_name}")
+            await user.edit(nick=f"[AFK] {old_nick}")
         except discord.Forbidden:
-            pass  # si no tiene permisos para cambiar el nick
+            pass  # Si el bot no tiene permisos, lo ignoramos
+
+        self.afk_users[user.id] = {
+            "reason": reason,
+            "time": datetime.datetime.utcnow(),
+            "mentions": [],
+            "old_nick": old_nick
+        }
 
         embed = discord.Embed(
             title="🌙 Ahora estás AFK",
-            description=f"**Razón:** {reason}\n\n✏️ Escribe cualquier mensaje para quitar el AFK.",
-            color=discord.Color.orange(),
-            timestamp=datetime.utcnow()
+            color=discord.Color.orange()
         )
+        embed.add_field(name="Razón", value=reason, inline=False)
+        embed.add_field(name="✏️", value="Escribe cualquier mensaje para quitar el AFK.", inline=False)
+        embed.set_footer(text=datetime.datetime.now().strftime("Today at %H:%M"))
+        embed.set_author(name=user.display_name, icon_url=user.display_avatar.url)
+
         await ctx.send(embed=embed)
 
-    # ==========================
-    # 📌 Listener mensajes
-    # ==========================
+    # ================================
+    # 🔹 Detectar mensajes AFK
+    # ================================
     @commands.Cog.listener()
     async def on_message(self, message: discord.Message):
         if message.author.bot:
             return
 
-        # --- Evitar que comandos del bot quiten el AFK automáticamente ---
-        prefixes = ["$", "!", "."]  # agrega aquí los prefijos que uses
-        if any(message.content.startswith(p) for p in prefixes):
-            return
-
         user_id = message.author.id
 
-        # Si el usuario estaba AFK y escribe algo => quitar AFK
+        # 📌 Si el autor estaba AFK y habló, quitar AFK
         if user_id in self.afk_users:
-            data = self.afk_users.pop(user_id)
-            since = data["since"]
-            mentions = data["mentions"]
+            afk_data = self.afk_users.pop(user_id)
+            afk_time = datetime.datetime.utcnow() - afk_data["time"]
+            minutes, seconds = divmod(int(afk_time.total_seconds()), 60)
 
-            # Restaurar nick (quitar [AFK])
+            # Restaurar nick original
             try:
-                if message.author.display_name.startswith("[AFK]"):
-                    await message.author.edit(nick=message.author.display_name[5:])
+                await message.author.edit(nick=afk_data["old_nick"])
             except discord.Forbidden:
                 pass
 
-            # Tiempo AFK
-            delta = datetime.utcnow() - since
-            minutes, seconds = divmod(int(delta.total_seconds()), 60)
-            hours, minutes = divmod(minutes, 60)
-            time_text = f"{hours}h {minutes}m {seconds}s"
+            desc = f"👋 Bienvenido de vuelta, {message.author.mention}!\n"
+            desc += f"Estuviste AFK por **{minutes} minutos {seconds} segundos.**"
 
-            # Embed de regreso
+            if afk_data["mentions"]:
+                desc += f"\n\n📩 Recibiste **{len(afk_data['mentions'])} menciones** mientras estabas AFK:"
+                for mention in afk_data["mentions"][:5]:  # máximo 5
+                    desc += f"\n- {mention}"
+
             embed = discord.Embed(
-                title="✅ Ya no estás AFK",
-                description=f"Estuviste AFK durante **{time_text}**",
-                color=discord.Color.green(),
-                timestamp=datetime.utcnow()
+                description=desc,
+                color=discord.Color.green()
             )
-
-            if mentions:
-                mentions_text = "\n".join(
-                    [f"[{author}]({link}) → {content[:40]}..."
-                     for author, link, content in mentions]
-                )
-            else:
-                mentions_text = "Nadie te mencionó 👌"
-
-            embed.add_field(name="🔔 Menciones recibidas", value=mentions_text, inline=False)
             await message.channel.send(embed=embed)
 
-        # Detectar si alguien menciona a un AFK
-        for mention in message.mentions:
-            if mention.id in self.afk_users:
-                afk_data = self.afk_users[mention.id]
-                reason = afk_data["reason"]
+        # 📌 Si menciona a alguien AFK, avisar
+        if message.mentions:
+            for mention in message.mentions:
+                if mention.id in self.afk_users:
+                    afk_data = self.afk_users[mention.id]
+                    reason = afk_data["reason"]
 
-                # Guardar mención
-                jump_link = message.jump_url
-                afk_data["mentions"].append((str(message.author), jump_link, message.content))
+                    # Guardar el link del mensaje en el historial
+                    jump_url = f"[Ver mensaje]({message.jump_url})"
+                    self.afk_users[mention.id]["mentions"].append(
+                        f"{message.author.mention} → {jump_url}"
+                    )
 
-                # Avisar
-                embed = discord.Embed(
-                    title=f"💤 {mention.display_name} está AFK",
-                    description=f"**Razón:** {reason}",
-                    color=discord.Color.blue(),
-                    timestamp=datetime.utcnow()
-                )
-                await message.channel.send(embed=embed)
+                    embed = discord.Embed(
+                        description=f"💤 {mention.display_name} está AFK.\n**Razón:** {reason}",
+                        color=discord.Color.red()
+                    )
+                    await message.channel.send(embed=embed)
+
+        await self.bot.process_commands(message)
 
 
-# ==========================
-# 🔌 Setup
-# ==========================
 async def setup(bot):
     await bot.add_cog(AFK(bot))
