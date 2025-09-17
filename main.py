@@ -100,7 +100,7 @@ class MyBot(commands.Bot):
             "cogs.admin",
             "cogs.backup",
             "cogs.roles",
-            "cogs.calculator",
+            "cogs.brainrotcalc",
         ]
 
         for cog in cogs:
