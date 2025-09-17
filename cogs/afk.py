@@ -5,7 +5,8 @@ import datetime
 class AFK(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.afk_users = {}  # {user_id: {"reason": str, "time": datetime, "mentions": [], "old_nick": str}}
+        # Estructura: {user_id: {"reason": str, "time": datetime, "mentions": [], "old_nick": str}}
+        self.afk_users = {}
 
     # ================================
     # 🔹 Comando AFK
@@ -23,6 +24,7 @@ class AFK(commands.Cog):
         except discord.Forbidden:
             pass
 
+        # Guardar info
         self.afk_users[user.id] = {
             "reason": reason,
             "time": datetime.datetime.utcnow(),
@@ -30,20 +32,20 @@ class AFK(commands.Cog):
             "old_nick": old_nick
         }
 
+        # Embed de confirmación
         embed = discord.Embed(
-            title="🌙 Modo AFK activado",
-            description=f"{user.mention} ahora está AFK.",
+            title="🌙 Ahora estás AFK",
             color=discord.Color.orange(),
             timestamp=datetime.datetime.utcnow()
         )
-        embed.add_field(name="Razón", value=reason, inline=False)
-        embed.set_footer(text="Escribe cualquier mensaje para quitar el AFK.")
+        embed.add_field(name="📌 Razón", value=reason, inline=False)
+        embed.add_field(name="✏️ Nota", value="Escribe cualquier mensaje para quitar el AFK.", inline=False)
         embed.set_author(name=user.display_name, icon_url=user.display_avatar.url)
 
         await ctx.send(embed=embed)
 
     # ================================
-    # 🔹 Detectar mensajes AFK
+    # 🔹 Listener AFK
     # ================================
     @commands.Cog.listener()
     async def on_message(self, message: discord.Message):
@@ -83,7 +85,7 @@ class AFK(commands.Cog):
 
             await message.channel.send(embed=embed)
 
-        # 📌 Si menciona a alguien AFK, avisar
+        # 📌 Si menciona a alguien AFK → avisar
         for mention in message.mentions:
             if mention.id in self.afk_users:
                 afk_data = self.afk_users[mention.id]
@@ -103,13 +105,9 @@ class AFK(commands.Cog):
 
                 await message.channel.send(embed=embed)
 
-        # 📌 Evita duplicar mensajes: solo procesar comandos si el mensaje empieza con un prefijo válido
-        prefixes = await self.bot.get_prefix(message)
-        if isinstance(prefixes, str):
-            prefixes = [prefixes]
-        if any(message.content.startswith(p) for p in prefixes):
-            await self.bot.process_commands(message)
 
-
+# ================================
+# 🔌 Setup
+# ================================
 async def setup(bot):
     await bot.add_cog(AFK(bot))
