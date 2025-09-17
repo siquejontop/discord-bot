@@ -5,27 +5,33 @@ class BrainrotCalculator(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    # ========================
-    # Fórmulas Brainrot
-    # ========================
-
-    @commands.command(name="loscombinaciones")
-    async def loscombinaciones(self, ctx, m: float):
-        # Fórmula: (M - 15) × 0.08 + 2
+    @commands.command(name="brainrot")
+    async def brainrot(self, ctx, m: float):
+        """
+        Calculadora Brainrot: aplica la fórmula (M - 15) × 0.08 + 2
+        """
+        # Fórmula
         result = (m - 15) * 0.08 + 2
-        await ctx.send(f"🧠 Resultado de **loscombinaciones** con M={m}: **{result:.2f}**")
 
-    @commands.command(name="losotros")
-    async def losotros(self, ctx, m: float):
-        # Ejemplo de otra fórmula (puedes cambiarla por la que te pidan)
-        result = (m * 2) + 10
-        await ctx.send(f"🧠 Resultado de **losotros** con M={m}: **{result:.2f}**")
+        # Embed bonito
+        embed = discord.Embed(
+            title="🧮 Calculadora Brainrot",
+            description="Conversión automática usando la fórmula",
+            color=discord.Color.blurple()
+        )
+        embed.add_field(
+            name="📌 Operación",
+            value=f"( {m} - 15 ) × 0.08 + 2",
+            inline=False
+        )
+        embed.add_field(
+            name="💰 Resultado",
+            value=f"**{result:.2f}$**",  # con 2 decimales y $
+            inline=False
+        )
+        embed.set_footer(text=f"Pedido por {ctx.author}", icon_url=ctx.author.display_avatar.url)
 
-    @commands.command(name="brainformula")
-    async def brainformula(self, ctx, m: float):
-        # Otro ejemplo de fórmula
-        result = (m ** 2) / 5
-        await ctx.send(f"🧠 Resultado de **brainformula** con M={m}: **{result:.2f}**")
+        await ctx.send(embed=embed)
 
 async def setup(bot):
     await bot.add_cog(BrainrotCalculator(bot))
