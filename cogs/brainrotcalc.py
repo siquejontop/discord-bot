@@ -45,9 +45,14 @@ class Precios(commands.Cog):
 
     @commands.command(name="precio", aliases=["price", "cost", "valor"])
     async def precio(self, ctx, nombre: str = None, m: float = None):
+        cmd = ctx.invoked_with  # Alias real que usó el usuario
+
         # Falta nombre
         if not nombre:
-            return await ctx.send(embed=self.error_embed(ctx, "Debes especificar el nombre. Ejemplo: `?precio lagrandecombinasion 100`"))
+            return await ctx.send(embed=self.error_embed(
+                ctx,
+                f"Debes especificar el nombre. Ejemplo: `?{cmd} lagrandecombinasion 100`"
+            ))
         
         # Normalizar nombre
         nombre = nombre.lower()
@@ -55,11 +60,17 @@ class Precios(commands.Cog):
         # Validar nombre
         if nombre not in self.formulas:
             lista = ", ".join(self.formulas.keys())
-            return await ctx.send(embed=self.error_embed(ctx, f"❌ No encontré la fórmula **{nombre}**.\n\nOpciones válidas: {lista}"))
+            return await ctx.send(embed=self.error_embed(
+                ctx,
+                f"❌ No encontré la fórmula **{nombre}**.\n\nOpciones válidas: {lista}"
+            ))
 
         # Falta número
         if m is None:
-            return await ctx.send(embed=self.error_embed(ctx, f"Debes especificar la cantidad de millones. Ejemplo: `?precio {nombre} 100`"))
+            return await ctx.send(embed=self.error_embed(
+                ctx,
+                f"Debes especificar la cantidad de millones. Ejemplo: `${cmd} {nombre} 100`"
+            ))
 
         # Calcular
         base, mult, suma, formula = self.formulas[nombre]
