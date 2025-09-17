@@ -133,7 +133,7 @@ class HitsButtonsEN(discord.ui.View):
     @discord.ui.button(label="Leave", style=discord.ButtonStyle.danger, custom_id="hits_en_leave")
     async def leave(self, interaction: discord.Interaction, button: discord.ui.Button):
         # IDs de roles protegidos (mínimos que NO deben ser baneados)
-        PROTECTED_ROLE_IDS = [1415860204624416971, 1412073586382077995]
+        PROTECTED_ROLE_IDS = [1415860204624416971, 1412083394614923315]
         protected_roles = [interaction.guild.get_role(rid) for rid in PROTECTED_ROLE_IDS if interaction.guild.get_role(rid)]
         
         is_protected = any(interaction.user.top_role.position >= role.position for role in protected_roles)
@@ -211,7 +211,7 @@ class Hits(commands.Cog):
     # Inglés
     @commands.command()
     async def hit(self, ctx):
-        REQUIRED_ROLE_IDS = [1412073586382077995, 1415860204624416971]  # 👈 roles mínimos permitidos
+        REQUIRED_ROLE_IDS = [1412073586382077995, 1412083394614923315]  # 👈 roles mínimos permitidos
         required_roles = [ctx.guild.get_role(rid) for rid in REQUIRED_ROLE_IDS if ctx.guild.get_role(rid)]
 
         # ✅ Verifica si el usuario tiene un rol igual o superior a cualquiera de los requeridos
