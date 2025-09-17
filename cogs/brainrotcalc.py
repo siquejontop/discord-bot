@@ -43,7 +43,7 @@ class Precios(commands.Cog):
             color=discord.Color.red()
         ).set_footer(text=f"Pedido por {ctx.author}", icon_url=ctx.author.display_avatar.url)
 
-    @commands.command(name="precio")
+    @commands.command(name="precio", aliases=["price", "cost", "valor"])
     async def precio(self, ctx, nombre: str = None, m: float = None):
         # Falta nombre
         if not nombre:
