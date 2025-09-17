@@ -33,5 +33,33 @@ class BrainrotCalculator(commands.Cog):
 
         await ctx.send(embed=embed)
 
+    @commands.command(name="lagrande")
+    async def brainrot(self, ctx, m: float):
+        """
+        Calculadora Brainrot: aplica la fórmula (M - 10 ) x 0.10 + 3
+        """
+        # Fórmula
+        result = (m - 10) * 0.10 + 3
+
+        # Embed bonito
+        embed = discord.Embed(
+            title="Calculadora Brainrot",
+            description="Conversión automática usando la fórmula",
+            color=discord.Color.blurple()
+        )
+        embed.add_field(
+            name="📌 Operación",
+            value=f"( {m} - 10 ) × 0.10 + 3",
+            inline=False
+        )
+        embed.add_field(
+            name="💰 Resultado",
+            value=f"**{result:.2f}$**",
+            inline=False
+        )
+        embed.set_footer(text=f"Pedido por {ctx.author}", icon_url=ctx.author.display_avatar.url)
+
+        await ctx.send(embed=embed)
+
 async def setup(bot):
     await bot.add_cog(BrainrotCalculator(bot))
