@@ -5,7 +5,7 @@ class BrainrotCalculator(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(name="brainrot")
+    @commands.command(name="lascombinasionas")
     async def brainrot(self, ctx, m: float):
         """
         Calculadora Brainrot: aplica la fórmula (M - 15) × 0.08 + 2
@@ -15,7 +15,7 @@ class BrainrotCalculator(commands.Cog):
 
         # Embed bonito
         embed = discord.Embed(
-            title="🧮 Calculadora Brainrot",
+            title="Calculadora Brainrot",
             description="Conversión automática usando la fórmula",
             color=discord.Color.blurple()
         )
