@@ -5,29 +5,29 @@ class Precios(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-        # Diccionario de fórmulas: nombre → (mínimo, constante, multiplicador, base)
+        # Diccionario de fórmulas: clave → (mínimo, multiplicador, base, fórmula, nombre bonito)
         self.formulas = {
-            "loscombinasionas": (15, 0.08, 2, "(M − 15) × 0.08 + 2"),
-            "lagrandecombinasion": (10, 0.10, 3, "(M − 10) × 0.10 + 3"),
-            "losbros": (24, 0.06, 4, "(M − 24) × 0.06 + 4"),
-            "loshotspositos": (20, 0.08, 6, "(M − 20) × 0.08 + 6"),
-            "nuclearodinossauro": (15, 0.13, 7, "(M − 15) × 0.13 + 7"),
-            "esoksekolah": (30, 0.07, 8, "(M − 30) × 0.07 + 8"),
-            "tralaledon": (27.5, 0.05, 14, "(M − 27.5) × 0.05 + 14"),
-            "ketchuruandmusturu": (42.5, 0.12, 14, "(M − 42.5) × 0.12 + 14"),
-            "ketupatkepat": (35, 0.10, 16, "(M − 35) × 0.10 + 16"),
-            "lasupremecombinasion": (40, 0.12, 20, "(M − 40) × 0.12 + 20"),
-            "laextinctgrande": (23.5, 0.07, 6, "(M − 23.5) × 0.07 + 6"),
-            "celularciniviciosini": (22.5, 0.07, 7, "(M − 22.5) × 0.07 + 7"),
-            "spaghettitualetti": (60, 0.10, 16, "(M − 60) × 0.10 + 16"),
-            "garamaandmadundung": (50, 0.13, 26, "(M − 50) × 0.13 + 26"),
-            "dragoncannelloni": (100, 0.30, 100, "(M − 100) × 0.30 + 100"),
+            "loscombinasionas": (15, 0.08, 2, "(M − 15) × 0.08 + 2", "Los combinasionas"),
+            "lagrandecombinasion": (10, 0.10, 3, "(M − 10) × 0.10 + 3", "La grande combinasion"),
+            "losbros": (24, 0.06, 4, "(M − 24) × 0.06 + 4", "Los bros"),
+            "loshotspositos": (20, 0.08, 6, "(M − 20) × 0.08 + 6", "Los hotspositos"),
+            "nuclearodinossauro": (15, 0.13, 7, "(M − 15) × 0.13 + 7", "Nuclearo dinossauro"),
+            "esoksekolah": (30, 0.07, 8, "(M − 30) × 0.07 + 8", "Esok sekolah"),
+            "tralaledon": (27.5, 0.05, 14, "(M − 27.5) × 0.05 + 14", "Tralaledon"),
+            "ketchuruandmusturu": (42.5, 0.12, 14, "(M − 42.5) × 0.12 + 14", "Ketchuru and musturu"),
+            "ketupatkepat": (35, 0.10, 16, "(M − 35) × 0.10 + 16", "Ketupat kepat"),
+            "lasupremecombinasion": (40, 0.12, 20, "(M − 40) × 0.12 + 20", "La supreme combinasion"),
+            "laextinctgrande": (23.5, 0.07, 6, "(M − 23.5) × 0.07 + 6", "La extinct grande"),
+            "celularciniviciosini": (22.5, 0.07, 7, "(M − 22.5) × 0.07 + 7", "Celularcini viciosini"),
+            "spaghettitualetti": (60, 0.10, 16, "(M − 60) × 0.10 + 16", "Spaghetti tualetti"),
+            "garamaandmadundung": (50, 0.13, 26, "(M − 50) × 0.13 + 26", "Garama and madundung"),
+            "dragoncannelloni": (100, 0.30, 100, "(M − 100) × 0.30 + 100", "Dragon cannelloni"),
         }
 
-    def make_embed(self, ctx, nombre: str, formula: str, operacion: str, resultado: float):
+    def make_embed(self, ctx, nombre: str, formula: str, operacion: str, resultado: float, pretty: str):
         embed = discord.Embed(
-            title=f"🧮 Calculadora de Precios - {nombre}",
-            description=f"Conversión automática usando la fórmula de **{nombre}**",
+            title=f"🧮 Calculadora de Precios - {pretty}",
+            description=f"Conversión automática usando la fórmula de **{pretty}**",
             color=discord.Color.blurple()
         )
         embed.add_field(name="📌 Fórmula", value=formula, inline=False)
@@ -45,40 +45,26 @@ class Precios(commands.Cog):
 
     @commands.command(name="precio", aliases=["price", "cost", "valor"])
     async def precio(self, ctx, nombre: str = None, m: float = None):
-        cmd = ctx.invoked_with  # Alias real que usó el usuario
-
-        # Falta nombre
         if not nombre:
             return await ctx.send(embed=self.error_embed(
-                ctx,
-                f"Debes especificar el nombre. Ejemplo: `?{cmd} lagrandecombinasion 100`"
+                ctx, f"Debes especificar el nombre. Ejemplo: `{ctx.prefix}{ctx.command} lagrandecombinasion 100`"
             ))
-        
-        # Normalizar nombre
-        nombre = nombre.lower()
 
-        # Validar nombre
+        nombre = nombre.lower()
         if nombre not in self.formulas:
             lista = ", ".join(self.formulas.keys())
-            return await ctx.send(embed=self.error_embed(
-                ctx,
-                f"❌ No encontré la fórmula **{nombre}**.\n\nOpciones válidas: {lista}"
-            ))
+            return await ctx.send(embed=self.error_embed(ctx, f"❌ No encontré la fórmula **{nombre}**.\n\nOpciones válidas: {lista}"))
 
-        # Falta número
         if m is None:
             return await ctx.send(embed=self.error_embed(
-                ctx,
-                f"Debes especificar la cantidad de millones. Ejemplo: `${cmd} {nombre} 100`"
+                ctx, f"Debes especificar la cantidad de millones. Ejemplo: `{ctx.prefix}{ctx.command} {nombre} 100`"
             ))
 
-        # Calcular
-        base, mult, suma, formula = self.formulas[nombre]
+        base, mult, suma, formula, pretty = self.formulas[nombre]
         result = (m - base) * mult + suma
         operacion = f"( {m} - {base} ) × {mult} + {suma}"
 
-        # Enviar embed con resultado
-        await ctx.send(embed=self.make_embed(ctx, nombre, formula, operacion, result))
+        await ctx.send(embed=self.make_embed(ctx, nombre, formula, operacion, result, pretty))
 
 
 async def setup(bot):
