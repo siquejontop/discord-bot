@@ -26,7 +26,7 @@ class BrainrotCalculator(commands.Cog):
         )
         embed.add_field(
             name="💰 Resultado",
-            value=f"**{result:.2f}$**",  # con 2 decimales y $
+            value=f"**{result:.2f}$**",
             inline=False
         )
         embed.set_footer(text=f"Pedido por {ctx.author}", icon_url=ctx.author.display_avatar.url)
