@@ -32,7 +32,7 @@ class Precios(commands.Cog):
         )
         embed.add_field(name="📌 Fórmula", value=formula, inline=False)
         embed.add_field(name="📊 Operación", value=operacion, inline=False)
-        embed.add_field(name="💰 Resultado", value=f"**{resultado:.2f}$**", inline=False)
+        embed.add_field(name="💰 Resultado", value=f"**${resultado:.2f}**", inline=False)
         embed.set_footer(text=f"Pedido por {ctx.author}", icon_url=ctx.author.display_avatar.url)
         return embed
 
