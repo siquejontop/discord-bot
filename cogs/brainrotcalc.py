@@ -22,6 +22,7 @@ class Precios(commands.Cog):
             "spaghettitualetti": (60, 0.10, 16, "(M − 60) × 0.10 + 16", "Spaghetti tualetti"),
             "garamaandmadundung": (50, 0.13, 26, "(M − 50) × 0.13 + 26", "Garama and madundung"),
             "dragoncannelloni": (100, 0.30, 100, "(M − 100) × 0.30 + 100", "Dragon cannelloni"),
+            "tacoritabicicleta": (16.5, 0.06, 4, "(M - 16.5) × 0.06 + 4", "Tacorita Bicicleta"),
         }
 
     def make_embed(self, ctx, nombre: str, formula: str, operacion: str, resultado: float, pretty: str):
