@@ -1,13 +1,14 @@
 import discord
 from discord.ext import commands
 from datetime import timedelta
+import json
+import os
 
 # =====================================================
 # CONFIGURACIÓN
 # =====================================================
 OWNER_IDS = [335596693603090434, 523662219020337153]  # IDs de dueños del bot
 LOG_CHANNEL_ID = 1418097943730327642  # Canal donde se mandan los logs
-WHITELIST = set()  # Aquí se irán guardando los IDs de usuarios whitelisted
 
 # Roles importantes (poner IDs directos)
 PROTECTED_ROLE_ID = 1415860205656215602  # Rol "auth mm"
@@ -17,6 +18,22 @@ OWNER_ROLE_ID = 1415860178120609925  # Rol "owner"
 MAX_BANS = 3
 MAX_CHANNELS = 3
 MAX_ROLES = 3
+
+# Archivo de whitelist
+WHITELIST_FILE = "whitelist.json"
+
+def load_whitelist():
+    if os.path.exists(WHITELIST_FILE):
+        with open(WHITELIST_FILE, "r", encoding="utf-8") as f:
+            return set(json.load(f))
+    return set()
+
+def save_whitelist():
+    with open(WHITELIST_FILE, "w", encoding="utf-8") as f:
+        json.dump(list(WHITELIST), f, indent=4)
+
+# Cargar whitelist al iniciar
+WHITELIST = load_whitelist()
 
 
 class AntiNuke(commands.Cog):
@@ -53,7 +70,10 @@ class AntiNuke(commands.Cog):
             return await ctx.send("❌ No tienes permisos para usar este comando.")
 
         WHITELIST.add(member.id)
+        save_whitelist()
         await ctx.send(f"✅ {member.mention} ha sido añadido a la whitelist.")
+
+        await self.log_action(ctx.guild, f"✅ {ctx.author.mention} añadió a {member.mention} a la whitelist.")
 
     @commands.command()
     async def unwhitelist(self, ctx, member: discord.Member):
@@ -62,9 +82,29 @@ class AntiNuke(commands.Cog):
 
         if member.id in WHITELIST:
             WHITELIST.remove(member.id)
+            save_whitelist()
             await ctx.send(f"✅ {member.mention} ha sido removido de la whitelist.")
+            await self.log_action(ctx.guild, f"❌ {ctx.author.mention} quitó a {member.mention} de la whitelist.")
         else:
             await ctx.send("⚠️ Ese usuario no estaba en la whitelist.")
+
+    @commands.command()
+    async def whitelisted(self, ctx):
+        if not WHITELIST:
+            return await ctx.send("⚠️ No hay usuarios en la whitelist.")
+
+        embed = discord.Embed(
+            title="📝 Usuarios en Whitelist",
+            color=discord.Color.blue()
+        )
+        for user_id in WHITELIST:
+            user = ctx.guild.get_member(user_id)
+            if user:
+                embed.add_field(name=user.name, value=f"{user.mention} (`{user.id}`)", inline=False)
+            else:
+                embed.add_field(name="Usuario desconocido", value=f"`{user_id}`", inline=False)
+
+        await ctx.send(embed=embed)
 
     # =====================================================
     # 🚨 Anti Massban
@@ -155,12 +195,10 @@ class AntiNuke(commands.Cog):
         if not auth_mm or not owner_role:
             return
 
-        # Si le dieron el rol auth mm
         if auth_mm in after.roles and auth_mm not in before.roles:
             async for entry in guild.audit_logs(limit=1, action=discord.AuditLogAction.member_role_update):
                 executor = entry.user
 
-                # Solo dueños y roles con OWNER_ROLE_ID pueden darlo
                 if (
                     executor.id in OWNER_IDS
                     or executor.id == guild.owner_id
@@ -168,7 +206,6 @@ class AntiNuke(commands.Cog):
                 ):
                     return
 
-                # Quitar el rol y dar timeout
                 try:
                     await after.remove_roles(auth_mm, reason="AntiNuke: rol protegido")
                     await executor.timeout(timedelta(minutes=10), reason="Intentó dar rol protegido")
@@ -193,7 +230,8 @@ class AntiNuke(commands.Cog):
         )
         embed.add_field(name="$whitelist <usuario>", value="Añade un usuario a la whitelist.", inline=False)
         embed.add_field(name="$unwhitelist <usuario>", value="Remueve un usuario de la whitelist.", inline=False)
-        embed.add_field(name="Protecciones activas", value="""
+        embed.add_field(name="$whitelisted", value="Muestra todos los usuarios en la whitelist.", inline=False)
+        embed.add_field(name="Protecciones activas", value="""  
         ✅ Anti massban  
         ✅ Anti creación masiva de canales  
         ✅ Anti creación masiva de roles  
