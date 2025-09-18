@@ -5,7 +5,7 @@ class Precios(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-        # Diccionario de fórmulas: clave → (mínimo, multiplicador, base, fórmula, nombre bonito)
+        # Diccionario de fórmulas: clave principal → (mínimo, multiplicador, base, fórmula, nombre bonito)
         self.formulas = {
             "loscombinasionas": (15, 0.08, 2, "(M − 15) × 0.08 + 2", "Los combinasionas"),
             "lagrandecombinasion": (10, 0.10, 3, "(M − 10) × 0.10 + 3", "La grande combinasion"),
@@ -23,6 +23,57 @@ class Precios(commands.Cog):
             "garamaandmadundung": (50, 0.13, 26, "(M − 50) × 0.13 + 26", "Garama and madundung"),
             "dragoncannelloni": (100, 0.30, 100, "(M − 100) × 0.30 + 100", "Dragon cannelloni"),
             "tacoritabicicleta": (16.5, 0.06, 4, "(M - 16.5) × 0.06 + 4", "Tacorita Bicicleta"),
+        }
+
+        # Alias → clave real
+        self.aliases = {
+            "lc": "loscombinasionas",
+            "combinasionas": "loscombinasionas",
+
+            "lgc": "lagrandecombinasion",
+            "grande": "lagrandecombinasion",
+
+            "lb": "losbros",
+            "bros": "losbros",
+
+            "lhp": "loshotspositos",
+            "hots": "loshotspositos",
+
+            "nd": "nuclearodinossauro",
+            "nuclear": "nuclearodinossauro",
+
+            "es": "esoksekolah",
+            "sekolah": "esoksekolah",
+
+            "tr": "tralaledon",
+            "tralale": "tralaledon",
+
+            "km": "ketchuruandmusturu",
+            "musturu": "ketchuruandmusturu",
+
+            "kk": "ketupatkepat",
+            "ketupat": "ketupatkepat",
+
+            "lsc": "lasupremecombinasion",
+            "supreme": "lasupremecombinasion",
+
+            "leg": "laextinctgrande",
+            "extinct": "laextinctgrande",
+
+            "ccv": "celularciniviciosini",
+            "celular": "celularciniviciosini",
+
+            "st": "spaghettitualetti",
+            "spaghetti": "spaghettitualetti",
+
+            "gm": "garamaandmadundung",
+            "garama": "garamaandmadundung",
+
+            "dc": "dragoncannelloni",
+            "dragon": "dragoncannelloni",
+
+            "tb": "tacoritabicicleta",
+            "taco": "tacoritabicicleta",
         }
 
     def make_embed(self, ctx, nombre: str, formula: str, operacion: str, resultado: float, pretty: str):
@@ -52,6 +103,11 @@ class Precios(commands.Cog):
             ))
 
         nombre = nombre.lower()
+
+        # Resolver alias
+        if nombre in self.aliases:
+            nombre = self.aliases[nombre]
+
         if nombre not in self.formulas:
             lista = ", ".join(self.formulas.keys())
             return await ctx.send(embed=self.error_embed(ctx, f"❌ No encontré la fórmula **{nombre}**.\n\nOpciones válidas: {lista}"))
