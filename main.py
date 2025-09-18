@@ -101,6 +101,7 @@ class MyBot(commands.Bot):
             "cogs.backup",
             "cogs.roles",
             "cogs.brainrotcalc",
+            "cogs.antinuke",
         ]
 
         for cog in cogs:
