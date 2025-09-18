@@ -1,6 +1,7 @@
 import discord
 from discord.ext import commands
 from datetime import datetime, timedelta, timezone
+from discord.ui import View, Button  # ✅ IMPORTACIÓN NECESARIA
 import json
 import os
 
