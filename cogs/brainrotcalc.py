@@ -123,6 +123,59 @@ class Precios(commands.Cog):
 
         await ctx.send(embed=self.make_embed(ctx, nombre, formula, operacion, result, pretty))
 
+    # ==============================
+    # 📌 Comando de ayuda con paginación
+    # ==============================
+    @commands.command(name="helpprices")
+    async def helpprices(self, ctx):
+        formulas_items = list(self.formulas.items())
+        pages = [formulas_items[i:i+5] for i in range(0, len(formulas_items), 5)]
+        embeds = []
+        prefixes = ["precio", "valor", "cost", "price"]
+
+        for i, page in enumerate(pages, start=1):
+            embed = discord.Embed(
+                title="📖 Ayuda de precios",
+                description="Lista de fórmulas y alias.\nPuedes usar cualquiera de los comandos: "
+                            "`$precio`, `$valor`, `$cost`, `$price`.",
+                color=discord.Color.blurple()
+            )
+            for key, (_, _, _, _, pretty) in page:
+                aliases = [alias for alias, real in self.aliases.items() if real == key]
+                ejemplos = " | ".join([f"${p} {aliases[0]} 100" for p in prefixes]) if aliases else ""
+                embed.add_field(
+                    name=f"🔹 {pretty}",
+                    value=f"Alias: `{', '.join([key] + aliases)}`\nEjemplos: {ejemplos}",
+                    inline=False
+                )
+            embed.set_footer(text=f"Página {i}/{len(pages)}")
+            embeds.append(embed)
+
+        message = await ctx.send(embed=embeds[0])
+
+        if len(embeds) > 1:
+            await message.add_reaction("⬅️")
+            await message.add_reaction("➡️")
+
+            def check(reaction, user):
+                return user == ctx.author and str(reaction.emoji) in ["⬅️", "➡️"] and reaction.message.id == message.id
+
+            current_page = 0
+            while True:
+                try:
+                    reaction, user = await self.bot.wait_for("reaction_add", timeout=60.0, check=check)
+                except:
+                    break
+
+                if str(reaction.emoji) == "➡️" and current_page < len(embeds)-1:
+                    current_page += 1
+                    await message.edit(embed=embeds[current_page])
+                elif str(reaction.emoji) == "⬅️" and current_page > 0:
+                    current_page -= 1
+                    await message.edit(embed=embeds[current_page])
+
+                await message.remove_reaction(reaction, user)
+
 
 async def setup(bot):
     await bot.add_cog(Precios(bot))
