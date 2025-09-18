@@ -2,7 +2,7 @@ import discord
 from discord.ext import commands, tasks
 import os
 import json
-from datetime import datetime, timezone
+from datetime import datetime
 
 BACKUP_FOLDER = "backups"
 
@@ -12,7 +12,7 @@ class BackupSystem(commands.Cog):
         self.auto_backup.start()
 
     # =====================================================
-    # 💾 GUARDAR BACKUP (con permisos)
+    # 💾 GUARDAR BACKUP (manual, con permisos)
     # =====================================================
     @commands.command(name="backup")
     @commands.is_owner()
@@ -76,7 +76,7 @@ class BackupSystem(commands.Cog):
             data["channels"].append(channel_data)
 
         # Guardar en archivo
-        os.makedirs(BACKUP_FOLDER, exist_ok=True)
+        os.makedirs(BACKUP_FOLDER, exist_ok=True)  # <-- Asegura la carpeta
         file_name = f"{BACKUP_FOLDER}/backup_{guild.id}_{int(datetime.utcnow().timestamp())}.json"
         with open(file_name, "w", encoding="utf-8") as f:
             json.dump(data, f, indent=4)
@@ -84,7 +84,7 @@ class BackupSystem(commands.Cog):
         await ctx.send(f"✅ Backup guardado en `{file_name}`")
 
     # =====================================================
-    # ♻️ RESTAURAR BACKUP (con permisos)
+    # ♻️ RESTAURAR BACKUP
     # =====================================================
     @commands.command(name="restore")
     @commands.is_owner()
@@ -97,9 +97,9 @@ class BackupSystem(commands.Cog):
             data = json.load(f)
 
         guild = ctx.guild
-        await ctx.send("⚠️ Restaurando backup con permisos... Esto puede tardar varios minutos.")
+        await ctx.send("⚠️ Restaurando backup... Esto puede tardar varios minutos.")
 
-        # 1. Borrar roles (menos @everyone) y canales
+        # 1. Borrar roles y canales
         for channel in guild.channels:
             try:
                 await channel.delete()
@@ -139,7 +139,7 @@ class BackupSystem(commands.Cog):
             except:
                 pass
 
-        # 4. Restaurar canales con permisos
+        # 4. Restaurar canales
         for channel_data in data["channels"]:
             try:
                 category = category_map.get(str(channel_data["category"]))
@@ -171,7 +171,7 @@ class BackupSystem(commands.Cog):
             except Exception as e:
                 print(f"❌ Error creando canal {channel_data['name']}: {e}")
 
-        await ctx.send("✅ Backup restaurado con permisos correctamente.")
+        await ctx.send("✅ Backup restaurado correctamente.")
 
     # =====================================================
     # ⏰ Backup automático cada 3 días
@@ -219,7 +219,7 @@ class BackupSystem(commands.Cog):
                 }
                 data["channels"].append(channel_data)
 
-            os.makedirs(BACKUP_FOLDER, exist_ok=True)
+            os.makedirs(BACKUP_FOLDER, exist_ok=True)  # <-- asegura la carpeta
             file_name = f"{BACKUP_FOLDER}/auto_backup_{guild.id}_{int(datetime.utcnow().timestamp())}.json"
             with open(file_name, "w", encoding="utf-8") as f:
                 json.dump(data, f, indent=4)
