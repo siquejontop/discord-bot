@@ -25,7 +25,8 @@ WHITELIST_FILE = "whitelist.json"
 def load_whitelist():
     if os.path.exists(WHITELIST_FILE):
         with open(WHITELIST_FILE, "r", encoding="utf-8") as f:
-            return set(json.load(f))
+            data = json.load(f)
+            return set(int(uid) for uid in data)  # ✅ siempre int
     return set()
 
 def save_whitelist():
