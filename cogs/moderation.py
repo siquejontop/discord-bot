@@ -1,88 +1,85 @@
 import discord
 from discord.ext import commands
+from discord import utils
 from datetime import datetime, timedelta, timezone
 import json
 import os
 
 # =====================================================
-# CONFIG
+# ⚙️ CONFIGURACIÓN LOCAL (aquí van los IDs)
 # =====================================================
-LOG_CHANNEL_ID = 1418314310739955742  # Reemplaza con el ID de tu canal de logs
-WARN_FILE = "data/warns.json"
-CASES_FILE = "data/cases.json"
-MUTE_ROLE_ID = 1418314510049083576    # Reemplaza con tu rol mute
+MUTE_ROLE_ID = 1418314510049083576   # Rol para muteados
+LIMIT_ROLE_ID = 1415860204624416971  # Rol límite para usar moderación
+LOG_CHANNEL_ID = 1418314310739955742 # Canal de logs
 
+# Archivos de persistencia
+WARNS_FILE = "warns.json"
+CASES_FILE = "cases.json"
 
 # =====================================================
-# Helpers: JSON
+# 📌 Helpers para persistencia
 # =====================================================
-def load_json(path, default):
-    if not os.path.exists(path):
-        os.makedirs(os.path.dirname(path), exist_ok=True)
-        with open(path, "w", encoding="utf-8") as f:
+def load_json(filename, default):
+    if not os.path.exists(filename):
+        with open(filename, "w", encoding="utf-8") as f:
             json.dump(default, f, indent=4)
-        return default
-    with open(path, "r", encoding="utf-8") as f:
+    with open(filename, "r", encoding="utf-8") as f:
         return json.load(f)
 
-def save_json(path, data):
-    with open(path, "w", encoding="utf-8") as f:
+def save_json(filename, data):
+    with open(filename, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=4)
 
+# Inicializamos warns y cases
+warns_data = load_json(WARNS_FILE, {})
+cases_data = load_json(CASES_FILE, {"last_case": 0, "cases": []})
 
 # =====================================================
-# Moderation Cog
+# 📌 Helper: generar Case ID
+# =====================================================
+def create_case(action, user_id, moderator_id, reason):
+    cases_data["last_case"] += 1
+    case_id = cases_data["last_case"]
+    case = {
+        "id": case_id,
+        "action": action,
+        "user_id": user_id,
+        "moderator_id": moderator_id,
+        "reason": reason,
+        "timestamp": datetime.now(timezone.utc).isoformat()
+    }
+    cases_data["cases"].append(case)
+    save_json(CASES_FILE, cases_data)
+    return case_id
+
+# =====================================================
+# 📌 Helper: logs al canal
+# =====================================================
+async def send_log(guild, embed):
+    channel = guild.get_channel(LOG_CHANNEL_ID)
+    if channel:
+        await channel.send(embed=embed)
+
+# =====================================================
+# 🛠️ Moderation Cog
 # =====================================================
 class Moderation(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.warns = load_json(WARN_FILE, {})
-        self.cases = load_json(CASES_FILE, {"last_case": 0, "cases": []})
 
     # -------------------------------------------------
-    # 📌 CASE SYSTEM
+    # 📌 Helper: verificar rol suficiente
     # -------------------------------------------------
-    def new_case(self, action, user, moderator, reason):
-        self.cases["last_case"] += 1
-        case_id = self.cases["last_case"]
+    def has_permission(self, ctx):
+        limit_role = ctx.guild.get_role(LIMIT_ROLE_ID)
+        return not (limit_role and ctx.author.top_role <= limit_role)
 
-        entry = {
-            "id": case_id,
-            "action": action,
-            "user_id": getattr(user, "id", user),
-            "moderator_id": moderator.id,
-            "reason": reason,
-            "timestamp": datetime.now(timezone.utc).isoformat()
-        }
-        self.cases["cases"].append(entry)
-        save_json(CASES_FILE, self.cases)
-        return case_id
-
-    async def log_action(self, guild, action, user, moderator, reason, case_id):
-        channel = guild.get_channel(LOG_CHANNEL_ID)
-        if not channel:
-            return
-
-        embed = discord.Embed(
-            title=f"📌 {action.upper()} | Case #{case_id}",
-            color=discord.Color.red() if action in ["ban", "kick", "mute", "warn", "timeout", "lock"] else discord.Color.green(),
-            timestamp=datetime.now(timezone.utc)
-        )
-        embed.add_field(name="👤 Usuario", value=f"{user.mention if hasattr(user,'mention') else user} (`{getattr(user,'id',user)}`)", inline=False)
-        embed.add_field(name="🛠️ Moderador", value=f"{moderator.mention} (`{moderator.id}`)", inline=False)
-        embed.add_field(name="📝 Razón", value=reason, inline=False)
-
-        await channel.send(embed=embed)
-
-    async def error_embed(self, ctx, msg, usage=None):
-        embed = discord.Embed(
-            title="❌ Error",
-            description=msg,
+    def permission_embed(self, ctx, action="usar este comando"):
+        return discord.Embed(
+            title="⛔ Permiso insuficiente",
+            description=f"{ctx.author.mention}, tu rol no es suficiente para **{action}**.",
             color=discord.Color.red()
         )
-        if usage:
-            embed.add_field(name="Uso correcto", value=f"`{usage}`", inline=False)
-        await ctx.send(embed=embed)
 
     # =====================================================
     # 🔨 Ban
@@ -90,17 +87,33 @@ class Moderation(commands.Cog):
     @commands.command()
     @commands.has_permissions(ban_members=True)
     async def ban(self, ctx, member: discord.Member = None, *, reason="No se especificó razón"):
-        if not member:
-            return await self.error_embed(ctx, "Debes mencionar un usuario.", "$ban @usuario [razón]")
+        if member is None:
+            embed = discord.Embed(
+                title="❌ Uso incorrecto de ban",
+                description="Formato correcto:\n`$ban @usuario [razón]`",
+                color=discord.Color.red()
+            )
+            await ctx.send(embed=embed)
+            return
 
         try:
             await member.ban(reason=reason)
-        except discord.Forbidden:
-            return await self.error_embed(ctx, "No tengo permisos para banear a ese usuario.")
+            case_id = create_case("ban", member.id, ctx.author.id, reason)
 
-        case_id = self.new_case("ban", member, ctx.author, reason)
-        await ctx.send(f"✅ {member.mention} fue baneado. (Case #{case_id})")
-        await self.log_action(ctx.guild, "ban", member, ctx.author, reason, case_id)
+            embed = discord.Embed(
+                title="⛔ Usuario baneado",
+                description=f"{member.mention} fue baneado.\n**Razón:** {reason}\n📂 Case #{case_id}",
+                color=discord.Color.red(),
+                timestamp=datetime.now(timezone.utc)
+            )
+            await ctx.send(embed=embed)
+            await send_log(ctx.guild, embed)
+        except discord.Forbidden:
+            await ctx.send(embed=discord.Embed(
+                title="❌ Error",
+                description="No tengo permisos para banear a ese usuario.",
+                color=discord.Color.red()
+            ))
 
     # =====================================================
     # ♻️ Unban
@@ -108,20 +121,30 @@ class Moderation(commands.Cog):
     @commands.command()
     @commands.has_permissions(ban_members=True)
     async def unban(self, ctx, user_id: int = None):
-        if not user_id:
-            return await self.error_embed(ctx, "Debes poner el ID del usuario.", "$unban <user_id>")
+        if user_id is None:
+            embed = discord.Embed(
+                title="❌ Uso incorrecto de unban",
+                description="Formato correcto:\n`$unban <user_id>`",
+                color=discord.Color.red()
+            )
+            await ctx.send(embed=embed)
+            return
 
         user = await self.bot.fetch_user(user_id)
         try:
             await ctx.guild.unban(user)
-        except discord.Forbidden:
-            return await self.error_embed(ctx, "No tengo permisos para desbanear.")
-        except discord.NotFound:
-            return await self.error_embed(ctx, "Ese usuario no está baneado.")
+            case_id = create_case("unban", user.id, ctx.author.id, "Desbaneo manual")
 
-        case_id = self.new_case("unban", user, ctx.author, "Unban manual")
-        await ctx.send(f"✅ {user.mention} fue desbaneado. (Case #{case_id})")
-        await self.log_action(ctx.guild, "unban", user, ctx.author, "Unban manual", case_id)
+            embed = discord.Embed(
+                title="✅ Usuario desbaneado",
+                description=f"{user.mention} fue desbaneado.\n📂 Case #{case_id}",
+                color=discord.Color.green(),
+                timestamp=datetime.now(timezone.utc)
+            )
+            await ctx.send(embed=embed)
+            await send_log(ctx.guild, embed)
+        except discord.NotFound:
+            await ctx.send("⚠️ Ese usuario no estaba baneado.")
 
     # =====================================================
     # 🚫 Kick
@@ -129,212 +152,197 @@ class Moderation(commands.Cog):
     @commands.command()
     @commands.has_permissions(kick_members=True)
     async def kick(self, ctx, member: discord.Member = None, *, reason="No se especificó razón"):
-        if not member:
-            return await self.error_embed(ctx, "Debes mencionar un usuario.", "$kick @usuario [razón]")
+        if member is None:
+            embed = discord.Embed(
+                title="❌ Uso incorrecto de kick",
+                description="Formato correcto:\n`$kick @usuario [razón]`",
+                color=discord.Color.red()
+            )
+            await ctx.send(embed=embed)
+            return
 
         try:
             await member.kick(reason=reason)
-        except discord.Forbidden:
-            return await self.error_embed(ctx, "No tengo permisos para expulsar a ese usuario.")
+            case_id = create_case("kick", member.id, ctx.author.id, reason)
 
-        case_id = self.new_case("kick", member, ctx.author, reason)
-        await ctx.send(f"⚠️ {member.mention} fue expulsado. (Case #{case_id})")
-        await self.log_action(ctx.guild, "kick", member, ctx.author, reason, case_id)
+            embed = discord.Embed(
+                title="⚠️ Usuario expulsado",
+                description=f"{member.mention} fue expulsado.\n**Razón:** {reason}\n📂 Case #{case_id}",
+                color=discord.Color.orange(),
+                timestamp=datetime.now(timezone.utc)
+            )
+            await ctx.send(embed=embed)
+            await send_log(ctx.guild, embed)
+        except discord.Forbidden:
+            await ctx.send("❌ No tengo permisos para expulsar a ese usuario.")
 
     # =====================================================
-    # 🤐 Mute
+    # 🤐 Mute / Unmute
     # =====================================================
     @commands.command()
     @commands.has_permissions(manage_roles=True)
     async def mute(self, ctx, member: discord.Member = None, *, reason="No se especificó razón"):
-        if not member:
-            return await self.error_embed(ctx, "Debes mencionar un usuario.", "$mute @usuario [razón]")
+        if not self.has_permission(ctx):
+            return await ctx.send(embed=self.permission_embed(ctx, "dar mute"))
+
+        if member is None:
+            embed = discord.Embed(
+                title="❌ Uso incorrecto de mute",
+                description="Formato correcto:\n`$mute @usuario [razón]`",
+                color=discord.Color.red()
+            )
+            await ctx.send(embed=embed)
+            return
 
         mute_role = ctx.guild.get_role(MUTE_ROLE_ID)
-        if not mute_role:
-            return await self.error_embed(ctx, "No se encontró el rol de mute configurado.")
+        if mute_role:
+            await member.add_roles(mute_role, reason=reason)
+            case_id = create_case("mute", member.id, ctx.author.id, reason)
 
-        await member.add_roles(mute_role, reason=reason)
-        case_id = self.new_case("mute", member, ctx.author, reason)
-        await ctx.send(f"🔇 {member.mention} fue muteado. (Case #{case_id})")
-        await self.log_action(ctx.guild, "mute", member, ctx.author, reason, case_id)
+            embed = discord.Embed(
+                title="🔇 Usuario muteado",
+                description=f"{member.mention} fue muteado.\n**Razón:** {reason}\n📂 Case #{case_id}",
+                color=discord.Color.dark_gray(),
+                timestamp=datetime.now(timezone.utc)
+            )
+            await ctx.send(embed=embed)
+            await send_log(ctx.guild, embed)
+        else:
+            await ctx.send("⚠️ No se encontró el rol de mute configurado.")
 
-    # =====================================================
-    # 🔊 Unmute
-    # =====================================================
     @commands.command()
     @commands.has_permissions(manage_roles=True)
     async def unmute(self, ctx, member: discord.Member = None):
-        if not member:
-            return await self.error_embed(ctx, "Debes mencionar un usuario.", "$unmute @usuario")
+        if not self.has_permission(ctx):
+            return await ctx.send(embed=self.permission_embed(ctx, "quitar mute"))
+
+        if member is None:
+            embed = discord.Embed(
+                title="❌ Uso incorrecto de unmute",
+                description="Formato correcto:\n`$unmute @usuario`",
+                color=discord.Color.red()
+            )
+            await ctx.send(embed=embed)
+            return
 
         mute_role = ctx.guild.get_role(MUTE_ROLE_ID)
-        if not mute_role or mute_role not in member.roles:
-            return await self.error_embed(ctx, "Ese usuario no estaba muteado.")
+        if mute_role and mute_role in member.roles:
+            await member.remove_roles(mute_role)
+            case_id = create_case("unmute", member.id, ctx.author.id, "Unmute manual")
 
-        await member.remove_roles(mute_role)
-        case_id = self.new_case("unmute", member, ctx.author, "Unmute manual")
-        await ctx.send(f"🔊 {member.mention} fue desmuteado. (Case #{case_id})")
-        await self.log_action(ctx.guild, "unmute", member, ctx.author, "Unmute manual", case_id)
-
-    # =====================================================
-    # ⏳ Timeout
-    # =====================================================
-    @commands.command()
-    @commands.has_permissions(moderate_members=True)
-    async def timeout(self, ctx, member: discord.Member = None, minutes: int = None, *, reason="No se especificó razón"):
-        if not member or not minutes:
-            return await self.error_embed(ctx, "Debes mencionar un usuario y tiempo en minutos.", "$timeout @usuario <minutos> [razón]")
-
-        until = datetime.now(timezone.utc) + timedelta(minutes=minutes)
-        try:
-            await member.timeout(until, reason=reason)
-        except discord.Forbidden:
-            return await self.error_embed(ctx, "No tengo permisos para dar timeout a ese usuario.")
-
-        case_id = self.new_case("timeout", member, ctx.author, reason)
-        await ctx.send(f"⏳ {member.mention} fue silenciado por {minutes} minutos. (Case #{case_id})")
-        await self.log_action(ctx.guild, "timeout", member, ctx.author, reason, case_id)
+            embed = discord.Embed(
+                title="🔊 Usuario desmuteado",
+                description=f"{member.mention} fue desmuteado.\n📂 Case #{case_id}",
+                color=discord.Color.green(),
+                timestamp=datetime.now(timezone.utc)
+            )
+            await ctx.send(embed=embed)
+            await send_log(ctx.guild, embed)
+        else:
+            await ctx.send("⚠️ Ese usuario no estaba muteado.")
 
     # =====================================================
-    # 🔓 Remove Timeout
+    # 🚨 Warns
     # =====================================================
     @commands.command()
-    @commands.has_permissions(moderate_members=True)
-    async def remove_timeout(self, ctx, member: discord.Member = None):
-        if not member:
-            return await self.error_embed(ctx, "Debes mencionar un usuario.", "$remove_timeout @usuario")
-
-        try:
-            await member.timeout(None)
-        except discord.Forbidden:
-            return await self.error_embed(ctx, "No tengo permisos para quitar el timeout.")
-
-        case_id = self.new_case("remove_timeout", member, ctx.author, "Timeout removido")
-        await ctx.send(f"🔓 Timeout removido para {member.mention}. (Case #{case_id})")
-        await self.log_action(ctx.guild, "remove_timeout", member, ctx.author, "Timeout removido", case_id)
-
-    # =====================================================
-    # 🧹 Purge
-    # =====================================================
-    @commands.command(aliases=["purge","c","p"])
-    @commands.has_permissions(manage_messages=True)
-    async def clear(self, ctx, amount: int = None):
-        if not amount:
-            return await self.error_embed(ctx, "Debes poner un número de mensajes.", "$purge <cantidad>")
-
-        deleted = await ctx.channel.purge(limit=amount + 1)
-        case_id = self.new_case("purge", ctx.author, ctx.author, f"Eliminó {len(deleted)-1} mensajes")
-        await ctx.send(f"🧹 Se eliminaron {len(deleted)-1} mensajes. (Case #{case_id})", delete_after=5)
-        await self.log_action(ctx.guild, "purge", ctx.author, ctx.author, f"Eliminó {len(deleted)-1} mensajes", case_id)
-
-    # =====================================================
-    # 👁️ Slowmode
-    # =====================================================
-    @commands.command()
-    @commands.has_permissions(manage_channels=True)
-    async def slowmode(self, ctx, seconds: int = None):
-        if seconds is None:
-            return await self.error_embed(ctx, "Debes poner el tiempo en segundos.", "$slowmode <segundos>")
-
-        await ctx.channel.edit(slowmode_delay=seconds)
-        case_id = self.new_case("slowmode", ctx.author, ctx.author, f"Slowmode {seconds}s")
-        msg = "desactivado" if seconds == 0 else f"activado ({seconds}s)"
-        await ctx.send(f"⏳ Slowmode {msg}. (Case #{case_id})")
-        await self.log_action(ctx.guild, "slowmode", ctx.author, ctx.author, f"Slowmode {msg}", case_id)
-
-    # =====================================================
-    # 🔒 Lock
-    # =====================================================
-    @commands.command()
-    @commands.has_permissions(manage_channels=True)
-    async def lock(self, ctx):
-        overwrite = ctx.channel.overwrites_for(ctx.guild.default_role)
-        overwrite.send_messages = False
-        await ctx.channel.set_permissions(ctx.guild.default_role, overwrite=overwrite)
-
-        case_id = self.new_case("lock", ctx.author, ctx.author, "Canal bloqueado")
-        await ctx.send(f"🔒 Canal bloqueado. (Case #{case_id})")
-        await self.log_action(ctx.guild, "lock", ctx.author, ctx.author, "Canal bloqueado", case_id)
-
-    # =====================================================
-    # 🔓 Unlock
-    # =====================================================
-    @commands.command()
-    @commands.has_permissions(manage_channels=True)
-    async def unlock(self, ctx):
-        overwrite = ctx.channel.overwrites_for(ctx.guild.default_role)
-        overwrite.send_messages = True
-        await ctx.channel.set_permissions(ctx.guild.default_role, overwrite=overwrite)
-
-        case_id = self.new_case("unlock", ctx.author, ctx.author, "Canal desbloqueado")
-        await ctx.send(f"🔓 Canal desbloqueado. (Case #{case_id})")
-        await self.log_action(ctx.guild, "unlock", ctx.author, ctx.author, "Canal desbloqueado", case_id)
-
-    # =====================================================
-    # ⚠️ Warns
-    # =====================================================
-    @commands.command()
-    @commands.has_permissions(manage_messages=True)
     async def warn(self, ctx, member: discord.Member = None, *, reason="No se especificó razón"):
-        if not member:
-            return await self.error_embed(ctx, "Debes mencionar un usuario.", "$warn @usuario [razón]")
+        if member is None:
+            return await ctx.send("❌ Uso correcto: `$warn @usuario [razón]`")
 
-        if str(member.id) not in self.warns:
-            self.warns[str(member.id)] = []
+        if str(member.id) not in warns_data:
+            warns_data[str(member.id)] = []
 
-        self.warns[str(member.id)].append({
+        warns_data[str(member.id)].append({
             "moderator": ctx.author.id,
             "reason": reason,
             "timestamp": datetime.now(timezone.utc).isoformat()
         })
-        save_json(WARN_FILE, self.warns)
+        save_json(WARNS_FILE, warns_data)
 
-        case_id = self.new_case("warn", member, ctx.author, reason)
-        await ctx.send(f"⚠️ {member.mention} recibió un warn. (Case #{case_id})")
-        await self.log_action(ctx.guild, "warn", member, ctx.author, reason, case_id)
+        case_id = create_case("warn", member.id, ctx.author.id, reason)
+
+        embed = discord.Embed(
+            title="⚠️ Usuario advertido",
+            description=f"{member.mention} recibió un warn.\n**Razón:** {reason}\n📂 Case #{case_id}",
+            color=discord.Color.orange(),
+            timestamp=datetime.now(timezone.utc)
+        )
+        await ctx.send(embed=embed)
+        await send_log(ctx.guild, embed)
 
     @commands.command()
     async def warns(self, ctx, member: discord.Member = None):
-        member = member or ctx.author
-        warns = self.warns.get(str(member.id), [])
-        if not warns:
+        if member is None:
+            member = ctx.author
+
+        user_warns = warns_data.get(str(member.id), [])
+        if not user_warns:
             return await ctx.send(f"✅ {member.mention} no tiene warns.")
 
         embed = discord.Embed(
-            title=f"⚠️ Warns de {member}",
+            title=f"📋 Warns de {member}",
             color=discord.Color.orange()
         )
-        for i, w in enumerate(warns, 1):
-            mod = ctx.guild.get_member(w["moderator"])
+        for i, warn in enumerate(user_warns, 1):
+            mod = ctx.guild.get_member(warn["moderator"])
             embed.add_field(
-                name=f"#{i} - {w['timestamp'][:19]}",
-                value=f"👮 Moderador: {mod.mention if mod else w['moderator']}\n📝 Razón: {w['reason']}",
+                name=f"#{i} - {warn['timestamp']}",
+                value=f"👮‍♂️ Moderador: {mod.mention if mod else warn['moderator']}\n📝 Razón: {warn['reason']}",
                 inline=False
             )
         await ctx.send(embed=embed)
 
-    @commands.command()
-    async def warnlist(self, ctx):
-        if not self.warns:
-            return await ctx.send("✅ Nadie tiene warns actualmente.")
-
+    # =====================================================
+    # 📖 Help Moderation (completo con secciones)
+    # =====================================================
+    @commands.command(name="helpmoderation")
+    async def helpmoderation(self, ctx):
         embed = discord.Embed(
-            title="📋 Lista de usuarios con warns",
-            color=discord.Color.gold()
+            title="📖 Ayuda de Moderación",
+            description="Lista de comandos de moderación disponibles:",
+            color=discord.Color.blurple()
         )
-        for uid, warns in self.warns.items():
-            user = ctx.guild.get_member(int(uid)) or f"ID: {uid}"
-            embed.add_field(
-                name=str(user),
-                value=f"⚠️ {len(warns)} warns",
-                inline=False
-            )
-        await ctx.send(embed=embed)
 
+        embed.add_field(
+            name="🔨 Baneos",
+            value="`$ban @usuario [razón]`\n`$unban <user_id>`",
+            inline=False
+        )
+        embed.add_field(
+            name="🚫 Expulsiones",
+            value="`$kick @usuario [razón]`",
+            inline=False
+        )
+        embed.add_field(
+            name="🤐 Mutes",
+            value="`$mute @usuario [razón]`\n`$unmute @usuario`",
+            inline=False
+        )
+        embed.add_field(
+            name="🚨 Advertencias",
+            value="`$warn @usuario [razón]`\n`$warns [@usuario]`",
+            inline=False
+        )
+        embed.add_field(
+            name="⏱️ Timeouts",
+            value="`$timeout @usuario <minutos> [razón]`\n`$untimeout @usuario`",
+            inline=False
+        )
+        embed.add_field(
+            name="🔒 Locks",
+            value="`$lock #canal`\n`$unlock #canal`",
+            inline=False
+        )
+        embed.add_field(
+            name="🐌 Slowmode",
+            value="`$slowmode #canal <segundos>`\n`$slowmode #canal 0` *(para quitar)*",
+            inline=False
+        )
+
+        await ctx.send(embed=embed)
 
 # =====================================================
-# 🔌 Setup
+# 🔌 Setup obligatorio
 # =====================================================
 async def setup(bot):
     await bot.add_cog(Moderation(bot))
