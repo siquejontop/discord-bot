@@ -265,7 +265,7 @@ class Moderation(commands.Cog):
             .add_field(name="🧹 Clearuser", value="`$clearuser @usuario <cantidad>`\nElimina mensajes de un usuario específico (máx. 100).", inline=False)
             .add_field(name="🔇 Mute", value="`$mute <usuario> [duración(s/m/h/d/w)] [razón]`\nSilencia a un usuario (ej. 5m).", inline=False)
             .add_field(name="⏳ Timeout", value="`$timeout <usuario> <duración(s/m/h/d/w)> [razón]`\nSilencia temporalmente a un usuario (máx. 28 días).", inline=False)
-            .set_footer(text="Página 1/3"),
+            .set_footer(text="Página 1/2"),
 
             discord.Embed(
                 title="📖 Ayuda de Moderación - Página 2",
@@ -276,17 +276,8 @@ class Moderation(commands.Cog):
             .add_field(name="🔓 Remove Timeout", value="`$remove_timeout <usuario>`\nRemueve el timeout de un usuario.", inline=False)
             .add_field(name="🔒 Lock", value="`$lock`\nBloquea el canal para @everyone.", inline=False)
             .add_field(name="🔓 Unlock", value="`$unlock`\nDesbloquea el canal para @everyone.", inline=False)
-            .set_footer(text="Página 2/3"),
-
-            discord.Embed(
-                title="📖 Ayuda de Moderación - Página 3",
-                description="**Información general.**",
-                color=discord.Color.purple()
-            )
-            .add_field(name="📌 Logs", value="Todas las acciones se envían a un canal de logs definido por el bot.", inline=False)
-            .add_field(name="💡 Uso", value="Usa los comandos con permisos adecuados (ej. manage_messages, manage_roles).", inline=False)
-            .set_footer(text="Página 3/3"),
-        ]
+            .set_footer(text="Página 2/2"),    
+                ]
 
         class Paginator(View):
             def __init__(self):
