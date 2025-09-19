@@ -185,6 +185,49 @@ class AntiNuke(commands.Cog):
                     break
 
     # =====================================================
+    # 🚨 Anti creación de webhooks
+    # =====================================================
+    @commands.Cog.listener()
+    async def on_webhook_create(self, webhook):
+        guild = webhook.guild
+        async for entry in guild.audit_logs(limit=5, action=discord.AuditLogAction.webhook_create):
+            if (datetime.now(timezone.utc) - entry.created_at).total_seconds() < 60:  # Dentro de 1 minuto
+                executor = entry.user
+                if self.is_whitelisted(executor.id, guild):
+                    return
+                try:
+                    await webhook.delete(reason="AntiNuke: creación de webhook no autorizada")
+                    await guild.ban(executor, reason="AntiNuke: creó un webhook no autorizado")
+                    await self.log_action(guild, f"🔗 {executor.mention} baneado por crear un webhook no autorizado.")
+                except discord.Forbidden:
+                    await self.log_action(guild, f"⛔ No tengo permisos para eliminar el webhook creado por {executor.mention}.")
+                except discord.HTTPException as e:
+                    await self.log_action(guild, f"⛔ Error al eliminar webhook: {e}")
+                break
+
+    # =====================================================
+    # 🚨 Anti adición de bots/aplicaciones
+    # =====================================================
+    @commands.Cog.listener()
+    async def on_member_join(self, member):
+        guild = member.guild
+        if member.bot:
+            async for entry in guild.audit_logs(limit=5, action=discord.AuditLogAction.bot_add):
+                if (datetime.now(timezone.utc) - entry.created_at).total_seconds() < 60:  # Dentro de 1 minuto
+                    executor = entry.user
+                    if self.is_whitelisted(executor.id, guild):
+                        return
+                    try:
+                        await member.ban(reason="AntiNuke: adición de bot no autorizada")
+                        await guild.ban(executor, reason="AntiNuke: añadió un bot no autorizado")
+                        await self.log_action(guild, f"🤖 {executor.mention} baneado por añadir un bot: {member.mention}.")
+                    except discord.Forbidden:
+                        await self.log_action(guild, f"⛔ No tengo permisos para banear al bot {member.mention} o a {executor.mention}.")
+                    except discord.HTTPException as e:
+                        await self.log_action(guild, f"⛔ Error al banear bot: {e}")
+                    break
+
+    # =====================================================
     # 📖 Comando de ayuda
     # =====================================================
     @commands.command(name="helpantinuke")
@@ -200,6 +243,8 @@ class AntiNuke(commands.Cog):
         ✅ Anti creación masiva de roles  
         ✅ Anti permisos peligrosos  
         ✅ Protección especial rol **auth mm** (solo Owner pueden darlo)  
+        ✅ Anti creación de webhooks  
+        ✅ Anti adición de bots/aplicaciones  
         """, inline=False)
         await ctx.send(embed=embed)
 
