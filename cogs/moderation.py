@@ -312,6 +312,33 @@ class Moderation(commands.Cog):
         await ctx.send(embed=embed)
 
     # ==============================
+    # 🔧 Unwarn
+    # ==============================
+    @commands.command()
+    @commands.has_permissions(manage_messages=True)
+    async def unwarn(self, ctx, member: discord.Member, index: int):
+        if not self.has_permission(ctx):
+            return await ctx.send("⚠️ No tienes permisos para remover advertencias.")
+        if member == ctx.author:
+            return await ctx.send("⚠️ No puedes remover tus propias advertencias.")
+        user_id = str(member.id)
+        if user_id not in self.warnings or not self.warnings[user_id]:
+            await ctx.send(f"📋 {member.mention} no tiene advertencias para remover.")
+            return
+        if index < 1 or index > len(self.warnings[user_id]):
+            await ctx.send(f"⚠️ Índice inválido. Usa un número entre 1 y {len(self.warnings[user_id])}.")
+            return
+        removed_warning = self.warnings[user_id].pop(index - 1)
+        embed = discord.Embed(
+            title="🔧 Advertencia removida",
+            description=f"Se removió la advertencia #{index} de {member.mention}.\n**Razón original:** {removed_warning['reason']}",
+            color=discord.Color.green(),
+            timestamp=datetime.now(timezone.utc)
+        )
+        await ctx.send(embed=embed)
+        await self.log_action(ctx, "🔧 Advertencia removida", discord.Color.green(), extra=f"Usuario: {member.mention}\nÍndice: {index}")
+
+    # ==============================
     # 👢 Kick
     # ==============================
     @commands.command()
@@ -401,6 +428,7 @@ class Moderation(commands.Cog):
                 color=discord.Color.purple()
             )
             .add_field(name="📋 Warnings", value="`$warnings [@usuario]`\nMuestra las advertencias de un usuario.", inline=False)
+            .add_field(name="🔧 Unwarn", value="`$unwarn @usuario <índice>`\nRemueve una advertencia específica (usa $warnings para ver índices).", inline=False)
             .add_field(name="👢 Kick", value="`$kick @usuario [razón]`\nExpulsa a un usuario del servidor.", inline=False)
             .add_field(name="🚫 Ban", value="`$ban @usuario [razón]`\nBanea a un usuario del servidor.", inline=False)
             .set_footer(text="Página 3/4"),
@@ -411,7 +439,6 @@ class Moderation(commands.Cog):
                 color=discord.Color.light_grey()
             )
             .add_field(name="🔓 Unban", value="`$unban @usuario [razón]`\nDesbanea a un usuario del servidor.", inline=False)
-            .add_field(name="📌 Logs", value="Todas las acciones se envían a un canal de logs definido por el bot.", inline=False)
             .set_footer(text="Página 4/4"),
         ]
 
