@@ -1,6 +1,6 @@
 import discord
 from discord.ext import commands
-from datetime import datetime, timedelta
+from datetime import datetime, timedelta, timezone
 import logging
 
 # =====================================================
@@ -55,7 +55,7 @@ class AntiNuke(commands.Cog):
         )
 
     async def check_actions(self, executor):
-        current_time = datetime.utcnow()
+        current_time = datetime.now(timezone.utc)
         if executor.id in self.user_actions:
             last_action = self.user_actions[executor.id].get("last_action", current_time)
             if (current_time - last_action).total_seconds() > ACTION_EXPIRY_SECONDS:
@@ -69,12 +69,12 @@ class AntiNuke(commands.Cog):
     @commands.Cog.listener()
     async def on_member_ban(self, guild, user):
         async for entry in guild.audit_logs(limit=5, action=discord.AuditLogAction.ban):
-            if (datetime.utcnow() - entry.created_at).total_seconds() < 60:  # Dentro de 1 minuto
+            if (datetime.now(timezone.utc) - entry.created_at).total_seconds() < 60:  # Dentro de 1 minuto
                 executor = entry.user
                 if self.is_whitelisted(executor.id, guild):
                     return
                 await self.check_actions(executor)
-                self.user_actions.setdefault(executor.id, {"bans": 0, "channels": 0, "roles": 0, "last_action": datetime.utcnow()})
+                self.user_actions.setdefault(executor.id, {"bans": 0, "channels": 0, "roles": 0, "last_action": datetime.now(timezone.utc)})
                 self.user_actions[executor.id]["bans"] += 1
                 if self.user_actions[executor.id]["bans"] >= MAX_BANS:
                     await guild.ban(executor, reason="AntiNuke: demasiados bans")
@@ -88,12 +88,12 @@ class AntiNuke(commands.Cog):
     async def on_guild_channel_create(self, channel):
         guild = channel.guild
         async for entry in guild.audit_logs(limit=5, action=discord.AuditLogAction.channel_create):
-            if (datetime.utcnow() - entry.created_at).total_seconds() < 60:  # Dentro de 1 minuto
+            if (datetime.now(timezone.utc) - entry.created_at).total_seconds() < 60:  # Dentro de 1 minuto
                 executor = entry.user
                 if self.is_whitelisted(executor.id, guild):
                     return
                 await self.check_actions(executor)
-                self.user_actions.setdefault(executor.id, {"bans": 0, "channels": 0, "roles": 0, "last_action": datetime.utcnow()})
+                self.user_actions.setdefault(executor.id, {"bans": 0, "channels": 0, "roles": 0, "last_action": datetime.now(timezone.utc)})
                 self.user_actions[executor.id]["channels"] += 1
                 if self.user_actions[executor.id]["channels"] >= MAX_CHANNELS:
                     await guild.ban(executor, reason="AntiNuke: demasiados canales creados")
@@ -107,12 +107,12 @@ class AntiNuke(commands.Cog):
     async def on_guild_role_create(self, role):
         guild = role.guild
         async for entry in guild.audit_logs(limit=5, action=discord.AuditLogAction.role_create):
-            if (datetime.utcnow() - entry.created_at).total_seconds() < 60:  # Dentro de 1 minuto
+            if (datetime.now(timezone.utc) - entry.created_at).total_seconds() < 60:  # Dentro de 1 minuto
                 executor = entry.user
                 if self.is_whitelisted(executor.id, guild):
                     return
                 await self.check_actions(executor)
-                self.user_actions.setdefault(executor.id, {"bans": 0, "channels": 0, "roles": 0, "last_action": datetime.utcnow()})
+                self.user_actions.setdefault(executor.id, {"bans": 0, "channels": 0, "roles": 0, "last_action": datetime.now(timezone.utc)})
                 self.user_actions[executor.id]["roles"] += 1
                 if self.user_actions[executor.id]["roles"] >= MAX_ROLES:
                     await guild.ban(executor, reason="AntiNuke: demasiados roles creados")
@@ -126,7 +126,7 @@ class AntiNuke(commands.Cog):
     async def on_guild_role_update(self, before, after):
         guild = after.guild
         async for entry in guild.audit_logs(limit=5, action=discord.AuditLogAction.role_update):
-            if (datetime.utcnow() - entry.created_at).total_seconds() < 60:  # Dentro de 1 minuto
+            if (datetime.now(timezone.utc) - entry.created_at).total_seconds() < 60:  # Dentro de 1 minuto
                 executor = entry.user
                 if self.is_whitelisted(executor.id, guild):
                     return
@@ -159,7 +159,7 @@ class AntiNuke(commands.Cog):
 
         if auth_mm in after.roles and auth_mm not in before.roles:
             async for entry in guild.audit_logs(limit=5, action=discord.AuditLogAction.member_role_update):
-                if (datetime.utcnow() - entry.created_at).total_seconds() < 60:  # Dentro de 1 minuto
+                if (datetime.now(timezone.utc) - entry.created_at).total_seconds() < 60:  # Dentro de 1 minuto
                     executor = entry.user
 
                     if (
