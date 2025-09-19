@@ -400,7 +400,7 @@ class Moderation(commands.Cog):
     async def helpmoderation(self, ctx):
         pages = [
             discord.Embed(
-                title="📖 Ayuda de Moderación - Página 1",
+                title="Ayuda de Moderación",
                 description="**Comandos de limpieza y control.**",
                 color=discord.Color.blue()
             )
@@ -408,10 +408,10 @@ class Moderation(commands.Cog):
             .add_field(name="🧹 Clearuser", value="`$clearuser @usuario <cantidad>`\nElimina mensajes de un usuario específico (máx. 100).", inline=False)
             .add_field(name="🔇 Mute", value="`$mute <usuario> [duración(s/m/h/d/w)] [razón]`\nSilencia a un usuario (ej. 5m).", inline=False)
             .add_field(name="⏳ Timeout", value="`$timeout <usuario> <duración(s/m/h/d/w)> [razón]`\nSilencia temporalmente a un usuario (máx. 28 días).", inline=False)
-            .set_footer(text="Página 1/4"),
+            .set_footer(text="Página 1/3"),
 
             discord.Embed(
-                title="📖 Ayuda de Moderación - Página 2",
+                title="Ayuda de Moderación",
                 description="**Comandos adicionales.**",
                 color=discord.Color.green()
             )
@@ -420,10 +420,10 @@ class Moderation(commands.Cog):
             .add_field(name="🔒 Lock", value="`$lock`\nBloquea el canal para @everyone.", inline=False)
             .add_field(name="🔓 Unlock", value="`$unlock`\nDesbloquea el canal para @everyone.", inline=False)
             .add_field(name="⚠️ Warn", value="`$warn @usuario [razón]`\nAdvertir a un usuario (máx. 3 antes de mute).", inline=False)
-            .set_footer(text="Página 2/4"),
+            .set_footer(text="Página 2/3"),
 
             discord.Embed(
-                title="📖 Ayuda de Moderación - Página 3",
+                title="Ayuda de Moderación",
                 description="**Comandos de gestión.**",
                 color=discord.Color.purple()
             )
@@ -431,15 +431,10 @@ class Moderation(commands.Cog):
             .add_field(name="🔧 Unwarn", value="`$unwarn @usuario <índice>`\nRemueve una advertencia específica (usa $warnings para ver índices).", inline=False)
             .add_field(name="👢 Kick", value="`$kick @usuario [razón]`\nExpulsa a un usuario del servidor.", inline=False)
             .add_field(name="🚫 Ban", value="`$ban @usuario [razón]`\nBanea a un usuario del servidor.", inline=False)
-            .set_footer(text="Página 3/4"),
-
-            discord.Embed(
-                title="📖 Ayuda de Moderación - Página 4",
-                description="**Comandos de reversión.**",
-                color=discord.Color.light_grey()
-            )
             .add_field(name="🔓 Unban", value="`$unban @usuario [razón]`\nDesbanea a un usuario del servidor.", inline=False)
-            .set_footer(text="Página 4/4"),
+
+            .set_footer(text="Página 3/3"),
+            )
         ]
 
         class Paginator(View):
