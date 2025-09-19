@@ -25,6 +25,7 @@ logging.basicConfig(level=logging.INFO)
 class Moderation(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.warnings = {}  # {user_id: list of warnings}
 
     # ==============================
     # 📌 Helpers
@@ -251,6 +252,121 @@ class Moderation(commands.Cog):
         await self.log_action(ctx, "🔓 Canal desbloqueado", discord.Color.green(), extra=f"Canal: {ctx.channel.mention}")
 
     # ==============================
+    # ⚠️ Warn
+    # ==============================
+    @commands.command()
+    @commands.has_permissions(manage_messages=True)
+    async def warn(self, ctx, member: discord.Member, *, reason="No especificado"):
+        if not self.has_permission(ctx):
+            return await ctx.send("⚠️ No tienes permisos para advertir usuarios.")
+        if member == ctx.author:
+            return await ctx.send("⚠️ No puedes advertirte a ti mismo.")
+        user_id = str(member.id)
+        if user_id not in self.warnings:
+            self.warnings[user_id] = []
+        self.warnings[user_id].append({"reason": reason, "moderator": ctx.author.id, "timestamp": datetime.now(timezone.utc)})
+        embed = discord.Embed(
+            title="⚠️ Advertencia",
+            description=f"{member.mention} ha sido advertido.\n**Razón:** {reason}",
+            color=discord.Color.yellow(),
+            timestamp=datetime.now(timezone.utc)
+        )
+        await ctx.send(embed=embed)
+        await self.log_action(ctx, "⚠️ Advertencia", discord.Color.yellow(), extra=f"Usuario: {member.mention}\nRazón: {reason}")
+        if len(self.warnings[user_id]) >= 3:  # Límite de 3 advertencias
+            mute_role = ctx.guild.get_role(MUTE_ROLE_ID)
+            if mute_role:
+                await member.add_roles(mute_role, reason=f"Alcanzó 3 advertencias por {reason}")
+                embed = discord.Embed(
+                    title="🔇 Mute automático",
+                    description=f"{member.mention} fue muteado automáticamente por alcanzar 3 advertencias.",
+                    color=discord.Color.dark_gray()
+                )
+                await ctx.send(embed=embed)
+                await self.log_action(ctx, "🔇 Mute automático", discord.Color.dark_gray(), extra=f"Usuario: {member.mention}")
+
+    # ==============================
+    # 📋 Warnings
+    # ==============================
+    @commands.command()
+    @commands.has_permissions(manage_messages=True)
+    async def warnings(self, ctx, member: discord.Member = None):
+        if not self.has_permission(ctx):
+            return await ctx.send("⚠️ No tienes permisos para ver advertencias.")
+        target = member or ctx.author
+        user_id = str(target.id)
+        if user_id not in self.warnings or not self.warnings[user_id]:
+            await ctx.send(f"📋 {target.mention} no tiene advertencias.")
+            return
+        embed = discord.Embed(
+            title=f"📋 Advertencias de {target.name}",
+            color=discord.Color.orange(),
+            timestamp=datetime.now(timezone.utc)
+        )
+        for i, warning in enumerate(self.warnings[user_id], 1):
+            embed.add_field(
+                name=f"Advertencia #{i}",
+                value=f"Razón: {warning['reason']}\nModerador: <@{warning['moderator']}>\nFecha: {warning['timestamp'].strftime('%Y-%m-%d %H:%M:%S UTC')}",
+                inline=False
+            )
+        await ctx.send(embed=embed)
+
+    # ==============================
+    # 👢 Kick
+    # ==============================
+    @commands.command()
+    @commands.has_permissions(kick_members=True)
+    async def kick(self, ctx, member: discord.Member, *, reason="No especificado"):
+        if not self.has_permission(ctx):
+            return await ctx.send("⚠️ No tienes permisos para expulsar usuarios.")
+        if member == ctx.author:
+            return await ctx.send("⚠️ No puedes expulsarte a ti mismo.")
+        await member.kick(reason=reason)
+        embed = discord.Embed(
+            title="👢 Usuario expulsado",
+            description=f"{member.mention} fue expulsado.\n**Razón:** {reason}",
+            color=discord.Color.orange()
+        )
+        await ctx.send(embed=embed)
+        await self.log_action(ctx, "👢 Usuario expulsado", discord.Color.orange(), extra=f"Usuario: {member.mention}\nRazón: {reason}")
+
+    # ==============================
+    # 🚫 Ban
+    # ==============================
+    @commands.command()
+    @commands.has_permissions(ban_members=True)
+    async def ban(self, ctx, member: discord.Member, *, reason="No especificado"):
+        if not self.has_permission(ctx):
+            return await ctx.send("⚠️ No tienes permisos para banear usuarios.")
+        if member == ctx.author:
+            return await ctx.send("⚠️ No puedes banearte a ti mismo.")
+        await member.ban(reason=reason)
+        embed = discord.Embed(
+            title="🚫 Usuario baneado",
+            description=f"{member.mention} fue baneado.\n**Razón:** {reason}",
+            color=discord.Color.red()
+        )
+        await ctx.send(embed=embed)
+        await self.log_action(ctx, "🚫 Usuario baneado", discord.Color.red(), extra=f"Usuario: {member.mention}\nRazón: {reason}")
+
+    # ==============================
+    # 🔓 Unban
+    # ==============================
+    @commands.command()
+    @commands.has_permissions(ban_members=True)
+    async def unban(self, ctx, user: discord.User, *, reason="No especificado"):
+        if not self.has_permission(ctx):
+            return await ctx.send("⚠️ No tienes permisos para desbanear usuarios.")
+        await ctx.guild.unban(user, reason=reason)
+        embed = discord.Embed(
+            title="🔓 Usuario desbaneado",
+            description=f"{user.mention} fue desbaneado.\n**Razón:** {reason}",
+            color=discord.Color.green()
+        )
+        await ctx.send(embed=embed)
+        await self.log_action(ctx, "🔓 Usuario desbaneado", discord.Color.green(), extra=f"Usuario: {user.mention}\nRazón: {reason}")
+
+    # ==============================
     # 📖 HelpModeration
     # ==============================
     @commands.command(name="helpmoderation", aliases=["helpmod", "hmod"])
@@ -265,7 +381,7 @@ class Moderation(commands.Cog):
             .add_field(name="🧹 Clearuser", value="`$clearuser @usuario <cantidad>`\nElimina mensajes de un usuario específico (máx. 100).", inline=False)
             .add_field(name="🔇 Mute", value="`$mute <usuario> [duración(s/m/h/d/w)] [razón]`\nSilencia a un usuario (ej. 5m).", inline=False)
             .add_field(name="⏳ Timeout", value="`$timeout <usuario> <duración(s/m/h/d/w)> [razón]`\nSilencia temporalmente a un usuario (máx. 28 días).", inline=False)
-            .set_footer(text="Página 1/2"),
+            .set_footer(text="Página 1/4"),
 
             discord.Embed(
                 title="📖 Ayuda de Moderación - Página 2",
@@ -276,8 +392,28 @@ class Moderation(commands.Cog):
             .add_field(name="🔓 Remove Timeout", value="`$remove_timeout <usuario>`\nRemueve el timeout de un usuario.", inline=False)
             .add_field(name="🔒 Lock", value="`$lock`\nBloquea el canal para @everyone.", inline=False)
             .add_field(name="🔓 Unlock", value="`$unlock`\nDesbloquea el canal para @everyone.", inline=False)
-            .set_footer(text="Página 2/2"),    
-                ]
+            .add_field(name="⚠️ Warn", value="`$warn @usuario [razón]`\nAdvertir a un usuario (máx. 3 antes de mute).", inline=False)
+            .set_footer(text="Página 2/4"),
+
+            discord.Embed(
+                title="📖 Ayuda de Moderación - Página 3",
+                description="**Comandos de gestión.**",
+                color=discord.Color.purple()
+            )
+            .add_field(name="📋 Warnings", value="`$warnings [@usuario]`\nMuestra las advertencias de un usuario.", inline=False)
+            .add_field(name="👢 Kick", value="`$kick @usuario [razón]`\nExpulsa a un usuario del servidor.", inline=False)
+            .add_field(name="🚫 Ban", value="`$ban @usuario [razón]`\nBanea a un usuario del servidor.", inline=False)
+            .set_footer(text="Página 3/4"),
+
+            discord.Embed(
+                title="📖 Ayuda de Moderación - Página 4",
+                description="**Comandos de reversión.**",
+                color=discord.Color.light_grey()
+            )
+            .add_field(name="🔓 Unban", value="`$unban @usuario [razón]`\nDesbanea a un usuario del servidor.", inline=False)
+            .add_field(name="📌 Logs", value="Todas las acciones se envían a un canal de logs definido por el bot.", inline=False)
+            .set_footer(text="Página 4/4"),
+        ]
 
         class Paginator(View):
             def __init__(self):
