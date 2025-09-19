@@ -409,7 +409,7 @@ class Moderation(commands.Cog):
             .add_field(name="🔇 Mute", value="`$mute <usuario> [duración(s/m/h/d/w)] [razón]`\nSilencia a un usuario (ej. 5m).", inline=False)
             .add_field(name="⏳ Timeout", value="`$timeout <usuario> <duración(s/m/h/d/w)> [razón]`\nSilencia temporalmente a un usuario (máx. 28 días).", inline=False)
             .set_footer(text="Página 1/3"),
-
+            
             discord.Embed(
                 title="Ayuda de Moderación",
                 description="**Comandos adicionales.**",
@@ -421,7 +421,7 @@ class Moderation(commands.Cog):
             .add_field(name="🔓 Unlock", value="`$unlock`\nDesbloquea el canal para @everyone.", inline=False)
             .add_field(name="⚠️ Warn", value="`$warn @usuario [razón]`\nAdvertir a un usuario (máx. 3 antes de mute).", inline=False)
             .set_footer(text="Página 2/3"),
-
+            
             discord.Embed(
                 title="Ayuda de Moderación",
                 description="**Comandos de gestión.**",
@@ -432,9 +432,7 @@ class Moderation(commands.Cog):
             .add_field(name="👢 Kick", value="`$kick @usuario [razón]`\nExpulsa a un usuario del servidor.", inline=False)
             .add_field(name="🚫 Ban", value="`$ban @usuario [razón]`\nBanea a un usuario del servidor.", inline=False)
             .add_field(name="🔓 Unban", value="`$unban @usuario [razón]`\nDesbanea a un usuario del servidor.", inline=False)
-
             .set_footer(text="Página 3/3"),
-            )
         ]
 
         class Paginator(View):
