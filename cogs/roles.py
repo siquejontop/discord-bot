@@ -102,6 +102,19 @@ class Roles(commands.Cog):
                 color=discord.Color.red()
             ))
 
+        # Validación de jerarquía
+        if member.top_role >= ctx.author.top_role:
+            return await ctx.send(embed=discord.Embed(
+                description=f"❌ No puedes modificar a alguien con un rol superior o igual al tuyo ({member.top_role.mention}).",
+                color=discord.Color.red()
+            ))
+
+        if role >= ctx.guild.me.top_role:
+            return await ctx.send(embed=discord.Embed(
+                description=f"❌ No puedo asignar un rol superior al mío ({ctx.guild.me.top_role.mention}).",
+                color=discord.Color.red()
+            ))
+
         try:
             await member.add_roles(role)
             embed = discord.Embed(
@@ -132,6 +145,19 @@ class Roles(commands.Cog):
                 color=discord.Color.red()
             ))
 
+        # Validación de jerarquía
+        if member.top_role >= ctx.author.top_role:
+            return await ctx.send(embed=discord.Embed(
+                description=f"❌ No puedes modificar a alguien con un rol superior o igual al tuyo ({member.top_role.mention}).",
+                color=discord.Color.red()
+            ))
+
+        if role >= ctx.guild.me.top_role:
+            return await ctx.send(embed=discord.Embed(
+                description=f"❌ No puedo quitar un rol superior al mío ({ctx.guild.me.top_role.mention}).",
+                color=discord.Color.red()
+            ))
+
         try:
             await member.remove_roles(role)
             embed = discord.Embed(
@@ -159,6 +185,19 @@ class Roles(commands.Cog):
         if not role:
             return await ctx.send(embed=discord.Embed(
                 description=f"❌ No encontré el rol **{role_arg}**.",
+                color=discord.Color.red()
+            ))
+
+        # Validación de jerarquía
+        if member.top_role >= ctx.author.top_role:
+            return await ctx.send(embed=discord.Embed(
+                description=f"❌ No puedes modificar a alguien con un rol superior o igual al tuyo ({member.top_role.mention}).",
+                color=discord.Color.red()
+            ))
+
+        if role >= ctx.guild.me.top_role:
+            return await ctx.send(embed=discord.Embed(
+                description=f"❌ No puedo modificar un rol superior al mío ({ctx.guild.me.top_role.mention}).",
                 color=discord.Color.red()
             ))
 
