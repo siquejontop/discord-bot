@@ -76,8 +76,8 @@ class Precios(commands.Cog):
             "tb": "tacoritabicicleta",
             "taco": "tacoritabicicleta",
 
-            "ls": "lasis",
-            "sis": "lasis",
+            "ls": "lassis",
+            "sis": "lassis",
         }
 
     def make_embed(self, ctx, nombre: str, formula: str, operacion: str, resultado: float, pretty: str):
