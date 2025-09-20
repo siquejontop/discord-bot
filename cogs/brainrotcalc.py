@@ -23,6 +23,7 @@ class Precios(commands.Cog):
             "garamaandmadundung": (50, 0.13, 26, "(M − 50) × 0.13 + 26", "Garama and madundung"),
             "dragoncannelloni": (100, 0.30, 100, "(M − 100) × 0.30 + 100", "Dragon cannelloni"),
             "tacoritabicicleta": (16.5, 0.06, 4, "(M - 16.5) × 0.06 + 4", "Tacorita Bicicleta"),
+            "lassis": (17.5, 0.08, 3, "(M - 17.5) × 0.08 + 3", "Las sis"),
         }
 
         # Alias → clave real
@@ -74,6 +75,8 @@ class Precios(commands.Cog):
 
             "tb": "tacoritabicicleta",
             "taco": "tacoritabicicleta",
+
+            "ls": "lasis",
         }
 
     def make_embed(self, ctx, nombre: str, formula: str, operacion: str, resultado: float, pretty: str):
@@ -82,7 +85,7 @@ class Precios(commands.Cog):
             description=f"Conversión automática usando la fórmula de **{pretty}**",
             color=discord.Color.blurple()
         )
-        embed.add_field(name="📌 Fórmula", value=formula, inline=False)
+        embed.add_field(name="📌 Formula", value=formula, inline=False)
         embed.add_field(name="📊 Operación", value=operacion, inline=False)
         embed.add_field(name="💰 Resultado", value=f"**${resultado:.2f}**", inline=False)
         embed.set_footer(text=f"Pedido por {ctx.author}", icon_url=ctx.author.display_avatar.url)
