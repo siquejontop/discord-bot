@@ -18,7 +18,6 @@ OWNER_ROLE_ID = 1415860178120609925  # Rol "owner"
 MAX_BANS = 3
 MAX_CHANNELS = 3
 MAX_ROLES = 3
-MAX_WEBHOOKS = 3
 
 # Tiempo de expiración para contadores de acciones (en segundos)
 ACTION_EXPIRY_SECONDS = 300  # 5 minutos
@@ -32,7 +31,7 @@ logging.basicConfig(filename=LOG_FILE, level=logging.INFO, format='%(asctime)s -
 class AntiNuke(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.user_actions = {}  # {user_id: {"bans": int, "channels": int, "roles": int, "webhooks": int, "last_action": datetime}}
+        self.user_actions = {}  # {user_id: {"bans": int, "channels": int, "roles": int, "last_action": datetime}}
 
     # =====================================================
     # 📜 Logs
@@ -60,7 +59,7 @@ class AntiNuke(commands.Cog):
         if executor.id in self.user_actions:
             last_action = self.user_actions[executor.id].get("last_action", current_time)
             if (current_time - last_action).total_seconds() > ACTION_EXPIRY_SECONDS:
-                self.user_actions[executor.id] = {"bans": 0, "channels": 0, "roles": 0, "webhooks": 0, "last_action": current_time}
+                self.user_actions[executor.id] = {"bans": 0, "channels": 0, "roles": 0, "last_action": current_time}
             else:
                 self.user_actions[executor.id]["last_action"] = current_time
 
@@ -70,12 +69,12 @@ class AntiNuke(commands.Cog):
     @commands.Cog.listener()
     async def on_member_ban(self, guild, user):
         async for entry in guild.audit_logs(limit=5, action=discord.AuditLogAction.ban):
-            if (datetime.now(timezone.utc) - entry.created_at).total_seconds() < 60:  # Dentro de 1 minuto
+            if (datetime.now(timezone.utc) - entry.created_at).total_seconds() < 60:
                 executor = entry.user
                 if self.is_whitelisted(executor.id, guild):
                     return
                 await self.check_actions(executor)
-                self.user_actions.setdefault(executor.id, {"bans": 0, "channels": 0, "roles": 0, "webhooks": 0, "last_action": datetime.now(timezone.utc)})
+                self.user_actions.setdefault(executor.id, {"bans": 0, "channels": 0, "roles": 0, "last_action": datetime.now(timezone.utc)})
                 self.user_actions[executor.id]["bans"] += 1
                 if self.user_actions[executor.id]["bans"] >= MAX_BANS:
                     await guild.ban(executor, reason="AntiNuke: demasiados bans")
@@ -89,12 +88,12 @@ class AntiNuke(commands.Cog):
     async def on_guild_channel_create(self, channel):
         guild = channel.guild
         async for entry in guild.audit_logs(limit=5, action=discord.AuditLogAction.channel_create):
-            if (datetime.now(timezone.utc) - entry.created_at).total_seconds() < 60:  # Dentro de 1 minuto
+            if (datetime.now(timezone.utc) - entry.created_at).total_seconds() < 60:
                 executor = entry.user
                 if self.is_whitelisted(executor.id, guild):
                     return
                 await self.check_actions(executor)
-                self.user_actions.setdefault(executor.id, {"bans": 0, "channels": 0, "roles": 0, "webhooks": 0, "last_action": datetime.now(timezone.utc)})
+                self.user_actions.setdefault(executor.id, {"bans": 0, "channels": 0, "roles": 0, "last_action": datetime.now(timezone.utc)})
                 self.user_actions[executor.id]["channels"] += 1
                 if self.user_actions[executor.id]["channels"] >= MAX_CHANNELS:
                     await guild.ban(executor, reason="AntiNuke: demasiados canales creados")
@@ -108,12 +107,12 @@ class AntiNuke(commands.Cog):
     async def on_guild_role_create(self, role):
         guild = role.guild
         async for entry in guild.audit_logs(limit=5, action=discord.AuditLogAction.role_create):
-            if (datetime.now(timezone.utc) - entry.created_at).total_seconds() < 60:  # Dentro de 1 minuto
+            if (datetime.now(timezone.utc) - entry.created_at).total_seconds() < 60:
                 executor = entry.user
                 if self.is_whitelisted(executor.id, guild):
                     return
                 await self.check_actions(executor)
-                self.user_actions.setdefault(executor.id, {"bans": 0, "channels": 0, "roles": 0, "webhooks": 0, "last_action": datetime.now(timezone.utc)})
+                self.user_actions.setdefault(executor.id, {"bans": 0, "channels": 0, "roles": 0, "last_action": datetime.now(timezone.utc)})
                 self.user_actions[executor.id]["roles"] += 1
                 if self.user_actions[executor.id]["roles"] >= MAX_ROLES:
                     await guild.ban(executor, reason="AntiNuke: demasiados roles creados")
@@ -127,7 +126,7 @@ class AntiNuke(commands.Cog):
     async def on_guild_role_update(self, before, after):
         guild = after.guild
         async for entry in guild.audit_logs(limit=5, action=discord.AuditLogAction.role_update):
-            if (datetime.now(timezone.utc) - entry.created_at).total_seconds() < 60:  # Dentro de 1 minuto
+            if (datetime.now(timezone.utc) - entry.created_at).total_seconds() < 60:
                 executor = entry.user
                 if self.is_whitelisted(executor.id, guild):
                     return
@@ -160,7 +159,7 @@ class AntiNuke(commands.Cog):
 
         if auth_mm in after.roles and auth_mm not in before.roles:
             async for entry in guild.audit_logs(limit=5, action=discord.AuditLogAction.member_role_update):
-                if (datetime.now(timezone.utc) - entry.created_at).total_seconds() < 60:  # Dentro de 1 minuto
+                if (datetime.now(timezone.utc) - entry.created_at).total_seconds() < 60:
                     executor = entry.user
 
                     if (
@@ -192,22 +191,24 @@ class AntiNuke(commands.Cog):
     async def on_webhook_create(self, webhook):
         guild = webhook.guild
         async for entry in guild.audit_logs(limit=5, action=discord.AuditLogAction.webhook_create):
-            if (datetime.now(timezone.utc) - entry.created_at).total_seconds() < 10:  # Dentro de 10 segundos
+            if (datetime.now(timezone.utc) - entry.created_at).total_seconds() < 10:
                 executor = entry.user
+                logging.info(f"Detectado webhook creado por {executor} en {webhook.channel.mention}")
                 if self.is_whitelisted(executor.id, guild):
+                    logging.info(f"Usuario {executor} está en la whitelist, no se toman medidas.")
                     return
-                await self.check_actions(executor)
-                self.user_actions.setdefault(executor.id, {"bans": 0, "channels": 0, "roles": 0, "webhooks": 0, "last_action": datetime.now(timezone.utc)})
-                self.user_actions[executor.id]["webhooks"] += 1
-                if self.user_actions[executor.id]["webhooks"] >= MAX_WEBHOOKS:
-                    try:
-                        await webhook.delete(reason="AntiNuke: creación de webhook no autorizada")
-                        await guild.ban(executor, reason="AntiNuke: creó webhooks no autorizados")
-                        await self.log_action(guild, f"🔗 {executor.mention} baneado por crear un webhook no autorizado en el canal {webhook.channel.mention}.")
-                    except discord.Forbidden:
-                        await self.log_action(guild, f"⛔ No tengo permisos para eliminar el webhook creado por {executor.mention}.")
-                    except discord.HTTPException as e:
-                        await self.log_action(guild, f"⛔ Error al eliminar webhook: {e}")
+                logging.info(f"Usuario {executor} no está en la whitelist, procediendo con medidas.")
+                try:
+                    await webhook.delete(reason="AntiNuke: creación de webhook no autorizada")
+                    await guild.ban(executor, reason="AntiNuke: creó un webhook no autorizado")
+                    await self.log_action(guild, f"🔗 {executor.mention} baneado por crear un webhook no autorizado en el canal {webhook.channel.mention}.")
+                    logging.info(f"Webhook eliminado y {executor} baneado exitosamente.")
+                except discord.Forbidden:
+                    await self.log_action(guild, f"⛔ No tengo permisos para eliminar el webhook creado por {executor.mention}.")
+                    logging.info(f"Fallo por permisos insuficientes para eliminar webhook de {executor}.")
+                except discord.HTTPException as e:
+                    await self.log_action(guild, f"⛔ Error al eliminar webhook: {e}")
+                    logging.info(f"Error HTTP al procesar webhook de {executor}: {e}")
                 break
 
     # =====================================================
@@ -218,7 +219,7 @@ class AntiNuke(commands.Cog):
         guild = member.guild
         if member.bot:
             async for entry in guild.audit_logs(limit=5, action=discord.AuditLogAction.bot_add):
-                if (datetime.now(timezone.utc) - entry.created_at).total_seconds() < 60:  # Dentro de 1 minuto
+                if (datetime.now(timezone.utc) - entry.created_at).total_seconds() < 60:
                     executor = entry.user
                     if self.is_whitelisted(executor.id, guild):
                         return
@@ -238,8 +239,8 @@ class AntiNuke(commands.Cog):
     @commands.command(name="helpantinuke")
     async def helpantinuke(self, ctx):
         embed = discord.Embed(
-            title="Ayuda AntiNuke",
-            description="Lista de protecciones activas:",
+            title="🛡️ Ayuda AntiNuke",
+            description="Lista de protecciones activas (la whitelist es estática y definida en el código):",
             color=discord.Color.blue()
         )
         embed.add_field(name="Protecciones activas", value="""  
@@ -247,7 +248,7 @@ class AntiNuke(commands.Cog):
         ✅ Anti creación masiva de canales  
         ✅ Anti creación masiva de roles  
         ✅ Anti permisos peligrosos  
-        ✅ Protección especial rol **auth mm**
+        ✅ Protección especial rol **auth mm** (solo Owner pueden darlo)  
         ✅ Anti creación de webhooks  
         ✅ Anti adición de bots/aplicaciones  
         """, inline=False)
