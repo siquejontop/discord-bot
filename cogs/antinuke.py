@@ -7,7 +7,7 @@ import logging
 # CONFIGURACIÓN
 # =====================================================
 OWNER_IDS = [335596693603090434, 523662219020337153, 1158970670928113745]  # IDs de dueños del bot
-WHITELIST = {1325579039888511056, 991778986566885386, 235148962103951360}  # IDs de usuarios whitelist (agrega los IDs manualmente aquí)
+WHITELIST = {1325579039888511056, 991778986566885386, 235148962103951360}  # IDs de usuarios whitelist
 LOG_CHANNEL_ID = 1418097943730327642  # Canal donde se mandan los logs
 
 # Roles importantes (poner IDs directos)
@@ -22,7 +22,7 @@ MAX_ROLES = 3
 # Tiempo de expiración para contadores de acciones (en segundos)
 ACTION_EXPIRY_SECONDS = 300  # 5 minutos
 
-# Archivo de logs local (usar Render Disk si está disponible)
+# Archivo de logs local
 LOG_FILE = "/data/antinuke.log"
 
 # Configurar logging local
@@ -190,10 +190,12 @@ class AntiNuke(commands.Cog):
     @commands.Cog.listener()
     async def on_webhook_create(self, webhook):
         guild = webhook.guild
+        logging.info(f"Evento on_webhook_create activado para {webhook.name} en {guild.name}")
         async for entry in guild.audit_logs(limit=5, action=discord.AuditLogAction.webhook_create):
+            logging.info(f"Entrada de auditoría encontrada: {entry.user} a las {entry.created_at}")
             if (datetime.now(timezone.utc) - entry.created_at).total_seconds() < 10:
                 executor = entry.user
-                logging.info(f"Detectado webhook creado por {executor} en {webhook.channel.mention}")
+                logging.info(f"Webhook creado por {executor} en {webhook.channel.mention} dentro de los 10 segundos")
                 if self.is_whitelisted(executor.id, guild):
                     logging.info(f"Usuario {executor} está en la whitelist, no se toman medidas.")
                     return
@@ -210,6 +212,8 @@ class AntiNuke(commands.Cog):
                     await self.log_action(guild, f"⛔ Error al eliminar webhook: {e}")
                     logging.info(f"Error HTTP al procesar webhook de {executor}: {e}")
                 break
+        else:
+            logging.info(f"No se encontró entrada de auditoría para {webhook.name} en los últimos 10 segundos.")
 
     # =====================================================
     # 🚨 Anti adición de bots/aplicaciones
