@@ -238,8 +238,8 @@ class AntiNuke(commands.Cog):
     @commands.command(name="helpantinuke")
     async def helpantinuke(self, ctx):
         embed = discord.Embed(
-            title="🛡️ Ayuda AntiNuke",
-            description="Lista de protecciones activas (la whitelist es estática y definida en el código):",
+            title="Ayuda AntiNuke",
+            description="Lista de protecciones activas:",
             color=discord.Color.blue()
         )
         embed.add_field(name="Protecciones activas", value="""  
@@ -247,7 +247,7 @@ class AntiNuke(commands.Cog):
         ✅ Anti creación masiva de canales  
         ✅ Anti creación masiva de roles  
         ✅ Anti permisos peligrosos  
-        ✅ Protección especial rol **auth mm** (solo Owner pueden darlo)  
+        ✅ Protección especial rol **auth mm**
         ✅ Anti creación de webhooks  
         ✅ Anti adición de bots/aplicaciones  
         """, inline=False)
