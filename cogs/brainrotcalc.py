@@ -9,21 +9,23 @@ class Precios(commands.Cog):
         self.formulas = {
             "loscombinasionas": (15, 0.07, 2, "(M − 15) × 0.07 + 2", "Los combinasionas"),
             "lagrandecombinasion": (10, 0.09, 3, "(M − 10) × 0.09 + 3", "La grande combinasion"),
-            "losbros": (20, 0.06, 2.5, "(M − 20) × 0.06 + 2.5", "Los bros"),
+            "losbros": (24, 0.06, 2.5, "(M − 24) × 0.06 + 2.5", "Los bros"),
             "loshotspositos": (20, 0.07, 5, "(M − 20) × 0.07 + 5", "Los hotspositos"),
             "nuclearodinossauro": (15, 0.12, 6, "(M − 15) × 0.12 + 6", "Nuclearo dinossauro"),
             "esoksekolah": (30, 0.06, 7, "(M − 30) × 0.06 + 7", "Esok sekolah"),
             "tralaledon": (27.5, 0.05, 11, "(M − 27.5) × 0.05 + 11", "Tralaledon"),
             "ketchuruandmusturu": (42.5, 0.08, 11.5, "(M − 42.5) × 0.08 + 11.5", "Ketchuru and musturu"),
-            "ketupatkepat": (35, 0.09, 14, "(M − 35) × 0.09 + 14", "Ketupat kepat"),
+            "ketupatkepat": (35, 0.08, 14, "(M − 35) × 0.08 + 14", "Ketupat kepat"),
             "lasupremecombinasion": (40, 0.11, 18, "(M − 40) × 0.11 + 18", "La supreme combinasion"),
             "laextinctgrande": (23.5, 0.07, 3, "(M − 23.5) × 0.07 + 3", "La extinct grande"),
-            "celularciniviciosini": (22.5, 0.07, 5, "(M − 22.5) × 0.07 + 5", "Celularcini viciosini"),
-            "spaghettitualetti": (60, 0.08, 12, "(M − 60) × 0.08 + 12", "Spaghetti tualetti"),
-            "garamaandmadundung": (60, 0.13, 24, "(M − 60) × 0.13 + 24", "Garama and madundung"),
+            "celularciniviciosini": (22.5, 0.06, 5, "(M − 22.5) × 0.06 + 5", "Celularcini viciosini"),
+            "spaghettitualetti": (60, 0.05, 12, "(M − 60) × 0.05 + 12", "Spaghetti tualetti"),
+            "garamaandmadundung": (50, 0.13, 24, "(M − 50) × 0.13 + 24", "Garama and madundung"),
             "dragoncannelloni": (100, 0.30, 100, "(M − 100) × 0.30 + 100", "Dragon cannelloni"),
             "tacoritabicicleta": (16.5, 0.05, 2, "(M - 16.5) × 0.05 + 2", "Tacorita Bicicleta"),
-            "lassis": (16.5, 0.05, 3, "(M - 16.5) × 0.05 + 3", "Las sis"),
+            "lassis": (17.5, 0.05, 3, "(M - 17,5) × 0.05 + 3", "Las sis"),
+            "tictacsahur": (37.5, 0.06, 7, "(M - 37.5) × 0.06 + 7", "Tictac sahur"),
+            "lostacoritas": (32, 0.06, 4, "(M - 32) × 0.06 + 4", "Las tacoritas"),
         }
 
         # Alias → clave real
@@ -78,6 +80,12 @@ class Precios(commands.Cog):
 
             "ls": "lassis",
             "sis": "lassis",
+
+            "ts": "tictacsahur",
+            "tictac": "tictacsahur",
+
+            "lt": "lostacoritas",
+            "tacoritas": "lostacoritas",
         }
 
     def make_embed(self, ctx, nombre: str, formula: str, operacion: str, resultado: float, pretty: str):
