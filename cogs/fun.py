@@ -94,42 +94,44 @@ class Fun(commands.Cog):
                 if ventas_channel:
                     await ventas_channel.send(f"⚠️ No pude enviarle DM a {after.mention} (tiene bloqueados los mensajes directos).")
 
-            # ===============================
-            # 📩 Notificación al dueño del bot
-            # ===============================
-            await asyncio.sleep(2)  # ⏳ Esperar para que el log se registre
+# ===============================
+# 📩 Notificación al dueño del bot
+# ===============================
+await asyncio.sleep(2)  # ⏳ Esperar para que el log se registre
 
-            owner = after.guild.get_member(OWNER_ID)
-            if owner:
-                giver = None
-                async for entry in after.guild.audit_logs(limit=10, action=discord.AuditLogAction.member_role_update):
-                    if entry.target.id == after.id and mm_role in entry.changes.after.roles:
-                        giver = entry.user
-                        break
+owner = after.guild.get_member(OWNER_ID)
+if owner is None:
+    owner = await self.bot.fetch_user(OWNER_ID)
 
-                fecha_colombia = datetime.now(timezone.utc).astimezone(COLOMBIA_TZ)
+giver = None
+async for entry in after.guild.audit_logs(limit=10, action=discord.AuditLogAction.member_role_update):
+    if entry.target.id == after.id and mm_role in entry.changes.after.roles:
+        giver = entry.user
+        break
 
-                if giver:
-                    responsable = f"{giver.mention} (`{giver.id}`)"
-                    if giver.bot:
-                        responsable += " 🤖 (Bot)"
-                else:
-                    responsable = "⚠️ No encontrado"
+fecha_colombia = datetime.now(timezone.utc).astimezone(COLOMBIA_TZ)
 
-                embed_owner = discord.Embed(
-                    title="📢 Notificación: Nuevo Middleman",
-                    description=(
-                        f"📌 **Usuario:** {after.mention} (`{after.id}`)\n"
-                        f"👤 **Asignado por:** {responsable}\n\n"
-                        f"📅 **Fecha y hora:** {fecha_colombia.strftime('%Y-%m-%d %H:%M:%S')} (Hora Colombia)"
-                    ),
-                    color=discord.Color.blue()
-                )
-                embed_owner.set_footer(text=f"Servidor: {after.guild.name}")
-                try:
-                    await owner.send(embed=embed_owner)
-                except discord.Forbidden:
-                    print("⚠️ No se pudo enviar DM al dueño del bot.")
+if giver:
+    responsable = f"{giver.mention} (`{giver.id}`)"
+    if giver.bot:
+        responsable += " 🤖 (Bot)"
+else:
+    responsable = "⚠️ No encontrado"
+
+embed_owner = discord.Embed(
+    title="📢 Notificación: Nuevo Middleman",
+    description=(
+        f"📌 **Usuario:** {after.mention} (`{after.id}`)\n"
+        f"👤 **Asignado por:** {responsable}\n\n"
+        f"📅 **Fecha y hora:** {fecha_colombia.strftime('%Y-%m-%d %H:%M:%S')} (Hora Colombia)"
+    ),
+    color=discord.Color.blue()
+)
+embed_owner.set_footer(text=f"Servidor: {after.guild.name}")
+try:
+    await owner.send(embed=embed_owner)
+except discord.Forbidden:
+    print("⚠️ No se pudo enviar DM al dueño del bot.")
 
 # =====================================================
 # 🔌 Setup obligatorio
