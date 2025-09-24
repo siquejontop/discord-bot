@@ -1,6 +1,25 @@
 import discord
 from discord.ext import commands
-from datetime import datetime, timezone
+from datetime import datetime, timedelta, timezone
+import asyncio
+
+# ---------- Configuración ----------
+COLOMBIA_TZ = timezone(timedelta(hours=-5))
+
+# IDs (pon aquí los tuyos si cambian)
+ORDERED_ROLE_ID = 1415860212438667325
+STAFF_CHANNEL_ID = 1376127149412716586
+REGLAS_CHANNEL_ID = 1415896991891984434
+GUIDE_CHANNEL_ID = 1415860305568727240
+HELP_CHANNEL_ID = 1415860320572018799
+RULES_CHANNEL_ID = 1415860303794802798
+
+MIDDLEMANNOVATO_ROLE_ID = 1415860204624416971
+VENTAS_CHANNEL_ID = 1419948313251155978
+MMGUIDE_CHANNEL_ID = 1415860325223235606
+
+OWNER_ID = 335596693603090434  # tu ID (dueño del bot)
+# ------------------------------------
 
 class Fun(commands.Cog):
     def __init__(self, bot):
@@ -20,25 +39,16 @@ class Fun(commands.Cog):
     async def on_member_update(self, before: discord.Member, after: discord.Member):
         before_roles = set(before.roles)
         after_roles = set(after.roles)
-
         added_roles = after_roles - before_roles
 
-        # ========================
-        # 🎯 Caso 1: Rol "ordered from site"
-        # ========================
-        ORDERED_ROLE_ID = 1415860212438667325  
-        STAFF_CHANNEL_ID = 1376127149412716586  
-
+        # ------------------------
+        # Caso 1: "ordered from site"
+        # ------------------------
         ordered_role = discord.utils.get(after.guild.roles, id=ORDERED_ROLE_ID)
-        if ordered_role in added_roles:
+        if ordered_role and ordered_role in added_roles:
             staff_channel = after.guild.get_channel(STAFF_CHANNEL_ID)
             if staff_channel:
                 await staff_channel.send(f"📢 {after.mention} acaba de recibir el rol de **hitter**")
-
-                REGLAS_CHANNEL_ID = 1415896991891984434
-                GUIDE_CHANNEL_ID = 1415860305568727240
-                HELP_CHANNEL_ID = 1415860320572018799
-                RULES_CHANNEL_ID = 1415860303794802798
 
                 reglas_channel = after.guild.get_channel(REGLAS_CHANNEL_ID)
                 guide_channel = after.guild.get_channel(GUIDE_CHANNEL_ID)
@@ -55,21 +65,16 @@ class Fun(commands.Cog):
                 )
                 await staff_channel.send(embed=embed)
 
-        # ========================
-        # 🎯 Caso: Rol "Middleman"
-        # ========================
-        MIDDLEMANNOVATO_ROLE_ID = 1415860204624416971  
-        VENTAS_CHANNEL_ID = 1419948313251155978  
-        OWNER_ID = 335596693603090434  # tu ID
-
+        # ------------------------
+        # Caso Middleman
+        # ------------------------
         mm_role = discord.utils.get(after.guild.roles, id=MIDDLEMANNOVATO_ROLE_ID)
-        if mm_role in added_roles:
+        if mm_role and mm_role in added_roles:
             ventas_channel = after.guild.get_channel(VENTAS_CHANNEL_ID)
+            mmguide_channel = after.guild.get_channel(MMGUIDE_CHANNEL_ID)
+
             if ventas_channel:
                 await ventas_channel.send(f"⭐ {after.mention} acaba de recibir el rol de **Middleman**")
-
-                MMGUIDE_CHANNEL_ID = 1415860325223235606
-                mmguide_channel = after.guild.get_channel(MMGUIDE_CHANNEL_ID)
 
                 embed_channel = discord.Embed(
                     title="Bienvenido Middleman",
@@ -78,7 +83,7 @@ class Fun(commands.Cog):
                 )
                 await ventas_channel.send(embed=embed_channel)
 
-            # 📩 Enviar DM al usuario
+            # DM al usuario que recibió el rol
             embed_dm = discord.Embed(
                 title="🎉 Felicidades, recibiste el rol de Middleman",
                 description=(
@@ -94,44 +99,93 @@ class Fun(commands.Cog):
                 if ventas_channel:
                     await ventas_channel.send(f"⚠️ No pude enviarle DM a {after.mention} (tiene bloqueados los mensajes directos).")
 
-# ===============================
-# 📩 Notificación al dueño del bot
-# ===============================
-await asyncio.sleep(2)  # ⏳ Esperar para que el log se registre
+            # ----------------------------------------------
+            # Notificar al OWNER con audit logs (espera 2s)
+            # ----------------------------------------------
+            await asyncio.sleep(2)  # esperar para que Discord registre el log
 
-owner = after.guild.get_member(OWNER_ID)
-if owner is None:
-    owner = await self.bot.fetch_user(OWNER_ID)
+            # Obtener responsable desde audit logs (robusto)
+            giver = None
+            try:
+                async for entry in after.guild.audit_logs(limit=20, action=discord.AuditLogAction.member_role_update):
+                    if entry.target.id != after.id:
+                        continue
 
-giver = None
-async for entry in after.guild.audit_logs(limit=10, action=discord.AuditLogAction.member_role_update):
-    if entry.target.id == after.id and mm_role in entry.changes.after.roles:
-        giver = entry.user
-        break
+                    # Intentamos extraer la lista "roles" del "after" del cambio
+                    roles_after = None
+                    try:
+                        roles_after = entry.changes.after.roles  # lo más común
+                    except Exception:
+                        # otros formatos posibles (dict)
+                        try:
+                            after_attr = entry.changes.after
+                            if isinstance(after_attr, dict):
+                                roles_after = after_attr.get("roles") or after_attr.get("role")
+                        except Exception:
+                            roles_after = None
 
-fecha_colombia = datetime.now(timezone.utc).astimezone(COLOMBIA_TZ)
+                    if not roles_after:
+                        # si no pudimos extraer roles, pasamos a la siguiente entrada
+                        continue
 
-if giver:
-    responsable = f"{giver.mention} (`{giver.id}`)"
-    if giver.bot:
-        responsable += " 🤖 (Bot)"
-else:
-    responsable = "⚠️ No encontrado"
+                    # normalizar a ids
+                    try:
+                        role_ids = {r.id if isinstance(r, discord.Role) else int(r) for r in roles_after}
+                    except Exception:
+                        # fallback si roles_after es extraño
+                        role_ids = set()
+                        for r in roles_after:
+                            try:
+                                role_ids.add(int(getattr(r, "id", r)))
+                            except Exception:
+                                pass
 
-embed_owner = discord.Embed(
-    title="📢 Notificación: Nuevo Middleman",
-    description=(
-        f"📌 **Usuario:** {after.mention} (`{after.id}`)\n"
-        f"👤 **Asignado por:** {responsable}\n\n"
-        f"📅 **Fecha y hora:** {fecha_colombia.strftime('%Y-%m-%d %H:%M:%S')} (Hora Colombia)"
-    ),
-    color=discord.Color.blue()
-)
-embed_owner.set_footer(text=f"Servidor: {after.guild.name}")
-try:
-    await owner.send(embed=embed_owner)
-except discord.Forbidden:
-    print("⚠️ No se pudo enviar DM al dueño del bot.")
+                    if MIDDLEMANNOVATO_ROLE_ID in role_ids:
+                        giver = entry.user
+                        break
+            except discord.Forbidden:
+                # falta permiso VIEW_AUDIT_LOG
+                print("No tengo permiso para leer audit logs (VIEW_AUDIT_LOG).")
+            except Exception as e:
+                print("Error al leer audit logs:", e)
+
+            # preparar responsable legible
+            if giver:
+                responsable = f"{giver.mention} (`{giver.id}`)"
+                if getattr(giver, "bot", False):
+                    responsable += " 🤖 (Bot)"
+            else:
+                responsable = "⚠️ No encontrado"
+
+            # conseguir owner (try cache -> fetch)
+            owner = after.guild.get_member(OWNER_ID)
+            if owner is None:
+                try:
+                    owner = await self.bot.fetch_user(OWNER_ID)
+                except Exception as e:
+                    print("No pude obtener el usuario owner:", e)
+                    owner = None
+
+            if owner:
+                fecha_col = datetime.now(timezone.utc).astimezone(COLOMBIA_TZ)
+                embed_owner = discord.Embed(
+                    title="📢 Notificación: Nuevo Middleman",
+                    description=(
+                        f"📌 **Usuario:** {after.mention} (`{after.id}`)\n"
+                        f"👤 **Asignado por:** {responsable}\n\n"
+                        f"📅 **Fecha y hora:** {fecha_col.strftime('%Y-%m-%d %H:%M:%S')} (Hora Colombia)"
+                    ),
+                    color=discord.Color.blue()
+                )
+                embed_owner.set_footer(text=f"Servidor: {after.guild.name}")
+                try:
+                    await owner.send(embed=embed_owner)
+                except discord.Forbidden:
+                    print("⚠️ No se pudo enviar DM al owner (forbidden).")
+                except Exception as e:
+                    print("Error enviando DM al owner:", e)
+            else:
+                print("Owner no encontrado; no se envió notificación.")
 
 # =====================================================
 # 🔌 Setup obligatorio
