@@ -74,12 +74,18 @@ class Fun(commands.Cog):
 
                 fecha_colombia = datetime.now(timezone.utc).astimezone(COLOMBIA_TZ)
 
+                if giver:
+                    responsable = f"{giver.mention} (`{giver.id}`)"
+                    if giver.bot:
+                        responsable += " 🤖 (Bot)"
+                else:
+                    responsable = "⚠️ No encontrado"
+
                 embed_owner = discord.Embed(
                     title="📢 Notificación: Nuevo Middleman",
                     description=(
                         f"📌 **Usuario:** {after.mention} (`{after.id}`)\n"
-                        f"👤 **Asignado por:** {giver.mention if giver else '⚠️ No encontrado'}"
-                        f"{f' (`{giver.id}`)' if giver else ''}\n\n"
+                        f"👤 **Asignado por:** {responsable}\n\n"
                         f"📅 **Fecha y hora:** {fecha_colombia.strftime('%Y-%m-%d %H:%M:%S')} (Hora Colombia)"
                     ),
                     color=discord.Color.blue()
