@@ -1,14 +1,17 @@
 import discord
 from discord.ext import commands
-from datetime import datetime, timedelta, timezone
-import asyncio
-
-# Zona horaria Colombia (UTC-5)
-COLOMBIA_TZ = timezone(timedelta(hours=-5))
+from datetime import datetime, timezone
 
 class Fun(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+
+    # =====================================================
+    # 🏓 Ping
+    # =====================================================
+    @commands.command()
+    async def ping(self, ctx):
+        await ctx.send("🏓 Pong!")
 
     # =====================================================
     # 📡 Listener: Detectar cuando alguien recibe un rol
@@ -19,6 +22,38 @@ class Fun(commands.Cog):
         after_roles = set(after.roles)
 
         added_roles = after_roles - before_roles
+
+        # ========================
+        # 🎯 Caso 1: Rol "ordered from site"
+        # ========================
+        ORDERED_ROLE_ID = 1415860212438667325  
+        STAFF_CHANNEL_ID = 1376127149412716586  
+
+        ordered_role = discord.utils.get(after.guild.roles, id=ORDERED_ROLE_ID)
+        if ordered_role in added_roles:
+            staff_channel = after.guild.get_channel(STAFF_CHANNEL_ID)
+            if staff_channel:
+                await staff_channel.send(f"📢 {after.mention} acaba de recibir el rol de **hitter**")
+
+                REGLAS_CHANNEL_ID = 1415896991891984434
+                GUIDE_CHANNEL_ID = 1415860305568727240
+                HELP_CHANNEL_ID = 1415860320572018799
+                RULES_CHANNEL_ID = 1415860303794802798
+
+                reglas_channel = after.guild.get_channel(REGLAS_CHANNEL_ID)
+                guide_channel = after.guild.get_channel(GUIDE_CHANNEL_ID)
+                help_channel = after.guild.get_channel(HELP_CHANNEL_ID)
+                rules_channel = after.guild.get_channel(RULES_CHANNEL_ID)
+
+                embed = discord.Embed(
+                    title="Ahora tienes el rol de hitter // Now you've the role of hitter",
+                    description=(
+                        f"Ahora eres hitter, recuerda revisar {reglas_channel.mention} {guide_channel.mention} {help_channel.mention}\n\n"
+                        f"You're now a hitter, make sure to check {rules_channel.mention} {guide_channel.mention} {help_channel.mention}\n"
+                    ),
+                    color=discord.Color.red()
+                )
+                await staff_channel.send(embed=embed)
 
         # ========================
         # 🎯 Caso: Rol "Middleman"
