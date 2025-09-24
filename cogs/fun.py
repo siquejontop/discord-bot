@@ -1,5 +1,6 @@
 import discord
 from discord.ext import commands
+from datetime import datetime, timezone
 
 class Fun(commands.Cog):
     def __init__(self, bot):
@@ -71,15 +72,13 @@ class Fun(commands.Cog):
 
                 embed_channel = discord.Embed(
                     title="Bienvenido Middleman",
-                    description=(
-                        f"No olvides de leer {mmguide_channel.mention} para evitar cualquier problema en el servidor."
-                    ),
+                    description=(f"No olvides de leer {mmguide_channel.mention} para evitar cualquier problema en el servidor."),
                     color=discord.Color.gold()
                 )
                 await ventas_channel.send(embed=embed_channel)
 
-            # 📩 Enviar mensaje directo (DM) con embed
-            mmguide_channel = after.guild.get_channel(1415860325223235606)  # aseguro referencia
+            # 📩 Enviar mensaje directo (DM) al usuario con embed
+            mmguide_channel = after.guild.get_channel(1415860325223235606)
             embed_dm = discord.Embed(
                 title="🎉 Felicidades, recibiste el rol de Middleman",
                 description=(
@@ -94,10 +93,25 @@ class Fun(commands.Cog):
                 await after.send(embed=embed_dm)
             except discord.Forbidden:
                 if ventas_channel:
-                    await ventas_channel.send(
-                        f"⚠️ No pude enviarle DM a {after.mention} (tiene bloqueados los mensajes directos)."
-                    )
+                    await ventas_channel.send(f"⚠️ No pude enviarle DM a {after.mention} (tiene bloqueados los mensajes directos).")
 
+            # 📩 Notificación al dueño del bot
+            OWNER_ID = 335596693603090434  # tu ID
+            owner = after.guild.get_member(OWNER_ID)
+            if owner:
+                embed_owner = discord.Embed(
+                    title="📢 Notificación: Nuevo Middleman",
+                    description=(
+                        f"El usuario {after.mention} ha recibido el rol de **Middleman**.\n\n"
+                        f"📅 Fecha y hora: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}"
+                    ),
+                    color=discord.Color.blue()
+                )
+                embed_owner.set_footer(text=f"Servidor: {after.guild.name}")
+                try:
+                    await owner.send(embed=embed_owner)
+                except discord.Forbidden:
+                    print("⚠️ No se pudo enviar DM al dueño del bot.")
 
 # =====================================================
 # 🔌 Setup obligatorio
