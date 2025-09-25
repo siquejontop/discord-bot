@@ -70,6 +70,8 @@ class Fun(commands.Cog):
         # ------------------------
         mm_role = discord.utils.get(after.guild.roles, id=MIDDLEMANNOVATO_ROLE_ID)
         if mm_role and mm_role in added_roles:
+            print(f"DEBUG: {after} recibió el rol {mm_role.name} ({mm_role.id})")  # 👈 debug
+
             ventas_channel = after.guild.get_channel(VENTAS_CHANNEL_ID)
             mmguide_channel = after.guild.get_channel(MMGUIDE_CHANNEL_ID)
 
@@ -100,54 +102,22 @@ class Fun(commands.Cog):
                     await ventas_channel.send(f"⚠️ No pude enviarle DM a {after.mention} (tiene bloqueados los mensajes directos).")
 
             # ----------------------------------------------
-            # Notificar al OWNER con audit logs (espera 2s)
+            # Notificar al OWNER con audit logs (intenta varias veces)
             # ----------------------------------------------
-            await asyncio.sleep(2)  # esperar para que Discord registre el log
-
-            # Obtener responsable desde audit logs (robusto)
             giver = None
-            try:
-                async for entry in after.guild.audit_logs(limit=20, action=discord.AuditLogAction.member_role_update):
-                    if entry.target.id != after.id:
-                        continue
-
-                    # Intentamos extraer la lista "roles" del "after" del cambio
-                    roles_after = None
-                    try:
-                        roles_after = entry.changes.after.roles  # lo más común
-                    except Exception:
-                        # otros formatos posibles (dict)
-                        try:
-                            after_attr = entry.changes.after
-                            if isinstance(after_attr, dict):
-                                roles_after = after_attr.get("roles") or after_attr.get("role")
-                        except Exception:
-                            roles_after = None
-
-                    if not roles_after:
-                        # si no pudimos extraer roles, pasamos a la siguiente entrada
-                        continue
-
-                    # normalizar a ids
-                    try:
-                        role_ids = {r.id if isinstance(r, discord.Role) else int(r) for r in roles_after}
-                    except Exception:
-                        # fallback si roles_after es extraño
-                        role_ids = set()
-                        for r in roles_after:
-                            try:
-                                role_ids.add(int(getattr(r, "id", r)))
-                            except Exception:
-                                pass
-
-                    if MIDDLEMANNOVATO_ROLE_ID in role_ids:
-                        giver = entry.user
-                        break
-            except discord.Forbidden:
-                # falta permiso VIEW_AUDIT_LOG
-                print("No tengo permiso para leer audit logs (VIEW_AUDIT_LOG).")
-            except Exception as e:
-                print("Error al leer audit logs:", e)
+            for attempt in range(3):  # intenta hasta 3 veces
+                await asyncio.sleep(2)  # espera antes de leer logs
+                try:
+                    async for entry in after.guild.audit_logs(limit=20, action=discord.AuditLogAction.member_role_update):
+                        if entry.target.id != after.id:
+                            continue
+                        if any(r.id == MIDDLEMANNOVATO_ROLE_ID for r in entry.changes.after.roles):
+                            giver = entry.user
+                            break
+                except Exception as e:
+                    print("Error al leer audit logs:", e)
+                if giver:
+                    break
 
             # preparar responsable legible
             if giver:
@@ -185,7 +155,8 @@ class Fun(commands.Cog):
                 except Exception as e:
                     print("Error enviando DM al owner:", e)
             else:
-                print("Owner no encontrado; no se envió notificación.")    
+                print("Owner no encontrado; no se envió notificación.")
+  
 
 # =====================================================
 # 👥 Contador de baneados
