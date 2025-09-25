@@ -1,6 +1,76 @@
 import discord
 from discord.ext import commands
 
+# ========================
+# 📌 Selector de roles
+# ========================
+class RoleSelect(discord.ui.View):
+    def __init__(self, ctx, roles, member, action):
+        super().__init__(timeout=30)
+        self.ctx = ctx
+        self.member = member
+        self.action = action  # "add", "remove" o "toggle"
+
+        options = [
+            discord.SelectOption(label=r.name, value=str(r.id))
+            for r in roles[:25]  # Discord permite máximo 25 opciones
+        ]
+
+        self.select = discord.ui.Select(
+            placeholder="Elige un rol...",
+            options=options
+        )
+        self.select.callback = self.select_callback
+        self.add_item(self.select)
+
+    async def select_callback(self, interaction: discord.Interaction):
+        if interaction.user != self.ctx.author:
+            return await interaction.response.send_message(
+                "❌ Solo quien ejecutó el comando puede usar este menú.", ephemeral=True
+            )
+
+        role_id = int(self.select.values[0])
+        role = self.ctx.guild.get_role(role_id)
+
+        # Validar jerarquía
+        cog = self.ctx.bot.get_cog("Roles")
+        ok, error = cog.can_modify_role(self.ctx, self.member, role)
+        if not ok:
+            return await interaction.response.edit_message(
+                embed=discord.Embed(description=error, color=discord.Color.red()), view=None
+            )
+
+        try:
+            if self.action == "add":
+                await self.member.add_roles(role)
+                desc = f"➕ {self.ctx.author.mention} : Added {role.mention} to {self.member.mention}"
+                color = discord.Color.green()
+            elif self.action == "remove":
+                await self.member.remove_roles(role)
+                desc = f"➖ {self.ctx.author.mention} : Removed {role.mention} from {self.member.mention}"
+                color = discord.Color.red()
+            else:  # toggle
+                if role in self.member.roles:
+                    await self.member.remove_roles(role)
+                    desc = f"➖ {self.ctx.author.mention} : Removed {role.mention} from {self.member.mention}"
+                    color = discord.Color.red()
+                else:
+                    await self.member.add_roles(role)
+                    desc = f"➕ {self.ctx.author.mention} : Added {role.mention} to {self.member.mention}"
+                    color = discord.Color.green()
+
+            embed = discord.Embed(description=desc, color=color)
+            await interaction.response.edit_message(embed=embed, view=None)
+
+        except discord.Forbidden:
+            await interaction.response.edit_message(
+                embed=discord.Embed(description="❌ No tengo permisos suficientes.", color=discord.Color.red()), view=None
+            )
+
+
+# ========================
+# 📜 Cog principal
+# ========================
 class RolesPaginator(discord.ui.View):
     def __init__(self, roles):
         super().__init__(timeout=60)
@@ -85,7 +155,7 @@ class Roles(commands.Cog):
         return True, None
 
     # ========================
-    # Función auxiliar: buscar rol (soporta coincidencias parciales)
+    # Función auxiliar: buscar rol (coincidencia parcial)
     # ========================
     def find_role(self, ctx, role_arg: str):
         if role_arg.isdigit():
@@ -99,8 +169,7 @@ class Roles(commands.Cog):
         if len(matches) == 1:
             return matches[0]
 
-        # si hay múltiples coincidencias, devolver lista
-        return matches
+        return matches  # múltiples coincidencias
 
     # ========================
     # Función auxiliar: buscar usuario
@@ -127,8 +196,7 @@ class Roles(commands.Cog):
         if role is None:
             return await ctx.send(embed=discord.Embed(description=f"❌ No encontré el rol **{role_arg}**.", color=discord.Color.red()))
         if isinstance(role, list):
-            roles_list = "\n".join([f"- {r.mention}" for r in role])
-            return await ctx.send(embed=discord.Embed(description=f"🔎 Se encontraron múltiples roles:\n{roles_list}", color=discord.Color.orange()))
+            return await ctx.send("🔎 Se encontraron múltiples roles, elige uno:", view=RoleSelect(ctx, role, member, "add"))
 
         ok, error = self.can_modify_role(ctx, member, role)
         if not ok:
@@ -155,8 +223,7 @@ class Roles(commands.Cog):
         if role is None:
             return await ctx.send(embed=discord.Embed(description=f"❌ No encontré el rol **{role_arg}**.", color=discord.Color.red()))
         if isinstance(role, list):
-            roles_list = "\n".join([f"- {r.mention}" for r in role])
-            return await ctx.send(embed=discord.Embed(description=f"🔎 Se encontraron múltiples roles:\n{roles_list}", color=discord.Color.orange()))
+            return await ctx.send("🔎 Se encontraron múltiples roles, elige uno:", view=RoleSelect(ctx, role, member, "remove"))
 
         ok, error = self.can_modify_role(ctx, member, role)
         if not ok:
@@ -170,7 +237,7 @@ class Roles(commands.Cog):
             await ctx.send("❌ No tengo permisos suficientes para quitar ese rol.")
 
     # ========================
-    # 🔄 Toggle rol (dar o quitar con "r")
+    # 🔄 Toggle rol
     # ========================
     @commands.command(name="r", aliases=["role"])
     @commands.has_permissions(manage_roles=True)
@@ -183,8 +250,7 @@ class Roles(commands.Cog):
         if role is None:
             return await ctx.send(embed=discord.Embed(description=f"❌ No encontré el rol **{role_arg}**.", color=discord.Color.red()))
         if isinstance(role, list):
-            roles_list = "\n".join([f"- {r.mention}" for r in role])
-            return await ctx.send(embed=discord.Embed(description=f"🔎 Se encontraron múltiples roles:\n{roles_list}", color=discord.Color.orange()))
+            return await ctx.send("🔎 Se encontraron múltiples roles, elige uno:", view=RoleSelect(ctx, role, member, "toggle"))
 
         ok, error = self.can_modify_role(ctx, member, role)
         if not ok:
