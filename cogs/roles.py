@@ -1,12 +1,6 @@
 import discord
 from discord.ext import commands
 
-# ========================
-# CONFIGURACIÓN
-# ========================
-LOG_CHANNEL_ID = 123456789012345678  # 🔴 PON AQUÍ EL ID DEL CANAL DE LOGS
-
-
 class RolesPaginator(discord.ui.View):
     def __init__(self, roles):
         super().__init__(timeout=60)
@@ -70,32 +64,12 @@ class Roles(commands.Cog):
         await ctx.send(embed=view.get_page_content(), view=view)
 
     # ========================
-    # Función auxiliar: buscar rol
-    # ========================
-    def find_role(self, ctx, role_arg: str):
-        if role_arg.isdigit():  # ID
-            return ctx.guild.get_role(int(role_arg))
-        return discord.utils.find(lambda r: r.name.lower() == role_arg.lower(), ctx.guild.roles)
-
-    # ========================
-    # Función auxiliar: buscar usuario
-    # ========================
-    def find_member(self, ctx, member_arg: str):
-        if member_arg.isdigit():  # ID
-            return ctx.guild.get_member(int(member_arg))
-        return discord.utils.find(
-            lambda m: m.name.lower() == member_arg.lower() or (m.nick and m.nick.lower() == member_arg.lower()),
-            ctx.guild.members
-        )
-
-    # ========================
     # Función auxiliar: validar jerarquía
     # ========================
     def can_modify_role(self, ctx, member: discord.Member, role: discord.Role):
         author = ctx.author
         bot_member = ctx.guild.me
 
-        # Si se intenta modificar a sí mismo
         if member == author:
             if role == author.top_role:
                 return False, f"❌ No puedes asignarte tu mismo rol ({role.mention})."
@@ -111,27 +85,33 @@ class Roles(commands.Cog):
         return True, None
 
     # ========================
-    # Función auxiliar: log de acción
+    # Función auxiliar: buscar rol (soporta coincidencias parciales)
     # ========================
-    async def log_action(self, ctx, action: str, member: discord.Member, role: discord.Role):
-        log_channel = ctx.guild.get_channel(LOG_CHANNEL_ID)
-        if not log_channel:
-            return
+    def find_role(self, ctx, role_arg: str):
+        if role_arg.isdigit():
+            return ctx.guild.get_role(int(role_arg))
 
-        # Colores según acción
-        color_map = {
-            "Added": discord.Color.green(),
-            "Removed": discord.Color.red()
-        }
-        color = color_map.get(action, discord.Color.orange())
+        role_arg = role_arg.lower()
+        matches = [r for r in ctx.guild.roles if role_arg in r.name.lower()]
 
-        embed = discord.Embed(
-            title="📋 Registro de roles",
-            description=f"{ctx.author.mention} **{action}** {role.mention} {'a' if action == 'Added' else 'de'} {member.mention}",
-            color=color
+        if not matches:
+            return None
+        if len(matches) == 1:
+            return matches[0]
+
+        # si hay múltiples coincidencias, devolver lista
+        return matches
+
+    # ========================
+    # Función auxiliar: buscar usuario
+    # ========================
+    def find_member(self, ctx, member_arg: str):
+        if member_arg.isdigit():
+            return ctx.guild.get_member(int(member_arg))
+        return discord.utils.find(
+            lambda m: m.name.lower() == member_arg.lower() or (m.nick and m.nick.lower() == member_arg.lower()),
+            ctx.guild.members
         )
-        embed.set_footer(text=f"Usuario: {ctx.author} | ID: {ctx.author.id}")
-        await log_channel.send(embed=embed)
 
     # ========================
     # ➕ Añadir rol
@@ -141,17 +121,14 @@ class Roles(commands.Cog):
     async def addrole(self, ctx, member_arg: str, *, role_arg: str):
         member = ctx.guild.get_member(int(member_arg[2:-1])) if member_arg.startswith("<@") else self.find_member(ctx, member_arg)
         if not member:
-            return await ctx.send(embed=discord.Embed(
-                description=f"❌ No encontré el usuario **{member_arg}**.",
-                color=discord.Color.red()
-            ))
+            return await ctx.send(embed=discord.Embed(description=f"❌ No encontré el usuario **{member_arg}**.", color=discord.Color.red()))
 
         role = self.find_role(ctx, role_arg)
-        if not role:
-            return await ctx.send(embed=discord.Embed(
-                description=f"❌ No encontré el rol **{role_arg}**.",
-                color=discord.Color.red()
-            ))
+        if role is None:
+            return await ctx.send(embed=discord.Embed(description=f"❌ No encontré el rol **{role_arg}**.", color=discord.Color.red()))
+        if isinstance(role, list):
+            roles_list = "\n".join([f"- {r.mention}" for r in role])
+            return await ctx.send(embed=discord.Embed(description=f"🔎 Se encontraron múltiples roles:\n{roles_list}", color=discord.Color.orange()))
 
         ok, error = self.can_modify_role(ctx, member, role)
         if not ok:
@@ -159,12 +136,8 @@ class Roles(commands.Cog):
 
         try:
             await member.add_roles(role)
-            embed = discord.Embed(
-                description=f"➕ {ctx.author.mention} : Added {role.mention} to {member.mention}",
-                color=discord.Color.green()
-            )
+            embed = discord.Embed(description=f"➕ {ctx.author.mention} : Added {role.mention} to {member.mention}", color=discord.Color.green())
             await ctx.send(embed=embed)
-            await self.log_action(ctx, "Added", member, role)
         except discord.Forbidden:
             await ctx.send("❌ No tengo permisos suficientes para asignar ese rol.")
 
@@ -176,17 +149,14 @@ class Roles(commands.Cog):
     async def removerole(self, ctx, member_arg: str, *, role_arg: str):
         member = ctx.guild.get_member(int(member_arg[2:-1])) if member_arg.startswith("<@") else self.find_member(ctx, member_arg)
         if not member:
-            return await ctx.send(embed=discord.Embed(
-                description=f"❌ No encontré el usuario **{member_arg}**.",
-                color=discord.Color.red()
-            ))
+            return await ctx.send(embed=discord.Embed(description=f"❌ No encontré el usuario **{member_arg}**.", color=discord.Color.red()))
 
         role = self.find_role(ctx, role_arg)
-        if not role:
-            return await ctx.send(embed=discord.Embed(
-                description=f"❌ No encontré el rol **{role_arg}**.",
-                color=discord.Color.red()
-            ))
+        if role is None:
+            return await ctx.send(embed=discord.Embed(description=f"❌ No encontré el rol **{role_arg}**.", color=discord.Color.red()))
+        if isinstance(role, list):
+            roles_list = "\n".join([f"- {r.mention}" for r in role])
+            return await ctx.send(embed=discord.Embed(description=f"🔎 Se encontraron múltiples roles:\n{roles_list}", color=discord.Color.orange()))
 
         ok, error = self.can_modify_role(ctx, member, role)
         if not ok:
@@ -194,12 +164,8 @@ class Roles(commands.Cog):
 
         try:
             await member.remove_roles(role)
-            embed = discord.Embed(
-                description=f"➖ {ctx.author.mention} : Removed {role.mention} from {member.mention}",
-                color=discord.Color.red()
-            )
+            embed = discord.Embed(description=f"➖ {ctx.author.mention} : Removed {role.mention} from {member.mention}", color=discord.Color.red())
             await ctx.send(embed=embed)
-            await self.log_action(ctx, "Removed", member, role)
         except discord.Forbidden:
             await ctx.send("❌ No tengo permisos suficientes para quitar ese rol.")
 
@@ -211,17 +177,14 @@ class Roles(commands.Cog):
     async def toggle_role(self, ctx, member_arg: str, *, role_arg: str):
         member = ctx.guild.get_member(int(member_arg[2:-1])) if member_arg.startswith("<@") else self.find_member(ctx, member_arg)
         if not member:
-            return await ctx.send(embed=discord.Embed(
-                description=f"❌ No encontré el usuario **{member_arg}**.",
-                color=discord.Color.red()
-            ))
+            return await ctx.send(embed=discord.Embed(description=f"❌ No encontré el usuario **{member_arg}**.", color=discord.Color.red()))
 
         role = self.find_role(ctx, role_arg)
-        if not role:
-            return await ctx.send(embed=discord.Embed(
-                description=f"❌ No encontré el rol **{role_arg}**.",
-                color=discord.Color.red()
-            ))
+        if role is None:
+            return await ctx.send(embed=discord.Embed(description=f"❌ No encontré el rol **{role_arg}**.", color=discord.Color.red()))
+        if isinstance(role, list):
+            roles_list = "\n".join([f"- {r.mention}" for r in role])
+            return await ctx.send(embed=discord.Embed(description=f"🔎 Se encontraron múltiples roles:\n{roles_list}", color=discord.Color.orange()))
 
         ok, error = self.can_modify_role(ctx, member, role)
         if not ok:
@@ -230,19 +193,10 @@ class Roles(commands.Cog):
         try:
             if role in member.roles:
                 await member.remove_roles(role)
-                embed = discord.Embed(
-                    description=f"➖ {ctx.author.mention} : Removed {role.mention} from {member.mention}",
-                    color=discord.Color.red()
-                )
-                await self.log_action(ctx, "Removed", member, role)
+                embed = discord.Embed(description=f"➖ {ctx.author.mention} : Removed {role.mention} from {member.mention}", color=discord.Color.red())
             else:
                 await member.add_roles(role)
-                embed = discord.Embed(
-                    description=f"➕ {ctx.author.mention} : Added {role.mention} to {member.mention}",
-                    color=discord.Color.green()
-                )
-                await self.log_action(ctx, "Added", member, role)
-
+                embed = discord.Embed(description=f"➕ {ctx.author.mention} : Added {role.mention} to {member.mention}", color=discord.Color.green())
             await ctx.send(embed=embed)
         except discord.Forbidden:
             await ctx.send("❌ No tengo permisos suficientes para modificar ese rol.")
