@@ -71,7 +71,6 @@ class Fun(commands.Cog):
             # ------------------------
             mm_role = discord.utils.get(after.guild.roles, id=MIDDLEMANNOVATO_ROLE_ID)
             if mm_role and mm_role in added_roles:
-                # DEBUG: consola para confirmar detección
                 print(f"DEBUG: {after} recibió el rol {mm_role.name} ({mm_role.id})")
 
                 ventas_channel = after.guild.get_channel(VENTAS_CHANNEL_ID)
@@ -87,7 +86,6 @@ class Fun(commands.Cog):
                     )
                     await ventas_channel.send(embed=embed_channel)
 
-                # DM al usuario que recibió el rol
                 embed_dm = discord.Embed(
                     title="🎉 Felicidades, recibiste el rol de Middleman",
                     description=(
@@ -103,21 +101,16 @@ class Fun(commands.Cog):
                     if ventas_channel:
                         await ventas_channel.send(f"⚠️ No pude enviarle DM a {after.mention} (tiene bloqueados los mensajes directos).")
 
-                # ----------------------------------------------
-                # Notificar al OWNER con audit logs (intenta varias veces)
-                # ----------------------------------------------
                 giver = None
-                for attempt in range(3):  # intenta hasta 3 veces
-                    await asyncio.sleep(2)  # espera antes de leer logs
+                for attempt in range(3):
+                    await asyncio.sleep(2)
                     try:
                         async for entry in after.guild.audit_logs(limit=20, action=discord.AuditLogAction.member_role_update):
                             if entry.target.id != after.id:
                                 continue
 
-                            # Intentamos extraer la lista "roles" del "after" del cambio de forma robusta
                             roles_after = None
                             try:
-                                # En muchos casos entry.changes.after.roles existe
                                 roles_after = entry.changes.after.roles
                             except Exception:
                                 try:
@@ -130,7 +123,6 @@ class Fun(commands.Cog):
                             if not roles_after:
                                 continue
 
-                            # Normalizar a ids (maneja Role objects o listas de ids/strings)
                             role_ids = set()
                             try:
                                 for r in roles_after:
@@ -139,7 +131,6 @@ class Fun(commands.Cog):
                                     else:
                                         role_ids.add(int(getattr(r, "id", r)))
                             except Exception:
-                                # si algo raro ocurre, ignora y sigue
                                 pass
 
                             if MIDDLEMANNOVATO_ROLE_ID in role_ids:
@@ -154,7 +145,6 @@ class Fun(commands.Cog):
                     if giver:
                         break
 
-                # preparar responsable legible
                 if giver:
                     responsable = f"{giver.mention} (`{giver.id}`)"
                     if getattr(giver, "bot", False):
@@ -162,7 +152,6 @@ class Fun(commands.Cog):
                 else:
                     responsable = "⚠️ No encontrado"
 
-                # conseguir owner (try cache -> fetch)
                 owner = after.guild.get_member(OWNER_ID)
                 if owner is None:
                     try:
@@ -193,7 +182,6 @@ class Fun(commands.Cog):
                     print("Owner no encontrado; no se envió notificación.")
 
         except Exception as e:
-            # Log razonable para no silenciar errores inesperados
             print("Error en on_member_update:", e)
 
     # =====================================================
@@ -204,9 +192,8 @@ class Fun(commands.Cog):
     async def banlist(self, ctx: commands.Context):
         """Muestra la cantidad de usuarios baneados en el servidor"""
         try:
-            # usar await ctx.guild.bans() es más compatible y claro
-            banned_users = await ctx.guild.bans()
-            total = len(banned_users)
+            banned_entries = [ban async for ban in ctx.guild.bans()]
+            total = len(banned_entries)
 
             embed = discord.Embed(
                 title="📊 Lista de baneados",
