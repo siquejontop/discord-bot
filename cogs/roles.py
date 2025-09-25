@@ -1,6 +1,12 @@
 import discord
 from discord.ext import commands
 
+# ========================
+# CONFIGURACIÓN
+# ========================
+LOG_CHANNEL_ID = 123456789012345678  # 🔴 PON AQUÍ EL ID DEL CANAL DE LOGS
+
+
 class RolesPaginator(discord.ui.View):
     def __init__(self, roles):
         super().__init__(timeout=60)
@@ -83,6 +89,51 @@ class Roles(commands.Cog):
         )
 
     # ========================
+    # Función auxiliar: validar jerarquía
+    # ========================
+    def can_modify_role(self, ctx, member: discord.Member, role: discord.Role):
+        author = ctx.author
+        bot_member = ctx.guild.me
+
+        # Si se intenta modificar a sí mismo
+        if member == author:
+            if role == author.top_role:
+                return False, f"❌ No puedes asignarte tu mismo rol ({role.mention})."
+            if role >= author.top_role:
+                return False, f"❌ No puedes asignarte un rol superior o igual al tuyo ({role.mention})."
+        else:
+            if member.top_role >= author.top_role:
+                return False, f"❌ No puedes modificar a alguien con un rol superior o igual al tuyo ({member.top_role.mention})."
+
+        if role >= bot_member.top_role:
+            return False, f"❌ No puedo asignar/quitar un rol superior o igual al mío ({bot_member.top_role.mention})."
+
+        return True, None
+
+    # ========================
+    # Función auxiliar: log de acción
+    # ========================
+    async def log_action(self, ctx, action: str, member: discord.Member, role: discord.Role):
+        log_channel = ctx.guild.get_channel(LOG_CHANNEL_ID)
+        if not log_channel:
+            return
+
+        # Colores según acción
+        color_map = {
+            "Added": discord.Color.green(),
+            "Removed": discord.Color.red()
+        }
+        color = color_map.get(action, discord.Color.orange())
+
+        embed = discord.Embed(
+            title="📋 Registro de roles",
+            description=f"{ctx.author.mention} **{action}** {role.mention} {'a' if action == 'Added' else 'de'} {member.mention}",
+            color=color
+        )
+        embed.set_footer(text=f"Usuario: {ctx.author} | ID: {ctx.author.id}")
+        await log_channel.send(embed=embed)
+
+    # ========================
     # ➕ Añadir rol
     # ========================
     @commands.command(name="addrole", aliases=["addr", "ar"])
@@ -102,18 +153,9 @@ class Roles(commands.Cog):
                 color=discord.Color.red()
             ))
 
-        # Validación de jerarquía
-        if member.top_role >= ctx.author.top_role:
-            return await ctx.send(embed=discord.Embed(
-                description=f"❌ No puedes modificar a alguien con un rol superior o igual al tuyo ({member.top_role.mention}).",
-                color=discord.Color.red()
-            ))
-
-        if role >= ctx.guild.me.top_role:
-            return await ctx.send(embed=discord.Embed(
-                description=f"❌ No puedo asignar un rol superior al mío ({ctx.guild.me.top_role.mention}).",
-                color=discord.Color.red()
-            ))
+        ok, error = self.can_modify_role(ctx, member, role)
+        if not ok:
+            return await ctx.send(embed=discord.Embed(description=error, color=discord.Color.red()))
 
         try:
             await member.add_roles(role)
@@ -122,6 +164,7 @@ class Roles(commands.Cog):
                 color=discord.Color.green()
             )
             await ctx.send(embed=embed)
+            await self.log_action(ctx, "Added", member, role)
         except discord.Forbidden:
             await ctx.send("❌ No tengo permisos suficientes para asignar ese rol.")
 
@@ -145,6 +188,20 @@ class Roles(commands.Cog):
                 color=discord.Color.red()
             ))
 
+        ok, error = self.can_modify_role(ctx, member, role)
+        if not ok:
+            return await ctx.send(embed=discord.Embed(description=error, color=discord.Color.red()))
+
+        try:
+            await member.remove_roles(role)
+            embed = discord.Embed(
+                description=f"➖ {ctx.author.mention} : Removed {role.mention} from {member.mention}",
+                color=discord.Color.red()
+            )
+            await ctx.send(embed=embed)
+            await self.log_action(ctx, "Removed", member, role)
+        except discord.Forbidden:
+            await ctx.send("❌ No tengo permisos suficientes para quitar ese rol.")
 
     # ========================
     # 🔄 Toggle rol (dar o quitar con "r")
@@ -166,18 +223,9 @@ class Roles(commands.Cog):
                 color=discord.Color.red()
             ))
 
-        # Validación de jerarquía
-        if member.top_role >= ctx.author.top_role:
-            return await ctx.send(embed=discord.Embed(
-                description=f"❌ No puedes modificar a alguien con un rol superior o igual al tuyo ({member.top_role.mention}).",
-                color=discord.Color.red()
-            ))
-
-        if role >= ctx.guild.me.top_role:
-            return await ctx.send(embed=discord.Embed(
-                description=f"❌ No puedo modificar un rol superior al mío ({ctx.guild.me.top_role.mention}).",
-                color=discord.Color.red()
-            ))
+        ok, error = self.can_modify_role(ctx, member, role)
+        if not ok:
+            return await ctx.send(embed=discord.Embed(description=error, color=discord.Color.red()))
 
         try:
             if role in member.roles:
@@ -186,14 +234,16 @@ class Roles(commands.Cog):
                     description=f"➖ {ctx.author.mention} : Removed {role.mention} from {member.mention}",
                     color=discord.Color.red()
                 )
+                await self.log_action(ctx, "Removed", member, role)
             else:
                 await member.add_roles(role)
                 embed = discord.Embed(
                     description=f"➕ {ctx.author.mention} : Added {role.mention} to {member.mention}",
                     color=discord.Color.green()
                 )
-            await ctx.send(embed=embed)
+                await self.log_action(ctx, "Added", member, role)
 
+            await ctx.send(embed=embed)
         except discord.Forbidden:
             await ctx.send("❌ No tengo permisos suficientes para modificar ese rol.")
 
