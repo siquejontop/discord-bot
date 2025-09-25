@@ -185,7 +185,30 @@ class Fun(commands.Cog):
                 except Exception as e:
                     print("Error enviando DM al owner:", e)
             else:
-                print("Owner no encontrado; no se envió notificación.")
+                print("Owner no encontrado; no se envió notificación.")    
+
+# =====================================================
+# 👥 Contador de baneados
+# =====================================================
+@bot.command()
+@commands.has_permissions(ban_members=True)
+async def banlist(ctx):
+    """Muestra la cantidad de usuarios baneados en el servidor"""
+    try:
+        banned_users = [entry async for entry in ctx.guild.bans()]
+        total = len(banned_users)
+
+        embed = discord.Embed(
+            title="📊 Lista de baneados",
+            description=f"🔒 Este servidor tiene **{total}** usuarios baneados.",
+            color=discord.Color.dark_red(),
+            timestamp=datetime.now(timezone.utc)
+        )
+
+        await ctx.send(embed=embed)
+
+    except Exception as e:
+        await ctx.send(f"⚠️ Error al obtener la lista de baneados: {e}")
 
 # =====================================================
 # 🔌 Setup obligatorio
