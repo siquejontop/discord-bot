@@ -10,7 +10,7 @@ LOG_CHANNEL_ID = 123456789012345678  # 👈 reemplázalo con el ID real de tu ca
 class AutoBanNewAccounts(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.min_account_age = timedelta(days=30)  # Tiempo mínimo para no banear
+        self.min_account_age = timedelta(days=14)  # Tiempo mínimo para no banear
 
     # ========================
     # 👤 Evento: nuevo miembro
