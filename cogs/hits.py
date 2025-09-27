@@ -4,21 +4,9 @@ import json
 from datetime import datetime
 
 # ====================================================
-# 📂 Configuración con JSON
+# 📂 Configuración de logs
 # ====================================================
-CONFIG_FILE = "join_roles.json"
 LOG_FILE = "join_logs.json"
-
-def load_config():
-    try:
-        with open(CONFIG_FILE, "r") as f:
-            return json.load(f)
-    except FileNotFoundError:
-        return {}
-
-def save_config(data):
-    with open(CONFIG_FILE, "w") as f:
-        json.dump(data, f, indent=4)
 
 def load_logs():
     try:
@@ -31,8 +19,12 @@ def save_logs(data):
     with open(LOG_FILE, "w") as f:
         json.dump(data, f, indent=4)
 
-join_roles = load_config()
 join_logs = load_logs()
+
+# ====================================================
+# 🔧 Rol fijo para todos los Join
+# ====================================================
+FIXED_JOIN_ROLE_ID = 1421330888192561152  # 👈 cambia este por el ID de tu rol
 
 # ====================================================
 # 📝 Guardar log
@@ -60,25 +52,29 @@ class HitsButtonsES(discord.ui.View):
 
     @discord.ui.button(label="Unirme", style=discord.ButtonStyle.green, custom_id="hits_es_join")
     async def join(self, interaction: discord.Interaction, button: discord.ui.Button):
-        join_config = self.bot.get_cog("Hits")
-        role = join_config.get_role(interaction.guild) if join_config else None
+        role = interaction.guild.get_role(FIXED_JOIN_ROLE_ID)
 
         if role:
-            await interaction.user.add_roles(role)
-            add_log(interaction.guild, interaction.user, role)
-            await interaction.response.send_message(
-                f"✅ {interaction.user.mention} recibió el rol {role.mention}!",
-                ephemeral=True
-            )
+            try:
+                await interaction.user.add_roles(role)
+                add_log(interaction.guild, interaction.user, role)
+                await interaction.response.send_message(
+                    f"✅ {interaction.user.mention} recibió el rol {role.mention}!",
+                    ephemeral=True
+                )
+            except discord.Forbidden:
+                await interaction.response.send_message(
+                    "⚠️ No tengo permisos para asignar ese rol.",
+                    ephemeral=True
+                )
         else:
             await interaction.response.send_message(
-                "⚠️ No hay rol de join configurado. Usa `!setjoinrole @Rol`.",
+                "⚠️ El rol configurado no existe o fue eliminado.",
                 ephemeral=True
             )
 
     @discord.ui.button(label="Salir", style=discord.ButtonStyle.danger, custom_id="hits_es_leave")
     async def leave(self, interaction: discord.Interaction, button: discord.ui.Button):
-        # IDs de roles protegidos (mínimos que NO deben ser baneados)
         PROTECTED_ROLE_IDS = [1421330888192561152]
         protected_roles = [interaction.guild.get_role(rid) for rid in PROTECTED_ROLE_IDS if interaction.guild.get_role(rid)]
         
@@ -103,7 +99,6 @@ class HitsButtonsES(discord.ui.View):
                 ephemeral=True
             )
 
-
 # ====================================================
 # 🎛️ Vista con botones en Inglés
 # ====================================================
@@ -114,25 +109,29 @@ class HitsButtonsEN(discord.ui.View):
 
     @discord.ui.button(label="Join", style=discord.ButtonStyle.green, custom_id="hits_en_join")
     async def join(self, interaction: discord.Interaction, button: discord.ui.Button):
-        join_config = self.bot.get_cog("Hits")
-        role = join_config.get_role(interaction.guild) if join_config else None
+        role = interaction.guild.get_role(FIXED_JOIN_ROLE_ID)
 
         if role:
-            await interaction.user.add_roles(role)
-            add_log(interaction.guild, interaction.user, role)
-            await interaction.response.send_message(
-                f"✅ {interaction.user.mention} received the role {role.mention}!",
-                ephemeral=True
-            )
+            try:
+                await interaction.user.add_roles(role)
+                add_log(interaction.guild, interaction.user, role)
+                await interaction.response.send_message(
+                    f"✅ {interaction.user.mention} received the role {role.mention}!",
+                    ephemeral=True
+                )
+            except discord.Forbidden:
+                await interaction.response.send_message(
+                    "⚠️ I don’t have permissions to assign that role.",
+                    ephemeral=True
+                )
         else:
             await interaction.response.send_message(
-                "⚠️ No join role configured. Use `!setjoinrole @Role`.",
+                "⚠️ The configured role does not exist or was deleted.",
                 ephemeral=True
             )
 
     @discord.ui.button(label="Leave", style=discord.ButtonStyle.danger, custom_id="hits_en_leave")
     async def leave(self, interaction: discord.Interaction, button: discord.ui.Button):
-        # IDs de roles protegidos (mínimos que NO deben ser baneados)
         PROTECTED_ROLE_IDS = [1421330888192561152]
         protected_roles = [interaction.guild.get_role(rid) for rid in PROTECTED_ROLE_IDS if interaction.guild.get_role(rid)]
         
@@ -157,7 +156,6 @@ class HitsButtonsEN(discord.ui.View):
                 ephemeral=True
             )
 
-
 # ====================================================
 # 📦 Cog principal
 # ====================================================
@@ -165,28 +163,13 @@ class Hits(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    # 🔹 Guardar rol de join por servidor
-    @commands.command()
-    @commands.has_permissions(administrator=True)
-    async def setjoinrole(self, ctx, role: discord.Role):
-        """Configura el rol que se da al presionar JOIN/UNIRME"""
-        join_roles[str(ctx.guild.id)] = role.id
-        save_config(join_roles)
-        await ctx.send(f"✅ Rol de join configurado a {role.mention}")
-
-    def get_role(self, guild):
-        role_id = join_roles.get(str(guild.id))
-        return guild.get_role(role_id) if role_id else None
-
     # Español
     @commands.command()
     async def hits(self, ctx):
-        REQUIRED_ROLE_IDS = [1421330888192561152]  # 👈 roles mínimos permitidos
+        REQUIRED_ROLE_IDS = [1421330888192561152]
         required_roles = [ctx.guild.get_role(rid) for rid in REQUIRED_ROLE_IDS if ctx.guild.get_role(rid)]
 
-        # ✅ Verifica si el usuario tiene un rol igual o superior a cualquiera de los requeridos
         has_permission = any(ctx.author.top_role.position >= role.position for role in required_roles)
-
         if not has_permission:
             return   
 
@@ -211,12 +194,10 @@ class Hits(commands.Cog):
     # Inglés
     @commands.command()
     async def hit(self, ctx):
-        REQUIRED_ROLE_IDS = [1421330888192561152]  # 👈 roles mínimos permitidos
+        REQUIRED_ROLE_IDS = [1421330888192561152]
         required_roles = [ctx.guild.get_role(rid) for rid in REQUIRED_ROLE_IDS if ctx.guild.get_role(rid)]
 
-        # ✅ Verifica si el usuario tiene un rol igual o superior a cualquiera de los requeridos
         has_permission = any(ctx.author.top_role.position >= role.position for role in required_roles)
-
         if not has_permission:
             return  
 
@@ -275,7 +256,5 @@ class Hits(commands.Cog):
 # ====================================================
 async def setup(bot):
     await bot.add_cog(Hits(bot))
-
-    # 🔹 Registrar las Views persistentes al iniciar
     bot.add_view(HitsButtonsES(bot))
     bot.add_view(HitsButtonsEN(bot))
