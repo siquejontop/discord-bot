@@ -113,7 +113,7 @@ class MyBot(commands.Bot):
                 except Exception as e:
                     logger.error(f"❌ Error cargando {cog}: {e}")
 
-bot = MyBot(command_prefix="$", intents=intents)
+bot = MyBot(command_prefix=",", intents=intents)
 
 # ==========================
 # 📡 BOT EVENTS
