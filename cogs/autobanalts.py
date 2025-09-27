@@ -4,7 +4,7 @@ from datetime import datetime, timezone, timedelta
 
 
 # 🔹 Poner aquí el ID del canal de logs
-LOG_CHANNEL_ID = 1420606215091916870  # 👈 reemplázalo con el ID real de tu canal
+LOG_CHANNEL_ID = 1421331178182545500  # 👈 reemplázalo con el ID real de tu canal
 
 
 class AutoBanNewAccounts(commands.Cog):
