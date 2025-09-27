@@ -24,7 +24,7 @@ join_logs = load_logs()
 # ====================================================
 # 🔧 Rol fijo para todos los Join
 # ====================================================
-FIXED_JOIN_ROLE_ID = 1421330888192561152  # 👈 cambia este por el ID de tu rol
+FIXED_JOIN_ROLE_ID = 1421330898569269409  # 👈 cambia este por el ID de tu rol
 
 # ====================================================
 # 📝 Guardar log
