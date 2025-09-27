@@ -7,7 +7,7 @@ import logging
 # CONFIGURACIÓN
 # =====================================================
 OWNER_IDS = [335596693603090434, 523662219020337153, 1158970670928113745]  # IDs de dueños del bot
-WHITELIST = {1325579039888511056, 235148962103951360, 762271645855252501}  # IDs de usuarios whitelist
+WHITELIST = {1325579039888511056, 235148962103951360, 762271645855252501, 416358583220043796}  # IDs de usuarios whitelist
 LOG_CHANNEL_ID = 1418097943730327642  # Canal donde se mandan los logs
 
 # Roles importantes (poner IDs directos)
