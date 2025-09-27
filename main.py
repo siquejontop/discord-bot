@@ -132,6 +132,52 @@ async def on_ready():
     print(f"\n{banner}")
     logger.info(f"✅ Bot conectado como {bot.user} (ID: {bot.user.id})")
 
+# ==========================
+# 📡 ERROR HANDLER GLOBAL
+# ==========================
+@bot.event
+async def on_command_error(ctx, error):
+    # Ignorar errores que ya tengan handler local
+    if hasattr(ctx.command, 'on_error'):
+        return
+
+    # Diccionario de errores comunes
+    error_messages = {
+        commands.MissingPermissions: "You're **missing** permission: `{}`",
+        commands.BotMissingPermissions: "I'm **missing** permission: `{}`",
+        commands.MissingRequiredArgument: "Te faltó el argumento requerido: `{}`",
+        commands.BadArgument: "El argumento que diste no es válido.",
+        commands.CommandNotFound: "Ese comando no existe.",
+        commands.NotOwner: "Este comando es solo para dueños del bot.",
+        commands.CommandOnCooldown: "Este comando está en cooldown. Intenta de nuevo en `{}` segundos.",
+    }
+
+    # Buscar error específico
+    msg = None
+    for err_type, text in error_messages.items():
+        if isinstance(error, err_type):
+            if isinstance(error, commands.MissingPermissions) or isinstance(error, commands.BotMissingPermissions):
+                missing = ", ".join(error.missing_permissions)
+                msg = text.format(missing)
+            elif isinstance(error, commands.MissingRequiredArgument):
+                msg = text.format(error.param.name)
+            elif isinstance(error, commands.CommandOnCooldown):
+                msg = text.format(round(error.retry_after, 2))
+            else:
+                msg = text
+            break
+
+    # Fallback si no está en el diccionario
+    if not msg:
+        msg = f"Ocurrió un error inesperado: `{error}`"
+
+    # Responder con el mismo estilo pequeño ⚠️
+    embed = discord.Embed(
+        description=f"⚠️ {ctx.author.mention}: {msg}",
+        color=discord.Color.orange()
+    )
+    await ctx.send(embed=embed)
+    
 # Iniciar Flask en un hilo separado
 keep_alive()
 
