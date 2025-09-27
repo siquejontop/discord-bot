@@ -4,7 +4,7 @@ import os
 import json
 from datetime import datetime
 
-BACKUP_FOLDER = "backups"
+BACKUP_FOLDER = "/app/backups"
 
 class BackupSystem(commands.Cog):
     def __init__(self, bot):
