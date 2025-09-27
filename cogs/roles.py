@@ -267,56 +267,6 @@ class Roles(commands.Cog):
         except discord.Forbidden:
             await ctx.send("❌ No tengo permisos suficientes para modificar ese rol.")
 
-    # ========================
-    # 🔄 Remover rol a TODOS los miembros (solo dueño del bot)
-    # ========================
-    @commands.command(name="removerolall", aliases=["removerallrole", "rra"])
-    async def removerolall(self, ctx, *, role_arg: str):
-        # 🔐 IDs de dueños del bot (puedes poner más de uno si quieres)
-        BOT_OWNER_IDS = [335596693603090434]  
-
-        # Validación: solo dueño del bot
-        if ctx.author.id not in BOT_OWNER_IDS:
-            return await ctx.send("❌ Solo el **dueño del bot** puede usar este comando.")
-
-        role = self.find_role(ctx, role_arg)
-        if role is None:
-            return await ctx.send(embed=discord.Embed(
-                description=f"❌ No encontré el rol **{role_arg}**.",
-                color=discord.Color.red()
-            ))
-        if isinstance(role, list):
-            return await ctx.send("🔎 Se encontraron múltiples roles, especifica uno por ID o nombre exacto.")
-
-        members_with_role = [m for m in ctx.guild.members if role in m.roles]
-
-        if not members_with_role:
-            return await ctx.send(embed=discord.Embed(
-                description=f"ℹ️ Nadie en este servidor tiene el rol {role.mention}.",
-                color=discord.Color.blurple()
-            ))
-
-        count = 0
-        for member in members_with_role:
-            try:
-                await member.remove_roles(role, reason=f"Removido por {ctx.author}")
-                count += 1
-            except discord.Forbidden:
-                pass
-
-        # Embed de confirmación
-        embed = discord.Embed(
-            title="✅ Rol removido de todos",
-            description=f"Se removió el rol {role.mention} de **{count}** miembros.",
-            color=discord.Color.green()
-        )
-        embed.set_footer(
-            text=f"Comando ejecutado por {ctx.author}",
-            icon_url=ctx.author.avatar.url if ctx.author.avatar else None
-        )
-
-        await ctx.send(embed=embed)
-
 
 # 👇 Obligatorio para que Render cargue el cog
 async def setup(bot):
