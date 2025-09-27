@@ -268,43 +268,48 @@ class Roles(commands.Cog):
             await ctx.send("❌ No tengo permisos suficientes para modificar ese rol.")
 
     # ========================
-    # 🛑 Quitar un rol a todos los que lo tengan (solo dueño del servidor)
+    # 🔄 Remover rol a TODOS los miembros
     # ========================
-    @commands.command(name="removerol")
-    @commands.is_owner()  # Solo el dueño del bot
-    async def remove_role_all(self, ctx: commands.Context, *, role_arg: str):
-        """
-        Quita un rol a todos los miembros que lo tengan.
-        Se puede usar el nombre o el ID del rol.
-        """
-        guild = ctx.guild
-        role = None
+    @commands.command(name="removerolall", aliases=["removerallrole", "rra"])
+    async def removerolall(self, ctx, *, role_arg: str):
+        # Solo el dueño del servidor puede usarlo
+        if ctx.author.id != ctx.guild.owner_id:
+            return await ctx.send("❌ Solo el dueño del servidor puede usar este comando.")
 
-        # Intentar resolver como ID
-        if role_arg.isdigit():
-            role = guild.get_role(int(role_arg))
-
-        # Intentar resolver como nombre si no se encontró por ID
+        role = self.find_role(ctx, role_arg)
         if role is None:
-            role = discord.utils.get(guild.roles, name=role_arg)
+            return await ctx.send(embed=discord.Embed(
+                description=f"❌ No encontré el rol **{role_arg}**.",
+                color=discord.Color.red()
+            ))
+        if isinstance(role, list):
+            return await ctx.send("🔎 Se encontraron múltiples roles, especifica uno por ID o nombre exacto.")
 
-        if role is None:
-            return await ctx.send(f"⚠️ No encontré ningún rol con **{role_arg}**")
+        members_with_role = [m for m in ctx.guild.members if role in m.roles]
 
-        # Contador
+        if not members_with_role:
+            return await ctx.send(embed=discord.Embed(
+                description=f"ℹ️ Nadie en este servidor tiene el rol {role.mention}.",
+                color=discord.Color.blurple()
+            ))
+
         count = 0
-        for member in guild.members:
-            if role in member.roles:
-                try:
-                    await member.remove_roles(role, reason=f"Removido por {ctx.author}")
-                    count += 1
-                except discord.Forbidden:
-                    await ctx.send(f"❌ No tengo permisos para modificar a {member.mention}")
-                except Exception as e:
-                    await ctx.send(f"⚠️ Error con {member.mention}: {e}")
+        for member in members_with_role:
+            try:
+                await member.remove_roles(role, reason=f"Removido por {ctx.author}")
+                count += 1
+            except discord.Forbidden:
+                pass
 
-        await ctx.send(f"✅ Rol **{role.name}** removido de **{count}** miembros.")
+        # Embed de confirmación
+        embed = discord.Embed(
+            title="✅ Rol removido de todos",
+            description=f"Se removió el rol {role.mention} de **{count}** miembros.",
+            color=discord.Color.green()
+        )
+        embed.set_footer(text=f"Comando ejecutado por {ctx.author}", icon_url=ctx.author.avatar.url if ctx.author.avatar else None)
 
+        await ctx.send(embed=embed)
 
 # 👇 Obligatorio para que Render cargue el cog
 async def setup(bot):
