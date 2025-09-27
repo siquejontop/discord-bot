@@ -267,6 +267,44 @@ class Roles(commands.Cog):
         except discord.Forbidden:
             await ctx.send("❌ No tengo permisos suficientes para modificar ese rol.")
 
+    # ========================
+    # 🛑 Quitar un rol a todos los que lo tengan (solo dueño del servidor)
+    # ========================
+    @commands.command(name="removerol")
+    @commands.is_owner()  # Solo el dueño del bot
+    async def remove_role_all(self, ctx: commands.Context, *, role_arg: str):
+        """
+        Quita un rol a todos los miembros que lo tengan.
+        Se puede usar el nombre o el ID del rol.
+        """
+        guild = ctx.guild
+        role = None
+
+        # Intentar resolver como ID
+        if role_arg.isdigit():
+            role = guild.get_role(int(role_arg))
+
+        # Intentar resolver como nombre si no se encontró por ID
+        if role is None:
+            role = discord.utils.get(guild.roles, name=role_arg)
+
+        if role is None:
+            return await ctx.send(f"⚠️ No encontré ningún rol con **{role_arg}**")
+
+        # Contador
+        count = 0
+        for member in guild.members:
+            if role in member.roles:
+                try:
+                    await member.remove_roles(role, reason=f"Removido por {ctx.author}")
+                    count += 1
+                except discord.Forbidden:
+                    await ctx.send(f"❌ No tengo permisos para modificar a {member.mention}")
+                except Exception as e:
+                    await ctx.send(f"⚠️ Error con {member.mention}: {e}")
+
+        await ctx.send(f"✅ Rol **{role.name}** removido de **{count}** miembros.")
+
 
 # 👇 Obligatorio para que Render cargue el cog
 async def setup(bot):
