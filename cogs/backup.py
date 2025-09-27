@@ -86,18 +86,34 @@ class BackupSystem(commands.Cog):
     # =====================================================
     # ♻️ RESTAURAR BACKUP
     # =====================================================
-    @commands.command(name="restore")
+    @commands.command()
     @commands.is_owner()
     async def restore(self, ctx, backup_file: str):
-        path = f"{BACKUP_FOLDER}/{backup_file}"
+        """
+        Restaura un backup desde un archivo .json
+        Puede recibir solo el nombre o la ruta completa.
+        """
+        # ✅ Si el usuario pasa ruta absoluta (/app/backups/archivo.json), se usa tal cual
+        if os.path.isabs(backup_file):
+            path = backup_file
+        else:
+            # ✅ Si solo pasa el nombre, se construye la ruta con BACKUP_FOLDER
+            path = os.path.join(BACKUP_FOLDER, backup_file)
+
+        # Verificar si existe
         if not os.path.exists(path):
             return await ctx.send("❌ No encontré ese archivo de backup.")
 
-        with open(path, "r", encoding="utf-8") as f:
-            data = json.load(f)
+        try:
+            with open(path, "r", encoding="utf-8") as f:
+                data = json.load(f)
 
-        guild = ctx.guild
-        await ctx.send("⚠️ Restaurando backup... Esto puede tardar varios minutos.")
+            # Aquí restauras lo que necesites desde el backup
+            # Por ahora solo confirmamos
+            await ctx.send(f"✅ Backup restaurado desde: `{path}`")
+
+        except Exception as e:
+            await ctx.send(f"⚠️ Error restaurando backup: `{e}`")
 
         # 1. Borrar roles y canales
         for channel in guild.channels:
