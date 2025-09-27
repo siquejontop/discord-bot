@@ -268,13 +268,16 @@ class Roles(commands.Cog):
             await ctx.send("❌ No tengo permisos suficientes para modificar ese rol.")
 
     # ========================
-    # 🔄 Remover rol a TODOS los miembros
+    # 🔄 Remover rol a TODOS los miembros (solo dueño del bot)
     # ========================
     @commands.command(name="removerolall", aliases=["removerallrole", "rra"])
     async def removerolall(self, ctx, *, role_arg: str):
-        # Solo el dueño del servidor puede usarlo
-        if ctx.author.id != ctx.guild.owner_id:
-            return await ctx.send("❌ Solo el dueño del servidor puede usar este comando.")
+        # 🔐 IDs de dueños del bot (puedes poner más de uno si quieres)
+        BOT_OWNER_IDS = [335596693603090434]  
+
+        # Validación: solo dueño del bot
+        if ctx.author.id not in BOT_OWNER_IDS:
+            return await ctx.send("❌ Solo el **dueño del bot** puede usar este comando.")
 
         role = self.find_role(ctx, role_arg)
         if role is None:
@@ -307,9 +310,13 @@ class Roles(commands.Cog):
             description=f"Se removió el rol {role.mention} de **{count}** miembros.",
             color=discord.Color.green()
         )
-        embed.set_footer(text=f"Comando ejecutado por {ctx.author}", icon_url=ctx.author.avatar.url if ctx.author.avatar else None)
+        embed.set_footer(
+            text=f"Comando ejecutado por {ctx.author}",
+            icon_url=ctx.author.avatar.url if ctx.author.avatar else None
+        )
 
         await ctx.send(embed=embed)
+
 
 # 👇 Obligatorio para que Render cargue el cog
 async def setup(bot):
