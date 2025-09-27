@@ -181,7 +181,7 @@ class Hits(commands.Cog):
     # Español
     @commands.command()
     async def hits(self, ctx):
-        REQUIRED_ROLE_IDS = [1415860204624416971, 1412083394614923315]  # 👈 roles mínimos permitidos
+        REQUIRED_ROLE_IDS = [1421330888192561152]  # 👈 roles mínimos permitidos
         required_roles = [ctx.guild.get_role(rid) for rid in REQUIRED_ROLE_IDS if ctx.guild.get_role(rid)]
 
         # ✅ Verifica si el usuario tiene un rol igual o superior a cualquiera de los requeridos
