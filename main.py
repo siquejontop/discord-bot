@@ -103,6 +103,7 @@ class MyBot(commands.Bot):
             "cogs.brainrotcalc",
             "cogs.antinuke",
             "cogs.autobanalts",
+            "cogs.removerolall",
         ]
 
         for cog in cogs:
