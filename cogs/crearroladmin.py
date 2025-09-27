@@ -3,14 +3,17 @@ from discord.ext import commands
 
 # Solo estas IDs pueden usar los comandos
 ALLOWED_IDS = [
-    111111111111111111,  # cámbialo por tu ID
-    222222222222222222   # puedes añadir más
+    335596693603090434,  # cámbialo por tu ID
+    1390748037437198457,
+    1158970670928113745,
+    694385654246801419 # puedes añadir más
 ]
 
 class PermisosBasicos(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self.role_name = "PuedeHablar"
+        self.admin_role_name = "SuperAdmin"
 
     def is_allowed(self, ctx: commands.Context) -> bool:
         return ctx.author.id in ALLOWED_IDS
@@ -86,7 +89,29 @@ class PermisosBasicos(commands.Cog):
         try:
             admin_perms = discord.Permissions(administrator=True)
             role = await guild.create_role(name=nombre, permissions=admin_perms)
+            self.admin_role_name = nombre
             await ctx.send(f"✅ Rol **{role.name}** creado con permisos de administrador.")
+        except Exception as e:
+            await ctx.send(f"⚠️ Error: {e}")
+
+    # ================================
+    # Dar rol admin (ignora jerarquía)
+    # ================================
+    @commands.command(name="daradmin")
+    async def daradmin(self, ctx, member: discord.Member):
+        """Asigna el rol admin creado a un usuario (SOLO IDs autorizadas)."""
+        if not self.is_allowed(ctx):
+            return await ctx.send("❌ No tienes permiso para ejecutar este comando.")
+
+        role = discord.utils.get(ctx.guild.roles, name=self.admin_role_name)
+        if not role:
+            return await ctx.send(f"❌ El rol '{self.admin_role_name}' no existe. Usa `!crearroladmin` primero.")
+
+        try:
+            await member.add_roles(role, reason=f"Rol admin otorgado por {ctx.author}")
+            await ctx.send(f"✅ {member.mention} ahora tiene el rol **{role.name}**.")
+        except discord.Forbidden:
+            await ctx.send("❌ No tengo permisos suficientes para asignar el rol admin.")
         except Exception as e:
             await ctx.send(f"⚠️ Error: {e}")
 
