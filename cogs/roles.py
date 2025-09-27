@@ -133,26 +133,6 @@ class Roles(commands.Cog):
         view = RolesPaginator(roles)
         await ctx.send(embed=view.get_page_content(), view=view)
 
-    # ========================
-    # Función auxiliar: validar jerarquía
-    # ========================
-    def can_modify_role(self, ctx, member: discord.Member, role: discord.Role):
-        author = ctx.author
-        bot_member = ctx.guild.me
-
-        if member == author:
-            if role == author.top_role:
-                return False, f"❌ No puedes asignarte tu mismo rol ({role.mention})."
-            if role >= author.top_role:
-                return False, f"❌ No puedes asignarte un rol superior o igual al tuyo ({role.mention})."
-        else:
-            if member.top_role >= author.top_role:
-                return False, f"❌ No puedes modificar a alguien con un rol superior o igual al tuyo ({member.top_role.mention})."
-
-        if role >= bot_member.top_role:
-            return False, f"❌ No puedo asignar/quitar un rol superior o igual al mío ({bot_member.top_role.mention})."
-
-        return True, None
 
     # ========================
     # Función auxiliar: buscar rol (coincidencia parcial)
