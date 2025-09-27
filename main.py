@@ -104,7 +104,6 @@ class MyBot(commands.Bot):
             "cogs.antinuke",
             "cogs.autobanalts",
             "cogs.removerolall",
-            "cogs.crearroladmin",
         ]
 
         for cog in cogs:
