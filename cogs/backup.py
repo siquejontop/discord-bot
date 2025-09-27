@@ -108,8 +108,17 @@ class BackupSystem(commands.Cog):
             with open(path, "r", encoding="utf-8") as f:
                 data = json.load(f)
 
-            # Aquí restauras lo que necesites desde el backup
-            # Por ahora solo confirmamos
+            guild = ctx.guild  # ✅ Ahora sí obtenemos la guild actual
+
+            # 👇 Ejemplo: si el backup guarda roles
+            if "roles" in data:
+                for role_data in data["roles"]:
+                    await guild.create_role(
+                        name=role_data["name"],
+                        permissions=discord.Permissions(role_data["permissions"]),
+                        colour=discord.Colour(role_data["color"])
+                    )
+
             await ctx.send(f"✅ Backup restaurado desde: `{path}`")
 
         except Exception as e:
