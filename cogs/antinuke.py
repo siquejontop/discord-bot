@@ -8,11 +8,11 @@ import logging
 # =====================================================
 OWNER_IDS = [335596693603090434, 523662219020337153, 1158970670928113745]  # IDs de dueños del bot
 WHITELIST = {1325579039888511056, 235148962103951360, 762271645855252501, 416358583220043796}  # IDs de usuarios whitelist
-LOG_CHANNEL_ID = 1418097943730327642  # Canal donde se mandan los logs
+LOG_CHANNEL_ID =   # Canal donde se mandan los logs
 
 # Roles importantes (poner IDs directos)
-PROTECTED_ROLE_ID = 1415860205656215602  # Rol "auth mm"
-OWNER_ROLE_ID = 1415860178120609925  # Rol "owner"
+PROTECTED_ROLE_ID = 1421330892038869063  # Rol "auth mm"
+OWNER_ROLE_ID = 1421330806399565888  # Rol "owner"
 
 # Límites anti-abuso
 MAX_BANS = 3
