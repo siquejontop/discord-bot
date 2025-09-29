@@ -69,7 +69,7 @@ class RoleSelect(discord.ui.View):
 
 
 # ========================
-# 📜 Paginador de roles
+# 📜 Cog principal
 # ========================
 class RolesPaginator(discord.ui.View):
     def __init__(self, roles):
@@ -115,12 +115,10 @@ class RolesPaginator(discord.ui.View):
         await interaction.message.delete()
 
 
-# ========================
-# 📜 Cog principal
-# ========================
 class Roles(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
+        self.owner_id = 335596693603090434  # 👑 ID del dueño del bot
 
     # ========================
     # 📜 Ver roles con páginas
@@ -137,17 +135,14 @@ class Roles(commands.Cog):
         await ctx.send(embed=view.get_page_content(), view=view)
 
     # ========================
-    # ⚖️ Validar jerarquía
+    # Función auxiliar: validar jerarquía
     # ========================
     def can_modify_role(self, ctx, member: discord.Member, role: discord.Role):
         author = ctx.author
         bot_member = ctx.guild.me
 
-        # 🔑 Excepción: dueño del bot puede darse cualquier rol
-        if author.id in self.bot.owner_ids and member == author:
-            # Solo queda la limitación impuesta por Discord: el rol debe estar por debajo del rol del bot
-            if role >= bot_member.top_role:
-                return False, f"❌ Ese rol está por encima del rol del bot ({bot_member.top_role.mention}). Sube el rol del bot en la jerarquía del servidor."
+        # ✅ Bypass total si es el dueño del bot
+        if author.id == self.owner_id and member == author:
             return True, None
 
         if member == author:
@@ -165,7 +160,7 @@ class Roles(commands.Cog):
         return True, None
 
     # ========================
-    # 🔍 Buscar rol
+    # Función auxiliar: buscar rol (coincidencia parcial)
     # ========================
     def find_role(self, ctx, role_arg: str):
         if role_arg.isdigit():
@@ -179,10 +174,10 @@ class Roles(commands.Cog):
         if len(matches) == 1:
             return matches[0]
 
-        return matches
+        return matches  # múltiples coincidencias
 
     # ========================
-    # 🔍 Buscar miembro
+    # Función auxiliar: buscar usuario
     # ========================
     def find_member(self, ctx, member_arg: str):
         if member_arg.isdigit():
