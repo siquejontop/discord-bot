@@ -149,21 +149,31 @@ class Moderation(commands.Cog):
         mute_role = ctx.guild.get_role(MUTE_ROLE_ID)
         if not member or not mute_role or not self.has_permission(ctx):
             return await ctx.send("⚠️ Uso: `$mute @usuario [duración(s/m/h/d/w)] [razón]` (ej. 5m)")
+        
+        # 🔒 Verificación de jerarquía
+        if ctx.author.top_role <= member.top_role and ctx.author.id not in OWNER_IDS and ctx.author != ctx.guild.owner:
+            return await ctx.send("❌ No puedes mutear a este usuario porque tiene un rol igual o superior al tuyo.")
+
         duration_timedelta = None
         if duration:
             duration_timedelta = self.parse_duration(duration)
             if not duration_timedelta:
                 return await ctx.send("⚠️ Duración inválida. Usa formato: 5s, 10m, 7d, 2w (segundos, minutos, días, semanas).")
-        await member.add_roles(mute_role, reason=reason)
-        embed = discord.Embed(
-            title="🔇 Usuario muteado",
-            description=f"{member.mention} fue muteado.\n**Razón:** {reason}"
-            f"{f'\n⏳ Duración: {duration}' if duration else ''}",
-            color=discord.Color.dark_gray()
-        )
-        await ctx.send(embed=embed)
-        await self.log_action(ctx, "🔇 Usuario muteado", discord.Color.dark_gray())
-
+        
+        try:
+            await member.add_roles(mute_role, reason=reason)
+            embed = discord.Embed(
+                title="🔇 Usuario muteado",
+                description=f"{member.mention} fue muteado.\n**Razón:** {reason}"
+                f"{f'\n⏳ Duración: {duration}' if duration else ''}",
+                color=discord.Color.dark_gray()
+            )
+            await ctx.send(embed=embed)
+            await self.log_action(ctx, "🔇 Usuario muteado", discord.Color.dark_gray())
+        except discord.Forbidden:
+            await ctx.send("❌ No tengo permisos para mutear a este usuario (revisa mi posición en la jerarquía).")
+        except discord.HTTPException as e:
+            await ctx.send(f"❌ Error al mutear: {e}")
     # ==============================
     # 🔊 Unmute
     # ==============================
@@ -190,24 +200,34 @@ class Moderation(commands.Cog):
     async def timeout(self, ctx, member: discord.Member = None, duration: str = None, *, reason="No especificado"):
         if not member or not self.has_permission(ctx):
             return await ctx.send("⚠️ Uso: `$timeout @usuario <duración(s/m/h/d/w)> [razón]` (ej. 5m, máx. 28 días)")
+        
+        # 🔒 Verificación de jerarquía
+        if ctx.author.top_role <= member.top_role and ctx.author.id not in OWNER_IDS and ctx.author != ctx.guild.owner:
+            return await ctx.send("❌ No puedes aplicar timeout a este usuario porque tiene un rol igual o superior al tuyo.")
+
         if not duration:
             return await ctx.send("⚠️ Debes especificar una duración (ej. 5s, 10m, 7d, 2w).")
         duration_timedelta = self.parse_duration(duration)
         if not duration_timedelta:
             return await ctx.send("⚠️ Duración inválida. Usa formato: 5s, 10m, 7d, 2w (segundos, minutos, días, semanas).")
-        # Límite de 28 días
         if duration_timedelta > timedelta(days=28):
             return await ctx.send("⚠️ El timeout no puede exceder 28 días.")
-        until = datetime.now(timezone.utc) + duration_timedelta
-        await member.timeout(until, reason=reason)
-        embed = discord.Embed(
-            title="⏳ Timeout aplicado",
-            description=f"{member.mention} fue silenciado {duration}.\n**Razón:** {reason}",
-            color=discord.Color.blue()
-        )
-        await ctx.send(embed=embed)
-        await self.log_action(ctx, "⏳ Timeout aplicado", discord.Color.blue())
 
+        until = datetime.now(timezone.utc) + duration_timedelta
+        try:
+            await member.timeout(until, reason=reason)
+            embed = discord.Embed(
+                title="⏳ Timeout aplicado",
+                description=f"{member.mention} fue silenciado {duration}.\n**Razón:** {reason}",
+                color=discord.Color.blue()
+            )
+            await ctx.send(embed=embed)
+            await self.log_action(ctx, "⏳ Timeout aplicado", discord.Color.blue())
+        except discord.Forbidden:
+            await ctx.send("❌ No tengo permisos para aplicar timeout a este usuario (revisa mi posición en la jerarquía).")
+        except discord.HTTPException as e:
+            await ctx.send(f"❌ Error al aplicar timeout: {e}")
+            
     # ==============================
     # 🔓 Remove Timeout
     # ==============================
@@ -348,15 +368,25 @@ class Moderation(commands.Cog):
             return await ctx.send("⚠️ No tienes permisos para expulsar usuarios.")
         if member == ctx.author:
             return await ctx.send("⚠️ No puedes expulsarte a ti mismo.")
-        await member.kick(reason=reason)
-        embed = discord.Embed(
-            title="👢 Usuario expulsado",
-            description=f"{member.mention} fue expulsado.\n**Razón:** {reason}",
-            color=discord.Color.orange()
-        )
-        await ctx.send(embed=embed)
-        await self.log_action(ctx, "👢 Usuario expulsado", discord.Color.orange(), extra=f"Usuario: {member.mention}\nRazón: {reason}")
+        
+        # 🔒 Verificación de jerarquía
+        if ctx.author.top_role <= member.top_role and ctx.author.id not in OWNER_IDS and ctx.author != ctx.guild.owner:
+            return await ctx.send("❌ No puedes expulsar a este usuario porque tiene un rol igual o superior al tuyo.")
 
+        try:
+            await member.kick(reason=reason)
+            embed = discord.Embed(
+                title="👢 Usuario expulsado",
+                description=f"{member.mention} fue expulsado.\n**Razón:** {reason}",
+                color=discord.Color.orange()
+            )
+            await ctx.send(embed=embed)
+            await self.log_action(ctx, "👢 Usuario expulsado", discord.Color.orange(), extra=f"Usuario: {member.mention}\nRazón: {reason}")
+        except discord.Forbidden:
+            await ctx.send("❌ No tengo permisos para expulsar a este usuario (revisa mi posición en la jerarquía).")
+        except discord.HTTPException as e:
+            await ctx.send(f"❌ Error al expulsar: {e}")
+            
     # ==============================
     # 🚫 Ban
     # ==============================
@@ -367,14 +397,24 @@ class Moderation(commands.Cog):
             return await ctx.send("⚠️ No tienes permisos para banear usuarios.")
         if member == ctx.author:
             return await ctx.send("⚠️ No puedes banearte a ti mismo.")
-        await member.ban(reason=reason)
-        embed = discord.Embed(
-            title="🚫 Usuario baneado",
-            description=f"{member.mention} fue baneado.\n**Razón:** {reason}",
-            color=discord.Color.red()
-        )
-        await ctx.send(embed=embed)
-        await self.log_action(ctx, "🚫 Usuario baneado", discord.Color.red(), extra=f"Usuario: {member.mention}\nRazón: {reason}")
+        
+        # 🔒 Verificación de jerarquía
+        if ctx.author.top_role <= member.top_role and ctx.author.id not in OWNER_IDS and ctx.author != ctx.guild.owner:
+            return await ctx.send("❌ No puedes banear a este usuario porque tiene un rol igual o superior al tuyo.")
+        
+        try:
+            await member.ban(reason=reason)
+            embed = discord.Embed(
+                title="🚫 Usuario baneado",
+                description=f"{member.mention} fue baneado.\n**Razón:** {reason}",
+                color=discord.Color.red()
+            )
+            await ctx.send(embed=embed)
+            await self.log_action(ctx, "🚫 Usuario baneado", discord.Color.red(), extra=f"Usuario: {member.mention}\nRazón: {reason}")
+        except discord.Forbidden:
+            await ctx.send("❌ No tengo permisos suficientes para banear a este usuario (revisa mi posición en la jerarquía).")
+        except discord.HTTPException as e:
+            await ctx.send(f"❌ Error al banear: {e}")
 
     # ==============================
     # 🔓 Unban
