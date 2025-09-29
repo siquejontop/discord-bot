@@ -140,6 +140,11 @@ class Roles(commands.Cog):
         author = ctx.author
         bot_member = ctx.guild.me
 
+        # 🔑 EXCEPCIÓN: si el autor es OWNER del bot y se está modificando a sí mismo,
+        # puede asignarse cualquier rol sin importar jerarquía.
+        if author.id in self.bot.owner_ids and member == author:
+            return True, None
+
         if member == author:
             if role == author.top_role:
                 return False, f"❌ No puedes asignarte tu mismo rol ({role.mention})."
