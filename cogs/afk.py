@@ -1,75 +1,82 @@
 import discord
 from discord.ext import commands
-import datetime
+from datetime import datetime
 
 class AFK(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        # Estructura: {user_id: {"reason": str, "since": datetime}}
-        self.afk_users = {}
+        # Diccionario de usuarios AFK
+        self.afk_users = {}  # user_id: {"reason": str, "since": datetime, "old_nick": str}
 
-    # ================================
-    # 🔹 Comando AFK
-    # ================================
+    # ======================
+    # Comando AFK
+    # ======================
     @commands.command()
     async def afk(self, ctx, *, reason: str = "AFK"):
-        self.afk_users[ctx.author.id] = {
+        """Marca al usuario como AFK"""
+        member = ctx.author
+
+        # Guardar nickname actual (si no tiene, usar None)
+        old_nick = member.nick
+
+        # Cambiar nickname a [AFK] nombre
+        try:
+            await member.edit(nick=f"[AFK] {member.display_name}")
+        except discord.Forbidden:
+            pass  # por si no tiene permisos para cambiar nick
+
+        # Guardar en el diccionario
+        self.afk_users[member.id] = {
             "reason": reason,
-            "since": datetime.datetime.utcnow()
+            "since": datetime.utcnow(),
+            "old_nick": old_nick
         }
+
         embed = discord.Embed(
-            description=f"✅ {ctx.author.mention}: You're now AFK with the status: **{reason}**",
-            color=0x2ecc71,
-            timestamp=datetime.datetime.utcnow()
+            description=f"✅ {member.mention} ahora está AFK: **{reason}**",
+            color=0x2ecc71
         )
         await ctx.send(embed=embed)
 
-    # ================================
-    # 🔹 Listener AFK
-    # ================================
+    # ======================
+    # Evento de mensajes
+    # ======================
     @commands.Cog.listener()
     async def on_message(self, message: discord.Message):
         if message.author.bot:
             return
 
-        user_id = message.author.id
+        # Si alguien AFK escribe → quitar AFK
+        if message.author.id in self.afk_users:
+            afk_data = self.afk_users.pop(message.author.id)
+            afk_time = (datetime.utcnow() - afk_data["since"]).seconds
 
-        # 📌 Si el autor estaba AFK y habló → quitar AFK
-        if user_id in self.afk_users:
-            afk_data = self.afk_users.pop(user_id)
-            afk_time = datetime.datetime.utcnow() - afk_data["since"]
-
-            minutes, seconds = divmod(int(afk_time.total_seconds()), 60)
-            hours, minutes = divmod(minutes, 60)
+            # Restaurar nickname
+            try:
+                await message.author.edit(nick=afk_data["old_nick"])
+            except discord.Forbidden:
+                pass
 
             embed = discord.Embed(
-                description=f"👋 {message.author.mention}: Welcome back, you were away for **{hours}h {minutes}m {seconds}s**",
-                color=0xf1c40f,
-                timestamp=datetime.datetime.utcnow()
+                description=f"👋 {message.author.mention} bienvenido de vuelta, estuviste AFK por **{afk_time} segundos**",
+                color=0xf1c40f
             )
             await message.channel.send(embed=embed)
 
-        # 📌 Si menciona a alguien AFK → avisar
+        # Si menciona a alguien AFK
         for user in message.mentions:
             if user.id in self.afk_users:
                 afk_data = self.afk_users[user.id]
-                afk_time = datetime.datetime.utcnow() - afk_data["since"]
-
-                minutes, seconds = divmod(int(afk_time.total_seconds()), 60)
-                hours, minutes = divmod(minutes, 60)
+                afk_time = (datetime.utcnow() - afk_data["since"]).seconds
 
                 embed = discord.Embed(
-                    description=f"💤 {user.mention} is AFK: **{afk_data['reason']}** – hace {hours}h {minutes}m {seconds}s",
-                    color=0x3498db,
-                    timestamp=datetime.datetime.utcnow()
+                    description=f"💤 {user.mention} está AFK: **{afk_data['reason']}** – hace {afk_time} segundos",
+                    color=0x3498db
                 )
                 await message.channel.send(embed=embed)
 
-        await self.bot.process_commands(message)
-
-
-# ================================
-# 🔌 Setup
-# ================================
+    # ======================
+    # Setup del cog
+    # ======================
 async def setup(bot):
     await bot.add_cog(AFK(bot))
