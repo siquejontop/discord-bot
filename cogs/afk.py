@@ -60,7 +60,7 @@ class AFK(commands.Cog):
             desc = f"👋 {message.author.mention} bienvenido de vuelta, estuviste AFK por **{afk_time} segundos**"
 
             if afk_data["mentions"]:
-                desc += f"\n\n📩 Recibiste **{len(afk_data['mentions'])} menciones** mientras estabas AFK:"
+                desc += f"\n\nRecibiste **{len(afk_data['mentions'])} menciones** mientras estabas AFK:"
                 for mention in afk_data["mentions"][:5]:  # mostrar hasta 5
                     desc += f"\n{mention}"
                 if len(afk_data["mentions"]) > 5:
@@ -77,7 +77,7 @@ class AFK(commands.Cog):
 
                 # Guardar la mención con jump_url
                 jump = f"[Mensaje]({message.jump_url})"
-                afk_data["mentions"].append(f"➡️ {message.author.mention} → {jump}")
+                afk_data["mentions"].append(f"{message.author.mention} → {jump}")
 
                 embed = discord.Embed(
                     description=f"💤 {user.mention} está AFK: **{afk_data['reason']}** – hace {afk_time} segundos",
