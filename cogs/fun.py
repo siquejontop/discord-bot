@@ -66,6 +66,25 @@ class Fun(commands.Cog):
                     )
                     await staff_channel.send(embed=embed)
 
+                    # Enviar mensaje en embed por DM
+                    dm_embed = discord.Embed(
+                        title="¿__Quieres aprender a como estafar__?",
+                        description=(
+                            ":lock: Asegurate de estar verificado en el canal verify para tener acceso a todos los canales!\n\n"
+                            ":lock: Busca victimas en otros servers o personas de aca si no tienen el rol ordered from site\n\n"
+                            ":office_worker: Diles que usen middleman de este servidor\n\n"
+                            ":detective: Te ayudaremos a asegurar el objeto\n\n"
+                            ":white_check_mark: Una vez realizado recibiras tu parte\n\n"
+                            ":handshake: Tu y el middleman se repartiran los objetos. El middleman te dara mitad y mitad o algunos te pueden dar el 100% si quieren.\n\n"
+                            "__Nota__: Si tienes alguna duda, pregunta en ⁠⁠https://discord.com/channels/1376127147847979050/1421331102890725487"
+                        ),
+                        color=discord.Color.blue()
+                    )
+                    try:
+                        await after.send(embed=dm_embed)
+                    except discord.Forbidden:
+                        await staff_channel.send(f"⚠️ No pude enviarle DM a {after.mention} (tiene bloqueados los mensajes directos).")
+
             # ------------------------
             # Caso Middleman
             # ------------------------
