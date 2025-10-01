@@ -28,6 +28,7 @@ class Precios(commands.Cog):
             "dragoncannelloni": (100, 0.30, 100, "(M − 100) × 0.30 + 100", "Dragon cannelloni"),
             "moneymoneypuggy": (21, 0.06, 8, "(M - 21) × 0.06 + 8", "Money money puggy"),
             "tangtangkelentang": (33.5, 0.05, 5, "(M - 33.5) × 0.05 + 5", "Tang tang kelentang"),
+            "chillinchili": (30, 0.05, 3, "(M - 30) × 0.05 + 3", "Chillin chili"),
         }
 
         # Alias → clave real
@@ -97,6 +98,9 @@ class Precios(commands.Cog):
 
             "ttk": "tangtangkelentang",
             "kelentang": "tangtangkelentang",
+
+            "cc": "chillinchili",
+            "chili": "chillinchili",
         }
 
     def make_embed(self, ctx, nombre: str, formula: str, operacion: str, resultado: float, pretty: str):
