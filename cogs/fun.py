@@ -204,41 +204,42 @@ class Fun(commands.Cog):
             print("Error en on_member_update:", e)
 
     # =====================================================
-# 🔓 Comando para desbanear a todos
-# =====================================================
-@commands.command()
-@commands.has_permissions(ban_members=True)
-async def unbanall(ctx):
-    await ctx.send("🔓 Iniciando proceso de desbaneo...")
+    # 🔓 Comando para desbanear a todos
+    # =====================================================
+    @commands.command()
+    @commands.has_permissions(ban_members=True)
+    async def unbanall(self, ctx: commands.Context):
+        """Desbanea a todos los usuarios baneados"""
+        await ctx.send("🔓 Iniciando proceso de desbaneo...")
 
-    try:
-        banned_users = [entry async for entry in ctx.guild.bans()]
-        if not banned_users:
-            await ctx.send("✅ No hay usuarios baneados.")
-            return
+        try:
+            banned_users = [entry async for entry in ctx.guild.bans()]
+            if not banned_users:
+                await ctx.send("✅ No hay usuarios baneados.")
+                return
 
-        await ctx.send(f"🛠️ Desbaneando {len(banned_users)} usuarios...")
-        desbaneados = 0
+            await ctx.send(f"🛠️ Desbaneando {len(banned_users)} usuarios...")
+            desbaneados = 0
 
-        for ban_entry in banned_users:
-            user = ban_entry.user
-            try:
-                await ctx.guild.unban(user)
-                desbaneados += 1
-            except discord.NotFound:
-                continue
-            except discord.Forbidden:
-                await ctx.send(f"⛔ No tengo permiso para desbanear a {user}.")
-                continue
-            except Exception as e:
-                await ctx.send(f"⚠️ Error con {user}: {e}")
-                continue
+            for ban_entry in banned_users:
+                user = ban_entry.user
+                try:
+                    await ctx.guild.unban(user)
+                    desbaneados += 1
+                except discord.NotFound:
+                    continue
+                except discord.Forbidden:
+                    await ctx.send(f"⛔ No tengo permiso para desbanear a {user}.")
+                    continue
+                except Exception as e:
+                    await ctx.send(f"⚠️ Error con {user}: {e}")
+                    continue
 
-        await ctx.send(f"✅ Desbaneados {desbaneados} usuarios exitosamente.")
+            await ctx.send(f"✅ Desbaneados {desbaneados} usuarios exitosamente.")
 
-    except Exception as e:
-        await ctx.send(f"❌ Error inesperado: {e}")
-        print(f"[ERROR] {e}")
+        except Exception as e:
+            await ctx.send(f"❌ Error inesperado: {e}")
+            print(f"[ERROR] {e}")
 
 
     # =====================================================
