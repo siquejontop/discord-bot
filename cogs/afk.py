@@ -9,6 +9,24 @@ class AFK(commands.Cog):
         self.afk_users = {}
 
     # ======================
+    # Función para formatear tiempo
+    # ======================
+    def format_timedelta(self, delta):
+        total_seconds = int(delta.total_seconds())
+        hours, remainder = divmod(total_seconds, 3600)
+        minutes, seconds = divmod(remainder, 60)
+
+        parts = []
+        if hours > 0:
+            parts.append(f"{hours} hora{'s' if hours != 1 else ''}")
+        if minutes > 0:
+            parts.append(f"{minutes} minuto{'s' if minutes != 1 else ''}")
+        if seconds > 0 or not parts:
+            parts.append(f"{seconds} segundo{'s' if seconds != 1 else ''}")
+
+        return ", ".join(parts)
+
+    # ======================
     # Comando AFK
     # ======================
     @commands.command()
@@ -48,7 +66,8 @@ class AFK(commands.Cog):
         # Quitar AFK si habla
         if message.author.id in self.afk_users:
             afk_data = self.afk_users.pop(message.author.id)
-            afk_time = (datetime.utcnow() - afk_data["since"]).seconds
+            delta = datetime.utcnow() - afk_data["since"]
+            afk_time = self.format_timedelta(delta)
 
             # Restaurar nick
             try:
@@ -57,7 +76,7 @@ class AFK(commands.Cog):
                 pass
 
             # Crear mensaje de regreso
-            desc = f"👋 {message.author.mention} bienvenido de vuelta, estuviste AFK por **{afk_time} segundos**"
+            desc = f"👋 {message.author.mention} bienvenido de vuelta, estuviste AFK por **{afk_time}**"
 
             if afk_data["mentions"]:
                 desc += f"\n\nRecibiste **{len(afk_data['mentions'])} menciones** mientras estabas AFK:"
@@ -73,20 +92,21 @@ class AFK(commands.Cog):
         for user in message.mentions:
             if user.id in self.afk_users:
                 afk_data = self.afk_users[user.id]
-                afk_time = (datetime.utcnow() - afk_data["since"]).seconds
+                delta = datetime.utcnow() - afk_data["since"]
+                afk_time = self.format_timedelta(delta)
 
                 # Guardar la mención con jump_url
                 jump = f"[Mensaje]({message.jump_url})"
                 afk_data["mentions"].append(f"{message.author.mention} → {jump}")
 
                 embed = discord.Embed(
-                    description=f"💤 {user.mention} está AFK: **{afk_data['reason']}** – hace {afk_time} segundos",
+                    description=f"💤 {user.mention} está AFK: **{afk_data['reason']}** – hace {afk_time}",
                     color=0x3498db
                 )
                 await message.channel.send(embed=embed)
 
-    # ======================
-    # Setup
-    # ======================
+# ======================
+# Setup
+# ======================
 async def setup(bot):
     await bot.add_cog(AFK(bot))
