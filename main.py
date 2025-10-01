@@ -102,7 +102,6 @@ class MyBot(commands.Bot):
             "cogs.roles",
             "cogs.brainrotcalc",
             "cogs.antinuke",
-            "cogs.autobanalts",
         ]
 
         for cog in cogs:
