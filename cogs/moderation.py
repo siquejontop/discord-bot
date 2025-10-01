@@ -1,239 +1,394 @@
 import discord
 from discord.ext import commands
-from datetime import datetime, timedelta, timezone
 from discord.ui import View, Button
-import os
-import logging
+from datetime import datetime, timedelta, timezone
 import re
+import logging
+from typing import Optional
 
 # ==============================
 # CONFIG LOCAL
 # ==============================
-MUTE_ROLE_ID = 1418314510049083576
+MUTE_ROLE_ID = 1418314510049083556  # cambia si hace falta
 LIMIT_ROLE_ID = 1415860204624416971
 LOG_CHANNEL_ID = 1418314310739955742
-OWNER_IDS = [335596693603090434, 523662219020337153]  # IDs de dueños del bot
+OWNER_IDS = [335596693603090434, 523662219020337153]
 
 # ==============================
 # HELPERS
 # ==============================
 logging.basicConfig(level=logging.INFO)
 
-# ==============================
-# Moderation Cog
-# ==============================
 class Moderation(commands.Cog):
-    def __init__(self, bot):
+    def __init__(self, bot: commands.Bot):
         self.bot = bot
-        self.warnings = {}  # {user_id: list of warnings}
+        self.warnings = {}  # {str(user_id): [warnings...]}
 
-    # ==============================
-    # 📌 Helpers
-    # ==============================
-    def has_permission(self, ctx):
+    # ------------------------------
+    # Helpers internos
+    # ------------------------------
+    def has_permission(self, ctx: commands.Context) -> bool:
         limit_role = ctx.guild.get_role(LIMIT_ROLE_ID)
-        return (
-            ctx.author.id in OWNER_IDS
-            or ctx.author == ctx.guild.owner
-            or (not limit_role or ctx.author.top_role > limit_role)
-        )
+        author = ctx.author
+        # Dueños siempre pasan
+        if author.id in OWNER_IDS or author == ctx.guild.owner:
+            return True
+        # Si no hay role limit, permite
+        if not limit_role:
+            return True
+        # comparar jerarquía
+        return author.top_role > limit_role
 
-    async def log_action(self, ctx, title, color, extra=""):
-        log_channel = ctx.guild.get_channel(LOG_CHANNEL_ID)
-        if not log_channel:
+    def check_hierarchy(self, ctx: commands.Context, member: discord.Member) -> bool:
+        """Devuelve True si ctx.author y el bot pueden actuar sobre member."""
+        if member is None:
+            return False
+        author = ctx.author
+
+        # Owners y owner del servidor siempre pueden
+        if author.id in OWNER_IDS or author == ctx.guild.owner:
+            return True
+
+        # autor debe tener rol más alto que objetivo
+        if author.top_role <= member.top_role:
+            return False
+
+        # el bot también debe tener rol más alto que el objetivo
+        bot_member = ctx.guild.get_member(self.bot.user.id)
+        if bot_member and bot_member.top_role <= member.top_role:
+            return False
+
+        return True
+
+    async def log_action(self, ctx: commands.Context, title: str, color: discord.Colour, target: Optional[discord.abc.Snowflake] = None, extra: str = ""):
+        channel = self.bot.get_channel(LOG_CHANNEL_ID)
+        if not channel:
             return
-        embed = discord.Embed(
-            title=title,
-            color=color,
-            timestamp=datetime.now(timezone.utc)
-        )
-        embed.add_field(name="👤 Usuario", value=ctx.author.mention, inline=False)
+        embed = discord.Embed(title=title, color=color, timestamp=datetime.now(timezone.utc))
+        if target:
+            # target puede ser User o Member
+            try:
+                mention = target.mention
+            except Exception:
+                mention = f"{getattr(target, 'name', str(target))} ({getattr(target, 'id', '??')})"
+            embed.add_field(name="👤 Usuario", value=mention, inline=False)
+        else:
+            embed.add_field(name="👤 Usuario", value="No especificado", inline=False)
+
         embed.add_field(name="🛠️ Moderador", value=ctx.author.mention, inline=False)
         if extra:
             embed.add_field(name="📌 Extra", value=extra, inline=False)
-        await log_channel.send(embed=embed)
+        await channel.send(embed=embed)
 
-    def parse_duration(self, duration_str):
-        """Parsea una duración en formato '5s', '10m', '7d', '2w' a timedelta."""
+    def parse_duration(self, duration_str: str) -> Optional[timedelta]:
+        """Soporta 5s, 10m, 7h, 2d, 1w"""
+        if not duration_str:
+            return None
         match = re.match(r'^(\d+)([smhdw])$', duration_str.lower())
         if not match:
             return None
         value, unit = int(match.group(1)), match.group(2)
         if unit == 's':
             return timedelta(seconds=value)
-        elif unit == 'm':
+        if unit == 'm':
             return timedelta(minutes=value)
-        elif unit == 'h':
+        if unit == 'h':
             return timedelta(hours=value)
-        elif unit == 'd':
+        if unit == 'd':
             return timedelta(days=value)
-        elif unit == 'w':
+        if unit == 'w':
             return timedelta(weeks=value)
         return None
 
-        # ==============================
+    async def resolve_member(self, ctx: commands.Context, identifier: str) -> Optional[discord.Member]:
+        """Intenta resolver a un Member del guild por mention, id, name o name#discrim."""
+        if not identifier:
+            return None
+
+        # ID o mention
+        id_match = re.search(r'(\d{6,20})', identifier)
+        if id_match:
+            member = ctx.guild.get_member(int(id_match.group(1)))
+            if member:
+                return member
+
+        # name#discrim
+        if '#' in identifier:
+            name, discrim = identifier.rsplit('#', 1)
+            for m in ctx.guild.members:
+                if m.name == name and m.discriminator == discrim:
+                    return m
+
+        # match por display_name o name (case-insensitive)
+        lower = identifier.lower()
+        for m in ctx.guild.members:
+            if m.display_name.lower() == lower or m.name.lower() == lower:
+                return m
+
+        return None
+
+    async def find_banned_user(self, ctx: commands.Context, identifier: str) -> Optional[discord.User]:
+        """Busca entre los bans (user.id, name o name#discrim)."""
+        try:
+            bans = await ctx.guild.bans()
+        except discord.Forbidden:
+            return None
+
+        # id
+        id_match = re.search(r'(\d{6,20})', identifier)
+        if id_match:
+            uid = int(id_match.group(1))
+            for entry in bans:
+                if entry.user.id == uid:
+                    return entry.user
+            # si no está en bans, no podemos desbanear; devolvemos un fetch_user para intentar unban por id (se lanzará NotFound si no está baneado)
+            try:
+                return await self.bot.fetch_user(uid)
+            except Exception:
+                return None
+
+        # name#discrim
+        if '#' in identifier:
+            name, discrim = identifier.rsplit('#', 1)
+            for entry in bans:
+                if entry.user.name == name and entry.user.discriminator == discrim:
+                    return entry.user
+
+        # name only (case-insensitive)
+        lower = identifier.lower()
+        for entry in bans:
+            if entry.user.name.lower() == lower:
+                return entry.user
+
+        return None
+
+    # ==============================
     # 🔇 Mute
     # ==============================
     @commands.command()
     @commands.has_permissions(manage_roles=True)
-    async def mute(self, ctx, member: discord.Member = None, duration: str = None, *, reason="No especificado"):
-        mute_role = ctx.guild.get_role(MUTE_ROLE_ID)
-        if not member or not mute_role or not self.has_permission(ctx):
-            return await ctx.send("⚠️ Uso: `$mute @usuario [duración(s/m/h/d/w)] [razón]`")
+    async def mute(self, ctx: commands.Context, target: str = None, duration: str = None, *, reason: str = "No especificado"):
+        if not target or not self.has_permission(ctx):
+            return await ctx.send("⚠️ Uso: `$mute <usuario/id/mention/name#1234> [duración(s/m/h/d/w)] [razón]`")
 
-        # Verificación jerarquía
+        member = await self.resolve_member(ctx, target)
+        if not member:
+            return await ctx.send("❌ Usuario no encontrado en el servidor.")
+
         if not self.check_hierarchy(ctx, member):
-            return await ctx.send("❌ No puedes mutear a este usuario porque tiene un rol igual o superior al tuyo.")
+            return await ctx.send("❌ No puedes mutear a este usuario (jerarquía insuficiente o el bot no puede).")
 
-        duration_timedelta = None
+        mute_role = ctx.guild.get_role(MUTE_ROLE_ID)
+        if not mute_role:
+            return await ctx.send("❌ Rol de mute no configurado o no encontrado.")
+
+        duration_td = None
         if duration:
-            duration_timedelta = self.parse_duration(duration)
-            if not duration_timedelta:
-                return await ctx.send("⚠️ Duración inválida. Usa formato: 5s, 10m, 7d, 2w.")
+            duration_td = self.parse_duration(duration)
+            if not duration_td:
+                return await ctx.send("⚠️ Duración inválida. Usa: 5s, 10m, 7h, 2d, 1w.")
 
         try:
             await member.add_roles(mute_role, reason=reason)
             embed = discord.Embed(
                 title="🔇 Usuario muteado",
-                description=f"{member.mention} fue muteado.\n**Razón:** {reason}"
-                f"{f'\n⏳ Duración: {duration}' if duration else ''}",
-                color=discord.Color.dark_gray()
+                description=f"{member.mention} fue muteado.\n**Razón:** {reason}{f'\\n⏳ Duración: {duration}' if duration else ''}",
+                color=discord.Color.dark_gray(),
+                timestamp=datetime.now(timezone.utc)
             )
             await ctx.send(embed=embed)
-            await self.log_action(ctx, "🔇 Usuario muteado", discord.Color.dark_gray())
+            await self.log_action(ctx, "🔇 Usuario muteado", discord.Color.dark_gray(), target=member, extra=f"Duración: {duration or 'Indefinida'}")
+            # si tiene duración, programar desmute (nota: esto no sobrevive reinicios)
+            if duration_td:
+                # este sleep es simple; si el bot se reinicia, no habrá un desmute automático.
+                async def _auto_unmute():
+                    await discord.utils.sleep_until(datetime.now(timezone.utc) + duration_td)
+                    if mute_role in member.roles:
+                        try:
+                            await member.remove_roles(mute_role, reason="Mute expirado automáticamente")
+                            await self.log_action(ctx, "🔊 Mute expirado", discord.Color.green(), target=member)
+                        except Exception:
+                            pass
+                self.bot.loop.create_task(_auto_unmute())
         except discord.Forbidden:
-            await ctx.send("❌ No tengo permisos para mutear (mi rol debe estar arriba).")
+            await ctx.send("❌ No tengo permisos para asignar roles (mi rol debe estar por encima del rol mute).")
+        except Exception as e:
+            await ctx.send(f"❌ Error al mutear: {e}")
 
     # ==============================
     # 🔊 Unmute
     # ==============================
     @commands.command()
     @commands.has_permissions(manage_roles=True)
-    async def unmute(self, ctx, member: discord.Member = None):
-        mute_role = ctx.guild.get_role(MUTE_ROLE_ID)
-        if not member or not mute_role or not self.has_permission(ctx):
-            return await ctx.send("⚠️ Uso: `$unmute @usuario`.")
+    async def unmute(self, ctx: commands.Context, target: str = None):
+        if not target or not self.has_permission(ctx):
+            return await ctx.send("⚠️ Uso: `$unmute <usuario/id/mention/name#1234>`")
+
+        member = await self.resolve_member(ctx, target)
+        if not member:
+            return await ctx.send("❌ Usuario no encontrado en el servidor.")
 
         if not self.check_hierarchy(ctx, member):
-            return await ctx.send("❌ No puedes desmutear a este usuario porque tiene un rol igual o superior al tuyo.")
+            return await ctx.send("❌ No puedes desmutear a este usuario (jerarquía insuficiente).")
 
-        await member.remove_roles(mute_role)
-        await ctx.send(embed=discord.Embed(
-            title="🔊 Usuario desmuteado",
-            description=f"{member.mention} fue desmuteado.",
-            color=discord.Color.green()
-        ))
+        mute_role = ctx.guild.get_role(MUTE_ROLE_ID)
+        if not mute_role:
+            return await ctx.send("❌ Rol de mute no configurado.")
+
+        try:
+            await member.remove_roles(mute_role, reason=f"Desmuteado por {ctx.author}")
+            embed = discord.Embed(title="🔊 Usuario desmuteado", description=f"{member.mention} fue desmuteado.", color=discord.Color.green(), timestamp=datetime.now(timezone.utc))
+            await ctx.send(embed=embed)
+            await self.log_action(ctx, "🔊 Usuario desmuteado", discord.Color.green(), target=member)
+        except discord.Forbidden:
+            await ctx.send("❌ No tengo permisos para remover roles del usuario.")
+        except Exception as e:
+            await ctx.send(f"❌ Error al desmutear: {e}")
 
     # ==============================
     # ⏳ Timeout
     # ==============================
     @commands.command()
     @commands.has_permissions(moderate_members=True)
-    async def timeout(self, ctx, member: discord.Member = None, duration: str = None, *, reason="No especificado"):
-        if not member or not duration or not self.has_permission(ctx):
-            return await ctx.send("⚠️ Uso: `$timeout @usuario <duración>` (ej. 5m, máx. 28 días)")
+    async def timeout(self, ctx: commands.Context, target: str = None, duration: str = None, *, reason: str = "No especificado"):
+        if not target or not duration or not self.has_permission(ctx):
+            return await ctx.send("⚠️ Uso: `$timeout <usuario/id/mention/name#1234> <duración>` (ej. 5m, máx. 28d)")
+
+        member = await self.resolve_member(ctx, target)
+        if not member:
+            return await ctx.send("❌ Usuario no encontrado en el servidor.")
 
         if not self.check_hierarchy(ctx, member):
-            return await ctx.send("❌ No puedes aplicar timeout a este usuario porque tiene un rol igual o superior al tuyo.")
+            return await ctx.send("❌ No puedes aplicar timeout a este usuario (jerarquía insuficiente).")
 
-        duration_timedelta = self.parse_duration(duration)
-        if not duration_timedelta or duration_timedelta > timedelta(days=28):
+        duration_td = self.parse_duration(duration)
+        if not duration_td or duration_td > timedelta(days=28):
             return await ctx.send("⚠️ Duración inválida (máx. 28 días).")
 
-        until = datetime.now(timezone.utc) + duration_timedelta
-        await member.timeout(until, reason=reason)
-        await ctx.send(embed=discord.Embed(
-            title="⏳ Timeout aplicado",
-            description=f"{member.mention} fue silenciado {duration}.\n**Razón:** {reason}",
-            color=discord.Color.blue()
-        ))
+        until = datetime.now(timezone.utc) + duration_td
+        try:
+            # usa timed_out_until para compatibilidad con discord.py 2.0
+            await member.edit(timed_out_until=until, reason=reason)
+            embed = discord.Embed(title="⏳ Timeout aplicado", description=f"{member.mention} fue silenciado por {duration}.\n**Razón:** {reason}", color=discord.Color.blue(), timestamp=datetime.now(timezone.utc))
+            await ctx.send(embed=embed)
+            await self.log_action(ctx, "⏳ Timeout aplicado", discord.Color.blue(), target=member, extra=f"Duración: {duration}")
+        except discord.Forbidden:
+            await ctx.send("❌ No tengo permisos para aplicar timeout.")
+        except Exception as e:
+            await ctx.send(f"❌ Error al aplicar timeout: {e}")
 
     # ==============================
     # 👢 Kick
     # ==============================
     @commands.command()
     @commands.has_permissions(kick_members=True)
-    async def kick(self, ctx, member: discord.Member, *, reason="No especificado"):
-        if not self.has_permission(ctx):
-            return await ctx.send("⚠️ No tienes permisos para expulsar usuarios.")
+    async def kick(self, ctx: commands.Context, target: str = None, *, reason: str = "No especificado"):
+        if not target or not self.has_permission(ctx):
+            return await ctx.send("⚠️ Uso: `$kick <usuario/id/mention/name#1234> [razón]`")
+
+        member = await self.resolve_member(ctx, target)
+        if not member:
+            return await ctx.send("❌ Usuario no encontrado en el servidor (solo se puede kickear a miembros presentes).")
 
         if not self.check_hierarchy(ctx, member):
-            return await ctx.send("❌ No puedes expulsar a este usuario porque tiene un rol igual o superior al tuyo.")
+            return await ctx.send("❌ No puedes expulsar a este usuario (jerarquía insuficiente).")
 
-        await member.kick(reason=reason)
-        await ctx.send(embed=discord.Embed(
-            title="👢 Usuario expulsado",
-            description=f"{member.mention} fue expulsado.\n**Razón:** {reason}",
-            color=discord.Color.orange()
-        ))
+        try:
+            await member.kick(reason=reason)
+            embed = discord.Embed(title="👢 Usuario expulsado", description=f"{member.mention} fue expulsado.\n**Razón:** {reason}", color=discord.Color.orange(), timestamp=datetime.now(timezone.utc))
+            await ctx.send(embed=embed)
+            await self.log_action(ctx, "👢 Usuario expulsado", discord.Color.orange(), target=member, extra=f"Razón: {reason}")
+        except discord.Forbidden:
+            await ctx.send("❌ No tengo permisos para expulsar a este usuario.")
+        except Exception as e:
+            await ctx.send(f"❌ Error al expulsar: {e}")
 
     # ==============================
     # 🚫 Ban
     # ==============================
     @commands.command()
     @commands.has_permissions(ban_members=True)
-    async def ban(self, ctx, member: discord.Member, *, reason="No especificado"):
-        if not self.has_permission(ctx):
-            return await ctx.send("⚠️ No tienes permisos para banear usuarios.")
+    async def ban(self, ctx: commands.Context, target: str = None, *, reason: str = "No especificado"):
+        if not target or not self.has_permission(ctx):
+            return await ctx.send("⚠️ Uso: `$ban <usuario/id/mention/name#1234> [razón]`")
 
-        if not self.check_hierarchy(ctx, member):
-            return await ctx.send("❌ No puedes banear a este usuario porque tiene un rol igual o superior al tuyo.")
-
-        await member.ban(reason=reason)
-        await ctx.send(embed=discord.Embed(
-            title="🚫 Usuario baneado",
-            description=f"{member.mention} fue baneado.\n**Razón:** {reason}",
-            color=discord.Color.red()
-        ))
+        member = await self.resolve_member(ctx, target)
+        try:
+            if member:
+                # banear miembro presente
+                if not self.check_hierarchy(ctx, member):
+                    return await ctx.send("❌ No puedes banear a este usuario (jerarquía insuficiente).")
+                await member.ban(reason=reason)
+                target_obj = member
+            else:
+                # intentar por id o fetch user
+                id_match = re.search(r'(\d{6,20})', target)
+                if id_match:
+                    uid = int(id_match.group(1))
+                    user = await self.bot.fetch_user(uid)
+                    await ctx.guild.ban(user, reason=reason)
+                    target_obj = user
+                else:
+                    return await ctx.send("❌ Usuario no encontrado para banear. Si no está en el servidor, usa su ID.")
+            embed = discord.Embed(title="🚫 Usuario baneado", description=f"{getattr(target_obj, 'mention', getattr(target_obj,'name',str(target_obj)))} fue baneado.\n**Razón:** {reason}", color=discord.Color.red(), timestamp=datetime.now(timezone.utc))
+            await ctx.send(embed=embed)
+            await self.log_action(ctx, "🚫 Usuario baneado", discord.Color.red(), target=target_obj, extra=f"Razón: {reason}")
+        except discord.Forbidden:
+            await ctx.send("❌ No tengo permisos para banear a este usuario.")
+        except Exception as e:
+            await ctx.send(f"❌ Error al banear: {e}")
 
     # ==============================
     # 🔧 Unwarn
     # ==============================
     @commands.command()
     @commands.has_permissions(manage_messages=True)
-    async def unwarn(self, ctx, member: discord.Member, index: int):
-        if not self.has_permission(ctx):
-            return await ctx.send("⚠️ No tienes permisos para remover advertencias.")
+    async def unwarn(self, ctx: commands.Context, target: str = None, index: int = None):
+        if not target or index is None or not self.has_permission(ctx):
+            return await ctx.send("⚠️ Uso: `$unwarn <usuario/id/mention/name#1234> <índice>`")
+
+        member = await self.resolve_member(ctx, target)
+        if not member:
+            return await ctx.send("❌ Usuario no encontrado en el servidor.")
 
         if not self.check_hierarchy(ctx, member):
-            return await ctx.send("❌ No puedes modificar advertencias de un usuario con rol igual o superior al tuyo.")
+            return await ctx.send("❌ No puedes modificar advertencias de este usuario (jerarquía insuficiente).")
 
-        # Aquí va la lógica de unwarn...
-        await ctx.send(f"⚠️ Advertencia #{index} removida de {member.mention} (ejemplo).")
+        uid = str(member.id)
+        if uid not in self.warnings or index < 1 or index > len(self.warnings[uid]):
+            return await ctx.send("⚠️ Índice inválido o el usuario no tiene advertencias.")
+
+        removed = self.warnings[uid].pop(index - 1)
+        await ctx.send(f"✅ Advertencia #{index} removida de {member.mention}.")
+        await self.log_action(ctx, "⚠️ Advertencia removida", discord.Color.orange(), target=member, extra=f"Índice: {index} - Razón original: {removed.get('reason')}")
 
     # ==============================
     # 🧹 Purge (alias: clear, c)
     # ==============================
     @commands.command(aliases=["purge", "c"])
     @commands.has_permissions(manage_messages=True)
-    async def clear(self, ctx, amount: int = None):
+    async def clear(self, ctx: commands.Context, amount: int = None):
         if not amount or amount < 1 or amount > 100 or not self.has_permission(ctx):
             return await ctx.send(embed=discord.Embed(
                 title="❌ Uso incorrecto",
                 description="Formato correcto:\n`$clear <cantidad>` (máx. 100)\nEjemplo: `$clear 10`",
                 color=discord.Color.red()
             ))
+
         try:
             deleted = await ctx.channel.purge(limit=amount + 1)
+            count = max(0, len(deleted) - 1)
             confirm = discord.Embed(
                 title="🧹 Purge realizado",
-                description=(
-                    f"👤 Moderador: {ctx.author.mention}\n"
-                    f"🗑️ Se eliminaron **{len(deleted)-1}** mensajes en {ctx.channel.mention}."
-                ),
+                description=(f"👤 Moderador: {ctx.author.mention}\n🗑️ Se eliminaron **{count}** mensajes en {ctx.channel.mention}."),
                 color=discord.Color.blurple(),
                 timestamp=datetime.now(timezone.utc)
             )
             await ctx.send(embed=confirm, delete_after=3)
-            await self.log_action(
-                ctx,
-                "🧹 Purge realizado",
-                discord.Color.blurple(),
-                extra=f"Canal: {ctx.channel.mention}\nMensajes: {len(deleted)-1}"
-            )
+            await self.log_action(ctx, "🧹 Purge realizado", discord.Color.blurple(), extra=f"Canal: {ctx.channel.mention}\nMensajes: {count}")
         except discord.Forbidden:
             await ctx.send("❌ No tengo permisos para eliminar mensajes.")
-        except discord.HTTPException as e:
+        except Exception as e:
             await ctx.send(f"❌ Error al purgar: {e}")
 
     # ==============================
@@ -241,33 +396,35 @@ class Moderation(commands.Cog):
     # ==============================
     @commands.command()
     @commands.has_permissions(manage_messages=True)
-    async def clearuser(self, ctx, member: discord.Member, amount: int = None):
-        if not amount or amount < 1 or amount > 100 or not self.has_permission(ctx):
+    async def clearuser(self, ctx: commands.Context, target: str = None, amount: int = None):
+        if not target or not amount or amount < 1 or amount > 100 or not self.has_permission(ctx):
             return await ctx.send(embed=discord.Embed(
                 title="❌ Uso incorrecto",
-                description="Formato correcto:\n`$clearuser @usuario <cantidad>` (máx. 100)",
+                description="Formato correcto:\n`$clearuser <usuario/id/mention/name#1234> <cantidad>` (máx. 100)",
                 color=discord.Color.red()
             ))
+
+        member = await self.resolve_member(ctx, target)
+        if not member:
+            return await ctx.send("❌ Usuario no encontrado en el servidor.")
+
         def is_member_message(m):
             return m.author == member
+
         try:
             deleted = await ctx.channel.purge(limit=amount + 1, check=is_member_message)
+            count = max(0, len(deleted) - 1)
             confirm = discord.Embed(
                 title="🧹 Mensajes eliminados",
-                description=f"Se eliminaron **{len(deleted)-1}** mensajes de {member.mention} en {ctx.channel.mention}.",
+                description=f"Se eliminaron **{count}** mensajes de {member.mention} en {ctx.channel.mention}.",
                 color=discord.Color.blurple(),
                 timestamp=datetime.now(timezone.utc)
             )
             await ctx.send(embed=confirm, delete_after=3)
-            await self.log_action(
-                ctx,
-                "🧹 Mensajes eliminados",
-                discord.Color.blurple(),
-                extra=f"Usuario: {member.mention}\nMensajes: {len(deleted)-1}"
-            )
+            await self.log_action(ctx, "🧹 Mensajes eliminados", discord.Color.blurple(), target=member, extra=f"Usuario: {member.mention}\nMensajes: {count}")
         except discord.Forbidden:
             await ctx.send("❌ No tengo permisos para eliminar mensajes.")
-        except discord.HTTPException as e:
+        except Exception as e:
             await ctx.send(f"❌ Error al purgar: {e}")
 
     # ==============================
@@ -275,161 +432,147 @@ class Moderation(commands.Cog):
     # ==============================
     @commands.command()
     @commands.has_permissions(moderate_members=True)
-    async def remove_timeout(self, ctx, member: discord.Member = None):
-        if not member or not self.has_permission(ctx):
-            return await ctx.send("⚠️ Uso: `$remove_timeout @usuario`")
-        await member.timeout(None)
-        embed = discord.Embed(
-            title="🔓 Timeout removido",
-            description=f"{member.mention} puede hablar de nuevo.",
-            color=discord.Color.green()
-        )
-        await ctx.send(embed=embed)
-        await self.log_action(ctx, "🔓 Timeout removido", discord.Color.green())
+    async def remove_timeout(self, ctx: commands.Context, target: str = None):
+        if not target or not self.has_permission(ctx):
+            return await ctx.send("⚠️ Uso: `$remove_timeout <usuario/id/mention/name#1234>`")
+
+        member = await self.resolve_member(ctx, target)
+        if not member:
+            return await ctx.send("❌ Usuario no encontrado en el servidor.")
+
+        try:
+            await member.edit(timed_out_until=None, reason=f"Timeout removido por {ctx.author}")
+            embed = discord.Embed(title="🔓 Timeout removido", description=f"{member.mention} puede hablar de nuevo.", color=discord.Color.green(), timestamp=datetime.now(timezone.utc))
+            await ctx.send(embed=embed)
+            await self.log_action(ctx, "🔓 Timeout removido", discord.Color.green(), target=member)
+        except discord.Forbidden:
+            await ctx.send("❌ No tengo permisos para editar al usuario.")
+        except Exception as e:
+            await ctx.send(f"❌ Error al remover timeout: {e}")
 
     # ==============================
-    # 🔒 Lock
+    # 🔒 Lock / 🔓 Unlock
     # ==============================
     @commands.command()
     @commands.has_permissions(manage_channels=True)
-    async def lock(self, ctx):
+    async def lock(self, ctx: commands.Context):
         overwrite = ctx.channel.overwrites_for(ctx.guild.default_role)
         overwrite.send_messages = False
         await ctx.channel.set_permissions(ctx.guild.default_role, overwrite=overwrite)
-        embed = discord.Embed(title="🔒 Canal bloqueado", description=f"{ctx.channel.mention} ha sido bloqueado.", color=discord.Color.red())
+        embed = discord.Embed(title="🔒 Canal bloqueado", description=f"{ctx.channel.mention} ha sido bloqueado.", color=discord.Color.red(), timestamp=datetime.now(timezone.utc))
         await ctx.send(embed=embed)
         await self.log_action(ctx, "🔒 Canal bloqueado", discord.Color.red(), extra=f"Canal: {ctx.channel.mention}")
 
-    # ==============================
-    # 🔓 Unlock
-    # ==============================
     @commands.command()
     @commands.has_permissions(manage_channels=True)
-    async def unlock(self, ctx):
+    async def unlock(self, ctx: commands.Context):
         overwrite = ctx.channel.overwrites_for(ctx.guild.default_role)
         overwrite.send_messages = None
         await ctx.channel.set_permissions(ctx.guild.default_role, overwrite=overwrite)
-        embed = discord.Embed(title="🔓 Canal desbloqueado", description=f"{ctx.channel.mention} ha sido desbloqueado.", color=discord.Color.green())
+        embed = discord.Embed(title="🔓 Canal desbloqueado", description=f"{ctx.channel.mention} ha sido desbloqueado.", color=discord.Color.green(), timestamp=datetime.now(timezone.utc))
         await ctx.send(embed=embed)
         await self.log_action(ctx, "🔓 Canal desbloqueado", discord.Color.green(), extra=f"Canal: {ctx.channel.mention}")
 
     # ==============================
-    # ⚠️ Warn
+    # ⚠️ Warn / 📋 Warnings
     # ==============================
     @commands.command()
     @commands.has_permissions(manage_messages=True)
-    async def warn(self, ctx, member: discord.Member, *, reason="No especificado"):
-        if not self.has_permission(ctx):
-            return await ctx.send("⚠️ No tienes permisos para advertir usuarios.")
+    async def warn(self, ctx: commands.Context, target: str = None, *, reason: str = "No especificado"):
+        if not target or not self.has_permission(ctx):
+            return await ctx.send("⚠️ Uso: `$warn <usuario/id/mention/name#1234> [razón]`")
+
+        member = await self.resolve_member(ctx, target)
+        if not member:
+            return await ctx.send("❌ Usuario no encontrado en el servidor.")
+
         if member == ctx.author:
             return await ctx.send("⚠️ No puedes advertirte a ti mismo.")
-        user_id = str(member.id)
-        if user_id not in self.warnings:
-            self.warnings[user_id] = []
-        self.warnings[user_id].append({"reason": reason, "moderator": ctx.author.id, "timestamp": datetime.now(timezone.utc)})
-        embed = discord.Embed(
-            title="⚠️ Advertencia",
-            description=f"{member.mention} ha sido advertido.\n**Razón:** {reason}",
-            color=discord.Color.yellow(),
-            timestamp=datetime.now(timezone.utc)
-        )
+
+        uid = str(member.id)
+        self.warnings.setdefault(uid, [])
+        self.warnings[uid].append({"reason": reason, "moderator": ctx.author.id, "timestamp": datetime.now(timezone.utc)})
+        embed = discord.Embed(title="⚠️ Advertencia", description=f"{member.mention} ha sido advertido.\n**Razón:** {reason}", color=discord.Color.yellow(), timestamp=datetime.now(timezone.utc))
         await ctx.send(embed=embed)
-        await self.log_action(ctx, "⚠️ Advertencia", discord.Color.yellow(), extra=f"Usuario: {member.mention}\nRazón: {reason}")
-        if len(self.warnings[user_id]) >= 3:  # Límite de 3 advertencias
+        await self.log_action(ctx, "⚠️ Advertencia", discord.Color.yellow(), target=member, extra=f"Razón: {reason}")
+
+        if len(self.warnings[uid]) >= 3:
             mute_role = ctx.guild.get_role(MUTE_ROLE_ID)
             if mute_role:
-                await member.add_roles(mute_role, reason=f"Alcanzó 3 advertencias por {reason}")
-                embed = discord.Embed(
-                    title="🔇 Mute automático",
-                    description=f"{member.mention} fue muteado automáticamente por alcanzar 3 advertencias.",
-                    color=discord.Color.dark_gray()
-                )
-                await ctx.send(embed=embed)
-                await self.log_action(ctx, "🔇 Mute automático", discord.Color.dark_gray(), extra=f"Usuario: {member.mention}")
+                try:
+                    await member.add_roles(mute_role, reason=f"Alcanzó 3 advertencias: {reason}")
+                    embed2 = discord.Embed(title="🔇 Mute automático", description=f"{member.mention} fue muteado automáticamente por alcanzar 3 advertencias.", color=discord.Color.dark_gray(), timestamp=datetime.now(timezone.utc))
+                    await ctx.send(embed=embed2)
+                    await self.log_action(ctx, "🔇 Mute automático", discord.Color.dark_gray(), target=member, extra="3 advertencias alcanzadas")
+                except Exception:
+                    pass
 
-    # ==============================
-    # 📋 Warnings
-    # ==============================
     @commands.command()
     @commands.has_permissions(manage_messages=True)
-    async def warnings(self, ctx, member: discord.Member = None):
+    async def warnings(self, ctx: commands.Context, target: str = None):
         if not self.has_permission(ctx):
             return await ctx.send("⚠️ No tienes permisos para ver advertencias.")
-        target = member or ctx.author
-        user_id = str(target.id)
-        if user_id not in self.warnings or not self.warnings[user_id]:
-            await ctx.send(f"📋 {target.mention} no tiene advertencias.")
-            return
-        embed = discord.Embed(
-            title=f"📋 Advertencias de {target.name}",
-            color=discord.Color.orange(),
-            timestamp=datetime.now(timezone.utc)
-        )
-        for i, warning in enumerate(self.warnings[user_id], 1):
-            embed.add_field(
-                name=f"Advertencia #{i}",
-                value=f"Razón: {warning['reason']}\nModerador: <@{warning['moderator']}>\nFecha: {warning['timestamp'].strftime('%Y-%m-%d %H:%M:%S UTC')}",
-                inline=False
-            )
-        await ctx.send(embed=embed)
+        member = await self.resolve_member(ctx, target) if target else ctx.author
+        if not member:
+            return await ctx.send("❌ Usuario no encontrado en el servidor.")
 
+        uid = str(member.id)
+        if uid not in self.warnings or not self.warnings[uid]:
+            return await ctx.send(f"📋 {member.mention} no tiene advertencias.")
+        embed = discord.Embed(title=f"📋 Advertencias de {member}", color=discord.Color.orange(), timestamp=datetime.now(timezone.utc))
+        for i, warning in enumerate(self.warnings[uid], 1):
+            embed.add_field(name=f"Advertencia #{i}", value=f"Razón: {warning['reason']}\nModerador: <@{warning['moderator']}>\nFecha: {warning['timestamp'].strftime('%Y-%m-%d %H:%M:%S UTC')}", inline=False)
+        await ctx.send(embed=embed)
 
     # ==============================
     # 🔓 Unban
     # ==============================
     @commands.command()
     @commands.has_permissions(ban_members=True)
-    async def unban(self, ctx, user: discord.User, *, reason="No especificado"):
-        if not self.has_permission(ctx):
-            return await ctx.send("⚠️ No tienes permisos para desbanear usuarios.")
-        await ctx.guild.unban(user, reason=reason)
-        embed = discord.Embed(
-            title="🔓 Usuario desbaneado",
-            description=f"{user.mention} fue desbaneado.\n**Razón:** {reason}",
-            color=discord.Color.green()
-        )
-        await ctx.send(embed=embed)
-        await self.log_action(ctx, "🔓 Usuario desbaneado", discord.Color.green(), extra=f"Usuario: {user.mention}\nRazón: {reason}")
+    async def unban(self, ctx: commands.Context, target: str = None, *, reason: str = "No especificado"):
+        if not target or not self.has_permission(ctx):
+            return await ctx.send("⚠️ Uso: `$unban <usuario/id/name#1234/name> [razón]`")
+
+        # buscar entre bans
+        banned_user = await self.find_banned_user(ctx, target)
+        if not banned_user:
+            return await ctx.send("❌ No encontré al usuario en la lista de bans. Usa ID o name#discrim si no lo encuentras.")
+
+        try:
+            await ctx.guild.unban(banned_user, reason=reason)
+            embed = discord.Embed(title="🔓 Usuario desbaneado", description=f"{getattr(banned_user, 'mention', getattr(banned_user,'name',str(banned_user)))} fue desbaneado.\n**Razón:** {reason}", color=discord.Color.green(), timestamp=datetime.now(timezone.utc))
+            await ctx.send(embed=embed)
+            await self.log_action(ctx, "🔓 Usuario desbaneado", discord.Color.green(), target=banned_user, extra=f"Razón: {reason}")
+        except discord.Forbidden:
+            await ctx.send("❌ No tengo permisos para desbanear.")
+        except discord.NotFound:
+            await ctx.send("❌ No se encontró el ban (tal vez ya fue removido).")
+        except Exception as e:
+            await ctx.send(f"❌ Error al desbanear: {e}")
 
     # ==============================
-    # 📖 HelpModeration
+    # 📖 HelpModeration (paginador con botones)
     # ==============================
     @commands.command(name="helpmoderation", aliases=["helpmod", "hmod"])
-    async def helpmoderation(self, ctx):
+    async def helpmoderation(self, ctx: commands.Context):
         pages = [
-            discord.Embed(
-                title="Ayuda de Moderación",
-                description="**Comandos de limpieza y control.**",
-                color=discord.Color.blue()
-            )
-            .add_field(name="🧼 Clear/Purge", value="`$clear <número>` o `$purge <número>` o `$c <número>`\nElimina mensajes en masa (máx. 100).", inline=False)
-            .add_field(name="🧹 Clearuser", value="`$clearuser @usuario <cantidad>`\nElimina mensajes de un usuario específico (máx. 100).", inline=False)
-            .add_field(name="🔇 Mute", value="`$mute <usuario> [duración(s/m/h/d/w)] [razón]`\nSilencia a un usuario (ej. 5m).", inline=False)
-            .add_field(name="⏳ Timeout", value="`$timeout <usuario> <duración(s/m/h/d/w)> [razón]`\nSilencia temporalmente a un usuario (máx. 28 días).", inline=False)
+            discord.Embed(title="Ayuda de Moderación", description="**Comandos de limpieza y control.**", color=discord.Color.blue())
+            .add_field(name="🧼 Clear/Purge", value="`$clear <número>`\nElimina mensajes en masa (máx. 100).", inline=False)
+            .add_field(name="🧹 Clearuser", value="`$clearuser <usuario> <cantidad>`\nElimina mensajes de un usuario (máx. 100).", inline=False)
+            .add_field(name="🔇 Mute", value="`$mute <usuario> [duración] [razón]`", inline=False)
             .set_footer(text="Página 1/3"),
-            
-            discord.Embed(
-                title="Ayuda de Moderación",
-                description="**Comandos adicionales.**",
-                color=discord.Color.green()
-            )
-            .add_field(name="🔊 Unmute", value="`$unmute <usuario>`\nDesmuta a un usuario.", inline=False)
-            .add_field(name="🔓 Remove Timeout", value="`$remove_timeout <usuario>`\nRemueve el timeout de un usuario.", inline=False)
-            .add_field(name="🔒 Lock", value="`$lock`\nBloquea el canal para @everyone.", inline=False)
-            .add_field(name="🔓 Unlock", value="`$unlock`\nDesbloquea el canal para @everyone.", inline=False)
-            .add_field(name="⚠️ Warn", value="`$warn @usuario [razón]`\nAdvertir a un usuario (máx. 3 antes de mute).", inline=False)
+            discord.Embed(title="Ayuda de Moderación", description="**Comandos adicionales.**", color=discord.Color.green())
+            .add_field(name="🔊 Unmute", value="`$unmute <usuario>`", inline=False)
+            .add_field(name="🔓 Remove Timeout", value="`$remove_timeout <usuario>`", inline=False)
+            .add_field(name="🔒 Lock / 🔓 Unlock", value="`$lock` / `$unlock`", inline=False)
+            .add_field(name="⚠️ Warn", value="`$warn <usuario> [razón]`", inline=False)
             .set_footer(text="Página 2/3"),
-            
-            discord.Embed(
-                title="Ayuda de Moderación",
-                description="**Comandos de gestión.**",
-                color=discord.Color.purple()
-            )
-            .add_field(name="📋 Warnings", value="`$warnings [@usuario]`\nMuestra las advertencias de un usuario.", inline=False)
-            .add_field(name="🔧 Unwarn", value="`$unwarn @usuario <índice>`\nRemueve una advertencia específica (usa $warnings para ver índices).", inline=False)
-            .add_field(name="👢 Kick", value="`$kick @usuario [razón]`\nExpulsa a un usuario del servidor.", inline=False)
-            .add_field(name="🚫 Ban", value="`$ban @usuario [razón]`\nBanea a un usuario del servidor.", inline=False)
-            .add_field(name="🔓 Unban", value="`$unban @usuario [razón]`\nDesbanea a un usuario del servidor.", inline=False)
+            discord.Embed(title="Ayuda de Moderación", description="**Comandos de gestión.**", color=discord.Color.purple())
+            .add_field(name="📋 Warnings", value="`$warnings [usuario]`", inline=False)
+            .add_field(name="🔧 Unwarn", value="`$unwarn <usuario> <índice>`", inline=False)
+            .add_field(name="👢 Kick", value="`$kick <usuario> [razón]`", inline=False)
+            .add_field(name="🚫 Ban", value="`$ban <usuario/id> [razón]`", inline=False)
+            .add_field(name="🔓 Unban", value="`$unban <usuario/id/name#1234> [razón]`", inline=False)
             .set_footer(text="Página 3/3"),
         ]
 
@@ -438,7 +581,7 @@ class Moderation(commands.Cog):
                 super().__init__(timeout=300)
                 self.current = 0
 
-            async def update(self, interaction):
+            async def update(self, interaction: discord.Interaction):
                 await interaction.response.edit_message(embed=pages[self.current], view=self)
 
             @discord.ui.button(label="⬅️ Atrás", style=discord.ButtonStyle.primary)
@@ -463,5 +606,5 @@ class Moderation(commands.Cog):
 # ==============================
 # Setup
 # ==============================
-async def setup(bot):
+async def setup(bot: commands.Bot):
     await bot.add_cog(Moderation(bot))
