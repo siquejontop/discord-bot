@@ -241,7 +241,6 @@ class Fun(commands.Cog):
             await ctx.send(f"❌ Error inesperado: {e}")
             print(f"[ERROR] {e}")
 
-
     # =====================================================
     # 👥 Contador de baneados
     # =====================================================
@@ -264,7 +263,6 @@ class Fun(commands.Cog):
 
         except Exception as e:
             await ctx.send(f"⚠️ Error al obtener la lista de baneados: {e}")
-
 
 # =====================================================
 # 🔌 Setup obligatorio
