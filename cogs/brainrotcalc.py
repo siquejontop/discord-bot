@@ -11,7 +11,7 @@ class Precios(commands.Cog):
             "losbros": (24, 0.05, 2.5, "(M − 24) × 0.05 + 2.5", "Los bros"),
             "loshotspositos": (20, 0.05, 4, "(M − 20) × 0.05 + 4", "Los hotspositos"),
             "nuclearodinossauro": (15, 0.12, 7, "(M − 15) × 0.12 + 7", "Nuclearo dinossauro"),
-            "esoksekolah": (30, 0.04, 3, "(M − 30) × 0.04 + 3", "Esok sekolah"),
+            "esoksekolah": (30, 0.04, 2.5, "(M − 30) × 0.04 + 2.5", "Esok sekolah"),
             "tralaledon": (27.5, 0.05, 13, "(M − 27.5) × 0.05 + 13", "Tralaledon"),
             "ketchuruandmusturu": (42.5, 0.08, 12, "(M − 42.5) × 0.08 + 12", "Ketchuru and musturu"),
             "ketupatkepat": (35, 0.04, 13, "(M − 35) × 0.04 + 13", "Ketupat kepat"),
