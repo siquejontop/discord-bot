@@ -5,7 +5,14 @@ class Precios(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
+        # 🔥 Nuevos primero
         self.formulas = {
+            "mariachicorazoni": (12.5, 0.05, 2, "(M - 12.5) × 0.05 + 2", "Mariachi corazoni"),
+            "chillinchili": (30, 0.04, 3, "(M - 30) × 0.04 + 3", "Chillin chili"),
+            "tangtangkelentang": (33.5, 0.05, 5, "(M - 33.5) × 0.05 + 5", "Tang tang kelentang"),
+            "moneymoneypuggy": (21, 0.06, 8, "(M - 21) × 0.06 + 8", "Money money puggy"),
+
+            # ✅ Resto
             "loscombinasionas": (15, 0.06, 2, "(M − 15) × 0.06 + 2", "Los combinasionas"),
             "lagrandecombinasion": (10, 0.08, 3, "(M − 10) × 0.08 + 3", "La grande combinasion"),
             "losbros": (24, 0.05, 2.5, "(M − 24) × 0.05 + 2.5", "Los bros"),
@@ -26,13 +33,24 @@ class Precios(commands.Cog):
             "tictacsahur": (37.5, 0.06, 8, "(M - 37.5) × 0.06 + 8", "Tictac sahur"),
             "garamaandmadundung": (50, 0.13, 24, "(M − 50) × 0.13 + 24", "Garama and madundung"),
             "dragoncannelloni": (100, 0.30, 100, "(M − 100) × 0.30 + 100", "Dragon cannelloni"),
-            "moneymoneypuggy": (21, 0.06, 8, "(M - 21) × 0.06 + 8", "Money money puggy"),
-            "tangtangkelentang": (33.5, 0.05, 5, "(M - 33.5) × 0.05 + 5", "Tang tang kelentang"),
-            "chillinchili": (30, 0.05, 3, "(M - 30) × 0.05 + 3", "Chillin chili"),
         }
 
         # Alias → clave real
         self.aliases = {
+            # Nuevos
+            "mc": "mariachicorazoni",
+            "mariachi": "mariachicorazoni",
+
+            "cc": "chillinchili",
+            "chili": "chillinchili",
+
+            "ttk": "tangtangkelentang",
+            "kelentang": "tangtangkelentang",
+
+            "mmp": "moneymoneypuggy",
+            "puggy": "moneymoneypuggy",
+
+            # Viejos
             "lc": "loscombinasionas",
             "combinasionas": "loscombinasionas",
 
@@ -92,15 +110,6 @@ class Precios(commands.Cog):
 
             "dc": "dragoncannelloni",
             "dragon": "dragoncannelloni",
-
-            "mmp": "moneymoneypuggy",
-            "puggy": "moneymoneypuggy",
-
-            "ttk": "tangtangkelentang",
-            "kelentang": "tangtangkelentang",
-
-            "cc": "chillinchili",
-            "chili": "chillinchili",
         }
 
     def make_embed(self, ctx, nombre: str, formula: str, operacion: str, resultado: float, pretty: str):
@@ -150,9 +159,6 @@ class Precios(commands.Cog):
 
         await ctx.send(embed=self.make_embed(ctx, nombre, formula, operacion, result, pretty))
 
-    # ==============================
-    # 📌 Comando de ayuda con paginación
-    # ==============================
     @commands.command(name="helpprices")
     async def helpprices(self, ctx):
         formulas_items = list(self.formulas.items())
