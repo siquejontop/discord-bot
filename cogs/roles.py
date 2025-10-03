@@ -272,6 +272,42 @@ class Roles(commands.Cog):
         except discord.Forbidden:
             await ctx.send("❌ No tengo permisos suficientes para modificar ese rol.")
 
+    # ========================
+    # 🖼️ Cambiar icono de rol
+    # ========================
+    @commands.command(name="roleicon", aliases=["ricon"])
+    @commands.has_permissions(manage_roles=True)
+    async def roleicon(self, ctx, role_arg: str = None, emoji: str = None):
+        if not role_arg or not emoji:
+            return await ctx.send(
+                embed=discord.Embed(
+                    description="❌ Sintaxis incorrecta.\nUsa: `a!roleicon <rol> <emoji>`",
+                    color=discord.Color.red()
+                )
+            )
+
+        # Buscar rol
+        role = self.find_role(ctx, role_arg)
+        if role is None or isinstance(role, list):
+            return await ctx.send(embed=discord.Embed(description=f"❌ No encontré el rol **{role_arg}**.", color=discord.Color.red()))
+
+        # Validar jerarquía
+        ok, error = self.can_modify_role(ctx, ctx.author, role)
+        if not ok:
+            return await ctx.send(embed=discord.Embed(description=error, color=discord.Color.red()))
+
+        try:
+            await role.edit(icon=None, unicode_emoji=emoji, reason=f"Roleicon cambiado por {ctx.author}")
+            embed = discord.Embed(
+                description=f"✅ El rol {role.mention} ahora tiene el icono {emoji}",
+                color=discord.Color.green()
+            )
+            await ctx.send(embed=embed)
+        except discord.Forbidden:
+            await ctx.send(embed=discord.Embed(description="❌ No tengo permisos suficientes para editar ese rol.", color=discord.Color.red()))
+        except discord.HTTPException as e:
+            await ctx.send(embed=discord.Embed(description=f"❌ Error al editar el rol: {e}", color=discord.Color.red()))
+
 
 # 👇 Obligatorio para que Render cargue el cog
 async def setup(bot):
