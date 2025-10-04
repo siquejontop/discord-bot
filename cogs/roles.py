@@ -296,10 +296,25 @@ class Roles(commands.Cog):
                 )
             )
 
-        # Validar jerarquía usando el autor y el rol
-        ok, error = self.can_modify_role(ctx, ctx.author, role)
-        if not ok:
-            return await ctx.send(embed=discord.Embed(description=error, color=discord.Color.red()))
+        author = ctx.author
+        bot_member = ctx.guild.me
+
+        # 🚨 Validar jerarquía especial para roleicon
+        if role >= author.top_role and author.id != self.owner_id:
+            return await ctx.send(
+                embed=discord.Embed(
+                    description=f"❌ No puedes modificar un rol superior o igual al tuyo ({role.mention}).",
+                    color=discord.Color.red()
+                )
+            )
+
+        if role >= bot_member.top_role:
+            return await ctx.send(
+                embed=discord.Embed(
+                    description=f"❌ No puedo modificar un rol superior o igual al mío ({bot_member.top_role.mention}).",
+                    color=discord.Color.red()
+                )
+            )
 
         try:
             # Solo permite UNICODE emoji (no funciona con custom <:emoji:ID>)
