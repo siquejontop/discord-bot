@@ -296,7 +296,7 @@ class Roles(commands.Cog):
                 )
             )
 
-        # Validar jerarquía
+        # Validar jerarquía usando el autor y el rol
         ok, error = self.can_modify_role(ctx, ctx.author, role)
         if not ok:
             return await ctx.send(embed=discord.Embed(description=error, color=discord.Color.red()))
