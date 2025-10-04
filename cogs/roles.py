@@ -281,7 +281,7 @@ class Roles(commands.Cog):
         if not role_arg or not emoji:
             return await ctx.send(
                 embed=discord.Embed(
-                    description="❌ Sintaxis incorrecta.\nUsa: `a!roleicon <rol> <emoji>`",
+                    description="❌ Sintaxis incorrecta.\nUsa: `,roleicon <rol> <emoji>`",
                     color=discord.Color.red()
                 )
             )
